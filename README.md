@@ -4,6 +4,9 @@ A responsive landing page for **XNDR** (Structural Engineering · Remedial
 Engineering · Project Management), built with **Next.js (App Router) + TypeScript**
 and ready for one-click deployment to Vercel.
 
+> **Docs:** project conventions live in [`docs/conventions/`](docs/conventions/);
+> cross-session handoff notes in [`docs/next-prompt.md`](docs/next-prompt.md).
+
 ## Tech
 - **Next.js 14** (App Router) + **TypeScript** + **React 18**
 - Plain CSS design system in `app/globals.css` (no UI dependency to maintain)
