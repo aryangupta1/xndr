@@ -138,8 +138,8 @@ export const about: {
   eyebrow: "About XNDR",
   heading: "Precision engineering, grounded in real-world delivery",
   body: [
-    "XNDR was founded by Rinay Singh, who built a foundational expertise in structural integrity through a Bachelor of Engineering and a Master of Engineering in Structural Engineering from the University of Melbourne.",
-    "With over a decade of industry experience, the practice was established to bridge the gap between complex engineering requirements and the clear, honest communication that building owners deserve.",
+    "XNDR was built upon years of experience in the construction industry. A passion to engineer and genuinely help people build or remediate their dream homes was the foundation of its creation.",
+    "Our practice was established to bridge the gap between complex engineering requirements and the clear, honest communication that building owners deserve.",
   ],
   image: "photo-1503387762-592deb58ef4e", // engineer reviewing blueprints
   pillars: [
