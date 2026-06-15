@@ -33,29 +33,36 @@ context across session boundaries when this conversation ends.
 
 <!-- Replace everything below with the actual prompt. Keep this fence so the section is easy to find. -->
 
-**Site is LIVE-READY and pushed to `master`.** The landing page is fully built
-(Next 14 App Router + TS), responsive, with a dark/light toggle and a hidden
-`/questions-for-rizdawg` route. It's optimized for Vercel (auto URLs, security
-headers, Node pinned). Last commit: light-mode contrast fix, verified by
-screenshot in both themes.
+**Goal this session: collect Rizdawg's answers to [`QUESTIONS.md`](../QUESTIONS.md)
+and implement them into the site.** The build is done and live-ready on `master`
+— this is a CONTENT pass, not a rebuild.
 
-**The site is blocked on CONTENT, not code.** All body copy is intentional
-placeholder lorem ipsum. The real next step is populating
-[`lib/content.ts`](../lib/content.ts) once Rizdawg / the owner answers
-[`QUESTIONS.md`](../QUESTIONS.md) (sharable via the `/questions-for-rizdawg`
-page). Don't invent marketing copy — wait for their answers. Keep the XNDR name,
-the three services, and the Aryan G testimonial as-is.
+**Step 1 — get the answers.** The questions are served for Rizdawg at the hidden
+`/questions-for-rizdawg` route (renders `QUESTIONS.md`). Ask the human (aryan) for
+Rizdawg's responses — pasted inline, a file, or a link. **If they're not here
+yet, that's the blocker: ask for them and don't start guessing copy.** Don't
+invent plausible marketing text to fill gaps.
 
-**Likely real tasks when you're back (do only what's asked):**
-- Drop answered copy into `lib/content.ts` (hero, about, services, projects, footer).
-- Wire the CTA/contact to something real — right now it's a `mailto:` to the
-  placeholder `footer.email`. A form (Formspree / Vercel form action) is the
-  likely ask. Update `footer.email`/`footer.phone` with real details.
-- Swap placeholder Unsplash photos for real project photography if supplied
-  (see [`docs/conventions/content-and-assets.md`](conventions/content-and-assets.md)).
+**Step 2 — implement them.** All answered copy goes into
+[`lib/content.ts`](../lib/content.ts) (the single source of truth) — `hero`,
+`about`, `services`, `projects`, `footer`. As you go:
+- Replace lorem ipsum only where there's a real answer; leave the rest as
+  placeholder and note what's still outstanding.
+- Real contact details → `footer.email` / `footer.phone` (the CTA + footer both
+  read from there). If they want a working contact form instead of the current
+  `mailto:`, wire one (Formspree / Vercel form action) — confirm which.
+- Real project photos, if supplied, go in `public/` with `image` repointed at the
+  local path; otherwise keep the curated Unsplash ids.
+- Keep what's already correct: the XNDR name, the three services, and the
+  Aryan G — "Rinay is an exceptional mind." testimonial.
 
-**Before any visual change:** read
-[`docs/conventions/design-system.md`](conventions/design-system.md) — especially
-the scoped-region rule (hero/project cards need `color`, not just `--text`).
-**Verify visuals in a real browser/screenshot**, both themes — `npm run build`
-won't catch contrast/layout regressions.
+**Step 3 — verify & ship.** `npm run build` must pass. For anything visual,
+screenshot **both themes** in a real browser (build won't catch contrast/layout
+regressions). Before touching styles, re-read
+[`docs/conventions/design-system.md`](conventions/design-system.md) — the
+scoped-region rule (hero/project cards need `color`, not just `--text`). Commit
+per logical chunk and push to `master` (auto-deploys).
+
+**When real copy fully lands,** drop the placeholder-policy caveat from
+[`docs/conventions/content-and-assets.md`](conventions/content-and-assets.md) and
+reset this file to the template above.
