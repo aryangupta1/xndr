@@ -12,8 +12,8 @@ export default function Projects() {
         </div>
 
         <div className="projects-grid">
-          {projects.items.map((p) => (
-            <a className="project-card" key={p.title} href="#contact">
+          {projects.items.map((p, i) => (
+            <a className="project-card" key={`${p.title}-${i}`} href="#contact">
               <Image
                 src={unsplash(p.image, 800)}
                 alt={`${p.title} — ${p.category} project`}

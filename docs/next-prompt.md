@@ -33,36 +33,39 @@ context across session boundaries when this conversation ends.
 
 <!-- Replace everything below with the actual prompt. Keep this fence so the section is easy to find. -->
 
-**Goal this session: collect Rizdawg's answers to [`QUESTIONS.md`](../QUESTIONS.md)
-and implement them into the site.** The build is done and live-ready on `master`
-— this is a CONTENT pass, not a rebuild.
+**Goal this session: finish the content pass.** Rinay's answers (email, 15 Jun
+2026, `~/Downloads/answers.pdf`) are now implemented in
+[`lib/content.ts`](../lib/content.ts) — `hero`, `about`, `services`, `projects`,
+`cta`, `footer.blurb` all carry real copy. `npm run build` passes. This is a
+CONTENT pass, not a rebuild.
 
-**Step 1 — get the answers.** The questions are served for Rizdawg at the hidden
-`/questions-for-rizdawg` route (renders `QUESTIONS.md`). Ask the human (aryan) for
-Rizdawg's responses — pasted inline, a file, or a link. **If they're not here
-yet, that's the blocker: ask for them and don't start guessing copy.** Don't
-invent plausible marketing text to fill gaps.
+**Still outstanding (Rinay hasn't supplied — don't invent these):**
+- **Contact details** — business email, phone, office address, ABN, social links
+  (`footer` still has placeholder email/phone + TODOs). The CTA + footer both
+  read from `footer.email` / `footer.phone`. If a working contact form is wanted
+  over the current `mailto:`, wire Formspree / Vercel form action — confirm which.
+- **Project images** — `projects.items` now holds Rinay's 5 real residential
+  projects, but the `image` ids are leftover stock from the old commercial
+  placeholders and don't match (see the FOLLOW-UP comment in `lib/content.ts`).
+  Source better-suited Unsplash photos per project, or ideally Rinay's own site
+  photos → `public/` with `image` repointed at the local path.
+- **Accreditations** — Rinay supplied DBP + Professional Engineer (DBPA); there's
+  no field/component to show them yet (FOLLOW-UP comment in `about`). Consider an
+  accreditations strip in the About section.
+- **Project location + descriptions** — kept inline as comments in
+  `projects.items`; wire into the card if/when it gains those fields.
 
-**Step 2 — implement them.** All answered copy goes into
-[`lib/content.ts`](../lib/content.ts) (the single source of truth) — `hero`,
-`about`, `services`, `projects`, `footer`. As you go:
-- Replace lorem ipsum only where there's a real answer; leave the rest as
-  placeholder and note what's still outstanding.
-- Real contact details → `footer.email` / `footer.phone` (the CTA + footer both
-  read from there). If they want a working contact form instead of the current
-  `mailto:`, wire one (Formspree / Vercel form action) — confirm which.
-- Real project photos, if supplied, go in `public/` with `image` repointed at the
-  local path; otherwise keep the curated Unsplash ids.
-- Keep what's already correct: the XNDR name, the three services, and the
-  Aryan G — "Rinay is an exceptional mind." testimonial.
+**Keep what's correct:** the XNDR name, the three services, and the
+Aryan G — "Rinay is an exceptional mind." testimonial.
 
-**Step 3 — verify & ship.** `npm run build` must pass. For anything visual,
-screenshot **both themes** in a real browser (build won't catch contrast/layout
+**Verify & ship.** `npm run build` must pass. For anything visual, screenshot
+**both themes** in a real browser (build won't catch contrast/layout
 regressions). Before touching styles, re-read
 [`docs/conventions/design-system.md`](conventions/design-system.md) — the
 scoped-region rule (hero/project cards need `color`, not just `--text`). Commit
 per logical chunk and push to `master` (auto-deploys).
 
-**When real copy fully lands,** drop the placeholder-policy caveat from
+**When real copy fully lands** (contact details + project images in particular),
+drop the placeholder-policy caveat from
 [`docs/conventions/content-and-assets.md`](conventions/content-and-assets.md) and
 reset this file to the template above.

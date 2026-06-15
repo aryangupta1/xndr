@@ -1,8 +1,9 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // XNDR — Site content
 //
-// All copy below is PLACEHOLDER (lorem ipsum) by design. See QUESTIONS.md for the
-// list of questions to ask the business owner before populating real content.
+// Copy populated from Rinay Singh's answers (email, 15 Jun 2026). Outstanding
+// gaps are flagged with TODO inline — chiefly contact details and footer/socials,
+// which Rinay has not supplied yet. See QUESTIONS.md for the full list.
 //
 // Images are sourced from Unsplash (free to use). To swap an image, replace the
 // `photo` id with another Unsplash photo id (the slug after `/photos/...`).
@@ -78,15 +79,15 @@ export const hero: {
   stats: Stat[];
 } = {
   eyebrow: "Structural · Remedial · Project Management",
-  heading: "Engineering certainty into every structure",
+  heading: "Built on trust, delivered with transparency",
   subheading:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.",
+    "XNDR delivers structural and remedial engineering solutions defined by technical rigor, absolute transparency, and a commitment to resolving complex building challenges for the strata and construction sectors across New South Wales.",
   primaryCta: { label: "Book a consultation", href: "#contact" },
   secondaryCta: { label: "Our services", href: "#services" },
   stats: [
-    { value: "200+", label: "Projects delivered" },
-    { value: "15", label: "Years of practice" },
-    { value: "100%", label: "Compliance record" },
+    { value: "20+", label: "Projects delivered across NSW" },
+    { value: "15+", label: "Years of combined experience" },
+    { value: "100%", label: "Compliance focus" },
   ],
 };
 
@@ -100,24 +101,27 @@ export const about: {
   eyebrow: "About XNDR",
   heading: "Precision engineering, grounded in real-world delivery",
   body: [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-    "Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint.",
+    "XNDR was founded by Rinay Singh, who built a foundational expertise in structural integrity through a Bachelor of Engineering and a Master of Engineering in Structural Engineering from the University of Melbourne.",
+    "With over a decade of industry experience, the practice was established to bridge the gap between complex engineering requirements and the clear, honest communication that building owners deserve.",
   ],
   image: "photo-1503387762-592deb58ef4e", // engineer reviewing blueprints
   pillars: [
     {
       title: "Our vision",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+      text: "To set the industry standard for clarity and reliability in structural and remedial engineering.",
     },
     {
       title: "Our approach",
-      text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.",
+      text: "Proactive, hands-on problem solving that anticipates issues before they impact the client.",
     },
     {
       title: "Our standards",
-      text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
+      text: "Unwavering honesty and transparency throughout every stage of the project lifecycle.",
     },
   ],
+  // FOLLOW-UP: Rinay supplied accreditations — Design Building Practitioner (DBP)
+  // and Professional Engineer (under the DBPA) — but there's no field/component to
+  // display them yet. Add an accreditations strip to the About section.
 };
 
 export const services: {
@@ -129,25 +133,37 @@ export const services: {
   eyebrow: "What we do",
   heading: "Three disciplines, one accountable team",
   subheading:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+    "Structural, remedial and project management expertise — delivered end to end for the strata and construction sectors across NSW.",
   items: [
     {
       number: "01",
       title: "Structural Engineering",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      points: ["Design & analysis", "Inspections & certification", "Load assessments"],
+      text: "Delivering robust structural designs that ensure safety, compliance, and efficiency for new builds and renovations.",
+      points: [
+        "Residential framing & foundation design",
+        "Retaining wall & support systems",
+        "Structural certification & compliance",
+      ],
     },
     {
       number: "02",
       title: "Remedial Engineering",
-      text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      points: ["Defect diagnosis", "Concrete & waterproofing repair", "Strengthening works"],
+      text: "Specialist assessment and repair strategies to restore building performance, longevity, and structural safety.",
+      points: [
+        "Defects inspections & reporting (2–6 year statutory periods)",
+        "Scope of works documentation for rectification",
+        "Concrete cancer & waterproofing remediation",
+      ],
     },
     {
       number: "03",
       title: "Project Management",
-      text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      points: ["Scope & programming", "Contractor coordination", "Cost & risk control"],
+      text: "Coordinating the entire engineering process to ensure projects are delivered on time, within budget, and to the highest technical standard.",
+      points: [
+        "Tender management & contractor coordination",
+        "Site supervision & quality assurance",
+        "Defect rectification planning",
+      ],
     },
   ],
 };
@@ -161,14 +177,24 @@ export const projects: {
   eyebrow: "Selected work",
   heading: "Bringing engineering visions to life with precision",
   subheading:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+    "A selection of recent residential and structural projects delivered across New South Wales.",
+  // FOLLOW-UP: these are now real residential projects (granny flats, new builds,
+  // retaining walls), but the `image` ids below are leftover stock from the old
+  // commercial/infrastructure placeholders and DON'T match. Source better-suited
+  // Unsplash photos per project — or, preferably, get Rinay's own site photos
+  // (per QUESTIONS.md §5). Location + one-line descriptions from Rinay's email are
+  // kept inline below so they're ready to wire in if/when the card adds those fields.
   items: [
-    { title: "Lorem Tower", category: "Commercial", year: "2025", image: "photo-1565008447742-97f6f38c985c" },
-    { title: "Ipsum Bridge Remediation", category: "Remedial", year: "2024", image: "photo-1504307651254-35680f356dfd" },
-    { title: "Dolor Civic Centre", category: "Structural", year: "2024", image: "photo-1487958449943-2429e8be8625" },
-    { title: "Amet Transit Slab", category: "Infrastructure", year: "2023", image: "photo-1541888946425-d81bb19240f5" },
-    { title: "Consectetur Plaza", category: "Commercial", year: "2023", image: "photo-1486406146926-c627a92ad1ab" },
-    { title: "Adipiscing Residence", category: "Residential", year: "2022", image: "photo-1590725140246-20acdee442be" },
+    // Guildford — "Custom design featuring an integrated car hoist system."
+    { title: "Granny Flat & Garage", category: "Residential", year: "2026", image: "photo-1590725140246-20acdee442be" },
+    // Kellyville — "Structural design for a modern standalone home."
+    { title: "New Residential Build", category: "Residential", year: "2026", image: "photo-1565008447742-97f6f38c985c" },
+    // Box Hill — "Engineered support systems for residential site works."
+    { title: "Retaining Wall Project", category: "Civil / Structural", year: "2026", image: "photo-1504307651254-35680f356dfd" },
+    // Woy Woy — "Structural design for a premium residential dwelling."
+    { title: "High-End Residence", category: "Residential", year: "2026", image: "photo-1487958449943-2429e8be8625" },
+    // Newport — "Engineering oversight for a luxury residential build."
+    { title: "High-End Residence", category: "Residential", year: "2026", image: "photo-1486406146926-c627a92ad1ab" },
   ],
 };
 
@@ -182,7 +208,7 @@ export const testimonials: { eyebrow: string; heading: string; items: Testimonia
 export const cta: { heading: string; subheading: string; button: Link } = {
   heading: "Have a structure that needs a sharper mind?",
   subheading:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+    "Talk to a Registered Design and Building Practitioner about your structural or remedial challenge — proactive, transparent advice from the first conversation.",
   button: { label: "Contact us", href: "#contact" },
 };
 
@@ -194,7 +220,9 @@ export const footer: {
   social: Link[];
 } = {
   blurb:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    "Structural and remedial engineering for the strata and construction sectors across New South Wales. Built on trust, delivered with transparency.",
+  // TODO: still outstanding from Rinay — business email, phone, office address,
+  // ABN and social links (QUESTIONS.md §7). Placeholders below until supplied.
   email: "hello@xndr.example", // TODO: replace with real email
   phone: "+61 0000 000 000", // TODO: replace with real phone
   columns: [
