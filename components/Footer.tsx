@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { footer } from "@/lib/content";
 
 export default function Footer() {
@@ -7,7 +6,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <Image src="/logo-nav.png" alt="XNDR" width={880} height={614} />
+            <span className="logo-img" role="img" aria-label="XNDR" />
             <p>{footer.blurb}</p>
             <div className="footer-contact">
               <a href={`mailto:${footer.email}`}>{footer.email}</a>

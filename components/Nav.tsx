@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { nav } from "@/lib/content";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -11,12 +11,10 @@ export default function Nav() {
     <header className="nav">
       <div className="container nav-inner">
         <a href="#top" className="nav-logo" aria-label="XNDR home">
-          <Image
-            src="/logo-nav.png"
-            alt="XNDR — Structural, Remedial & Project Management"
-            width={880}
-            height={614}
-            priority
+          <span
+            className="logo-img"
+            role="img"
+            aria-label="XNDR — Structural, Remedial & Project Management"
           />
         </a>
 
@@ -29,6 +27,7 @@ export default function Nav() {
         </nav>
 
         <div className="nav-actions">
+          <ThemeToggle />
           <a className="btn btn-primary" href={nav.cta.href}>
             {nav.cta.label}
           </a>

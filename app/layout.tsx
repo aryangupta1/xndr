@@ -30,8 +30,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Apply the saved theme before first paint to avoid a flash. Defaults to dark.
+  const noFlashScript = `(function(){try{var t=localStorage.getItem('xndr-theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`;
+
   return (
-    <html lang="en" className={inter.className}>
+    <html
+      lang="en"
+      className={inter.className}
+      data-theme="dark"
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
+      </head>
       <body>{children}</body>
     </html>
   );

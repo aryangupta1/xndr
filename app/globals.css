@@ -1,5 +1,7 @@
 /* ───────────────────────────── Design tokens ───────────────────────────── */
-:root {
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
   /* Brand palette sampled from the XNDR logo */
   --bg: #1c2023;            /* logo background */
   --surface: #23282c;      /* cards */
@@ -7,10 +9,31 @@
   --green: #6b9243;        /* brand green */
   --green-bright: #82ad55; /* hover / highlight */
   --text: #eef1f2;
+  --text-2: #cfd5d9;       /* secondary body copy */
   --muted: #9aa3a9;
   --line: rgba(255, 255, 255, 0.09);
   --line-strong: rgba(255, 255, 255, 0.16);
+  --nav-bg: rgba(28, 32, 35, 0.72);
+  --logo: url("/logo-dark.png");
+}
 
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f5f6f3;
+  --surface: #ffffff;
+  --surface-2: #eceee8;
+  --green: #6b9243;
+  --green-bright: #4d7a2b; /* darker for AA contrast on light */
+  --text: #1a1f1c;
+  --text-2: #33403a;
+  --muted: #5b6560;
+  --line: rgba(0, 0, 0, 0.10);
+  --line-strong: rgba(0, 0, 0, 0.18);
+  --nav-bg: rgba(245, 246, 243, 0.82);
+  --logo: url("/logo-light.png");
+}
+
+:root {
   --max: 1200px;
   --radius: 14px;
   --radius-lg: 22px;
@@ -104,7 +127,7 @@ ul { list-style: none; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(28, 32, 35, 0.72);
+  background: var(--nav-bg);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
@@ -114,7 +137,12 @@ ul { list-style: none; }
   justify-content: space-between;
   height: 74px;
 }
-.nav-logo img { height: 34px; width: auto; }
+/* Theme-aware logo: swaps source via the --logo CSS variable */
+.logo-img {
+  display: block;
+  background: var(--logo) left center / contain no-repeat;
+}
+.nav-logo .logo-img { height: 34px; width: 49px; }
 .nav-links { display: flex; align-items: center; gap: 34px; }
 .nav-links a {
   font-size: 0.95rem;
@@ -123,6 +151,29 @@ ul { list-style: none; }
 }
 .nav-links a:hover { color: var(--text); }
 .nav-actions { display: flex; align-items: center; gap: 16px; }
+
+/* Theme toggle */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.16s ease, color 0.16s ease, background 0.16s ease;
+  flex: none;
+}
+.theme-toggle:hover { border-color: var(--green); color: var(--green-bright); }
+.theme-toggle svg { width: 18px; height: 18px; }
+/* Show the moon in light mode (tap to go dark), the sun in dark mode */
+.theme-toggle .icon-sun { display: block; }
+.theme-toggle .icon-moon { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 
 .nav-toggle {
   display: none;
@@ -163,7 +214,18 @@ ul { list-style: none; }
 }
 
 /* ───────────────────────────── Hero ────────────────────────────────────── */
-.hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  /* Hero sits over a video, so its text stays light in both themes.
+     --bg is left themed so the overlay blends into the page below. */
+  --text: #f3f5f4;
+  --text-2: #c8cfd3;
+  --muted: #c8cfd3;
+  --green-bright: #93c267;
+  --line: rgba(255, 255, 255, 0.16);
+}
 .hero-video {
   position: absolute;
   inset: 0;
@@ -196,7 +258,7 @@ ul { list-style: none; }
   margin-top: 22px;
 }
 .hero p.lead {
-  color: #c8cfd3;
+  color: var(--text-2);
   font-size: clamp(1.05rem, 2vw, 1.3rem);
   margin-top: 24px;
   max-width: 620px;
@@ -253,7 +315,7 @@ ul { list-style: none; }
   align-items: center;
   gap: 10px;
   font-size: 0.95rem;
-  color: #cfd5d9;
+  color: var(--text-2);
 }
 .service-card li::before {
   content: "";
@@ -307,6 +369,10 @@ ul { list-style: none; }
   aspect-ratio: 4 / 5;
   border: 1px solid var(--line);
   display: block;
+  /* Text sits over a dark gradient on the photo, so keep it light in both themes */
+  --text: #ffffff;
+  --muted: #cfd5cd;
+  --green-bright: #9fce72;
 }
 .project-card img {
   width: 100%;
@@ -383,6 +449,16 @@ ul { list-style: none; }
   background: radial-gradient(60% 120% at 50% 0%, rgba(107, 146, 67, 0.28), transparent 70%);
   pointer-events: none;
 }
+[data-theme="light"] .cta-banner {
+  background: linear-gradient(135deg, #e8f0de 0%, #ffffff 62%);
+}
+[data-theme="light"] .cta-banner::after {
+  background: radial-gradient(
+    60% 120% at 50% 0%,
+    rgba(107, 146, 67, 0.2),
+    transparent 70%
+  );
+}
 .cta-banner h2 {
   position: relative;
   font-size: clamp(1.9rem, 4.4vw, 3.2rem);
@@ -399,7 +475,7 @@ ul { list-style: none; }
   grid-template-columns: 1.6fr repeat(2, 1fr);
   gap: 40px;
 }
-.footer-brand img { height: 40px; width: auto; }
+.footer-brand .logo-img { height: 40px; width: 57px; }
 .footer-brand p { color: var(--muted); margin-top: 18px; max-width: 320px; font-size: 0.95rem; }
 .footer-contact { margin-top: 22px; display: grid; gap: 6px; font-size: 0.95rem; }
 .footer-contact a:hover { color: var(--green-bright); }
@@ -411,7 +487,7 @@ ul { list-style: none; }
   margin-bottom: 18px;
 }
 .footer-col ul { display: grid; gap: 12px; }
-.footer-col a { color: #cfd5d9; font-size: 0.95rem; }
+.footer-col a { color: var(--text-2); font-size: 0.95rem; }
 .footer-col a:hover { color: var(--green-bright); }
 .footer-bottom {
   margin-top: 48px;
@@ -455,7 +531,7 @@ ul { list-style: none; }
   color: var(--green-bright);
 }
 .md-doc h3 { font-size: 1.15rem; margin-top: 30px; }
-.md-doc p { color: #cfd5d9; margin-top: 14px; }
+.md-doc p { color: var(--text-2); margin-top: 14px; }
 .md-doc a { color: var(--green-bright); text-decoration: underline; text-underline-offset: 3px; }
 .md-doc strong { color: var(--text); }
 .md-doc hr { border: 0; border-top: 1px solid var(--line); margin: 40px 0; }
@@ -463,7 +539,7 @@ ul { list-style: none; }
 .md-doc ul { margin-top: 16px; display: grid; gap: 12px; }
 .md-doc li {
   list-style: none;
-  color: #cfd5d9;
+  color: var(--text-2);
   padding-left: 4px;
 }
 /* GFM task-list items rendered by remark-gfm */
