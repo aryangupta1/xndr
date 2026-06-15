@@ -218,13 +218,15 @@ ul { list-style: none; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  /* Hero sits over a video, so its text stays light in both themes.
-     --bg is left themed so the overlay blends into the page below. */
+  /* Hero sits over a video, so it stays a dark cinematic block in BOTH themes.
+     Scope the tokens light AND set `color` so descendants that only inherit
+     (h1, stats) don't pick up the page's themed body color. */
   --text: #f3f5f4;
   --text-2: #c8cfd3;
   --muted: #c8cfd3;
   --green-bright: #93c267;
   --line: rgba(255, 255, 255, 0.16);
+  color: var(--text);
 }
 .hero-video {
   position: absolute;
@@ -238,13 +240,15 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   z-index: -1;
+  /* Fixed dark stops (not themed) so hero text is readable in light mode too;
+     the hero reads as a dark block that the light page starts cleanly beneath. */
   background: linear-gradient(
       180deg,
-      rgba(28, 32, 35, 0.78) 0%,
-      rgba(28, 32, 35, 0.86) 55%,
-      var(--bg) 100%
+      rgba(22, 26, 29, 0.74) 0%,
+      rgba(20, 24, 27, 0.84) 55%,
+      rgba(18, 21, 24, 0.94) 100%
     ),
-    radial-gradient(80% 60% at 15% 20%, rgba(107, 146, 67, 0.22), transparent 70%);
+    radial-gradient(80% 60% at 15% 20%, rgba(107, 146, 67, 0.24), transparent 70%);
 }
 .hero-inner {
   padding-block: clamp(96px, 16vw, 200px) clamp(48px, 8vw, 96px);
@@ -373,6 +377,7 @@ ul { list-style: none; }
   --text: #ffffff;
   --muted: #cfd5cd;
   --green-bright: #9fce72;
+  color: var(--text);
 }
 .project-card img {
   width: 100%;
