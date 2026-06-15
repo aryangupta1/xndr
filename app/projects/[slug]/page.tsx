@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { projects, projectImage } from "@/lib/content";
+import { projects, projectImage, isPlaceholderImage } from "@/lib/content";
 
 // Pre-render one static page per project at build time.
 export function generateStaticParams() {
@@ -49,13 +49,23 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
           <div className="project-detail">
             <div className="project-figure">
-              <Image
-                src={projectImage(project.image, 1200)}
-                alt={`${project.title} — ${project.category} project in ${project.location}`}
-                width={1200}
-                height={1500}
-                priority
-              />
+              {isPlaceholderImage(project.image) ? (
+                <Image
+                  src={projectImage(project.image, 1200)}
+                  alt={`${project.title} — ${project.category} project in ${project.location}`}
+                  width={1200}
+                  height={900}
+                  sizes="(max-width: 760px) 100vw, 55vw"
+                  priority
+                />
+              ) : (
+                <Image
+                  src={projectImage(project.image, 1200)}
+                  alt={`${project.title} — ${project.category} project in ${project.location}`}
+                  sizes="(max-width: 760px) 100vw, 55vw"
+                  priority
+                />
+              )}
             </div>
 
             <div className="project-body">
@@ -129,14 +139,23 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
           {project.gallery && project.gallery.length > 0 && (
             <div className="project-gallery">
-              {project.gallery.map((src) => (
-                <div className="project-gallery-item" key={src}>
-                  <Image
-                    src={projectImage(src, 1000)}
-                    alt={`${project.title} — additional photo`}
-                    width={1000}
-                    height={750}
-                  />
+              {project.gallery.map((img, i) => (
+                <div className="project-gallery-item" key={i}>
+                  {isPlaceholderImage(img) ? (
+                    <Image
+                      src={projectImage(img, 1000)}
+                      alt={`${project.title} — additional photo`}
+                      width={1000}
+                      height={750}
+                      sizes="(max-width: 760px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <Image
+                      src={projectImage(img, 1000)}
+                      alt={`${project.title} — additional photo`}
+                      sizes="(max-width: 760px) 50vw, 33vw"
+                    />
+                  )}
                 </div>
               ))}
             </div>

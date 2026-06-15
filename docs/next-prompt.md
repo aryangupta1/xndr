@@ -39,24 +39,26 @@ context across session boundaries when this conversation ends.
 `cta`, `footer.blurb` all carry real copy. `npm run build` passes. This is a
 CONTENT pass, not a rebuild.
 
-**Still outstanding (Rinay hasn't supplied — don't invent these):**
-- **Contact details** — business email, phone, office address, ABN, social links
-  (`footer` still has placeholder email/phone + TODOs). The CTA + footer both
-  read from `footer.email` / `footer.phone`. If a working contact form is wanted
-  over the current `mailto:`, wire Formspree / Vercel form action — confirm which.
-- **Project detail content** — each project is now a standalone page at
-  `/projects/<slug>` (`app/projects/[slug]/page.tsx`), statically generated from
-  `projects.items`. The landing grid shows name + location; the detail page shows
-  summary + facts and degrades gracefully with a "coming soon" note until the
-  optional `scope` / `services` / `details` / `client` fields are filled. Those
-  fields are OUTSTANDING — the new per-project questions in QUESTIONS.md §5 gather
-  them. Populate them on the `Project` objects in `lib/content.ts`.
-- **Project images** — real photos are in for Kellyville (4, in a gallery),
-  Woy Woy and Newport (`public/projects/…`, resolved via `projectImage()`).
-  Guildford + Box Hill are still PLACEHOLDER Unsplash ids (marked TODO in
-  `projects.items`) — drop their photos in `public/projects/` and repoint `image`.
-  Note: phone photos may need rotating (the Kellyville set had no EXIF orientation
-  and was rotated 270° with `sips` before committing).
+**Done so far:** contact email (info@xndr.au) + phone (0423 322 772) are live in
+`footer`. Newport + Woy Woy have full write-ups (`scope`/`services`/`details`) and
+their landing/hero images are the cover renders extracted from the DA plan PDFs
+(`~/Downloads/newport-info.pdf`, `woy-woy-info.pdf`) via `pdfimages`/`pdftoppm`.
+Projects render as masonry (natural aspect ratios) on the landing + detail pages.
+
+**Still outstanding (don't invent these):**
+- **Contact extras** — office address, ABN, social links, and a confirmed CTA
+  label are still missing (QUESTIONS.md §7). If a working contact form is wanted
+  over the current `mailto:`/`tel:`, wire Formspree / Vercel form action.
+- **Detail for the other 3 projects** — Granny Flat (Guildford), New Build
+  (Kellyville), Retaining Wall (Box Hill) have no `scope`/`services`/`details`
+  yet, so their pages show the "coming soon" note. Populate the `Project` objects
+  in `lib/content.ts` when Rinay sends a few lines each.
+- **Project images** — Guildford + Box Hill are still PLACEHOLDER Unsplash ids
+  (marked TODO in `projects.items`); drop real photos in `public/projects/` and
+  repoint `image` (static-import them like the others). Note: phone photos may
+  need rotating (the Kellyville set had no EXIF orientation; rotated 270° via `sips`).
+- **"Suburbs only" rule** — show the suburb only on projects, never the street
+  address or owner name (per Rinay). Keep this in mind for any new project content.
 - **Accreditations** — Rinay supplied DBP + Professional Engineer (DBPA); there's
   no field/component to show them yet (FOLLOW-UP comment in `about`). Consider an
   accreditations strip in the About section.

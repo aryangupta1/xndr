@@ -7,7 +7,25 @@
 //
 // Images are sourced from Unsplash (free to use). To swap an image, replace the
 // `photo` id with another Unsplash photo id (the slug after `/photos/...`).
+//
+// Real project photos are imported statically from `public/projects/…` so Next
+// carries their intrinsic dimensions — that lets the page shape each container to
+// the photo's real aspect ratio instead of cropping it.
 // ─────────────────────────────────────────────────────────────────────────────
+
+import type { StaticImageData } from "next/image";
+import kellyville1 from "@/public/projects/kellyville-1.jpeg";
+import kellyville2 from "@/public/projects/kellyville-2.jpeg";
+import kellyville3 from "@/public/projects/kellyville-3.jpeg";
+import kellyville4 from "@/public/projects/kellyville-4.jpeg";
+import newport from "@/public/projects/newport.jpeg";
+import woyWoy from "@/public/projects/woy-woy.jpeg";
+
+// A project image is either a statically-imported local photo (with known
+// dimensions) or an Unsplash photo id string used as a placeholder.
+export type ProjectImage = StaticImageData | string;
+export const isPlaceholderImage = (img: ProjectImage): img is string =>
+  typeof img === "string";
 
 // ── Types ────────────────────────────────────────────────────────────────────
 export interface Link {
@@ -38,8 +56,8 @@ export interface Project {
   location: string;
   category: string;
   year: string;
-  image: string; // local "/projects/…" path, else a placeholder Unsplash id
-  gallery?: string[]; // extra photos shown on the detail page
+  image: ProjectImage; // imported local photo, else a placeholder Unsplash id
+  gallery?: ProjectImage[]; // extra photos shown on the detail page
   summary: string; // one-liner shown on the card + intro of the detail page
   // ── Detail-page fields — OUTSTANDING, awaiting Rinay (see QUESTIONS.md §5) ──
   // Left empty for now; the detail page degrades gracefully and shows a
@@ -65,11 +83,11 @@ export interface FooterColumn {
 export const unsplash = (id: string, w = 1200): string =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
-// Helper: resolve a project image. Local files (supplied by Rinay, kept in
-// `public/projects/…`) start with "/" and are served as-is; anything else is
-// treated as a placeholder Unsplash photo id.
-export const projectImage = (image: string, w = 1200): string =>
-  image.startsWith("/") ? image : unsplash(image, w);
+// Helper: resolve a project image to something <Image> can consume. Local
+// imports pass straight through (Next keeps their dimensions); placeholder
+// Unsplash ids are expanded to an optimized URL.
+export const projectImage = (image: ProjectImage, w = 1200): ProjectImage =>
+  isPlaceholderImage(image) ? unsplash(image, w) : image;
 
 // Free, hotlinkable hero background video (Pexels — construction crew on site).
 // Source: https://www.pexels.com/video/4271760/
@@ -218,12 +236,8 @@ export const projects: {
       location: "Kellyville, NSW",
       category: "Residential",
       year: "2026",
-      image: "/projects/kellyville-1.jpeg",
-      gallery: [
-        "/projects/kellyville-2.jpeg",
-        "/projects/kellyville-3.jpeg",
-        "/projects/kellyville-4.jpeg",
-      ],
+      image: kellyville1,
+      gallery: [kellyville2, kellyville3, kellyville4],
       summary: "Structural design for a modern standalone home.",
     },
     {
@@ -241,8 +255,19 @@ export const projects: {
       location: "Woy Woy, NSW",
       category: "Residential",
       year: "2026",
-      image: "/projects/woy-woy.jpeg",
+      image: woyWoy,
       summary: "Structural design for a premium residential dwelling.",
+      services: ["Structural Engineering"],
+      scope: [
+        "Structural design for a three-level dwelling on a steep bushland site",
+        "Concrete-block lower level and garage anchoring the build into the slope",
+        "Suspended floors with timber-framed upper levels and a metal roof",
+        "Columns, retaining and right-of-carriageway constraints to engineer's details",
+      ],
+      details: [
+        "Structural design for a three-level home of roughly 245 m² on a steeply sloping, heavily treed block of nearly 2,000 m². The dwelling steps up the hill — garage and entry at the base, open-plan living, kitchen and bedrooms on the main floor, and a private master suite above.",
+        "A concrete-block lower level carries suspended floors and lightweight timber-framed upper storeys beneath a corrugated metal roof. The structure was engineered around a height-restriction zone and a 3.5 m right-of-carriageway, with columns and retaining detailed to suit the fall of the land.",
+      ],
     },
     {
       slug: "high-end-residence-newport",
@@ -250,8 +275,19 @@ export const projects: {
       location: "Newport, NSW",
       category: "Residential",
       year: "2026",
-      image: "/projects/newport.jpeg",
+      image: newport,
       summary: "Engineering oversight for a luxury residential build.",
+      services: ["Structural Engineering", "Project Management"],
+      scope: [
+        "Structural review across three split levels and a central lift shaft",
+        "Stepped footings and retaining to suit the slope and geotechnical constraints",
+        "Suspended concrete and timber-framed floor systems",
+        "Coordination of structural detailing with the architectural design",
+      ],
+      details: [
+        "Engineering oversight for a 320 m² split-level home stepping down a steep, vegetated Northern Beaches block. Three levels — garage and entry up top, open-plan living opening to a waterproofed entertaining deck, and a private bedroom level — are organised around a central lift.",
+        "The site's flood-risk and geotechnical constraints, a strict 8.5 m height limit and significant fall across the block drove the structural approach: stepped footings and retaining, suspended concrete and timber-framed floors, and a lightweight Spandek metal roof.",
+      ],
     },
   ],
 };
@@ -279,10 +315,10 @@ export const footer: {
 } = {
   blurb:
     "Structural and remedial engineering for the strata and construction sectors across New South Wales. Built on trust, delivered with transparency.",
-  // TODO: still outstanding from Rinay — business email, phone, office address,
-  // ABN and social links (QUESTIONS.md §7). Placeholders below until supplied.
-  email: "hello@xndr.example", // TODO: replace with real email
-  phone: "+61 0000 000 000", // TODO: replace with real phone
+  // Still outstanding from Rinay — office address, ABN and social links
+  // (QUESTIONS.md §7). Email + phone supplied 15 Jun 2026.
+  email: "info@xndr.au",
+  phone: "0423 322 772",
   columns: [
     {
       title: "Company",

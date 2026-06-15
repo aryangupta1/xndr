@@ -13,20 +13,22 @@ are **still outstanding** — listed first so they're easy to find.
 
 These are the gaps blocking a fully real site — we won't invent them:
 
-- [ ] **Contact email** — required; CTA + footer both point here (currently a placeholder).
-- [ ] **Phone number** — currently a placeholder.
 - [ ] **Office address** — only if you want it shown publicly.
 - [ ] **ABN / business registration number** — for the footer.
 - [ ] **Social links** — LinkedIn / Instagram / Facebook / other (or "none").
 - [ ] **Preferred call-to-action** — "Book a consultation" is live; confirm or change (Request a quote / Email us…).
-- [ ] **Contact method** — keep the simple `mailto:` link, or do you want a proper contact form?
-- [ ] **2 more project photos** — got Kellyville, Woy Woy and Newport (thanks!). Still need **Granny Flat & Garage (Guildford)** and **Retaining Wall (Box Hill)** — those two are on placeholders.
-- [ ] **Project detail** — each project now has its own page; a few more lines on each fills them out (see §5).
-- [ ] **Naming permission** — OK to name/locate the 5 projects publicly as listed?
+- [ ] **Contact method** — keep the simple `mailto:`/`tel:` links, or do you want a proper contact form?
+- [ ] **2 more project photos** — still need **Granny Flat & Garage (Guildford)** and **Retaining Wall (Box Hill)**; those two are on placeholders.
+- [ ] **Detail for the other 3 projects** — Newport + Woy Woy are written up from the plans you sent. Still need a few lines on **Granny Flat (Guildford)**, **New Build (Kellyville)** and **Retaining Wall (Box Hill)** — see §5.
+
+✅ **Received, now live:** contact email (info@xndr.au) + phone (0423 322 772);
+photos for Kellyville, Woy Woy and Newport; "suburbs only" naming — so we show the
+suburb, never the street address or client name.
 
 ## ⚑ Follow-ups on our side (no action needed from you)
 
-- [x] **Photos wired in** — Kellyville, Woy Woy and Newport are live on their pages; Guildford + Box Hill stay on placeholders until those land.
+- [x] **Photos wired in** — Kellyville, Woy Woy and Newport are live; Woy Woy + Newport now use the cover renders pulled from the DA plans. Guildford + Box Hill stay on placeholders.
+- [x] **Newport + Woy Woy written up** — scope, services and a description extracted from the DA plan sets (suburb only, no addresses/owner names).
 - [ ] **Accreditations strip** — you gave us *Design Building Practitioner (DBP)* and *Professional Engineer (under the DBPA)*; we still need to add a spot on the About section to display them.
 - [x] **Standalone project pages built** — each project is a clickable page (`/projects/<name>`); the landing grid shows name + location.
 
@@ -57,24 +59,25 @@ These are the gaps blocking a fully real site — we won't invent them:
 - [x] 4–6 real projects (name, location, category, year). — *5 projects received.*
 - [x] A one-line description for each. — *received; shown on the cards + page intro.*
 - [x] Project photos — *received for Kellyville, Woy Woy, Newport.* ⚑ *still need Guildford + Box Hill.*
-- [ ] Do any projects have client permission to be named publicly? — **please confirm**.
+- [x] Naming — *"suburbs only" confirmed; we show the suburb, never the street address or owner name.*
+- [x] Newport + Woy Woy detail — *written up from the DA plan sets you sent.*
 
-**Each project now has its own page** — the grid shows name + location, the rest
-lives on the detail page. A line or two each fills them out; no essays needed:
+**Each project has its own page** — the grid shows name + location, the rest lives
+on the detail page. Newport + Woy Woy are done; for the **other three** a line or
+two each fills them out (no essays needed):
 
 - [ ] **A fuller description** — 2–4 sentences: the build + the engineering challenge.
 - [ ] **Scope of works** — 3–5 bullets of what you did on the job.
 - [ ] **Which service(s) applied** — Structural / Remedial / Project Management.
-- [ ] **Photos for the last two** — Granny Flat & Garage (Guildford), Retaining Wall (Box Hill).
-- [ ] **(Optional) client name** — only if they're happy to be named.
+- [ ] **Photos** — Granny Flat & Garage (Guildford), Retaining Wall (Box Hill).
 
 ## 6. Testimonials — ✅ Done
 - [x] Keep the one showing — **Aryan G — "Rinay is an exceptional mind."**? — *kept as-is.*
 - [ ] Any additional testimonials? — optional; send any time (name, role/company, quote).
 
-## 7. Contact & footer — ❌ Outstanding
-- [ ] Business email address?
-- [ ] Phone number?
+## 7. Contact & footer — ⚑ Partially done
+- [x] Business email address? — *info@xndr.au (live).*
+- [x] Phone number? — *0423 322 772 (live).*
 - [ ] Office address (if you want it shown)?
 - [ ] Social media links — LinkedIn / Instagram / Facebook / other?
 - [ ] ABN / business registration number for the footer?
