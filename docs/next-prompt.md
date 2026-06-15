@@ -52,7 +52,13 @@ Projects render as masonry (natural aspect ratios) on the landing + detail pages
 - **Detail for the other 3 projects** — Granny Flat (Guildford), New Build
   (Kellyville), Retaining Wall (Box Hill) have no `scope`/`services`/`details`
   yet, so their pages show the "coming soon" note. Populate the `Project` objects
-  in `lib/content.ts` when Rinay sends a few lines each.
+  in `lib/content.ts` when Rinay sends a few lines each. Newport + Woy Woy are the
+  reference: the detail page (`components/ProjectDetail.tsx`, a client component
+  using **anime.js** for scroll-reveal + an interactive level explorer) renders
+  `facts`, `floors` (clickable plan tabs), `materialsImage`/`materialsNote`,
+  `services`, `scope`, `details` and `gallery` — each section hides if absent.
+  Floor-plan + materials images were cropped from the DA PDFs (address-free) with
+  `pdftoppm`/`pdfimages` and live in `public/projects/`.
 - **Project images** — Guildford + Box Hill are still PLACEHOLDER Unsplash ids
   (marked TODO in `projects.items`); drop real photos in `public/projects/` and
   repoint `image` (static-import them like the others). Note: phone photos may

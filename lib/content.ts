@@ -19,7 +19,14 @@ import kellyville2 from "@/public/projects/kellyville-2.jpeg";
 import kellyville3 from "@/public/projects/kellyville-3.jpeg";
 import kellyville4 from "@/public/projects/kellyville-4.jpeg";
 import newport from "@/public/projects/newport.jpeg";
+import newportPlanEntry from "@/public/projects/newport-plan-entry.png";
+import newportPlanLiving from "@/public/projects/newport-plan-living.png";
+import newportPlanLower from "@/public/projects/newport-plan-lower.png";
+import newportMaterials from "@/public/projects/newport-materials.jpeg";
 import woyWoy from "@/public/projects/woy-woy.jpeg";
+import woyWoyPlanGarage from "@/public/projects/woy-woy-plan-garage.png";
+import woyWoyPlanLiving from "@/public/projects/woy-woy-plan-living.png";
+import woyWoyPlanUpper from "@/public/projects/woy-woy-plan-upper.png";
 
 // A project image is either a statically-imported local photo (with known
 // dimensions) or an Unsplash photo id string used as a placeholder.
@@ -50,6 +57,13 @@ export interface Service {
   points: string[];
 }
 
+// A labelled level shown in the interactive floor-plan explorer.
+export interface ProjectFloor {
+  label: string; // tab label, e.g. "Living level"
+  caption: string; // one line describing what's on this level
+  image: ProjectImage; // the floor-plan drawing (address-free crop)
+}
+
 export interface Project {
   slug: string; // URL segment for the standalone page: /projects/<slug>
   title: string;
@@ -59,13 +73,17 @@ export interface Project {
   image: ProjectImage; // imported local photo, else a placeholder Unsplash id
   gallery?: ProjectImage[]; // extra photos shown on the detail page
   summary: string; // one-liner shown on the card + intro of the detail page
-  // ── Detail-page fields — OUTSTANDING, awaiting Rinay (see QUESTIONS.md §5) ──
-  // Left empty for now; the detail page degrades gracefully and shows a
-  // "more detail coming soon" note for any project without these populated.
+  // ── Detail-page fields — OUTSTANDING for the 3 projects without a plan set ──
+  // The detail page degrades gracefully and shows a "coming soon" note for any
+  // project without these populated.
   client?: string; // named only with client permission
   scope?: string[]; // bullet list of the works carried out
   services?: string[]; // which of the three disciplines applied
   details?: string[]; // longer write-up paragraphs (challenge → solution)
+  facts?: Stat[]; // extra at-a-glance figures (levels, floor area, …)
+  floors?: ProjectFloor[]; // interactive level-by-level plan explorer
+  materialsImage?: ProjectImage; // finishes/materials board (suburb-safe crop)
+  materialsNote?: string; // one line summarising the palette
 }
 
 export interface Testimonial {
@@ -268,6 +286,30 @@ export const projects: {
         "Structural design for a three-level home of roughly 245 m² on a steeply sloping, heavily treed block of nearly 2,000 m². The dwelling steps up the hill — garage and entry at the base, open-plan living, kitchen and bedrooms on the main floor, and a private master suite above.",
         "A concrete-block lower level carries suspended floors and lightweight timber-framed upper storeys beneath a corrugated metal roof. The structure was engineered around a height-restriction zone and a 3.5 m right-of-carriageway, with columns and retaining detailed to suit the fall of the land.",
       ],
+      facts: [
+        { value: "3", label: "Levels" },
+        { value: "244 m²", label: "Total floor area" },
+        { value: "1,993 m²", label: "Site area" },
+        { value: "0.12:1", label: "Floor space ratio" },
+      ],
+      floors: [
+        {
+          label: "Garage & entry",
+          caption: "Garage and entry stair anchored into the slope.",
+          image: woyWoyPlanGarage,
+        },
+        {
+          label: "Living level",
+          caption:
+            "Kitchen, living and dining with two bedrooms and a bathroom.",
+          image: woyWoyPlanLiving,
+        },
+        {
+          label: "Master level",
+          caption: "A private master suite with ensuite and walk-in robe above.",
+          image: woyWoyPlanUpper,
+        },
+      ],
     },
     {
       slug: "high-end-residence-newport",
@@ -288,6 +330,35 @@ export const projects: {
         "Engineering oversight for a 320 m² split-level home stepping down a steep, vegetated Northern Beaches block. Three levels — garage and entry up top, open-plan living opening to a waterproofed entertaining deck, and a private bedroom level — are organised around a central lift.",
         "The site's flood-risk and geotechnical constraints, a strict 8.5 m height limit and significant fall across the block drove the structural approach: stepped footings and retaining, suspended concrete and timber-framed floors, and a lightweight Spandek metal roof.",
       ],
+      facts: [
+        { value: "3", label: "Split levels" },
+        { value: "320 m²", label: "Gross floor area" },
+        { value: "8.5 m", label: "Height limit" },
+        { value: "C4", label: "Environmental living zone" },
+      ],
+      floors: [
+        {
+          label: "Entry & garage",
+          caption:
+            "Lounge, entry foyer and balcony beside a double garage at street level.",
+          image: newportPlanEntry,
+        },
+        {
+          label: "Living level",
+          caption:
+            "Open-plan kitchen, living and dining opening to a 44.5 m² waterproofed deck.",
+          image: newportPlanLiving,
+        },
+        {
+          label: "Bedroom level",
+          caption:
+            "Master suite, rumpus and three further bedrooms on the lower level.",
+          image: newportPlanLower,
+        },
+      ],
+      materialsImage: newportMaterials,
+      materialsNote:
+        "Polished-concrete render, Monument metal roofing, Textura-black glazing and blackbutt timber screens.",
     },
   ],
 };
