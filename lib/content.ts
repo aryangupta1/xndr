@@ -33,10 +33,20 @@ export interface Service {
 }
 
 export interface Project {
+  slug: string; // URL segment for the standalone page: /projects/<slug>
   title: string;
+  location: string;
   category: string;
   year: string;
-  image: string;
+  image: string; // placeholder until Rinay supplies real photos
+  summary: string; // one-liner shown on the card + intro of the detail page
+  // ── Detail-page fields — OUTSTANDING, awaiting Rinay (see QUESTIONS.md §5) ──
+  // Left empty for now; the detail page degrades gracefully and shows a
+  // "more detail coming soon" note for any project without these populated.
+  client?: string; // named only with client permission
+  scope?: string[]; // bullet list of the works carried out
+  services?: string[]; // which of the three disciplines applied
+  details?: string[]; // longer write-up paragraphs (challenge → solution)
 }
 
 export interface Testimonial {
@@ -59,15 +69,17 @@ export const unsplash = (id: string, w = 1200): string =>
 export const HERO_VIDEO =
   "https://videos.pexels.com/video-files/4271760/4271760-hd_1920_1080_30fps.mp4";
 
+// Nav hrefs are root-absolute (`/#about`) so they also work from sub-pages such
+// as the standalone project pages, not just the landing page.
 export const nav: { links: Link[]; cta: Link } = {
   links: [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Projects", href: "#projects" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "Contact", href: "#contact" },
+    { label: "About", href: "/#about" },
+    { label: "Services", href: "/#services" },
+    { label: "Projects", href: "/#projects" },
+    { label: "Testimonials", href: "/#testimonials" },
+    { label: "Contact", href: "/#contact" },
   ],
-  cta: { label: "Start a project", href: "#contact" },
+  cta: { label: "Start a project", href: "/#contact" },
 };
 
 export const hero: {
@@ -178,23 +190,57 @@ export const projects: {
   heading: "Bringing engineering visions to life with precision",
   subheading:
     "A selection of recent residential and structural projects delivered across New South Wales.",
-  // FOLLOW-UP: these are now real residential projects (granny flats, new builds,
-  // retaining walls), but the `image` ids below are leftover stock from the old
-  // commercial/infrastructure placeholders and DON'T match. Source better-suited
-  // Unsplash photos per project — or, preferably, get Rinay's own site photos
-  // (per QUESTIONS.md §5). Location + one-line descriptions from Rinay's email are
-  // kept inline below so they're ready to wire in if/when the card adds those fields.
+  // Each item links to a standalone page at /projects/<slug>. The `image` ids are
+  // PLACEHOLDERS (curated Unsplash stock) — Rinay will supply real project photos.
+  // The detail fields (scope/services/details) are still OUTSTANDING; the new
+  // per-project questions in QUESTIONS.md §5 collect them. summary + location are
+  // from Rinay's email (15 Jun 2026).
   items: [
-    // Guildford — "Custom design featuring an integrated car hoist system."
-    { title: "Granny Flat & Garage", category: "Residential", year: "2026", image: "photo-1590725140246-20acdee442be" },
-    // Kellyville — "Structural design for a modern standalone home."
-    { title: "New Residential Build", category: "Residential", year: "2026", image: "photo-1565008447742-97f6f38c985c" },
-    // Box Hill — "Engineered support systems for residential site works."
-    { title: "Retaining Wall Project", category: "Civil / Structural", year: "2026", image: "photo-1504307651254-35680f356dfd" },
-    // Woy Woy — "Structural design for a premium residential dwelling."
-    { title: "High-End Residence", category: "Residential", year: "2026", image: "photo-1487958449943-2429e8be8625" },
-    // Newport — "Engineering oversight for a luxury residential build."
-    { title: "High-End Residence", category: "Residential", year: "2026", image: "photo-1486406146926-c627a92ad1ab" },
+    {
+      slug: "granny-flat-garage-guildford",
+      title: "Granny Flat & Garage",
+      location: "Guildford, NSW",
+      category: "Residential",
+      year: "2026",
+      image: "photo-1590725140246-20acdee442be",
+      summary: "Custom design featuring an integrated car hoist system.",
+    },
+    {
+      slug: "new-residential-build-kellyville",
+      title: "New Residential Build",
+      location: "Kellyville, NSW",
+      category: "Residential",
+      year: "2026",
+      image: "photo-1565008447742-97f6f38c985c",
+      summary: "Structural design for a modern standalone home.",
+    },
+    {
+      slug: "retaining-wall-box-hill",
+      title: "Retaining Wall Project",
+      location: "Box Hill, NSW",
+      category: "Civil / Structural",
+      year: "2026",
+      image: "photo-1504307651254-35680f356dfd",
+      summary: "Engineered support systems for residential site works.",
+    },
+    {
+      slug: "high-end-residence-woy-woy",
+      title: "High-End Residence",
+      location: "Woy Woy, NSW",
+      category: "Residential",
+      year: "2026",
+      image: "photo-1487958449943-2429e8be8625",
+      summary: "Structural design for a premium residential dwelling.",
+    },
+    {
+      slug: "high-end-residence-newport",
+      title: "High-End Residence",
+      location: "Newport, NSW",
+      category: "Residential",
+      year: "2026",
+      image: "photo-1486406146926-c627a92ad1ab",
+      summary: "Engineering oversight for a luxury residential build.",
+    },
   ],
 };
 

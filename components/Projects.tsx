@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { projects, unsplash } from "@/lib/content";
 
 export default function Projects() {
@@ -12,11 +13,11 @@ export default function Projects() {
         </div>
 
         <div className="projects-grid">
-          {projects.items.map((p, i) => (
-            <a className="project-card" key={`${p.title}-${i}`} href="#contact">
+          {projects.items.map((p) => (
+            <Link className="project-card" key={p.slug} href={`/projects/${p.slug}`}>
               <Image
                 src={unsplash(p.image, 800)}
-                alt={`${p.title} — ${p.category} project`}
+                alt={`${p.title} — ${p.category} project in ${p.location}`}
                 width={800}
                 height={1000}
               />
@@ -25,10 +26,11 @@ export default function Projects() {
                 <div>
                   <span className="tag">{p.category}</span>
                   <h3>{p.title}</h3>
+                  <span className="loc">{p.location}</span>
                 </div>
                 <span className="year">{p.year}</span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

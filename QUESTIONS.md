@@ -20,17 +20,15 @@ These are the gaps blocking a fully real site — we won't invent them:
 - [ ] **Social links** — LinkedIn / Instagram / Facebook / other (or "none").
 - [ ] **Preferred call-to-action** — "Book a consultation" is live; confirm or change (Request a quote / Email us…).
 - [ ] **Contact method** — keep the simple `mailto:` link, or do you want a proper contact form?
-- [ ] **Project photos** — your own jobsite/render photos are strongly preferred over stock for the 5 portfolio projects. Can you supply them? (See follow-up below.)
+- [ ] **Project photos** — your own jobsite/render photos are strongly preferred over stock for the 5 portfolio projects. Can you supply them? (Currently placeholders.)
+- [ ] **Project detail** — each project now has its own page; we need a few more lines on each to fill them (see §5).
 - [ ] **Naming permission** — do the 5 projects have client permission to be named/located publicly as listed?
-- [ ] **Higher-res logo** — SVG or transparent PNG; current logo is cropped from the supplied JPEG.
-- [ ] **Hero video** — happy with the stock construction clip, or do you have your own?
-- [ ] **Brand colours** — anything beyond the logo green/charcoal?
 
 ## ⚑ Follow-ups on our side (no action needed from you)
 
-- [ ] **Project images don't match yet** — the 5 projects are now your real residential jobs, but the stock images are leftover from the old commercial placeholders. We'll swap in better-suited photos (ideally yours — see above).
+- [ ] **Project photos are placeholders** — every project currently uses a temporary stock image; we'll swap in your real photos as soon as they land.
 - [ ] **Accreditations strip** — you gave us *Design Building Practitioner (DBP)* and *Professional Engineer (under the DBPA)*; we still need to add a spot on the About section to display them.
-- [ ] **Project locations + descriptions** — captured from your email (Guildford, Kellyville, Box Hill, Woy Woy, Newport) and ready to show once the project cards support those fields.
+- [x] **Standalone project pages built** — each project is now a clickable page (`/projects/<name>`); the landing grid shows name + location, the detail page shows the rest. Just needs the content in §5 to fill out.
 
 ---
 
@@ -55,11 +53,26 @@ These are the gaps blocking a fully real site — we won't invent them:
 - [x] The 3 most important sub-services under each. — *received.*
 - [x] A 4th service, or are these the three? — *three core offerings confirmed.*
 
-## 5. Projects / portfolio — ✅ Copy done, photos outstanding
+## 5. Projects / portfolio — ✅ Basics done · ⚑ detail + photos needed
 - [x] 4–6 real projects (name, location, category, year). — *5 projects received.*
-- [x] A one-line description for each. — *received (kept for the cards).*
-- [ ] Can you supply your own project photos? — **outstanding** (see priority list).
+- [x] A one-line description for each. — *received; shown on the cards + page intro.*
+- [ ] Can you supply your own project photos? — **outstanding** (placeholders in use).
 - [ ] Do any projects have client permission to be named publicly? — **please confirm**.
+
+**New:** each project now has its own page. The landing grid shows just the
+**name + location**; the rest lives on the detail page. To make those pages worth
+visiting, for **each** of the 5 projects we'd love:
+
+- [ ] **A fuller description** — 2–4 sentences: what the build was and the engineering challenge.
+- [ ] **Scope of works** — 3–5 bullet points of what you actually did on the job.
+- [ ] **Which of the three services applied** — Structural / Remedial / Project Management.
+- [ ] **A couple of photos** — even phone snaps of the site/finished work (or renders/drawings).
+- [ ] **(Optional) client name** — only if they're happy to be named.
+
+> The 5 projects are: **Granny Flat & Garage** (Guildford), **New Residential
+> Build** (Kellyville), **Retaining Wall Project** (Box Hill), **High-End
+> Residence** (Woy Woy), **High-End Residence** (Newport). A line or two on each
+> is plenty — no need to write essays.
 
 ## 6. Testimonials — ✅ Done
 - [x] Keep the one showing — **Aryan G — "Rinay is an exceptional mind."**? — *kept as-is.*
@@ -73,11 +86,6 @@ These are the gaps blocking a fully real site — we won't invent them:
 - [ ] ABN / business registration number for the footer?
 - [ ] Preferred primary call-to-action? (Book a call, Request a quote, Email us…)
 
-## 8. Assets — ❌ Outstanding
-- [ ] A higher-resolution logo file (SVG or transparent PNG preferred) — current logo is cropped from the supplied JPEG.
-- [ ] Brand colours beyond the logo green/charcoal, if any.
-- [ ] Do you have your own hero video? (currently using a free stock construction clip)
-
 ---
 
 ### Where each answer goes
@@ -89,5 +97,3 @@ These are the gaps blocking a fully real site — we won't invent them:
 | Projects | `lib/content.ts` | `projects` (and image ids) |
 | Testimonials | `lib/content.ts` | `testimonials` |
 | Email / phone / socials | `lib/content.ts` | `footer` |
-| Logo / favicon | `public/` | `logo-nav.png`, `logo-mark.png`, `logo.jpeg` |
-| Hero video | `lib/content.ts` | `HERO_VIDEO` |

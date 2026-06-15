@@ -10,7 +10,7 @@ export default function Nav() {
   return (
     <header className="nav">
       <div className="container nav-inner">
-        <a href="#top" className="nav-logo" aria-label="XNDR home">
+        <a href="/#top" className="nav-logo" aria-label="XNDR home">
           <span
             className="logo-img"
             role="img"

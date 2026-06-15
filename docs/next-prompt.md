@@ -44,16 +44,18 @@ CONTENT pass, not a rebuild.
   (`footer` still has placeholder email/phone + TODOs). The CTA + footer both
   read from `footer.email` / `footer.phone`. If a working contact form is wanted
   over the current `mailto:`, wire Formspree / Vercel form action — confirm which.
-- **Project images** — `projects.items` now holds Rinay's 5 real residential
-  projects, but the `image` ids are leftover stock from the old commercial
-  placeholders and don't match (see the FOLLOW-UP comment in `lib/content.ts`).
-  Source better-suited Unsplash photos per project, or ideally Rinay's own site
-  photos → `public/` with `image` repointed at the local path.
+- **Project detail content** — each project is now a standalone page at
+  `/projects/<slug>` (`app/projects/[slug]/page.tsx`), statically generated from
+  `projects.items`. The landing grid shows name + location; the detail page shows
+  summary + facts and degrades gracefully with a "coming soon" note until the
+  optional `scope` / `services` / `details` / `client` fields are filled. Those
+  fields are OUTSTANDING — the new per-project questions in QUESTIONS.md §5 gather
+  them. Populate them on the `Project` objects in `lib/content.ts`.
+- **Project images** — all 5 `image` ids are PLACEHOLDER stock; Rinay will supply
+  real photos. Drop them in `public/` and repoint `image` at the local path.
 - **Accreditations** — Rinay supplied DBP + Professional Engineer (DBPA); there's
   no field/component to show them yet (FOLLOW-UP comment in `about`). Consider an
   accreditations strip in the About section.
-- **Project location + descriptions** — kept inline as comments in
-  `projects.items`; wire into the card if/when it gains those fields.
 
 **Keep what's correct:** the XNDR name, the three services, and the
 Aryan G — "Rinay is an exceptional mind." testimonial.
