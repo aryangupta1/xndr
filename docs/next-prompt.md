@@ -33,17 +33,27 @@ context across session boundaries when this conversation ends.
 
 <!-- Replace everything below with the actual prompt. Keep this fence so the section is easy to find. -->
 
-**Goal this session: finish the content pass.** Rinay's answers (email, 15 Jun
-2026, `~/Downloads/answers.pdf`) are now implemented in
+**State: the site is built, content-populated and live on `master`.** Rinay's
+answers (email, 15 Jun 2026, `~/Downloads/answers.pdf`) are implemented in
 [`lib/content.ts`](../lib/content.ts) — `hero`, `about`, `services`, `projects`,
-`cta`, `footer.blurb` all carry real copy. `npm run build` passes. This is a
-CONTENT pass, not a rebuild.
+`cta`, `footer` all carry real copy. `npm run build` passes. The next session is
+mostly **waiting on Rinay** (see outstanding) — don't invent the missing copy.
 
-**Done so far:** contact email (info@xndr.au) + phone (0423 322 772) are live in
-`footer`. Newport + Woy Woy have full write-ups (`scope`/`services`/`details`) and
-their landing/hero images are the cover renders extracted from the DA plan PDFs
-(`~/Downloads/newport-info.pdf`, `woy-woy-info.pdf`) via `pdfimages`/`pdftoppm`.
-Projects render as masonry (natural aspect ratios) on the landing + detail pages.
+**Done so far:**
+- Contact email (info@xndr.au) + phone (0423 322 772) live in `footer`.
+- About copy is Rinay's latest revision; the single testimonial is kept.
+- Projects render as masonry (natural aspect ratios) on the landing; each is a
+  static page at `/projects/<slug>`.
+- **Newport + Woy Woy are full interactive case studies** —
+  `components/ProjectDetail.tsx` (client, **anime.js**): hero render, facts,
+  narrative, a clickable level-by-level floor-plan explorer, services/scope, and
+  (Newport) a materials board. Images were cropped address-free from the DA PDFs
+  (`~/Downloads/newport-info.pdf`, `woy-woy-info.pdf`) and live in
+  `public/projects/`. `animejs@3` is now a dependency.
+
+**Not yet verified (worth a quick pass):** light-theme spot-check of the two new
+ProjectDetail pages (I checked default/dark), and a real-device click-through of
+the level-explorer tabs.
 
 **Still outstanding (don't invent these):**
 - **Contact extras** — office address, ABN, social links, and a confirmed CTA
