@@ -51,8 +51,12 @@ CONTENT pass, not a rebuild.
   optional `scope` / `services` / `details` / `client` fields are filled. Those
   fields are OUTSTANDING — the new per-project questions in QUESTIONS.md §5 gather
   them. Populate them on the `Project` objects in `lib/content.ts`.
-- **Project images** — all 5 `image` ids are PLACEHOLDER stock; Rinay will supply
-  real photos. Drop them in `public/` and repoint `image` at the local path.
+- **Project images** — real photos are in for Kellyville (4, in a gallery),
+  Woy Woy and Newport (`public/projects/…`, resolved via `projectImage()`).
+  Guildford + Box Hill are still PLACEHOLDER Unsplash ids (marked TODO in
+  `projects.items`) — drop their photos in `public/projects/` and repoint `image`.
+  Note: phone photos may need rotating (the Kellyville set had no EXIF orientation
+  and was rotated 270° with `sips` before committing).
 - **Accreditations** — Rinay supplied DBP + Professional Engineer (DBPA); there's
   no field/component to show them yet (FOLLOW-UP comment in `about`). Consider an
   accreditations strip in the About section.

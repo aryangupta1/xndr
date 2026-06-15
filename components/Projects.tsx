@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { projects, unsplash } from "@/lib/content";
+import { projects, projectImage } from "@/lib/content";
 
 export default function Projects() {
   return (
@@ -16,7 +16,7 @@ export default function Projects() {
           {projects.items.map((p) => (
             <Link className="project-card" key={p.slug} href={`/projects/${p.slug}`}>
               <Image
-                src={unsplash(p.image, 800)}
+                src={projectImage(p.image, 800)}
                 alt={`${p.title} — ${p.category} project in ${p.location}`}
                 width={800}
                 height={1000}

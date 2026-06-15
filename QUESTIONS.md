@@ -20,15 +20,15 @@ These are the gaps blocking a fully real site — we won't invent them:
 - [ ] **Social links** — LinkedIn / Instagram / Facebook / other (or "none").
 - [ ] **Preferred call-to-action** — "Book a consultation" is live; confirm or change (Request a quote / Email us…).
 - [ ] **Contact method** — keep the simple `mailto:` link, or do you want a proper contact form?
-- [ ] **Project photos** — your own jobsite/render photos are strongly preferred over stock for the 5 portfolio projects. Can you supply them? (Currently placeholders.)
-- [ ] **Project detail** — each project now has its own page; we need a few more lines on each to fill them (see §5).
-- [ ] **Naming permission** — do the 5 projects have client permission to be named/located publicly as listed?
+- [ ] **2 more project photos** — got Kellyville, Woy Woy and Newport (thanks!). Still need **Granny Flat & Garage (Guildford)** and **Retaining Wall (Box Hill)** — those two are on placeholders.
+- [ ] **Project detail** — each project now has its own page; a few more lines on each fills them out (see §5).
+- [ ] **Naming permission** — OK to name/locate the 5 projects publicly as listed?
 
 ## ⚑ Follow-ups on our side (no action needed from you)
 
-- [ ] **Project photos are placeholders** — every project currently uses a temporary stock image; we'll swap in your real photos as soon as they land.
+- [x] **Photos wired in** — Kellyville, Woy Woy and Newport are live on their pages; Guildford + Box Hill stay on placeholders until those land.
 - [ ] **Accreditations strip** — you gave us *Design Building Practitioner (DBP)* and *Professional Engineer (under the DBPA)*; we still need to add a spot on the About section to display them.
-- [x] **Standalone project pages built** — each project is now a clickable page (`/projects/<name>`); the landing grid shows name + location, the detail page shows the rest. Just needs the content in §5 to fill out.
+- [x] **Standalone project pages built** — each project is a clickable page (`/projects/<name>`); the landing grid shows name + location.
 
 ---
 
@@ -53,26 +53,20 @@ These are the gaps blocking a fully real site — we won't invent them:
 - [x] The 3 most important sub-services under each. — *received.*
 - [x] A 4th service, or are these the three? — *three core offerings confirmed.*
 
-## 5. Projects / portfolio — ✅ Basics done · ⚑ detail + photos needed
+## 5. Projects / portfolio — ✅ Basics + photos in · ⚑ detail needed
 - [x] 4–6 real projects (name, location, category, year). — *5 projects received.*
 - [x] A one-line description for each. — *received; shown on the cards + page intro.*
-- [ ] Can you supply your own project photos? — **outstanding** (placeholders in use).
+- [x] Project photos — *received for Kellyville, Woy Woy, Newport.* ⚑ *still need Guildford + Box Hill.*
 - [ ] Do any projects have client permission to be named publicly? — **please confirm**.
 
-**New:** each project now has its own page. The landing grid shows just the
-**name + location**; the rest lives on the detail page. To make those pages worth
-visiting, for **each** of the 5 projects we'd love:
+**Each project now has its own page** — the grid shows name + location, the rest
+lives on the detail page. A line or two each fills them out; no essays needed:
 
-- [ ] **A fuller description** — 2–4 sentences: what the build was and the engineering challenge.
-- [ ] **Scope of works** — 3–5 bullet points of what you actually did on the job.
-- [ ] **Which of the three services applied** — Structural / Remedial / Project Management.
-- [ ] **A couple of photos** — even phone snaps of the site/finished work (or renders/drawings).
+- [ ] **A fuller description** — 2–4 sentences: the build + the engineering challenge.
+- [ ] **Scope of works** — 3–5 bullets of what you did on the job.
+- [ ] **Which service(s) applied** — Structural / Remedial / Project Management.
+- [ ] **Photos for the last two** — Granny Flat & Garage (Guildford), Retaining Wall (Box Hill).
 - [ ] **(Optional) client name** — only if they're happy to be named.
-
-> The 5 projects are: **Granny Flat & Garage** (Guildford), **New Residential
-> Build** (Kellyville), **Retaining Wall Project** (Box Hill), **High-End
-> Residence** (Woy Woy), **High-End Residence** (Newport). A line or two on each
-> is plenty — no need to write essays.
 
 ## 6. Testimonials — ✅ Done
 - [x] Keep the one showing — **Aryan G — "Rinay is an exceptional mind."**? — *kept as-is.*

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { projects, unsplash } from "@/lib/content";
+import { projects, projectImage } from "@/lib/content";
 
 // Pre-render one static page per project at build time.
 export function generateStaticParams() {
@@ -50,7 +50,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           <div className="project-detail">
             <div className="project-figure">
               <Image
-                src={unsplash(project.image, 1200)}
+                src={projectImage(project.image, 1200)}
                 alt={`${project.title} — ${project.category} project in ${project.location}`}
                 width={1200}
                 height={1500}
@@ -126,6 +126,21 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               </Link>
             </div>
           </div>
+
+          {project.gallery && project.gallery.length > 0 && (
+            <div className="project-gallery">
+              {project.gallery.map((src) => (
+                <div className="project-gallery-item" key={src}>
+                  <Image
+                    src={projectImage(src, 1000)}
+                    alt={`${project.title} — additional photo`}
+                    width={1000}
+                    height={750}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </main>
       <Footer />

@@ -38,7 +38,8 @@ export interface Project {
   location: string;
   category: string;
   year: string;
-  image: string; // placeholder until Rinay supplies real photos
+  image: string; // local "/projects/…" path, else a placeholder Unsplash id
+  gallery?: string[]; // extra photos shown on the detail page
   summary: string; // one-liner shown on the card + intro of the detail page
   // ── Detail-page fields — OUTSTANDING, awaiting Rinay (see QUESTIONS.md §5) ──
   // Left empty for now; the detail page degrades gracefully and shows a
@@ -63,6 +64,12 @@ export interface FooterColumn {
 // Helper: build an optimized Unsplash URL for a given photo id.
 export const unsplash = (id: string, w = 1200): string =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+// Helper: resolve a project image. Local files (supplied by Rinay, kept in
+// `public/projects/…`) start with "/" and are served as-is; anything else is
+// treated as a placeholder Unsplash photo id.
+export const projectImage = (image: string, w = 1200): string =>
+  image.startsWith("/") ? image : unsplash(image, w);
 
 // Free, hotlinkable hero background video (Pexels — construction crew on site).
 // Source: https://www.pexels.com/video/4271760/
@@ -190,11 +197,11 @@ export const projects: {
   heading: "Bringing engineering visions to life with precision",
   subheading:
     "A selection of recent residential and structural projects delivered across New South Wales.",
-  // Each item links to a standalone page at /projects/<slug>. The `image` ids are
-  // PLACEHOLDERS (curated Unsplash stock) — Rinay will supply real project photos.
-  // The detail fields (scope/services/details) are still OUTSTANDING; the new
-  // per-project questions in QUESTIONS.md §5 collect them. summary + location are
-  // from Rinay's email (15 Jun 2026).
+  // Each item links to a standalone page at /projects/<slug>. Images supplied by
+  // Rinay live in `public/projects/…`; the two without photos yet (Guildford,
+  // Box Hill) fall back to a placeholder Unsplash id. The detail fields
+  // (scope/services/details) are still OUTSTANDING — see QUESTIONS.md §5.
+  // summary + location are from Rinay's email (15 Jun 2026).
   items: [
     {
       slug: "granny-flat-garage-guildford",
@@ -202,7 +209,7 @@ export const projects: {
       location: "Guildford, NSW",
       category: "Residential",
       year: "2026",
-      image: "photo-1590725140246-20acdee442be",
+      image: "photo-1590725140246-20acdee442be", // TODO: placeholder — awaiting photo
       summary: "Custom design featuring an integrated car hoist system.",
     },
     {
@@ -211,7 +218,12 @@ export const projects: {
       location: "Kellyville, NSW",
       category: "Residential",
       year: "2026",
-      image: "photo-1565008447742-97f6f38c985c",
+      image: "/projects/kellyville-1.jpeg",
+      gallery: [
+        "/projects/kellyville-2.jpeg",
+        "/projects/kellyville-3.jpeg",
+        "/projects/kellyville-4.jpeg",
+      ],
       summary: "Structural design for a modern standalone home.",
     },
     {
@@ -220,7 +232,7 @@ export const projects: {
       location: "Box Hill, NSW",
       category: "Civil / Structural",
       year: "2026",
-      image: "photo-1504307651254-35680f356dfd",
+      image: "photo-1504307651254-35680f356dfd", // TODO: placeholder — awaiting photo
       summary: "Engineered support systems for residential site works.",
     },
     {
@@ -229,7 +241,7 @@ export const projects: {
       location: "Woy Woy, NSW",
       category: "Residential",
       year: "2026",
-      image: "photo-1487958449943-2429e8be8625",
+      image: "/projects/woy-woy.jpeg",
       summary: "Structural design for a premium residential dwelling.",
     },
     {
@@ -238,7 +250,7 @@ export const projects: {
       location: "Newport, NSW",
       category: "Residential",
       year: "2026",
-      image: "photo-1486406146926-c627a92ad1ab",
+      image: "/projects/newport.jpeg",
       summary: "Engineering oversight for a luxury residential build.",
     },
   ],
