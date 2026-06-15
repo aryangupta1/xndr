@@ -58,7 +58,31 @@ The hero uses a free, hotlinkable stock construction clip from Pexels
 `public/` and reference it locally — to use your own footage.
 
 ## Deploy to Vercel
-1. Push this repo to GitHub/GitLab/Bitbucket.
-2. Import it at [vercel.com/new](https://vercel.com/new) — Vercel auto-detects
-   Next.js; no configuration needed.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/aryangupta1/xndr)
+
+This repo is preconfigured for zero-config deployment:
+
+1. Push to GitHub (already wired to `github.com/aryangupta1/xndr`):
+   ```bash
+   git push -u origin master
+   ```
+2. Import the repo at [vercel.com/new](https://vercel.com/new) — Vercel
+   auto-detects Next.js. No build settings, no env vars required.
 3. Deploy. (Or run `npx vercel` from this directory.)
+
+### What's already optimized
+- **Production URLs** resolve automatically via `VERCEL_PROJECT_PRODUCTION_URL`
+  (Open Graph, canonical, `robots.txt`, `sitemap.xml`) — no hardcoded domain.
+- **Security headers** (HSTS, `X-Content-Type-Options`, `X-Frame-Options`,
+  `Referrer-Policy`, `Permissions-Policy`) set in `next.config.mjs`.
+- **Node version pinned** via `.nvmrc` + `engines` so builds are reproducible.
+- **`next/image`** with a bounded cache TTL and the Unsplash host allow-listed.
+
+### Custom domain
+After connecting a domain in Vercel, set one environment variable so SEO tags
+point at it (optional — see `.env.example`):
+
+```
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```

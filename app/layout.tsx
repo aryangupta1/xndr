@@ -1,11 +1,13 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { siteUrl } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://xndr.example"),
+  metadataBase: new URL(siteUrl),
+  alternates: { canonical: "/" },
   title: "XNDR — Structural · Remedial · Project Management",
   description:
     "XNDR delivers structural engineering, remedial engineering and project management with precision and accountability.",
