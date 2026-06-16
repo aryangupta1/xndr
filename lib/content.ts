@@ -388,7 +388,7 @@ export const footer: {
   // Still outstanding from Rinay — office address, ABN and social links
   // (QUESTIONS.md §7). Email + phone supplied 15 Jun 2026.
   email: "info@xndr.au",
-  phone: "0423 322 772",
+  phone: "",
   columns: [
     {
       title: "Company",
