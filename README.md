@@ -68,6 +68,7 @@ The hero uses a free, hotlinkable stock construction clip from Pexels
   drawing-sheet template, and the brand styling — outputting to the
   git-ignored [`designs/`](designs/) directory. Keeps the heavy design assets and
   generators out of the deployed app while versioning the engine itself.
+- [ ] Think about converting to SAAS product? for the design engine
 
 ## Deploy to Vercel
 
