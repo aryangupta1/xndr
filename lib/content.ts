@@ -17,7 +17,6 @@ import type { StaticImageData } from "next/image";
 import kellyville1 from "@/public/projects/kellyville-1.jpeg";
 import kellyville2 from "@/public/projects/kellyville-2.jpeg";
 import kellyville3 from "@/public/projects/kellyville-3.jpeg";
-import kellyville4 from "@/public/projects/kellyville-4.jpeg";
 import newport from "@/public/projects/newport.jpeg";
 import newportPlanEntry from "@/public/projects/newport-plan-entry.png";
 import newportPlanLiving from "@/public/projects/newport-plan-living.png";
@@ -255,7 +254,7 @@ export const projects: {
       category: "Residential",
       year: "2026",
       image: kellyville1,
-      gallery: [kellyville2, kellyville3, kellyville4],
+      gallery: [kellyville2, kellyville3],
       summary: "Structural design for a modern standalone home.",
     },
     {
