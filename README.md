@@ -60,6 +60,15 @@ The hero uses a free, hotlinkable stock construction clip from Pexels
 (`HERO_VIDEO` in `lib/content.ts`). Replace the URL — or add the file to
 `public/` and reference it locally — to use your own footage.
 
+## To do
+- [ ] **Design-engine branch** — create a dedicated branch (e.g. `design-engine`)
+  that **never deploys** (exclude it in Vercel: Project → Settings → Git →
+  Ignored Build Step, or limit production/preview to `master`). It houses the
+  PDF generation tooling — scripts that crop/restyle source drawings, the XNDR
+  drawing-sheet template, and the brand styling — outputting to the
+  git-ignored [`designs/`](designs/) directory. Keeps the heavy design assets and
+  generators out of the deployed app while versioning the engine itself.
+
 ## Deploy to Vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/aryangupta1/xndr)
