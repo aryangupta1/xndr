@@ -410,7 +410,7 @@ export const footer: {
   ],
   social: [
     { label: "LinkedIn", href: "#" },
-    { label: "Instagram", href: "#" },
+    { label: "Instagram", href: "https://www.instagram.com/xndrconsulting" },
     { label: "Facebook", href: "#" },
   ],
 };
