@@ -366,7 +366,7 @@ export const projects: {
 export const testimonials: { eyebrow: string; heading: string; items: Testimonial[] } = {
   eyebrow: "Testimonials",
   heading: "Trusted by the people we build with",
-  items: [{ quote: "Rinay is an exceptional mind.", name: "Aryan G", role: "Client" }],
+  items: [{ quote: "The minds behind XNDR are truly exceptional.", name: "Aryan G", role: "Client" }],
 };
 
 export const cta: { heading: string; subheading: string; button: Link } = {
