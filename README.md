@@ -1,128 +1,72 @@
-# XNDR — Landing Page
+# XNDR — Design Engine (`design-engine` branch)
 
-A responsive landing page for **XNDR** (Structural Engineering · Remedial
-Engineering · Project Management), built with **Next.js (App Router) + TypeScript**
-and ready for one-click deployment to Vercel.
+> **You are on the `design-engine` branch.** This branch is **only** the design
+> engine — a code-driven PDF generator for XNDR's documents. It **never deploys**.
+>
+> **Looking for the marketing site?** That lives on **`master`** (Next.js on
+> Vercel). See its README there:
+> [github.com/aryangupta1/xndr/blob/master/README.md](https://github.com/aryangupta1/xndr/blob/master/README.md)
+> — or locally: `git show master:README.md`.
 
-> **Docs:** project conventions live in [`docs/conventions/`](docs/conventions/);
-> cross-session handoff notes in [`docs/next-prompt.md`](docs/next-prompt.md).
+The design engine turns **structured JSON** into **branded, print-ready PDFs**:
 
-## Tech
-- **Next.js 14** (App Router) + **TypeScript** + **React 18**
-- Plain CSS design system in `app/globals.css` (no UI dependency to maintain)
-- `next/image` for optimized, responsive imagery
-- Brand palette sampled directly from the supplied XNDR logo
-  (background `#1c2023`, green `#6b9243`)
+- **Fee proposals** (A4) — full branded proposal: addressee, staged fees with
+  auto totals, hourly rates, exclusions, acceptance/signature, payment, T&Cs.
+- **Drawing sheets** (A3) — engineering title-block sheets matching the XNDR
+  drawing-sheet template.
 
-## Getting started
+Both come in **light and dark** themes. Output is HTML/CSS → PDF via Playwright.
+
+## Quick start
+
 ```bash
-npm install
-npm run dev      # http://localhost:3000
+cd engine
+npm install                 # installs deps + downloads Chromium
+npm run example:fees        # → designs/sample-fees-fees-light-<timestamp>.pdf
+npm run example:sheet       # → designs/sample-project-dark-<timestamp>.pdf
+npm run template            # blank templates, both types, both themes
 ```
 
-Other scripts:
-```bash
-npm run build    # production build + type-check
-npm run start    # serve the production build
+Full how-to (the JSON workflow, theme flags, troubleshooting):
+[`engine/README.md`](engine/README.md).
+
+## Layout
+
+```
+engine/                 # the engine — self-contained Node project (own package.json)
+  src/                  # brand.ts, types.ts, templates/, render/, index.ts (CLI)
+  examples/             # worked inputs + blank templates (copy → fill → run)
+  README.md             # user guide
+docs/design-engine/
+  PLAN.md               # architecture + the high-level plan
+  ENHANCE-design-docs.md  # deep roadmap: drawing sheets
+  ENHANCE-fee-docs.md     # deep roadmap: fee proposals
+designs/                # OUTPUT (git-ignored) + reference PDFs (designs/reference/)
+docs/next-prompt.md     # cross-session handoff
 ```
 
-## Project structure
-```
-app/
-  layout.tsx        # html shell, fonts, metadata
-  page.tsx          # composes the sections
-  globals.css       # design tokens + all component styles
-components/          # Nav, Hero, Services, About, Projects, Testimonials, CTA, Footer
-lib/
-  content.ts        # ← ALL site copy + image ids + hero video live here
-public/
-  logo.jpeg         # original supplied logo
-  logo-nav.png      # cropped wordmark (nav + footer)
-  logo-mark.png     # square mark (favicon / OG)
-QUESTIONS.md        # questions for the business owner to populate real copy
-```
-
-## Editing content
-All visible text is **placeholder (lorem ipsum)** on purpose. Edit
-[`lib/content.ts`](lib/content.ts) to update copy, stats, services, projects,
-testimonials and footer details. See [`QUESTIONS.md`](QUESTIONS.md) for the list
-of details to collect from the business owner.
-
-### Images
-Project/about images are free **Unsplash** photos referenced by id in
-`lib/content.ts`. To swap one, replace the `image` id with another Unsplash photo
-id. The Unsplash host is already allow-listed in `next.config.mjs`. When real
-project photography is available, drop files into `public/` and point the `image`
-field at the local path instead.
-
-### Hero video
-The hero uses a free, hotlinkable stock construction clip from Pexels
-(`HERO_VIDEO` in `lib/content.ts`). Replace the URL — or add the file to
-`public/` and reference it locally — to use your own footage.
-
-## To do
-- [x] **Design-engine branch** — created (`design-engine`). Houses the PDF
-  generation tooling in [`engine/`](engine/); see [Design engine](#design-engine-design-engine-branch) below.
-- [ ] Think about converting to SAAS product? for the design engine
-
-## Design engine (`design-engine` branch)
-
-The **design engine** is a code-driven PDF generator for XNDR's documents —
-**fee proposals** (A4) and **engineering drawing sheets** (A3) — built from
-structured JSON and rendered HTML/CSS → PDF. It lives **only on the
-`design-engine` branch** and is **never deployed**.
-
-- **Where:** [`engine/`](engine/) (self-contained Node project, own
-  `package.json`). Plan: [`docs/design-engine/PLAN.md`](docs/design-engine/PLAN.md).
-  How to use it: [`engine/README.md`](engine/README.md).
-- **Output:** the git-ignored [`designs/`](designs/) directory.
-
-### Rules (keep these intact)
+## Rules (keep these intact)
 
 1. **Never deploys.** `master` is the only branch Vercel builds. Don't merge
    `engine/` onto `master`. The engine is isolated three ways: excluded from the
    site's [`tsconfig.json`](tsconfig.json), listed in
    [`.vercelignore`](.vercelignore), and kept in its own dependency tree.
 2. **Separate dependencies.** The engine has its **own** `package.json`
-   (Playwright + Chromium). Never add engine deps to the root `package.json` — it
-   would bloat the deployed app.
+   (Playwright + Chromium). Never add engine deps to a root/site `package.json`.
 3. **Brand stays in sync.** [`engine/src/brand.ts`](engine/src/brand.ts) mirrors
    the site's palette/type and STD-01/STD-02. If the site brand moves, move this
    too — don't let them diverge.
 4. **Outputs and reference PDFs are git-ignored.** Generated PDFs and reference
-   samples live in `designs/` and are **never committed** (they contain heavy
-   assets and, for client samples, third-party PII). Keep reference material in
-   [`designs/reference/`](designs/).
+   samples live in `designs/` and are **never committed** (heavy assets, and
+   client samples carry third-party PII). Reference material → `designs/reference/`.
 5. **Type-check before commit.** Run `npm run typecheck` in `engine/`. For
    anything visual, render the sample and eyeball the PDF — the type-check won't
    catch a layout regression.
 
-## Deploy to Vercel
+## Status
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/aryangupta1/xndr)
-
-This repo is preconfigured for zero-config deployment:
-
-1. Push to GitHub (already wired to `github.com/aryangupta1/xndr`):
-   ```bash
-   git push -u origin master
-   ```
-2. Import the repo at [vercel.com/new](https://vercel.com/new) — Vercel
-   auto-detects Next.js. No build settings, no env vars required.
-3. Deploy. (Or run `npx vercel` from this directory.)
-
-### What's already optimized
-- **Production URLs** resolve automatically via `VERCEL_PROJECT_PRODUCTION_URL`
-  (Open Graph, canonical, `robots.txt`, `sitemap.xml`) — no hardcoded domain.
-- **Security headers** (HSTS, `X-Content-Type-Options`, `X-Frame-Options`,
-  `Referrer-Policy`, `Permissions-Policy`) set in `next.config.mjs`.
-- **Node version pinned** via `.nvmrc` + `engines` so builds are reproducible.
-- **`next/image`** with a bounded cache TTL and the Unsplash host allow-listed.
-
-### Custom domain
-After connecting a domain in Vercel, set one environment variable so SEO tags
-point at it (optional — see `.env.example`):
-
-```
-NEXT_PUBLIC_SITE_URL=https://your-domain.com
-```
+Foundation built; fee proposal complete and XNDR-branded; drawing sheet renders
+the branded title-block frame. See [`docs/design-engine/PLAN.md`](docs/design-engine/PLAN.md)
+for the roadmap and the two `ENHANCE-*.md` docs for where each side goes next.
+The longer-term idea (converting the engine into a SAAS product) is noted in
+those plans.
