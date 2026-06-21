@@ -11,12 +11,15 @@
  * `renderHtmlToPdf`. Brand mirrors STD-02 + the marketing site.
  */
 
-import { palette, type, practice } from "../brand.js";
+import { palette, type, practice, getTheme } from "../brand.js";
+import type { ThemeName } from "../brand.js";
 import type { FeesReport, FeeLineItem, FeeStage } from "../types.js";
 
 export interface FeesContext {
   /** Light XNDR logo as a data URL (assets.ts) — sits on the dark header band. */
   logoDataUrl?: string;
+  /** Document theme. Defaults to light. */
+  theme?: ThemeName;
 }
 
 const esc = (s: string): string =>
@@ -66,6 +69,7 @@ function stageCard(s: FeeStage): string {
 }
 
 export function renderFeesReport(r: FeesReport, ctx: FeesContext = {}): string {
+  const t = getTheme(ctx.theme);
   const gstRate = r.gstRate ?? 0.1;
   const allItems: FeeLineItem[] = [
     ...(r.stages ?? []).flatMap((s) => s.items ?? []),
@@ -166,7 +170,7 @@ export function renderFeesReport(r: FeesReport, ctx: FeesContext = {}): string {
 <style>
   @page { size: A4 portrait; margin: 0; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { font-family: ${type.family}; color: ${palette.ink}; font-size: 10pt; line-height: 1.55; }
+  html, body { font-family: ${type.family}; color: ${t.text}; background: ${t.pageBg}; font-size: 10pt; line-height: 1.55; }
 
   /* Repeating header/footer via table thead/tfoot — Chromium repaints these on
      every printed page and (unlike position:fixed) reserves their space, so
@@ -179,7 +183,7 @@ export function renderFeesReport(r: FeesReport, ctx: FeesContext = {}): string {
 
   /* ── Brand header band — slim, so it frames rather than overpowers ──── */
   .brandbar {
-    position: relative; height: 15mm; background: ${palette.ink}; color: ${palette.text};
+    position: relative; height: 15mm; background: ${t.bandBg}; color: ${t.bandText};
     border-bottom: 1.2pt solid ${palette.green};
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 16mm; overflow: hidden;
@@ -188,54 +192,54 @@ export function renderFeesReport(r: FeesReport, ctx: FeesContext = {}): string {
     content: ""; position: absolute; top: 0; bottom: 0; left: 42%; width: 9mm;
     background: ${palette.green}; transform: skewX(-20deg); opacity: 0.55;
   }
-  .brandbar .ref { font-size: 6.5pt; color: ${palette.muted}; z-index: 1; max-width: 60%; text-align: right; }
+  .brandbar .ref { font-size: 6.5pt; color: ${t.bandMuted}; z-index: 1; max-width: 60%; text-align: right; }
   .brandbar img { height: 7.5mm; z-index: 1; }
 
   /* ── Footer band — slim hairline strip ───────────────────────────── */
   .footbar {
-    height: 8mm; background: ${palette.ink}; color: ${palette.muted};
+    height: 8mm; background: ${t.bandBg}; color: ${t.bandMuted};
     border-top: 1.2pt solid ${palette.green};
     display: flex; align-items: center; justify-content: center;
     font-size: 6.5pt; letter-spacing: 0.04em;
   }
-  .footbar b { color: ${palette.greenBright}; font-weight: 600; }
+  .footbar b { color: ${t.accent}; font-weight: 600; }
 
   h1 { font-size: 22pt; font-weight: ${type.headingWeight}; line-height: 1.1; margin-top: 6mm; }
-  h1 .accent { color: ${palette.green}; }
+  h1 .accent { color: ${t.accent}; }
   h2 {
-    font-size: 13pt; font-weight: 700; color: ${palette.green};
+    font-size: 13pt; font-weight: 700; color: ${t.accent};
     margin: 9mm 0 3mm; padding-bottom: 1.5mm; border-bottom: 1.5pt solid ${palette.green};
     break-after: avoid;
   }
   p { margin: 0 0 2.5mm; }
-  .lead-sm { color: #555; font-size: 9pt; }
-  .label { color: ${palette.green}; text-transform: uppercase; letter-spacing: ${type.labelTracking}; font-size: 8pt; font-weight: 700; margin: 7mm 0 2mm; }
+  .lead-sm { color: ${t.muted}; font-size: 9pt; }
+  .label { color: ${t.accent}; text-transform: uppercase; letter-spacing: ${type.labelTracking}; font-size: 8pt; font-weight: 700; margin: 7mm 0 2mm; }
   .sub-label { font-weight: 700; font-size: 9pt; margin: 3mm 0 1.5mm; }
 
   /* Meta row under the title */
-  .meta { display: flex; gap: 8mm; margin: 4mm 0 6mm; font-size: 9pt; color: #444; }
-  .meta b { display: block; color: ${palette.green}; text-transform: uppercase; letter-spacing: ${type.labelTracking}; font-size: 7pt; }
+  .meta { display: flex; gap: 8mm; margin: 4mm 0 6mm; font-size: 9pt; color: ${t.muted}; }
+  .meta b { display: block; color: ${t.accent}; text-transform: uppercase; letter-spacing: ${type.labelTracking}; font-size: 7pt; }
 
   /* Addressee */
   .addressee { font-size: 9.5pt; margin-bottom: 5mm; }
-  .addressee .k { display: inline-block; min-width: 18mm; color: #888; }
+  .addressee .k { display: inline-block; min-width: 18mm; color: ${t.muted}; }
   .addressee .addr-line { padding-left: 18mm; }
 
   /* Project highlight */
   .project-hl {
-    background: ${palette.paper}; border-left: 3pt solid ${palette.green};
+    background: ${t.surface}; border-left: 3pt solid ${palette.green};
     padding: 4mm 5mm; margin: 4mm 0 6mm;
   }
   .project-hl .name { font-weight: 700; font-size: 11pt; }
   .project-hl div { font-size: 9.5pt; }
 
   /* Stage cards */
-  .stage { margin: 4mm 0; border: 0.5pt solid #e2e4e0; border-radius: 1mm; }
-  .stage-head { background: ${palette.ink}; color: ${palette.text}; font-weight: 700; font-size: 10pt; padding: 2.5mm 4mm; border-bottom: 2pt solid ${palette.green}; break-after: avoid; }
+  .stage { margin: 4mm 0; border: 0.5pt solid ${t.line}; border-radius: 1mm; }
+  .stage-head { background: ${t.barBg}; color: ${t.barText}; font-weight: 700; font-size: 10pt; padding: 2.5mm 4mm; border-bottom: 2pt solid ${palette.green}; break-after: avoid; }
   .stage-body { padding: 3mm 4mm; }
   .ticks { list-style: none; }
   .ticks li { position: relative; padding-left: 5mm; margin-bottom: 1mm; font-size: 9.5pt; }
-  .ticks li::before { content: "▸"; position: absolute; left: 0; color: ${palette.green}; }
+  .ticks li::before { content: "▸"; position: absolute; left: 0; color: ${t.accent}; }
 
   ul { margin: 1mm 0 3mm 5mm; font-size: 9.5pt; }
   li { margin-bottom: 1mm; }
@@ -243,33 +247,33 @@ export function renderFeesReport(r: FeesReport, ctx: FeesContext = {}): string {
   /* Tables */
   table { width: 100%; border-collapse: collapse; }
   table.fees { margin-top: 2mm; }
-  table.fees td { padding: 2mm 1mm; border-top: 0.5pt solid #eee; font-size: 9.5pt; vertical-align: top; }
-  .basis { display: block; font-size: 8pt; color: #999; }
+  table.fees td { padding: 2mm 1mm; border-top: 0.5pt solid ${t.line}; font-size: 9.5pt; vertical-align: top; }
+  .basis { display: block; font-size: 8pt; color: ${t.muted}; }
   td.num, th.num { text-align: right; white-space: nowrap; }
 
   table.totals { width: 70mm; margin: 4mm 0 0 auto; }
   table.totals td { padding: 1.5mm 2mm; font-size: 9.5pt; }
-  table.totals .grand td { border-top: 1.5pt solid ${palette.ink}; font-weight: ${type.headingWeight}; font-size: 11pt; }
-  .gst-note { font-style: italic; color: #555; margin-top: 3mm; }
+  table.totals .grand td { border-top: 1.5pt solid ${t.text}; font-weight: ${type.headingWeight}; font-size: 11pt; }
+  .gst-note { font-style: italic; color: ${t.muted}; margin-top: 3mm; }
 
   table.rates, table.account { margin-top: 2mm; }
-  table.rates th { background: ${palette.ink}; color: ${palette.text}; text-align: left; padding: 2mm 3mm; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.08em; }
-  table.rates td, table.account td { padding: 1.8mm 3mm; font-size: 9.5pt; border-bottom: 0.5pt solid #eee; }
-  table.rates tbody tr:nth-child(even), table.account tr:nth-child(even) { background: ${palette.paper}; }
-  table.account td:first-child { color: #777; width: 40mm; }
+  table.rates th { background: ${t.barBg}; color: ${t.barText}; text-align: left; padding: 2mm 3mm; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.08em; }
+  table.rates td, table.account td { padding: 1.8mm 3mm; font-size: 9.5pt; border-bottom: 0.5pt solid ${t.line}; }
+  table.rates tbody tr:nth-child(even), table.account tr:nth-child(even) { background: ${t.surface}; }
+  table.account td:first-child { color: ${t.muted}; width: 40mm; }
 
   /* Acceptance */
   .accept { break-inside: avoid; }
   .sign-from { margin: 5mm 0; }
   .sig-name { font-weight: 700; margin-top: 8mm; font-size: 11pt; }
-  .sig-meta { font-size: 8.5pt; color: #555; }
+  .sig-meta { font-size: 8.5pt; color: ${t.muted}; }
   .accept-client { font-weight: 700; margin-top: 6mm; }
   .sign-row { display: flex; gap: 12mm; margin-top: 10mm; }
-  .sign-field { flex: 1; border-top: 0.75pt solid ${palette.ink}; padding-top: 1.5mm; font-size: 8.5pt; color: #777; }
+  .sign-field { flex: 1; border-top: 0.75pt solid ${t.text}; padding-top: 1.5mm; font-size: 8.5pt; color: ${t.muted}; }
 
   /* Terms — two columns, fresh page */
   .terms { break-before: page; }
-  .terms ol { columns: 2; column-gap: 10mm; font-size: 7.5pt; line-height: 1.45; margin-left: 4mm; color: #333; }
+  .terms ol { columns: 2; column-gap: 10mm; font-size: 7.5pt; line-height: 1.45; margin-left: 4mm; color: ${t.muted}; }
   .terms li { margin-bottom: 2mm; break-inside: avoid; }
 </style></head>
 <body>

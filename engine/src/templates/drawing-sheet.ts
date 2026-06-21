@@ -10,14 +10,18 @@
  * drawing content is Phase 1 / Phase 4 — see PLAN.md §8.
  */
 
-import { palette, type, sheet, practice } from "../brand.js";
+import { palette, type, sheet, practice, getTheme } from "../brand.js";
+import type { ThemeName } from "../brand.js";
 import type { DrawingSheet, ProjectMeta, Certification } from "../types.js";
 
 export interface SheetContext {
   project: ProjectMeta;
   certification: Certification;
-  /** Light XNDR logo as a data URL (see assets.ts). Omit to render text-only. */
+  /** XNDR logo as a data URL (see assets.ts). Use the variant that suits the
+   *  theme's title block (light logo on the dark theme, dark logo on light). */
   logoDataUrl?: string;
+  /** Document theme. Defaults to dark (the reference template look). */
+  theme?: ThemeName;
 }
 
 const esc = (s: string): string =>
@@ -66,6 +70,7 @@ function drawingField(s: DrawingSheet): string {
 
 export function renderDrawingSheet(s: DrawingSheet, ctx: SheetContext): string {
   const { project, certification, logoDataUrl } = ctx;
+  const t = getTheme(ctx.theme ?? "dark");
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,28 +79,30 @@ export function renderDrawingSheet(s: DrawingSheet, ctx: SheetContext): string {
 <style>
   @page { size: ${sheet.page.width}mm ${sheet.page.height}mm; margin: 0; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { font-family: ${type.family}; color: ${palette.text}; }
+  html, body { font-family: ${type.family}; color: ${t.text}; }
   .sheet {
     width: ${sheet.page.width}mm; height: ${sheet.page.height}mm;
-    background: ${palette.ink};
+    background: ${t.pageBg};
     border: ${sheet.borderMm}mm solid ${palette.green};
     display: grid; grid-template-columns: 1fr ${sheet.titleBlockWidthMm}mm;
     overflow: hidden;
   }
 
   /* ── Left: header + drawing field ───────────────────────────────── */
-  .main { display: flex; flex-direction: column; background: ${palette.ink}; padding: 6mm; gap: 4mm; }
+  .main { display: flex; flex-direction: column; background: ${t.pageBg}; padding: 6mm; gap: 4mm; }
   .header { display: flex; justify-content: space-between; align-items: baseline; }
+  /* Chip stays solid brand green with dark text in both themes. */
   .chip {
     background: ${palette.green}; color: ${palette.ink};
     font-weight: ${type.headingWeight}; padding: 1mm 2.5mm; border-radius: 1mm;
     font-size: 3.2mm; letter-spacing: 0.05em;
   }
   .header h1 { font-size: 4.2mm; font-weight: ${type.headingWeight}; margin-left: 3mm; display: inline; }
-  .header .scale { color: ${palette.muted}; font-size: 3mm; }
+  .header .scale { color: ${t.muted}; font-size: 3mm; }
 
+  /* The drawing field stays warm paper in both themes — it's the canvas. */
   .field {
-    position: relative; flex: 1; background: ${palette.paper};
+    position: relative; flex: 1; background: ${palette.paper}; color: ${palette.ink};
     border-radius: 1mm; overflow: hidden;
   }
   .field-grid {
@@ -115,23 +122,23 @@ export function renderDrawingSheet(s: DrawingSheet, ctx: SheetContext): string {
   }
   .field-placeholder small { font-size: 2.6mm; letter-spacing: 0.2em; }
 
-  /* ── Right: dark title block ────────────────────────────────────── */
-  .tb { background: ${palette.ink}; padding: 6mm 5mm; display: flex; flex-direction: column; gap: 4mm; border-left: 0.3mm solid ${palette.surface}; }
-  .tb-group { background: ${palette.surface}; border-radius: 1mm; padding: 3mm; }
+  /* ── Right: title block ─────────────────────────────────────────── */
+  .tb { background: ${t.pageBg}; padding: 6mm 5mm; display: flex; flex-direction: column; gap: 4mm; border-left: 0.3mm solid ${t.line}; }
+  .tb-group { background: ${t.surface}; border-radius: 1mm; padding: 3mm; }
   .tb-logo { height: 9mm; margin-bottom: 2.5mm; display: block; }
-  .tb-label { color: ${palette.green}; text-transform: uppercase; letter-spacing: ${type.labelTracking}; font-size: 2.3mm; font-weight: 700; margin-bottom: 1.5mm; }
+  .tb-label { color: ${t.accent}; text-transform: uppercase; letter-spacing: ${type.labelTracking}; font-size: 2.3mm; font-weight: 700; margin-bottom: 1.5mm; }
   .tb-name { font-weight: 700; font-size: 3.4mm; }
-  .tb-line { font-size: 2.6mm; color: ${palette.text}; line-height: 1.5; }
-  .tb-sub { font-size: 2.3mm; color: ${palette.muted}; line-height: 1.5; }
+  .tb-line { font-size: 2.6mm; color: ${t.text}; line-height: 1.5; }
+  .tb-sub { font-size: 2.3mm; color: ${t.muted}; line-height: 1.5; }
   .tb-drawing-no { font-size: 6mm; font-weight: ${type.headingWeight}; }
-  .tb-drawing-title { font-size: 2.6mm; color: ${palette.muted}; text-transform: uppercase; letter-spacing: 0.1em; }
-  .tb-meta-row { display: flex; justify-content: space-between; font-size: 2.5mm; color: ${palette.text}; padding: 0.6mm 0; }
-  .tb-meta-row span:first-child { color: ${palette.muted}; }
+  .tb-drawing-title { font-size: 2.6mm; color: ${t.muted}; text-transform: uppercase; letter-spacing: 0.1em; }
+  .tb-meta-row { display: flex; justify-content: space-between; font-size: 2.5mm; color: ${t.text}; padding: 0.6mm 0; }
+  .tb-meta-row span:first-child { color: ${t.muted}; }
   .tb-cert { margin-top: auto; }
-  .tb-cert p { font-size: 2.1mm; color: ${palette.muted}; line-height: 1.5; }
-  .tb-cert .who { color: ${palette.text}; margin-top: 1.5mm; }
+  .tb-cert p { font-size: 2.1mm; color: ${t.muted}; line-height: 1.5; }
+  .tb-cert .who { color: ${t.text}; margin-top: 1.5mm; }
 
-  .footer { grid-column: 1 / -1; background: ${palette.ink}; color: ${palette.muted}; font-size: 2.1mm; text-align: center; padding: 1.5mm; }
+  .footer { grid-column: 1 / -1; background: ${t.pageBg}; color: ${t.muted}; font-size: 2.1mm; text-align: center; padding: 1.5mm; }
 </style></head>
 <body>
   <div class="sheet">

@@ -53,6 +53,76 @@ export const sheet = {
   zones: { rows: ["A", "B", "C", "D"], cols: [1, 2, 3, 4, 5, 6] },
 } as const;
 
+/**
+ * Document themes — light and dark, mirroring the marketing site's theming.
+ * Brand green is constant across both; only the document *surface* tokens flip.
+ * Solid green fills (chip, band rules, stage-head accent) keep `palette.green`;
+ * green used as text/accents uses `theme.accent` (brighter on dark for contrast).
+ */
+export type ThemeName = "light" | "dark";
+
+export interface Theme {
+  name: ThemeName;
+  /** Page background. */
+  pageBg: string;
+  /** Body text. */
+  text: string;
+  /** Secondary text. */
+  muted: string;
+  /** Panels, highlights, table zebra, stage bodies. */
+  surface: string;
+  /** Hairlines / borders. */
+  line: string;
+  /** Header/footer band background. */
+  bandBg: string;
+  /** Text on the band. */
+  bandText: string;
+  /** Secondary text on the band. */
+  bandMuted: string;
+  /** Stage-head bar / table-header background. */
+  barBg: string;
+  /** Text on those bars. */
+  barText: string;
+  /** Green used for text accents + rules (heading, labels). */
+  accent: string;
+}
+
+const THEMES: Record<ThemeName, Theme> = {
+  light: {
+    name: "light",
+    pageBg: "#FFFFFF",
+    text: "#1C2023",
+    muted: "#5A6166",
+    surface: "#F4F6F1",
+    line: "#E3E5E1",
+    bandBg: palette.ink,
+    bandText: "#EEF1F2",
+    bandMuted: "#9AA3A8",
+    barBg: palette.ink,
+    barText: "#EEF1F2",
+    accent: palette.green,
+  },
+  dark: {
+    name: "dark",
+    pageBg: palette.ink,
+    text: "#EEF1F2",
+    muted: "#9AA3A8",
+    surface: palette.surface,
+    line: "#333A3E",
+    bandBg: "#14181A",
+    bandText: "#EEF1F2",
+    bandMuted: "#9AA3A8",
+    barBg: "#2C3236",
+    barText: "#EEF1F2",
+    accent: palette.greenBright,
+  },
+};
+
+/** Resolve a theme by name (defaults to light). */
+export function getTheme(name: ThemeName = "light"): Theme {
+  return THEMES[name];
+}
+
 /** Practice identity — appears in every title block and footer. */
 export const practice = {
   name: "XNDR Consulting",

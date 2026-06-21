@@ -10,7 +10,10 @@ It produces two document types:
 |------|---------|------|--------|
 | **Fee proposal** | `npm run fees` | A4 portrait | a full branded fee proposal |
 | **Drawing sheet** | `npm run sheet` | A3 landscape | an engineering title-block sheet |
-| **Blank templates** | `npm run template` | both | empty `[ … ]` templates for both, to see the structure |
+| **Blank templates** | `npm run template` | both | empty `[ … ]` templates for both types, in **both themes** |
+
+Both document types come in a **light** and a **dark** theme — see
+[Light or dark](#light-or-dark) below.
 
 > Lives on the `design-engine` branch and **never deploys**. Full design notes:
 > [`../docs/design-engine/PLAN.md`](../docs/design-engine/PLAN.md).
@@ -36,9 +39,9 @@ skipped in your environment, run `npx playwright install chromium` once.)
 Confirm everything works end to end:
 
 ```bash
-npm run example:fees     # → ../designs/sample-fees-fees-<timestamp>.pdf
-npm run example:sheet    # → ../designs/sample-project-<timestamp>.pdf
-npm run template         # → ../designs/{fees,drawing-sheet}-template-<timestamp>.pdf
+npm run example:fees     # → ../designs/sample-fees-fees-light-<timestamp>.pdf
+npm run example:sheet    # → ../designs/sample-project-dark-<timestamp>.pdf
+npm run template         # → ../designs/{fees,drawing-sheet}-template-{light,dark}-<timestamp>.pdf
 ```
 
 Open the PDFs from the git-ignored [`../designs/`](../designs/) folder. Each run
@@ -84,6 +87,22 @@ npm run sheet -- examples/my-sheet.json
 > **Tip:** add a second argument to choose an exact output path (no timestamp is
 > added when you specify one):
 > `npm run fees -- examples/my-job.json /Users/you/Desktop/proposal.pdf`
+
+### Light or dark
+
+Every document renders in a **light** or **dark** theme. Add a flag:
+
+```bash
+npm run fees  -- examples/my-job.json --dark    # dark fee proposal
+npm run sheet -- examples/my-sheet.json --light  # light drawing sheet
+# also accepts: --theme light  /  --theme dark
+```
+
+Defaults if you pass no flag: **fee proposals → light**, **drawing sheets →
+dark** (the reference-template look). The theme is part of the output filename
+(`…-light-…` / `…-dark-…`), so the two never collide. `npm run template` always
+emits both themes for both types. Brand green is identical in both themes — only
+the surfaces flip (defined in [`src/brand.ts`](src/brand.ts)).
 
 Every output lands in [`../designs/`](../designs/) (git-ignored — the heavy PDFs
 are never committed).
