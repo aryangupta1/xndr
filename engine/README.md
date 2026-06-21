@@ -35,11 +35,13 @@ skipped in your environment, run `npx playwright install chromium` once.)
 Confirm everything works end to end:
 
 ```bash
-npm run example:fees     # → ../designs/sample-fees-fees.pdf
-npm run example:sheet    # → ../designs/sample-project.pdf
+npm run example:fees     # → ../designs/sample-fees-fees-<timestamp>.pdf
+npm run example:sheet    # → ../designs/sample-project-<timestamp>.pdf
 ```
 
-Open the PDFs from the git-ignored [`../designs/`](../designs/) folder.
+Open the PDFs from the git-ignored [`../designs/`](../designs/) folder. Each run
+is stamped `YYYYMMDD-HHMMSS`, so every generation is a unique file (nothing is
+overwritten).
 
 ---
 
@@ -58,7 +60,7 @@ cp examples/sample-fees.json examples/my-job.json
 
 # 3. Generate the PDF
 npm run fees -- examples/my-job.json
-#    → ../designs/my-job-fees.pdf
+#    → ../designs/my-job-fees-<timestamp>.pdf
 ```
 
 ### Drawing sheet
@@ -67,10 +69,11 @@ npm run fees -- examples/my-job.json
 cp examples/sample-project.json examples/my-sheet.json
 # edit examples/my-sheet.json
 npm run sheet -- examples/my-sheet.json
-#    → ../designs/my-sheet.pdf
+#    → ../designs/my-sheet-<timestamp>.pdf
 ```
 
-> **Tip:** add a second argument to choose the output path:
+> **Tip:** add a second argument to choose an exact output path (no timestamp is
+> added when you specify one):
 > `npm run fees -- examples/my-job.json /Users/you/Desktop/proposal.pdf`
 
 Every output lands in [`../designs/`](../designs/) (git-ignored — the heavy PDFs
@@ -116,7 +119,7 @@ documents — just the data.
 |---------|-----|
 | `Executable doesn't exist … chromium` | `npx playwright install chromium` |
 | `Cannot find module` / TS errors | `npm install` in `engine/`; check with `npm run typecheck` |
-| Output PDF not where expected | it's in `../designs/`, named after your input file |
+| Output PDF not where expected | it's in `../designs/`, named `<input>-<timestamp>.pdf` |
 | Fonts look wrong | rendering fetches Inter from Google Fonts — needs internet on first render |
 
 ---

@@ -26,9 +26,20 @@ function loadJson<T>(path: string): T {
   return JSON.parse(readFileSync(resolve(path), "utf8")) as T;
 }
 
+/** Local timestamp `YYYYMMDD-HHMMSS` — makes every generation a unique file. */
+function timestamp(): string {
+  const d = new Date();
+  const p = (n: number) => String(n).padStart(2, "0");
+  return (
+    `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}` +
+    `-${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`
+  );
+}
+
+/** Default output path: `<input-stem><suffix>-<timestamp>.pdf` in designs/. */
 function defaultOut(input: string, suffix: string): string {
   const stem = basename(input).replace(/\.json$/i, "");
-  return join(DESIGNS_DIR, `${stem}${suffix}.pdf`);
+  return join(DESIGNS_DIR, `${stem}${suffix}-${timestamp()}.pdf`);
 }
 
 async function cmdSheet(input: string, out?: string): Promise<void> {
