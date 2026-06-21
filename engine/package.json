@@ -1,0 +1,30 @@
+{
+  "name": "xndr-design-engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Code-driven, brand-consistent PDF generator for XNDR (drawing sheets + fees reports). Lives on the design-engine branch; never deployed.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "bin": {
+    "xndr-engine": "./src/index.ts"
+  },
+  "scripts": {
+    "engine": "tsx src/index.ts",
+    "sheet": "tsx src/index.ts sheet",
+    "fees": "tsx src/index.ts fees",
+    "example:fees": "tsx src/index.ts fees examples/sample-fees.json",
+    "example:sheet": "tsx src/index.ts sheet examples/sample-project.json",
+    "postinstall": "playwright install chromium",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.3"
+  }
+}

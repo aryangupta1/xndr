@@ -28,3 +28,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# design engine
+/engine/node_modules
+/engine/*.tsbuildinfo

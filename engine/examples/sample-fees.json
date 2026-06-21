@@ -1,0 +1,126 @@
+{
+  "project": {
+    "jobNo": "2026R0274",
+    "name": "Remedial Engineering Services — 27-29 William Street",
+    "siteAddress": "27-29 William Street, Hornsby NSW 2077",
+    "client": "The Owners — Strata Plan 8910",
+    "planNo": "SP 8910"
+  },
+  "reference": "F2026R0274.1",
+  "date": "21 Jun 2026",
+  "title": "Fee Proposal for Remedial Engineering Services",
+  "preparedBy": "Rinay Singh",
+  "addressee": {
+    "client": "The Owners Corporation — Strata Plan 8910",
+    "careOf": "Lamb and Walters Strata Management",
+    "address": ["PO Box 95", "Gordon NSW 2072"],
+    "attention": "Ms Ella Donohoe"
+  },
+  "intro": [
+    "Thank you for inviting XNDR Consulting to provide this proposal for professional services for the investigative engineering and remedial condition assessment of the above project.",
+    "In preparing our proposal we have reviewed the quote request, undertaken a desktop study of the building, and considered the most efficient way of providing services based on our experience with similar projects."
+  ],
+  "scopeSummary": [
+    "Scope of Works / specification for the replacement of all balcony balustrades.",
+    "DBPA documentation to replace waterproofing on all balconies."
+  ],
+  "stages": [
+    {
+      "name": "Stage 1 — Inspection & Scope of Works",
+      "description": [
+        "Prepare a detailed Scope of Work and specification that aligns with the NSW Government's Design & Building Practitioners Act 2020. Prior to construction the design will encompass elements requiring a Regulated Design Declaration from a Structural and Façade Design Practitioner."
+      ],
+      "deliverables": [
+        "Site inspection (measure up) of all affected balconies",
+        "Detailed Scope of Work and tender documentation",
+        "Scale drawings — elevations, sections and details",
+        "DBPA documentation"
+      ],
+      "items": [
+        { "description": "Inspection, Scope of Work and tender documentation (incl. DBPA)", "basis": "Lump sum", "amount": 12400 }
+      ]
+    },
+    {
+      "name": "Stage 2 — Tender Process",
+      "description": [
+        "Issue the tender package to three (3) contractors, attend an on-site tender meeting, answer queries, then receive submissions and prepare a tender summary with preferred-contractor recommendations."
+      ],
+      "items": [
+        { "description": "Tender management", "basis": "Lump sum", "amount": 1600 },
+        { "description": "Tender summary report", "basis": "Lump sum", "amount": 1600 },
+        { "description": "Changes to scope following tender (if required)", "amountText": "Hourly rates" }
+      ]
+    },
+    {
+      "name": "Stage 3 — Preparation of Draft Contracts",
+      "description": [
+        "Provide a draft contract for the Owners Corporation's consideration and manage execution of contract documents, including special conditions over and above AS4000."
+      ],
+      "items": [
+        { "description": "Preparation of draft contracts", "basis": "Lump sum", "amount": 1700 }
+      ]
+    },
+    {
+      "name": "Stage 4 — Construction & Contract Administration",
+      "description": [
+        "Following execution of the building works contract, XNDR will carry out technical supervision and the role of Superintendent, including site inspections, progress-claim assessment and final certification. All-inclusive up to Practical Completion."
+      ],
+      "items": [
+        { "description": "Construction services and contract administration", "amountText": "8% of final contract sum" }
+      ]
+    }
+  ],
+  "validityDays": 90,
+  "gstRate": 0.1,
+  "hourlyRates": [
+    { "role": "Junior Draftsperson", "rate": 130 },
+    { "role": "Senior Draftsperson", "rate": 190 },
+    { "role": "Engineer / Assistant Project Manager", "rate": 165 },
+    { "role": "Design Engineer / Project Manager", "rate": 210 },
+    { "role": "Senior Engineer / Senior Project Manager", "rate": 260 },
+    { "role": "Associate", "rate": 300 },
+    { "role": "Director", "rate": 400 },
+    { "role": "Work outside normal business hours", "rate": "Rate × 1.5" }
+  ],
+  "exclusions": [
+    "Invasive or destructive investigations, unless otherwise stated",
+    "Specialised access systems or assisting labour to provide safe access",
+    "Areas considered non-trafficable, inaccessible or unsafe on the day",
+    "Fire, mechanical, electrical and hydraulic services — require specialist consultants",
+    "BCA / planning compliance and OH&S compliance"
+  ],
+  "notes": [
+    "Access for inspections to be arranged by the Owners Corporation or Strata Manager.",
+    "Work undertaken after Practical Completion is charged at our current hourly rates."
+  ],
+  "signatory": {
+    "name": "Rinay Singh",
+    "qualifications": "BEng (Hons) MEng (Structural)",
+    "title": "Senior Remedial Engineer",
+    "registrationNo": "0000"
+  },
+  "payment": {
+    "terms": [
+      "Invoices are issued as progress claims on a monthly basis. Payment is required within 14 days of the date of invoice.",
+      "Overdue invoices may incur interest at 13% per annum from the date of invoice."
+    ],
+    "accountName": "XNDR Consulting Pty Ltd",
+    "bank": "Commonwealth Bank",
+    "bsb": "000 000",
+    "accountNumber": "0000 0000"
+  },
+  "terms": [
+    "XNDR Consulting shall provide the consulting engineering services described in this proposal together with such other services as may be agreed in writing.",
+    "XNDR shall provide the services with the skill, care and diligence generally exercised by competent members of the engineering profession.",
+    "The client shall make available all information and documents necessary for XNDR to carry out the services, and XNDR is entitled to rely on them.",
+    "The client shall pay the fee and reimbursable expenses set out in this proposal, plus GST where amounts are not expressed as GST-inclusive.",
+    "XNDR may claim payment monthly in arrears; the client must pay within 14 days of invoice without set-off or deduction.",
+    "Interest may be payable on overdue amounts at 13% per annum from the date of invoice, plus collection costs.",
+    "XNDR's aggregate liability arising out of this agreement is limited to the amount of the fee, or $5,000,000 if no amount is stated.",
+    "XNDR is not liable for indirect, consequential or special losses including loss of profit or business opportunity.",
+    "Ownership of intellectual property created under this agreement vests in XNDR; the client is granted a licence to use it for the project.",
+    "Either party may terminate on the terms set out in this agreement; XNDR may suspend services immediately if the client fails to pay.",
+    "Any dispute shall first be negotiated in good faith and, failing resolution, referred to mediation.",
+    "Neither party may assign or sublet any obligation under this agreement without the written consent of the other."
+  ]
+}

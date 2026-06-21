@@ -33,63 +33,53 @@ context across session boundaries when this conversation ends.
 
 <!-- Replace everything below with the actual prompt. Keep this fence so the section is easy to find. -->
 
-**State: the site is built, content-populated and live on `master`.** Rinay's
-answers (email, 15 Jun 2026, `~/Downloads/answers.pdf`) are implemented in
-[`lib/content.ts`](../lib/content.ts) — `hero`, `about`, `services`, `projects`,
-`cta`, `footer` all carry real copy. `npm run build` passes. The next session is
-mostly **waiting on Rinay** (see outstanding) — don't invent the missing copy.
+**State: on the `design-engine` branch (NOT `master`).** Foundation for the
+design engine is built and pushed. Next session = **refining + foundation work**.
+The user is doing a dry run first to confirm everything works — so start by asking
+how the dry run went / what broke, rather than charging ahead.
 
-**Done so far:**
-- Contact email (info@xndr.au) + phone (0423 322 772) live in `footer`.
-- About copy is Rinay's latest revision; the single testimonial is kept.
-- Projects render as masonry (natural aspect ratios) on the landing; each is a
-  static page at `/projects/<slug>`.
-- **Newport + Woy Woy are full interactive case studies** —
-  `components/ProjectDetail.tsx` (client, **anime.js**): hero render, facts,
-  narrative, a clickable level-by-level floor-plan explorer, services/scope, and
-  (Newport) a materials board. Images were cropped address-free from the DA PDFs
-  (`~/Downloads/newport-info.pdf`, `woy-woy-info.pdf`) and live in
-  `public/projects/`. `animejs@3` is now a dependency.
+**Read first:** [`docs/design-engine/PLAN.md`](design-engine/PLAN.md) (the plan),
+[`engine/README.md`](../engine/README.md) (how to run it). The engine is a
+self-contained Node project in [`engine/`](../engine/); it **never deploys**
+(see the "Design engine" rules in the root [`README.md`](../README.md)).
 
-**Not yet verified (worth a quick pass):** light-theme spot-check of the two new
-ProjectDetail pages (I checked default/dark), and a real-device click-through of
-the level-explorer tabs.
+**Branch discipline:** stay on `design-engine`. Do **not** merge `engine/` onto
+`master`. `master` is the deployed marketing site only.
 
-**Still outstanding (don't invent these):**
-- **Contact extras** — office address, ABN, social links, and a confirmed CTA
-  label are still missing (QUESTIONS.md §7). If a working contact form is wanted
-  over the current `mailto:`/`tel:`, wire Formspree / Vercel form action.
-- **Detail for the other 3 projects** — Granny Flat (Guildford), New Build
-  (Kellyville), Retaining Wall (Box Hill) have no `scope`/`services`/`details`
-  yet, so their pages show the "coming soon" note. Populate the `Project` objects
-  in `lib/content.ts` when Rinay sends a few lines each. Newport + Woy Woy are the
-  reference: the detail page (`components/ProjectDetail.tsx`, a client component
-  using **anime.js** for scroll-reveal + an interactive level explorer) renders
-  `facts`, `floors` (clickable plan tabs), `materialsImage`/`materialsNote`,
-  `services`, `scope`, `details` and `gallery` — each section hides if absent.
-  Floor-plan + materials images were cropped from the DA PDFs (address-free) with
-  `pdftoppm`/`pdfimages` and live in `public/projects/`.
-- **Project images** — Guildford + Box Hill are still PLACEHOLDER Unsplash ids
-  (marked TODO in `projects.items`); drop real photos in `public/projects/` and
-  repoint `image` (static-import them like the others). Note: phone photos may
-  need rotating (the Kellyville set had no EXIF orientation; rotated 270° via `sips`).
-- **"Suburbs only" rule** — show the suburb only on projects, never the street
-  address or owner name (per Rinay). Keep this in mind for any new project content.
-- **Accreditations** — Rinay supplied DBP + Professional Engineer (DBPA); there's
-  no field/component to show them yet (FOLLOW-UP comment in `about`). Consider an
-  accreditations strip in the About section.
+**Done so far (Phase 0 + Phase 3):**
+- `data → template → render` pipeline. HTML/CSS → PDF via Playwright/Chromium
+  (`engine/src/render/pdf.ts`).
+- **Fee proposal — complete & XNDR-branded.** `engine/src/templates/fees-report.ts`,
+  schema `FeesReport` in `engine/src/types.ts`, worked example
+  `engine/examples/sample-fees.json`. Run: `npm run fees -- examples/sample-fees.json`
+  (or `npm run example:fees`). Derived from two real samples in
+  `designs/reference/` (Partridge `F2026R0274.1` + CORE `AS6374`).
+- **Drawing sheet — branded frame only.** `engine/src/templates/drawing-sheet.ts`
+  reproduces the A3 title-block/border/setout-grid from
+  `designs/XNDR - Drawing Sheet Template.pdf`. Run: `npm run example:sheet`.
+- Brand single-source: `engine/src/brand.ts` (mirrors STD-01/STD-02 + the site).
+- Outputs land in git-ignored `designs/`.
 
-**Keep what's correct:** the XNDR name, the three services, and the
-Aryan G — "Rinay is an exceptional mind." testimonial.
+**Key technical note (don't re-litigate):** repeating header/footer uses the
+**table `thead`/`tfoot`** technique, NOT `position: fixed` (which lets content
+slide under the bands in Chromium print). The renderer lets the template's
+`@page` rule own size + margins (`preferCSSPageSize: true`, no `format` passed).
+See PLAN.md §6 "Renderer note".
 
-**Verify & ship.** `npm run build` must pass. For anything visual, screenshot
-**both themes** in a real browser (build won't catch contrast/layout
-regressions). Before touching styles, re-read
-[`docs/conventions/design-system.md`](conventions/design-system.md) — the
-scoped-region rule (hero/project cards need `color`, not just `--text`). Commit
-per logical chunk and push to `master` (auto-deploys).
+**Likely next work (refine + foundation):**
+- **Real XNDR values** — example uses placeholders: ABN, bank BSB/account, DBP/PE
+  number (`0000`). Drop real values into `brand.ts` / the example when supplied.
+- **Optional CORE-style cover page + table of contents** for the fee proposal
+  (user flagged interest). Current template is the lean Partridge-style spine.
+- **Drawing sheet — Phase 1/2:** pixel-match the reference, then multi-sheet sets
+  (one PDF, N pages), sheet numbering, revisions, STD-01/STD-02 as generated
+  standard sheets.
+- **Open questions (resolve with user before building):** how drawing artwork
+  enters the sheet field (CAD export / SVG / cropped image?), watermarking
+  (`designs/watermarked-version.pdf`), signature/certification asset, data origin
+  (JSON vs form/DB). See PLAN.md §9.
 
-**When real copy fully lands** (contact details + project images in particular),
-drop the placeholder-policy caveat from
-[`docs/conventions/content-and-assets.md`](conventions/content-and-assets.md) and
-reset this file to the template above.
+**Verify:** `cd engine && npm run typecheck` must pass. For anything visual,
+render the sample and eyeball the PDF in `designs/` — type-check won't catch a
+layout regression. One-time setup if Chromium is missing:
+`cd engine && npm install` (runs `playwright install chromium`).

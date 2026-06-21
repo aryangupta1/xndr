@@ -61,14 +61,41 @@ The hero uses a free, hotlinkable stock construction clip from Pexels
 `public/` and reference it locally — to use your own footage.
 
 ## To do
-- [ ] **Design-engine branch** — create a dedicated branch (e.g. `design-engine`)
-  that **never deploys** (exclude it in Vercel: Project → Settings → Git →
-  Ignored Build Step, or limit production/preview to `master`). It houses the
-  PDF generation tooling — scripts that crop/restyle source drawings, the XNDR
-  drawing-sheet template, and the brand styling — outputting to the
-  git-ignored [`designs/`](designs/) directory. Keeps the heavy design assets and
-  generators out of the deployed app while versioning the engine itself.
+- [x] **Design-engine branch** — created (`design-engine`). Houses the PDF
+  generation tooling in [`engine/`](engine/); see [Design engine](#design-engine-design-engine-branch) below.
 - [ ] Think about converting to SAAS product? for the design engine
+
+## Design engine (`design-engine` branch)
+
+The **design engine** is a code-driven PDF generator for XNDR's documents —
+**fee proposals** (A4) and **engineering drawing sheets** (A3) — built from
+structured JSON and rendered HTML/CSS → PDF. It lives **only on the
+`design-engine` branch** and is **never deployed**.
+
+- **Where:** [`engine/`](engine/) (self-contained Node project, own
+  `package.json`). Plan: [`docs/design-engine/PLAN.md`](docs/design-engine/PLAN.md).
+  How to use it: [`engine/README.md`](engine/README.md).
+- **Output:** the git-ignored [`designs/`](designs/) directory.
+
+### Rules (keep these intact)
+
+1. **Never deploys.** `master` is the only branch Vercel builds. Don't merge
+   `engine/` onto `master`. The engine is isolated three ways: excluded from the
+   site's [`tsconfig.json`](tsconfig.json), listed in
+   [`.vercelignore`](.vercelignore), and kept in its own dependency tree.
+2. **Separate dependencies.** The engine has its **own** `package.json`
+   (Playwright + Chromium). Never add engine deps to the root `package.json` — it
+   would bloat the deployed app.
+3. **Brand stays in sync.** [`engine/src/brand.ts`](engine/src/brand.ts) mirrors
+   the site's palette/type and STD-01/STD-02. If the site brand moves, move this
+   too — don't let them diverge.
+4. **Outputs and reference PDFs are git-ignored.** Generated PDFs and reference
+   samples live in `designs/` and are **never committed** (they contain heavy
+   assets and, for client samples, third-party PII). Keep reference material in
+   [`designs/reference/`](designs/).
+5. **Type-check before commit.** Run `npm run typecheck` in `engine/`. For
+   anything visual, render the sample and eyeball the PDF — the type-check won't
+   catch a layout regression.
 
 ## Deploy to Vercel
 

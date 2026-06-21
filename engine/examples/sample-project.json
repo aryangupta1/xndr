@@ -1,0 +1,28 @@
+{
+  "project": {
+    "jobNo": "2025R0318",
+    "name": "22 Battery Street — Remedial Works",
+    "siteAddress": "22 Battery Street, NSW",
+    "client": "The Owners — Strata Plan 00000",
+    "planNo": "SP 00000"
+  },
+  "certification": {
+    "name": "R. Naidu",
+    "registrationNo": "0000"
+  },
+  "issueStatus": "Preliminary",
+  "sheets": [
+    {
+      "number": "S-101",
+      "title": "Roof Plan — Waterproofing",
+      "meta": {
+        "designed": "RN",
+        "drawn": "RN",
+        "scale": "1:50",
+        "date": "Jun 2026",
+        "revision": "P1"
+      },
+      "content": { "kind": "placeholder" }
+    }
+  ]
+}
