@@ -3,6 +3,10 @@
 > **Status:** foundation / groundwork. This is the high-level design. Detail is
 > filled in as real sample inputs/outputs arrive. Open decisions are tracked in
 > [§9 Open questions](#9-open-questions) — don't silently resolve them in code.
+>
+> **Deep enhancement roadmaps** (how each side grows from here):
+> [`ENHANCE-design-docs.md`](ENHANCE-design-docs.md) (drawing sheets) ·
+> [`ENHANCE-fee-docs.md`](ENHANCE-fee-docs.md) (fee proposals).
 
 ## 1. What it is
 

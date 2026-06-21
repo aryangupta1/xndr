@@ -66,20 +66,36 @@ slide under the bands in Chromium print). The renderer lets the template's
 `@page` rule own size + margins (`preferCSSPageSize: true`, no `format` passed).
 See PLAN.md §6 "Renderer note".
 
-**Likely next work (refine + foundation):**
-- **Real XNDR values** — example uses placeholders: ABN, bank BSB/account, DBP/PE
-  number (`0000`). Drop real values into `brand.ts` / the example when supplied.
-- **Optional CORE-style cover page + table of contents** for the fee proposal
-  (user flagged interest). Current template is the lean Partridge-style spine.
-- **Drawing sheet — Phase 1/2:** pixel-match the reference, then multi-sheet sets
-  (one PDF, N pages), sheet numbering, revisions, STD-01/STD-02 as generated
-  standard sheets.
-- **Open questions (resolve with user before building):** how drawing artwork
-  enters the sheet field (CAD export / SVG / cropped image?), watermarking
-  (`designs/watermarked-version.pdf`), signature/certification asset, data origin
-  (JSON vs form/DB). See PLAN.md §9.
+**This session = START IMPLEMENTING the enhancements.** Two deep roadmaps were
+just written — read them first, they define the work and its order:
+- [`docs/design-engine/ENHANCE-fee-docs.md`](design-engine/ENHANCE-fee-docs.md)
+- [`docs/design-engine/ENHANCE-design-docs.md`](design-engine/ENHANCE-design-docs.md)
 
-**Verify:** `cd engine && npm run typecheck` must pass. For anything visual,
-render the sample and eyeball the PDF in `designs/` — type-check won't catch a
-layout regression. One-time setup if Chromium is missing:
+Each ends with a **"Suggested phasing"** section and **open questions**. Don't
+resolve an open question in code — ask the user. Recommended first slices (high
+value, low/no external dependency — pick with the user):
+
+- **Fee docs, Phase 1 — extract `computeTotals()`** out of `fees-report.ts` into a
+  tested helper, add per-stage subtotals + an optional stage fee-estimate badge.
+  Then **Phase 2 — the content/boilerplate library** (standard T&Cs, exclusions,
+  rate cards, payment terms referenced by id) — the biggest time-saver.
+- **Design docs, Phase 1 — multi-sheet sets** (no CAD dependency): render all
+  `sheets[]` into one N-page PDF (`index.ts` currently renders `sheets[0]` only),
+  sheet numbering/ordering, a cover/index sheet, and a revision-history table in
+  the title block. The drawing-content pipeline (the gating CAD decision) comes
+  after — confirm the export format with Rinay first.
+
+**Blocked-on-user before building the dependent theme:** real XNDR values (ABN,
+bank, DBP/PE no., insurance limits — currently placeholders), CAD export format
+for drawing geometry, brochure-vs-lean default for fee front matter, the service
+lines XNDR quotes, and the `F2026R0274.1` reference scheme. See the open-questions
+sections in both enhance docs + PLAN.md §9.
+
+**Work style:** small, verifiable slices; keep `npm run typecheck` green and
+eyeball the rendered PDF after each change (type-check won't catch layout). Pure
+template functions stay pure — keep I/O in `index.ts`/`assets.ts`. Don't
+re-litigate the `thead`/`tfoot` header/footer technique (PLAN.md §6).
+
+**Verify:** `cd engine && npm run typecheck` must pass. Render samples and eyeball
+the PDFs in `designs/`. One-time setup if Chromium is missing:
 `cd engine && npm install` (runs `playwright install chromium`).
