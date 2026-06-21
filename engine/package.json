@@ -14,6 +14,7 @@
     "engine": "tsx src/index.ts",
     "sheet": "tsx src/index.ts sheet",
     "fees": "tsx src/index.ts fees",
+    "template": "tsx src/index.ts template",
     "example:fees": "tsx src/index.ts fees examples/sample-fees.json",
     "example:sheet": "tsx src/index.ts sheet examples/sample-project.json",
     "postinstall": "playwright install chromium",

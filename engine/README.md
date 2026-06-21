@@ -10,6 +10,7 @@ It produces two document types:
 |------|---------|------|--------|
 | **Fee proposal** | `npm run fees` | A4 portrait | a full branded fee proposal |
 | **Drawing sheet** | `npm run sheet` | A3 landscape | an engineering title-block sheet |
+| **Blank templates** | `npm run template` | both | empty `[ … ]` templates for both, to see the structure |
 
 > Lives on the `design-engine` branch and **never deploys**. Full design notes:
 > [`../docs/design-engine/PLAN.md`](../docs/design-engine/PLAN.md).
@@ -37,11 +38,18 @@ Confirm everything works end to end:
 ```bash
 npm run example:fees     # → ../designs/sample-fees-fees-<timestamp>.pdf
 npm run example:sheet    # → ../designs/sample-project-<timestamp>.pdf
+npm run template         # → ../designs/{fees,drawing-sheet}-template-<timestamp>.pdf
 ```
 
 Open the PDFs from the git-ignored [`../designs/`](../designs/) folder. Each run
 is stamped `YYYYMMDD-HHMMSS`, so every generation is a unique file (nothing is
 overwritten).
+
+`npm run template` renders the **blank templates** — every field shown as a
+`[ … ]` placeholder — straight from
+[`examples/template-fees.json`](examples/template-fees.json) and
+[`examples/template-sheet.json`](examples/template-sheet.json). Those two files
+are the canonical "fill-me-in" starting points (see the workflow below).
 
 ---
 
@@ -52,11 +60,12 @@ Three steps. **1) copy an example → 2) edit the JSON → 3) run the command.**
 ### Fee proposal
 
 ```bash
-# 1. Copy the worked example as your starting point
-cp examples/sample-fees.json examples/my-job.json
+# 1. Copy a starting point. Use the blank template, or the worked example
+#    (examples/sample-fees.json) if you'd rather edit a filled-in one.
+cp examples/template-fees.json examples/my-job.json
 
-# 2. Edit examples/my-job.json — project details, addressee, stages, fees, etc.
-#    (open it in any text editor; it's plain JSON)
+# 2. Edit examples/my-job.json — replace the [ … ] placeholders with project
+#    details, addressee, stages, fees, etc. (plain JSON, any text editor)
 
 # 3. Generate the PDF
 npm run fees -- examples/my-job.json
@@ -66,7 +75,7 @@ npm run fees -- examples/my-job.json
 ### Drawing sheet
 
 ```bash
-cp examples/sample-project.json examples/my-sheet.json
+cp examples/template-sheet.json examples/my-sheet.json   # or sample-project.json
 # edit examples/my-sheet.json
 npm run sheet -- examples/my-sheet.json
 #    → ../designs/my-sheet-<timestamp>.pdf

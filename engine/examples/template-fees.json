@@ -1,0 +1,65 @@
+{
+  "project": {
+    "jobNo": "[ ____ ]",
+    "name": "[ Project name ]",
+    "siteAddress": "[ Site address ]",
+    "client": "[ Client / Owners Corporation ]",
+    "planNo": "[ SP / DP No. ]"
+  },
+  "reference": "[ Ref. ]",
+  "date": "[ DD MMM YYYY ]",
+  "title": "Fee Proposal for [ Service ]",
+  "preparedBy": "[ Name ]",
+  "addressee": {
+    "client": "[ Client / Owners Corporation ]",
+    "careOf": "[ C/o ]",
+    "address": ["[ Address line 1 ]", "[ Suburb STATE 0000 ]"],
+    "attention": "[ Attention ]"
+  },
+  "intro": [
+    "[ Introduction — thank the client for the invitation and summarise the engagement. ]",
+    "[ Second paragraph — note any desktop study / review undertaken in preparing the proposal. ]"
+  ],
+  "scopeSummary": ["[ Scope item 1 ]", "[ Scope item 2 ]"],
+  "stages": [
+    {
+      "name": "Stage 1 — [ Stage name ]",
+      "description": ["[ What this stage covers. ]"],
+      "deliverables": ["[ Deliverable 1 ]", "[ Deliverable 2 ]"],
+      "items": [{ "description": "[ Fee item ]", "basis": "Lump sum", "amountText": "[ $0,000 ]" }]
+    },
+    {
+      "name": "Stage 2 — [ Stage name ]",
+      "description": ["[ What this stage covers. ]"],
+      "items": [
+        { "description": "[ Fixed fee item ]", "basis": "Lump sum", "amountText": "[ $0,000 ]" },
+        { "description": "[ Variable item ]", "amountText": "Hourly rates" }
+      ]
+    }
+  ],
+  "validityDays": 90,
+  "gstRate": 0.1,
+  "hourlyRates": [
+    { "role": "[ Role ]", "rate": "[ $000 ]" },
+    { "role": "[ Role ]", "rate": "[ $000 ]" }
+  ],
+  "exclusions": ["[ Exclusion 1 ]", "[ Exclusion 2 ]"],
+  "notes": ["[ Note / assumption ]"],
+  "signatory": {
+    "name": "[ Name ]",
+    "qualifications": "[ Qualifications ]",
+    "title": "[ Title ]",
+    "registrationNo": "[ ____ ]"
+  },
+  "payment": {
+    "terms": ["[ Payment terms — invoicing cadence, due period, interest on overdue. ]"],
+    "accountName": "[ Account name ]",
+    "bank": "[ Bank ]",
+    "bsb": "[ 000 000 ]",
+    "accountNumber": "[ 0000 0000 ]"
+  },
+  "terms": [
+    "[ Standard term / condition clause 1. ]",
+    "[ Standard term / condition clause 2. ]"
+  ]
+}

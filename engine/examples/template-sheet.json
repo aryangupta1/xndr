@@ -1,0 +1,28 @@
+{
+  "project": {
+    "jobNo": "[ ____ ]",
+    "name": "[ Project name ]",
+    "siteAddress": "[ Site address ]",
+    "client": "[ Client / Owners Corporation ]",
+    "planNo": "[ SP / DP No. ]"
+  },
+  "certification": {
+    "name": "[ Name ]",
+    "registrationNo": "[ ____ ]"
+  },
+  "issueStatus": "[ Status ]",
+  "sheets": [
+    {
+      "number": "[ No. ]",
+      "title": "[ DRAWING TITLE ]",
+      "meta": {
+        "designed": "[ — ]",
+        "drawn": "[ — ]",
+        "scale": "1:__",
+        "date": "[ MMM YYYY ]",
+        "revision": "[ — ]"
+      },
+      "content": { "kind": "placeholder" }
+    }
+  ]
+}

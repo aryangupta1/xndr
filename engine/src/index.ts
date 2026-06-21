@@ -21,6 +21,7 @@ import type { DrawingSet, FeesReport } from "./types.js";
 
 const here = fileURLToPath(new URL(".", import.meta.url));
 const DESIGNS_DIR = resolve(here, "../../designs");
+const EXAMPLES_DIR = resolve(here, "../examples");
 
 function loadJson<T>(path: string): T {
   return JSON.parse(readFileSync(resolve(path), "utf8")) as T;
@@ -42,7 +43,8 @@ function defaultOut(input: string, suffix: string): string {
   return join(DESIGNS_DIR, `${stem}${suffix}-${timestamp()}.pdf`);
 }
 
-async function cmdSheet(input: string, out?: string): Promise<void> {
+/** Render a drawing set (first sheet for now) from a JSON file to a PDF. */
+async function renderSheet(input: string, outPath: string): Promise<void> {
   const set = loadJson<DrawingSet>(input);
   // Foundation: render the first sheet only. Multi-sheet sets (one PDF, N pages)
   // come in Phase 2 — see PLAN.md §8.
@@ -53,26 +55,47 @@ async function cmdSheet(input: string, out?: string): Promise<void> {
     certification: set.certification,
     logoDataUrl: loadLogoOnDark(),
   });
-  const outPath = out ?? defaultOut(input, "");
   await renderHtmlToPdf(html, outPath);
+}
+
+/** Render a fee proposal from a JSON file to a PDF. */
+async function renderFees(input: string, outPath: string): Promise<void> {
+  const report = loadJson<FeesReport>(input);
+  // The light logo sits on the dark running header band. Page size + margins
+  // come from the template's @page rule — see render/pdf.ts.
+  const html = renderFeesReport(report, { logoDataUrl: loadLogoOnDark() });
+  await renderHtmlToPdf(html, outPath);
+}
+
+async function cmdSheet(input: string, out?: string): Promise<void> {
+  const outPath = out ?? defaultOut(input, "");
+  await renderSheet(input, outPath);
   console.log(`✓ Drawing sheet → ${outPath}`);
 }
 
 async function cmdFees(input: string, out?: string): Promise<void> {
-  const report = loadJson<FeesReport>(input);
-  // The light logo sits on the dark running header band.
-  const html = renderFeesReport(report, { logoDataUrl: loadLogoOnDark() });
   const outPath = out ?? defaultOut(input, "-fees");
-  // Page size + margins (the header/footer reserve) come from the template's
-  // @page rule — see render/pdf.ts.
-  await renderHtmlToPdf(html, outPath);
+  await renderFees(input, outPath);
   console.log(`✓ Fees report → ${outPath}`);
+}
+
+/** Render the blank, fill-in templates for both document types. */
+async function cmdTemplate(): Promise<void> {
+  const sheetTemplate = resolve(EXAMPLES_DIR, "template-sheet.json");
+  const feesTemplate = resolve(EXAMPLES_DIR, "template-fees.json");
+  const sheetOut = join(DESIGNS_DIR, `drawing-sheet-template-${timestamp()}.pdf`);
+  const feesOut = join(DESIGNS_DIR, `fees-template-${timestamp()}.pdf`);
+  await renderSheet(sheetTemplate, sheetOut);
+  console.log(`✓ Drawing sheet template → ${sheetOut}`);
+  await renderFees(feesTemplate, feesOut);
+  console.log(`✓ Fees template → ${feesOut}`);
 }
 
 async function main(): Promise<void> {
   const [cmd, input, out] = process.argv.slice(2);
+  if (cmd === "template") return cmdTemplate();
   if (!cmd || !input) {
-    console.error("Usage: <sheet|fees> <input.json> [out.pdf]");
+    console.error("Usage: <sheet|fees> <input.json> [out.pdf]  |  template");
     process.exit(1);
   }
   switch (cmd) {
@@ -81,7 +104,7 @@ async function main(): Promise<void> {
     case "fees":
       return cmdFees(input, out);
     default:
-      console.error(`Unknown command: ${cmd}. Use "sheet" or "fees".`);
+      console.error(`Unknown command: ${cmd}. Use "sheet", "fees" or "template".`);
       process.exit(1);
   }
 }

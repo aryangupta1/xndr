@@ -173,28 +173,30 @@ export function renderFeesReport(r: FeesReport, ctx: FeesContext = {}): string {
      flowing content never slides underneath. Backgrounds print normally. */
   table.layout { width: 100%; border-collapse: collapse; }
   thead td, tfoot td { padding: 0; }
-  td.content { padding: 6mm 16mm; vertical-align: top; }
+  td.content { padding: 7mm 16mm; vertical-align: top; }
   /* tfoot must clear the page bottom edge for its band height. */
   tfoot { display: table-footer-group; }
 
-  /* ── Brand header band ───────────────────────────────────────────── */
+  /* ── Brand header band — slim, so it frames rather than overpowers ──── */
   .brandbar {
-    position: relative; height: 24mm; background: ${palette.ink}; color: ${palette.text};
+    position: relative; height: 15mm; background: ${palette.ink}; color: ${palette.text};
+    border-bottom: 1.2pt solid ${palette.green};
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 16mm; overflow: hidden;
   }
   .brandbar::after {
-    content: ""; position: absolute; top: 0; bottom: 0; left: 38%; width: 22mm;
-    background: ${palette.green}; transform: skewX(-20deg); opacity: 0.9;
+    content: ""; position: absolute; top: 0; bottom: 0; left: 42%; width: 9mm;
+    background: ${palette.green}; transform: skewX(-20deg); opacity: 0.55;
   }
-  .brandbar .ref { font-size: 7.5pt; color: ${palette.muted}; z-index: 1; max-width: 60%; text-align: right; }
-  .brandbar img { height: 11mm; z-index: 1; }
+  .brandbar .ref { font-size: 6.5pt; color: ${palette.muted}; z-index: 1; max-width: 60%; text-align: right; }
+  .brandbar img { height: 7.5mm; z-index: 1; }
 
-  /* ── Footer band ─────────────────────────────────────────────────── */
+  /* ── Footer band — slim hairline strip ───────────────────────────── */
   .footbar {
-    height: 12mm; background: ${palette.ink}; color: ${palette.muted};
+    height: 8mm; background: ${palette.ink}; color: ${palette.muted};
+    border-top: 1.2pt solid ${palette.green};
     display: flex; align-items: center; justify-content: center;
-    font-size: 7pt; letter-spacing: 0.04em;
+    font-size: 6.5pt; letter-spacing: 0.04em;
   }
   .footbar b { color: ${palette.greenBright}; font-weight: 600; }
 
