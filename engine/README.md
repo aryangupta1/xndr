@@ -39,10 +39,16 @@ skipped in your environment, run `npx playwright install chromium` once.)
 Confirm everything works end to end:
 
 ```bash
-npm run example:fees     # → ../designs/sample-fees-fees-light-<timestamp>.pdf
-npm run example:sheet    # → ../designs/sample-project-dark-<timestamp>.pdf
-npm run template         # → ../designs/{fees,drawing-sheet}-template-{light,dark}-<timestamp>.pdf
+npm run example:fees           # default theme (light) fee proposal
+npm run example:fees:dark      # dark fee proposal
+npm run example:sheet          # default theme (dark) drawing sheet
+npm run example:sheet:light    # light drawing sheet
+npm run template               # both types, both themes
 ```
+
+(There are `:light` and `:dark` variants of both example scripts.) Outputs land
+in the git-ignored [`../designs/`](../designs/), named
+`…-<theme>-<timestamp>.pdf`.
 
 Open the PDFs from the git-ignored [`../designs/`](../designs/) folder. Each run
 is stamped `YYYYMMDD-HHMMSS`, so every generation is a unique file (nothing is
