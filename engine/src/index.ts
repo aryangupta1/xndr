@@ -85,9 +85,12 @@ async function renderSheet(input: string, outPath: string, theme: ThemeName): Pr
 /** Render a fee proposal from a JSON file to a PDF. */
 async function renderFees(input: string, outPath: string, theme: ThemeName): Promise<void> {
   const report = loadJson<FeesReport>(input);
-  // The header/footer bands are dark in both themes, so the light logo always
-  // suits them. Page size + margins come from the template's @page rule.
-  const html = renderFeesReport(report, { logoDataUrl: loadLogoOnDark(), theme });
+  // Header/footer bands follow the theme: dark band → light logo, light band →
+  // charcoal logo. Page size + margins come from the template's @page rule.
+  const html = renderFeesReport(report, {
+    logoDataUrl: theme === "dark" ? loadLogoOnDark() : loadLogoOnLight(),
+    theme,
+  });
   await renderHtmlToPdf(html, outPath);
 }
 

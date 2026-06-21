@@ -95,9 +95,11 @@ const THEMES: Record<ThemeName, Theme> = {
     muted: "#5A6166",
     surface: "#F4F6F1",
     line: "#E3E5E1",
-    bandBg: palette.ink,
-    bandText: "#EEF1F2",
-    bandMuted: "#9AA3A8",
+    // Light-branded header/footer: a soft surface strip with the green rule +
+    // charcoal logo, mirroring the site's light theme (not a dark band).
+    bandBg: "#F1F3EE",
+    bandText: "#1C2023",
+    bandMuted: "#5A6166",
     barBg: palette.ink,
     barText: "#EEF1F2",
     accent: palette.green,
