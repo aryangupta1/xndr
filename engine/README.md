@@ -13,7 +13,8 @@ It produces two document types:
 | **Blank templates** | `npm run template` | both | empty `[ … ]` templates for both types, in **both themes** |
 
 Both document types come in a **light** and a **dark** theme — see
-[Light or dark](#light-or-dark) below.
+[Light or dark](#light-or-dark) below. The **fee proposal** can also be exported
+as an **editable Word (.docx)** — see [Editable Word](#editable-word-docx).
 
 > Lives on the `design-engine` branch and **never deploys**. Full design notes:
 > [`../docs/design-engine/PLAN.md`](../docs/design-engine/PLAN.md).
@@ -43,7 +44,9 @@ npm run example:fees           # default theme (light) fee proposal
 npm run example:fees:dark      # dark fee proposal
 npm run example:sheet          # default theme (dark) drawing sheet
 npm run example:sheet:light    # light drawing sheet
-npm run template               # both types, both themes
+npm run example:fees:docx      # editable Word (.docx) fee proposal
+npm run template               # both types, both themes (PDF)
+npm run template:docx          # editable Word (.docx) fees template
 ```
 
 (There are `:light` and `:dark` variants of both example scripts.) Outputs land
@@ -109,6 +112,22 @@ dark** (the reference-template look). The theme is part of the output filename
 (`…-light-…` / `…-dark-…`), so the two never collide. `npm run template` always
 emits both themes for both types. Brand green is identical in both themes — only
 the surfaces flip (defined in [`src/brand.ts`](src/brand.ts)).
+
+### Editable Word (.docx)
+
+**Fee proposals only** can be exported as a native, editable Word document —
+real Word headings, tables and lists you can edit, not an HTML import:
+
+```bash
+npm run fees -- examples/my-job.json --docx   # → designs/my-job-fees-<timestamp>.docx
+npm run example:fees:docx                      # the worked example, as .docx
+npm run template:docx                          # the blank fees template, as .docx
+```
+
+The flag is `--docx` (alias `--word`). It's fee-proposals only — `--docx` on a
+drawing sheet is rejected. Word docs are light/brand-styled (theme flags don't
+apply). Built with the [`docx`](https://www.npmjs.com/package/docx) library in
+[`src/word/fees-docx.ts`](src/word/fees-docx.ts).
 
 Every output lands in [`../designs/`](../designs/) (git-ignored — the heavy PDFs
 are never committed).

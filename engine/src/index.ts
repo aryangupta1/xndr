@@ -11,7 +11,7 @@
  * `types.ts`. Output defaults into the git-ignored `designs/`. See PLAN.md §3–4.
  */
 
-import { readFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { resolve, join, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -19,6 +19,7 @@ import { loadLogoOnDark, loadLogoOnLight } from "./assets.js";
 import { renderHtmlToPdf } from "./render/pdf.js";
 import { renderDrawingSheet } from "./templates/drawing-sheet.js";
 import { renderFeesReport } from "./templates/fees-report.js";
+import { feesReportToDocx } from "./word/fees-docx.js";
 import type { ThemeName } from "./brand.js";
 import type { DrawingSet, FeesReport } from "./types.js";
 
@@ -46,14 +47,16 @@ function defaultOut(input: string, suffix: string, theme: ThemeName): string {
   return join(DESIGNS_DIR, `${stem}${suffix}-${theme}-${timestamp()}.pdf`);
 }
 
-/** Pull a `--light` / `--dark` / `--theme <x>` flag out of the args. */
-function parseTheme(args: string[]): { theme?: ThemeName; rest: string[] } {
+/** Pull `--light`/`--dark`/`--theme <x>` and `--docx` flags out of the args. */
+function parseFlags(args: string[]): { theme?: ThemeName; docx: boolean; rest: string[] } {
   const rest: string[] = [];
   let theme: ThemeName | undefined;
+  let docx = false;
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
     if (a === "--light") theme = "light";
     else if (a === "--dark") theme = "dark";
+    else if (a === "--docx" || a === "--word") docx = true;
     else if (a === "--theme") {
       const v = args[++i];
       if (v === "light" || v === "dark") theme = v;
@@ -62,7 +65,7 @@ function parseTheme(args: string[]): { theme?: ThemeName; rest: string[] } {
       if (v === "light" || v === "dark") theme = v;
     } else rest.push(a);
   }
-  return { theme, rest };
+  return { theme, docx, rest };
 }
 
 /** Render a drawing set (first sheet for now) from a JSON file to a PDF. */
@@ -94,22 +97,46 @@ async function renderFees(input: string, outPath: string, theme: ThemeName): Pro
   await renderHtmlToPdf(html, outPath);
 }
 
-async function cmdSheet(input: string, out: string | undefined, theme: ThemeName = "dark"): Promise<void> {
+/** Render a fee proposal from a JSON file to an editable .docx (fees only). */
+async function renderFeesDocx(input: string, outPath: string): Promise<void> {
+  const report = loadJson<FeesReport>(input);
+  const buffer = await feesReportToDocx(report);
+  writeFileSync(outPath, buffer);
+}
+
+async function cmdSheet(input: string, out: string | undefined, theme: ThemeName, docx: boolean): Promise<void> {
+  if (docx) {
+    console.error("Word (--docx) export is fee-proposals only, not drawing sheets.");
+    process.exit(1);
+  }
   const outPath = out ?? defaultOut(input, "", theme);
   await renderSheet(input, outPath, theme);
   console.log(`✓ Drawing sheet (${theme}) → ${outPath}`);
 }
 
-async function cmdFees(input: string, out: string | undefined, theme: ThemeName = "light"): Promise<void> {
+async function cmdFees(input: string, out: string | undefined, theme: ThemeName, docx: boolean): Promise<void> {
+  if (docx) {
+    const outPath = out ?? join(DESIGNS_DIR, `${basename(input).replace(/\.json$/i, "")}-fees-${timestamp()}.docx`);
+    await renderFeesDocx(input, outPath);
+    console.log(`✓ Fees report (Word) → ${outPath}`);
+    return;
+  }
   const outPath = out ?? defaultOut(input, "-fees", theme);
   await renderFees(input, outPath, theme);
   console.log(`✓ Fees report (${theme}) → ${outPath}`);
 }
 
-/** Render the blank, fill-in templates for both document types, both themes. */
-async function cmdTemplate(): Promise<void> {
+/** Render the blank, fill-in templates. PDFs for both types/themes; with
+ *  --docx, an editable Word fees template instead (fees only). */
+async function cmdTemplate(docx: boolean): Promise<void> {
   const sheetTemplate = resolve(EXAMPLES_DIR, "template-sheet.json");
   const feesTemplate = resolve(EXAMPLES_DIR, "template-fees.json");
+  if (docx) {
+    const out = join(DESIGNS_DIR, `fees-template-${timestamp()}.docx`);
+    await renderFeesDocx(feesTemplate, out);
+    console.log(`✓ Fees template (Word) → ${out}`);
+    return;
+  }
   for (const theme of ["light", "dark"] as ThemeName[]) {
     const sheetOut = join(DESIGNS_DIR, `drawing-sheet-template-${theme}-${timestamp()}.pdf`);
     const feesOut = join(DESIGNS_DIR, `fees-template-${theme}-${timestamp()}.pdf`);
@@ -122,18 +149,18 @@ async function cmdTemplate(): Promise<void> {
 
 async function main(): Promise<void> {
   const [cmd, ...rawArgs] = process.argv.slice(2);
-  if (cmd === "template") return cmdTemplate();
-  const { theme, rest } = parseTheme(rawArgs);
+  const { theme, docx, rest } = parseFlags(rawArgs);
+  if (cmd === "template") return cmdTemplate(docx);
   const [input, out] = rest;
   if (!cmd || !input) {
-    console.error("Usage: <sheet|fees> <input.json> [out.pdf] [--light|--dark]  |  template");
+    console.error("Usage: <sheet|fees> <input.json> [out] [--light|--dark] [--docx]  |  template [--docx]");
     process.exit(1);
   }
   switch (cmd) {
     case "sheet":
-      return cmdSheet(input, out, theme ?? "dark");
+      return cmdSheet(input, out, theme ?? "dark", docx);
     case "fees":
-      return cmdFees(input, out, theme ?? "light");
+      return cmdFees(input, out, theme ?? "light", docx);
     default:
       console.error(`Unknown command: ${cmd}. Use "sheet", "fees" or "template".`);
       process.exit(1);

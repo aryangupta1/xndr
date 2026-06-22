@@ -15,9 +15,11 @@
     "sheet": "tsx src/index.ts sheet",
     "fees": "tsx src/index.ts fees",
     "template": "tsx src/index.ts template",
+    "template:docx": "tsx src/index.ts template --docx",
     "example:fees": "tsx src/index.ts fees examples/sample-fees.json",
     "example:fees:light": "tsx src/index.ts fees examples/sample-fees.json --light",
     "example:fees:dark": "tsx src/index.ts fees examples/sample-fees.json --dark",
+    "example:fees:docx": "tsx src/index.ts fees examples/sample-fees.json --docx",
     "example:sheet": "tsx src/index.ts sheet examples/sample-project.json",
     "example:sheet:light": "tsx src/index.ts sheet examples/sample-project.json --light",
     "example:sheet:dark": "tsx src/index.ts sheet examples/sample-project.json --dark",
@@ -25,6 +27,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "docx": "^9.7.1",
     "playwright": "^1.48.0"
   },
   "devDependencies": {

@@ -29,3 +29,15 @@ export function loadLogoOnDark(): string {
 export function loadLogoOnLight(): string {
   return imageDataUrl("logo-light.png");
 }
+
+/** Raw bytes of an image in `public/` (e.g. for embedding in a .docx). */
+export function imageBytes(file: string): Buffer {
+  return readFileSync(resolve(PUBLIC_DIR, file));
+}
+
+/** Intrinsic pixel size of a PNG, read from its IHDR chunk. */
+export function pngSize(bytes: Buffer): { width: number; height: number } {
+  // PNG: 8-byte signature, then IHDR length(4)+type(4); width/height are the
+  // next two big-endian uint32s at offsets 16 and 20.
+  return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+}
