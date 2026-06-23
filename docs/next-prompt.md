@@ -33,69 +33,66 @@ context across session boundaries when this conversation ends.
 
 <!-- Replace everything below with the actual prompt. Keep this fence so the section is easy to find. -->
 
-**State: on the `design-engine` branch (NOT `master`).** Foundation for the
-design engine is built and pushed. Next session = **refining + foundation work**.
-The user is doing a dry run first to confirm everything works — so start by asking
-how the dry run went / what broke, rather than charging ahead.
+**State: on the `design-engine` branch.** The engine is well established and a lot
+is shipped. Start by asking the user what they want next rather than charging in.
 
-**Read first:** [`docs/design-engine/PLAN.md`](design-engine/PLAN.md) (the plan),
-[`engine/README.md`](../engine/README.md) (how to run it). The engine is a
-self-contained Node project in [`engine/`](../engine/); it **never deploys**
-(see the "Design engine" rules in the root [`README.md`](../README.md)).
+**Read first:** [`docs/design-engine/PLAN.md`](design-engine/PLAN.md),
+[`engine/README.md`](../engine/README.md) (how to run it), and the two enhancement
+roadmaps below. The engine is a self-contained Node project in
+[`engine/`](../engine/); it **never deploys**.
 
-**Branch discipline:** stay on `design-engine`. Do **not** merge `engine/` onto
-`master`. `master` is the deployed marketing site only.
+**Branch discipline (important):** the engine lives ONLY on `design-engine`. Never
+put `engine/` on `master` — `master` is the Next.js site that deploys to Vercel,
+and the engine's Playwright/docx imports would break that build. Engine work →
+commit/push to `design-engine`. Site work → `master`. No merging between them.
+(Pushes need `gh auth switch --user aryangupta1` first, then switch back to
+`claude-engagely` after — the active account reverts.)
 
-**Done so far (Phase 0 + Phase 3):**
-- `data → template → render` pipeline. HTML/CSS → PDF via Playwright/Chromium
-  (`engine/src/render/pdf.ts`).
-- **Fee proposal — complete & XNDR-branded.** `engine/src/templates/fees-report.ts`,
-  schema `FeesReport` in `engine/src/types.ts`, worked example
-  `engine/examples/sample-fees.json`. Run: `npm run fees -- examples/sample-fees.json`
-  (or `npm run example:fees`). Derived from two real samples in
-  `designs/reference/` (Partridge `F2026R0274.1` + CORE `AS6374`).
-- **Drawing sheet — branded frame only.** `engine/src/templates/drawing-sheet.ts`
-  reproduces the A3 title-block/border/setout-grid from
-  `designs/XNDR - Drawing Sheet Template.pdf`. Run: `npm run example:sheet`.
-- Brand single-source: `engine/src/brand.ts` (mirrors STD-01/STD-02 + the site).
-- Outputs land in git-ignored `designs/`.
+**Done and shipped:**
+- `data → template → render` pipeline; HTML/CSS → PDF via Playwright
+  (`engine/src/render/pdf.ts`). CLI in `engine/src/index.ts`.
+- **Fee proposal — complete, XNDR-branded, light + dark.**
+  `engine/src/templates/fees-report.ts`, schema `FeesReport` in `types.ts`.
+  Scripts: `example:fees[:dark]`. Derived from real samples in `designs/reference/`.
+- **Fee proposal — editable Word (.docx) export.** `engine/src/word/fees-docx.ts`,
+  flag `--docx` (+ `--light`/`--dark`, + `--body`). Bands match the stage/rate
+  bars; `--body` puts the brand strips in the page body (full colour in Word's
+  editing view) vs the default header/footer placement (which Word greys while
+  editing). Scripts: `template:docx`, `template:docx-dark`, `template:docx-body`,
+  `template:docx-dark-body`, `example:fees:docx[-dark]`.
+- **Drawing sheet** (branded A3 frame, light/dark): `templates/drawing-sheet.ts`.
+- **`npm run template`** renders blank `[ … ]` templates (both types, both themes).
+- Brand single-source: `engine/src/brand.ts` (palette + `getTheme()` light/dark).
+- **Capability Statement, Remedial (ad hoc one-off).**
+  `engine/src/oneoff/capability-remedial.ts` → run `npx tsx src/oneoff/capability-remedial.ts`,
+  output `designs/capability-statement-remedial.pdf` (17pp A4, XNDR-branded,
+  original copy + XNDR's own section headings, Unsplash photos with brand
+  fallbacks). The user may want more refinements (e.g. swap the "Putting
+  Buildings Right" header photo; add real defect photos). Reference example that
+  inspired the structure: `designs/reference/Capability Statement_Remedial_2025_QLD.pdf`
+  (git-ignored). Keep it XNDR's own — no mention of any other firm.
+- **On `master` (site):** the Testimonials section is hidden (`app/page.tsx`) and
+  its nav link removed (`lib/content.ts`). Done + pushed.
 
-**Key technical note (don't re-litigate):** repeating header/footer uses the
-**table `thead`/`tfoot`** technique, NOT `position: fixed` (which lets content
-slide under the bands in Chromium print). The renderer lets the template's
-`@page` rule own size + margins (`preferCSSPageSize: true`, no `format` passed).
-See PLAN.md §6 "Renderer note".
+**Key technical notes (don't re-litigate):**
+- Repeating header/footer uses the table `thead`/`tfoot` technique, not
+  `position: fixed`. Renderer lets the template `@page` own size+margins
+  (`preferCSSPageSize: true`, no `format`). See PLAN.md §6.
+- Word layout-table borders use `BorderStyle.NIL` (not NONE) so they don't paint
+  stray boxes. Word docs keep a white page; only the bands go dark in dark mode.
 
-**This session = START IMPLEMENTING the enhancements.** Two deep roadmaps were
-just written — read them first, they define the work and its order:
-- [`docs/design-engine/ENHANCE-fee-docs.md`](design-engine/ENHANCE-fee-docs.md)
-- [`docs/design-engine/ENHANCE-design-docs.md`](design-engine/ENHANCE-design-docs.md)
+**Possible next work** (pick with the user): refine the capability statement;
+build a capability statement for other disciplines (structural / PM); or start the
+deeper engine phases in the roadmaps:
+- [`docs/design-engine/ENHANCE-fee-docs.md`](design-engine/ENHANCE-fee-docs.md) —
+  e.g. extract `computeTotals()`, then a content/boilerplate library.
+- [`docs/design-engine/ENHANCE-design-docs.md`](design-engine/ENHANCE-design-docs.md) —
+  e.g. multi-sheet drawing sets (currently `index.ts` renders `sheets[0]` only).
 
-Each ends with a **"Suggested phasing"** section and **open questions**. Don't
-resolve an open question in code — ask the user. Recommended first slices (high
-value, low/no external dependency — pick with the user):
+**Blocked-on-user:** real XNDR values (ABN, bank, DBP/PE no., insurance limits —
+currently placeholders), CAD export format for drawing geometry, and the
+`F2026R0274.1` reference scheme. See open-questions in the enhance docs + PLAN.md §9.
 
-- **Fee docs, Phase 1 — extract `computeTotals()`** out of `fees-report.ts` into a
-  tested helper, add per-stage subtotals + an optional stage fee-estimate badge.
-  Then **Phase 2 — the content/boilerplate library** (standard T&Cs, exclusions,
-  rate cards, payment terms referenced by id) — the biggest time-saver.
-- **Design docs, Phase 1 — multi-sheet sets** (no CAD dependency): render all
-  `sheets[]` into one N-page PDF (`index.ts` currently renders `sheets[0]` only),
-  sheet numbering/ordering, a cover/index sheet, and a revision-history table in
-  the title block. The drawing-content pipeline (the gating CAD decision) comes
-  after — confirm the export format with Rinay first.
-
-**Blocked-on-user before building the dependent theme:** real XNDR values (ABN,
-bank, DBP/PE no., insurance limits — currently placeholders), CAD export format
-for drawing geometry, brochure-vs-lean default for fee front matter, the service
-lines XNDR quotes, and the `F2026R0274.1` reference scheme. See the open-questions
-sections in both enhance docs + PLAN.md §9.
-
-**Work style:** small, verifiable slices; keep `npm run typecheck` green and
-eyeball the rendered PDF after each change (type-check won't catch layout). Pure
-template functions stay pure — keep I/O in `index.ts`/`assets.ts`. Don't
-re-litigate the `thead`/`tfoot` header/footer technique (PLAN.md §6).
-
-**Verify:** `cd engine && npm run typecheck` must pass. Render samples and eyeball
-the PDFs in `designs/`. One-time setup if Chromium is missing:
-`cd engine && npm install` (runs `playwright install chromium`).
+**Work style:** small verifiable slices; keep `cd engine && npm run typecheck`
+green and eyeball the rendered PDF after each change (type-check won't catch
+layout). One-time setup if Chromium is missing: `cd engine && npm install`.
