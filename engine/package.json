@@ -17,6 +17,8 @@
     "template": "tsx src/index.ts template",
     "template:docx": "tsx src/index.ts template --docx",
     "template:docx-dark": "tsx src/index.ts template --docx --dark",
+    "template:docx-body": "tsx src/index.ts template --docx --body",
+    "template:docx-dark-body": "tsx src/index.ts template --docx --dark --body",
     "example:fees": "tsx src/index.ts fees examples/sample-fees.json",
     "example:fees:light": "tsx src/index.ts fees examples/sample-fees.json --light",
     "example:fees:dark": "tsx src/index.ts fees examples/sample-fees.json --dark",

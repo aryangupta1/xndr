@@ -124,6 +124,8 @@ and comes in **light and dark**:
 ```bash
 npm run template:docx                          # blank fees template, light
 npm run template:docx-dark                     # blank fees template, dark
+npm run template:docx-body                     # light, brand bands in the body
+npm run template:docx-dark-body                # dark,  brand bands in the body
 npm run example:fees:docx                      # worked example, light
 npm run example:fees:docx-dark                 # worked example, dark
 npm run fees -- examples/my-job.json --docx          # a real job, light
@@ -131,14 +133,21 @@ npm run fees -- examples/my-job.json --docx --dark   # a real job, dark
 ```
 
 The flag is `--docx` (alias `--word`), combinable with `--light`/`--dark`
-(default light). It's fee-proposals only — `--docx` on a drawing sheet is
-rejected. Built with the [`docx`](https://www.npmjs.com/package/docx) library in
-[`src/word/fees-docx.ts`](src/word/fees-docx.ts).
+(default light) and `--body`. It's fee-proposals only — `--docx` on a drawing
+sheet is rejected. Built with the [`docx`](https://www.npmjs.com/package/docx)
+library in [`src/word/fees-docx.ts`](src/word/fees-docx.ts).
 
 > **Light vs dark Word:** both export a **white, print-clean page** with a light,
-> editable body — the only difference is the header/footer brand strips: **light**
-> (soft strip + charcoal logo) or **dark** (charcoal strip + white logo). All
-> shading is table-based, so both print reliably.
+> editable body — the only difference is the header/footer brand strips and the
+> stage/rate bars: **light** (soft strip + charcoal logo) or **dark** (charcoal
+> strip + white logo). All shading is table-based, so both print reliably.
+
+> **`--body` (header/footer placement):** by default the brand strips sit in the
+> Word **header/footer**, so they repeat on every page — but Word *greys them out
+> while you edit the body* (they're full colour in Print Preview / Read Mode /
+> print / PDF — that's normal Word behaviour, not a defect). Add `--body` to place
+> the strips **in the page body** instead: they show full colour while editing,
+> at the cost of appearing once (top of page 1 / end) rather than on every page.
 
 Every output lands in [`../designs/`](../designs/) (git-ignored — the heavy PDFs
 are never committed).

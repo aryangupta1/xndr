@@ -71,12 +71,21 @@ interface RunOpts {
   spacing?: number;
 }
 
+export interface DocxOptions {
+  theme?: ThemeName;
+  /** Place the brand bands in the page body (full colour, not greyed in Word's
+   *  editing view) instead of the repeating Word header/footer. Trade-off: the
+   *  band appears once at the top/bottom, not on every page. */
+  bodyBands?: boolean;
+}
+
 /** Build the .docx and return it as a Buffer. */
-export async function feesReportToDocx(r: FeesReport, theme: ThemeName = "light"): Promise<Buffer> {
+export async function feesReportToDocx(r: FeesReport, opts: DocxOptions = {}): Promise<Buffer> {
+  const theme = opts.theme ?? "light";
+  const bodyBands = opts.bodyBands ?? false;
   // The Word doc body is always LIGHT (white page, dark text, light surfaces) so
   // it prints and edits cleanly. The "dark" variant only flips the header/footer
-  // brand strips to dark (charcoal band + white logo), matching the dark PDF's
-  // bands while keeping the page white.
+  // brand strips (and the stage/rate bars) to dark, keeping the page white.
   const lt = getTheme("light");
   const dt = getTheme("dark");
   const dark = theme === "dark";
@@ -87,13 +96,11 @@ export async function feesReportToDocx(r: FeesReport, theme: ThemeName = "light"
   const MUTED = lt.muted;
   const SURFACE = lt.surface;
   const LINE = lt.line;
-  const BARBG = lt.barBg; // stage bars / table headers stay dark in both
-  const BARTEXT = lt.barText;
   const PAGEBG = lt.pageBg; // always white
 
-  // Band tokens. The dark band matches the stage-bar colour (BARBG) so the
-  // header/footer and the "Stage n —" bars read as one family.
-  const BAND = dark ? BARBG : lt.bandBg;
+  // Band tokens — used by the header/footer strips AND the stage/rate bars so
+  // they all read as one family. Dark variant uses the dark charcoal.
+  const BAND = dark ? lt.barBg : lt.bandBg;
   const BANDTEXT = dark ? dt.bandText : lt.bandText;
   const BANDMUTED = dark ? dt.bandMuted : lt.bandMuted;
   const BANDACCENT = dark ? dt.accent : lt.accent;
@@ -169,8 +176,8 @@ export async function feesReportToDocx(r: FeesReport, theme: ThemeName = "light"
     const header = new TableRow({
       tableHeader: true,
       children: [
-        cell([new Paragraph({ children: [run("Role", { color: BARTEXT, size: 16, bold: true, caps: true, spacing: 16 })] })], { fill: BARBG, width: 70, borders: { top: NONE, bottom: NONE, left: NONE, right: NONE } }),
-        cell([new Paragraph({ alignment: AlignmentType.RIGHT, children: [run("Rate (ex GST)", { color: BARTEXT, size: 16, bold: true, caps: true, spacing: 16 })] })], { fill: BARBG, width: 30, borders: { top: NONE, bottom: NONE, left: NONE, right: NONE } }),
+        cell([new Paragraph({ children: [run("Role", { color: BANDTEXT, size: 16, bold: true, caps: true, spacing: 16 })] })], { fill: BAND, width: 70, borders: { top: NONE, bottom: NONE, left: NONE, right: NONE } }),
+        cell([new Paragraph({ alignment: AlignmentType.RIGHT, children: [run("Rate (ex GST)", { color: BANDTEXT, size: 16, bold: true, caps: true, spacing: 16 })] })], { fill: BAND, width: 30, borders: { top: NONE, bottom: NONE, left: NONE, right: NONE } }),
       ],
     });
     const body = rows.map(
@@ -237,62 +244,56 @@ export async function feesReportToDocx(r: FeesReport, theme: ThemeName = "light"
     });
   };
 
-  // Header / footer (shaded brand strip). Light band → charcoal logo; dark → white.
+  // Brand strip (shaded band). Light band → charcoal logo; dark → white logo.
   const logo = imageBytes(theme === "dark" ? "logo-dark.png" : "logo-light.png");
   const { width: lw, height: lh } = pngSize(logo);
   const logoH = 30;
   const logoW = Math.round((logoH * lw) / lh);
 
-  const header = new Header({
-    children: [
-      new Table({
-        width: { size: 100, type: WidthType.PERCENTAGE },
-        borders: { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE },
-        rows: [
-          new TableRow({
-            children: [
-              cell(
-                [
-                  new Paragraph({
-                    tabStops: [{ type: TabStopType.RIGHT, position: mm(174) }],
-                    children: [
-                      new ImageRun({ type: "png", data: logo, transformation: { width: logoW, height: logoH } }),
-                      new TextRun({ text: `\t${r.project.name} · ${r.reference}`, font: FONT, color: BANDMUTED, size: 14 }),
-                    ],
-                  }),
-                ],
-                { fill: BAND, borders: { top: NONE, left: NONE, right: NONE, bottom: { style: BorderStyle.SINGLE, size: B.rule, color: GREEN } } },
-              ),
-            ],
-          }),
-        ],
-      }),
-    ],
-  });
+  const headerBand = (): Table =>
+    new Table({
+      width: { size: 100, type: WidthType.PERCENTAGE },
+      borders: { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE },
+      rows: [
+        new TableRow({
+          children: [
+            cell(
+              [
+                new Paragraph({
+                  tabStops: [{ type: TabStopType.RIGHT, position: mm(174) }],
+                  children: [
+                    new ImageRun({ type: "png", data: logo, transformation: { width: logoW, height: logoH } }),
+                    new TextRun({ text: `\t${r.project.name} · ${r.reference}`, font: FONT, color: BANDMUTED, size: 14 }),
+                  ],
+                }),
+              ],
+              { fill: BAND, borders: { top: NONE, left: NONE, right: NONE, bottom: { style: BorderStyle.SINGLE, size: B.rule, color: GREEN } } },
+            ),
+          ],
+        }),
+      ],
+    });
 
-  const footer = new Footer({
-    children: [
-      new Table({
-        width: { size: 100, type: WidthType.PERCENTAGE },
-        borders: { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE },
-        rows: [
-          new TableRow({
-            children: [
-              cell(
-                [
-                  new Paragraph({
-                    alignment: AlignmentType.CENTER,
-                    children: [run(practice.name, { color: BANDACCENT, size: 14, bold: true }), run(`   ·   ${practice.email}   ·   ${practice.phone}   ·   ${practice.region}`, { color: BANDMUTED, size: 14 })],
-                  }),
-                ],
-                { fill: BAND, borders: { bottom: NONE, left: NONE, right: NONE, top: { style: BorderStyle.SINGLE, size: B.rule, color: GREEN } } },
-              ),
-            ],
-          }),
-        ],
-      }),
-    ],
-  });
+  const footerBand = (): Table =>
+    new Table({
+      width: { size: 100, type: WidthType.PERCENTAGE },
+      borders: { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE },
+      rows: [
+        new TableRow({
+          children: [
+            cell(
+              [
+                new Paragraph({
+                  alignment: AlignmentType.CENTER,
+                  children: [run(practice.name, { color: BANDACCENT, size: 14, bold: true }), run(`   ·   ${practice.email}   ·   ${practice.phone}   ·   ${practice.region}`, { color: BANDMUTED, size: 14 })],
+                }),
+              ],
+              { fill: BAND, borders: { bottom: NONE, left: NONE, right: NONE, top: { style: BorderStyle.SINGLE, size: B.rule, color: GREEN } } },
+            ),
+          ],
+        }),
+      ],
+    });
 
   // ── Body ──────────────────────────────────────────────────────────────────
   const gstRate = r.gstRate ?? 0.1;
@@ -439,18 +440,30 @@ export async function feesReportToDocx(r: FeesReport, theme: ThemeName = "light"
     r.terms.forEach((tt, i) => termsChildren.push(new Paragraph({ spacing: { after: 80 }, children: [run(`${i + 1}.  ${tt}`, { color: MUTED, size: 15 })] })));
   }
 
-  const pageProps = {
-    page: {
-      size: { width: mm(210), height: mm(297) },
-      margin: { top: mm(22), bottom: mm(16), left: mm(16), right: mm(16), header: mm(8), footer: mm(6) },
-    },
-  };
+  // Body-band mode: the brand strips live in the page body (full colour in Word's
+  // editing view, no greying) instead of the repeating Word header/footer — at
+  // the cost of appearing once (top of page 1, end of the doc) not on every page.
+  let header: Header | undefined;
+  let footer: Footer | undefined;
+  if (bodyBands) {
+    body.unshift(headerBand(), spacer(10));
+    const tail = termsChildren.length ? termsChildren : body;
+    tail.push(spacer(10), footerBand());
+  } else {
+    header = new Header({ children: [headerBand()] });
+    footer = new Footer({ children: [footerBand()] });
+  }
 
-  const sections: ISectionOptions[] = [
-    { properties: pageProps, headers: { default: header }, footers: { default: footer }, children: body },
-  ];
+  // Headerless mode reclaims the header/footer margin reserve.
+  const margin = bodyBands
+    ? { top: mm(14), bottom: mm(14), left: mm(16), right: mm(16) }
+    : { top: mm(22), bottom: mm(16), left: mm(16), right: mm(16), header: mm(8), footer: mm(6) };
+  const pageProps = { page: { size: { width: mm(210), height: mm(297) }, margin } };
+  const hf = header && footer ? { headers: { default: header }, footers: { default: footer } } : {};
+
+  const sections: ISectionOptions[] = [{ properties: pageProps, ...hf, children: body }];
   if (termsChildren.length) {
-    sections.push({ properties: { ...pageProps, column: { count: 2, space: mm(8) } }, headers: { default: header }, footers: { default: footer }, children: termsChildren });
+    sections.push({ properties: { ...pageProps, column: { count: 2, space: mm(8) } }, ...hf, children: termsChildren });
   }
 
   const doc = new Document({
