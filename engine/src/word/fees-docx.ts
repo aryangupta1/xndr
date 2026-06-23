@@ -73,21 +73,29 @@ interface RunOpts {
 
 /** Build the .docx and return it as a Buffer. */
 export async function feesReportToDocx(r: FeesReport, theme: ThemeName = "light"): Promise<Buffer> {
-  const t = getTheme(theme);
-  // Theme-resolved colours (hex without #). Solid green rules stay palette.green;
-  // text/accent green uses the theme accent (brighter on dark).
+  // The Word doc body is always LIGHT (white page, dark text, light surfaces) so
+  // it prints and edits cleanly. The "dark" variant only flips the header/footer
+  // brand strips to dark (charcoal band + white logo), matching the dark PDF's
+  // bands while keeping the page white.
+  const lt = getTheme("light");
+  const dt = getTheme("dark");
+  const dark = theme === "dark";
+
   const GREEN = palette.green;
-  const ACCENT = t.accent;
-  const INK = t.text;
-  const MUTED = t.muted;
-  const SURFACE = t.surface;
-  const BAND = t.bandBg;
-  const BANDTEXT = t.bandText;
-  const BANDMUTED = t.bandMuted;
-  const BARBG = t.barBg;
-  const BARTEXT = t.barText;
-  const LINE = t.line;
-  const PAGEBG = t.pageBg;
+  const ACCENT = lt.accent;
+  const INK = lt.text;
+  const MUTED = lt.muted;
+  const SURFACE = lt.surface;
+  const LINE = lt.line;
+  const BARBG = lt.barBg; // stage bars / table headers stay dark in both
+  const BARTEXT = lt.barText;
+  const PAGEBG = lt.pageBg; // always white
+
+  // Band tokens: dark variant borrows the dark theme's band colours.
+  const BAND = dark ? dt.bandBg : lt.bandBg;
+  const BANDTEXT = dark ? dt.bandText : lt.bandText;
+  const BANDMUTED = dark ? dt.bandMuted : lt.bandMuted;
+  const BANDACCENT = dark ? dt.accent : lt.accent;
   const HAIR = { style: BorderStyle.SINGLE, size: B.hair, color: LINE } as const;
 
   const run = (text: string, o: RunOpts = {}): TextRun =>
@@ -272,7 +280,7 @@ export async function feesReportToDocx(r: FeesReport, theme: ThemeName = "light"
                 [
                   new Paragraph({
                     alignment: AlignmentType.CENTER,
-                    children: [run(practice.name, { color: ACCENT, size: 14, bold: true }), run(`   ·   ${practice.email}   ·   ${practice.phone}   ·   ${practice.region}`, { color: BANDMUTED, size: 14 })],
+                    children: [run(practice.name, { color: BANDACCENT, size: 14, bold: true }), run(`   ·   ${practice.email}   ·   ${practice.phone}   ·   ${practice.region}`, { color: BANDMUTED, size: 14 })],
                   }),
                 ],
                 { fill: BAND, borders: { bottom: NONE, left: NONE, right: NONE, top: { style: BorderStyle.SINGLE, size: B.rule, color: GREEN } } },

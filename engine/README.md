@@ -135,10 +135,10 @@ The flag is `--docx` (alias `--word`), combinable with `--light`/`--dark`
 rejected. Built with the [`docx`](https://www.npmjs.com/package/docx) library in
 [`src/word/fees-docx.ts`](src/word/fees-docx.ts).
 
-> **Dark Word note:** the dark page background shows on screen and prints only
-> when Word's *Print background colors and images* option is on (table shading —
-> the bands, stage bars and boxes — always prints). The light variant has no such
-> caveat, so it's the better one to send for printing/signing.
+> **Light vs dark Word:** both export a **white, print-clean page** with a light,
+> editable body — the only difference is the header/footer brand strips: **light**
+> (soft strip + charcoal logo) or **dark** (charcoal strip + white logo). All
+> shading is table-based, so both print reliably.
 
 Every output lands in [`../designs/`](../designs/) (git-ignored — the heavy PDFs
 are never committed).
