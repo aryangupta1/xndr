@@ -91,8 +91,9 @@ export async function feesReportToDocx(r: FeesReport, theme: ThemeName = "light"
   const BARTEXT = lt.barText;
   const PAGEBG = lt.pageBg; // always white
 
-  // Band tokens: dark variant borrows the dark theme's band colours.
-  const BAND = dark ? dt.bandBg : lt.bandBg;
+  // Band tokens. The dark band matches the stage-bar colour (BARBG) so the
+  // header/footer and the "Stage n —" bars read as one family.
+  const BAND = dark ? BARBG : lt.bandBg;
   const BANDTEXT = dark ? dt.bandText : lt.bandText;
   const BANDMUTED = dark ? dt.bandMuted : lt.bandMuted;
   const BANDACCENT = dark ? dt.accent : lt.accent;
