@@ -215,7 +215,8 @@ export async function feesReportToDocx(r: FeesReport, theme: ThemeName = "light"
       new Table({
         width: { size: 100, type: WidthType.PERCENTAGE },
         borders: { top: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE, bottom: { style: BorderStyle.SINGLE, size: B.head, color: GREEN } },
-        rows: [new TableRow({ children: [cell([new Paragraph({ children: [run(s.name, { color: BARTEXT, size: 20, bold: true })] })], { fill: BARBG })] })],
+        // Stage bar matches the header/footer band (bg + text) in both themes.
+        rows: [new TableRow({ children: [cell([new Paragraph({ children: [run(s.name, { color: BANDTEXT, size: 20, bold: true })] })], { fill: BAND })] })],
       }),
     );
     kids.push(spacer(6)); // separates the bar table from what follows
