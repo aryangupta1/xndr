@@ -118,7 +118,6 @@ export const nav: { links: Link[]; cta: Link } = {
     { label: "About", href: "/#about" },
     { label: "Services", href: "/#services" },
     { label: "Projects", href: "/#projects" },
-    { label: "Testimonials", href: "/#testimonials" },
     { label: "Contact", href: "/#contact" },
   ],
   cta: { label: "Start a project", href: "/#contact" },
