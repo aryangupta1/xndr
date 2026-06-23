@@ -98,9 +98,9 @@ async function renderFees(input: string, outPath: string, theme: ThemeName): Pro
 }
 
 /** Render a fee proposal from a JSON file to an editable .docx (fees only). */
-async function renderFeesDocx(input: string, outPath: string): Promise<void> {
+async function renderFeesDocx(input: string, outPath: string, theme: ThemeName): Promise<void> {
   const report = loadJson<FeesReport>(input);
-  const buffer = await feesReportToDocx(report);
+  const buffer = await feesReportToDocx(report, theme);
   writeFileSync(outPath, buffer);
 }
 
@@ -116,9 +116,9 @@ async function cmdSheet(input: string, out: string | undefined, theme: ThemeName
 
 async function cmdFees(input: string, out: string | undefined, theme: ThemeName, docx: boolean): Promise<void> {
   if (docx) {
-    const outPath = out ?? join(DESIGNS_DIR, `${basename(input).replace(/\.json$/i, "")}-fees-${timestamp()}.docx`);
-    await renderFeesDocx(input, outPath);
-    console.log(`✓ Fees report (Word) → ${outPath}`);
+    const outPath = out ?? join(DESIGNS_DIR, `${basename(input).replace(/\.json$/i, "")}-fees-${theme}-${timestamp()}.docx`);
+    await renderFeesDocx(input, outPath, theme);
+    console.log(`✓ Fees report (Word, ${theme}) → ${outPath}`);
     return;
   }
   const outPath = out ?? defaultOut(input, "-fees", theme);
@@ -128,13 +128,13 @@ async function cmdFees(input: string, out: string | undefined, theme: ThemeName,
 
 /** Render the blank, fill-in templates. PDFs for both types/themes; with
  *  --docx, an editable Word fees template instead (fees only). */
-async function cmdTemplate(docx: boolean): Promise<void> {
+async function cmdTemplate(docx: boolean, theme: ThemeName): Promise<void> {
   const sheetTemplate = resolve(EXAMPLES_DIR, "template-sheet.json");
   const feesTemplate = resolve(EXAMPLES_DIR, "template-fees.json");
   if (docx) {
-    const out = join(DESIGNS_DIR, `fees-template-${timestamp()}.docx`);
-    await renderFeesDocx(feesTemplate, out);
-    console.log(`✓ Fees template (Word) → ${out}`);
+    const out = join(DESIGNS_DIR, `fees-template-${theme}-${timestamp()}.docx`);
+    await renderFeesDocx(feesTemplate, out, theme);
+    console.log(`✓ Fees template (Word, ${theme}) → ${out}`);
     return;
   }
   for (const theme of ["light", "dark"] as ThemeName[]) {
@@ -150,7 +150,7 @@ async function cmdTemplate(docx: boolean): Promise<void> {
 async function main(): Promise<void> {
   const [cmd, ...rawArgs] = process.argv.slice(2);
   const { theme, docx, rest } = parseFlags(rawArgs);
-  if (cmd === "template") return cmdTemplate(docx);
+  if (cmd === "template") return cmdTemplate(docx, theme ?? "light");
   const [input, out] = rest;
   if (!cmd || !input) {
     console.error("Usage: <sheet|fees> <input.json> [out] [--light|--dark] [--docx]  |  template [--docx]");

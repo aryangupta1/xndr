@@ -44,9 +44,10 @@ npm run example:fees           # default theme (light) fee proposal
 npm run example:fees:dark      # dark fee proposal
 npm run example:sheet          # default theme (dark) drawing sheet
 npm run example:sheet:light    # light drawing sheet
-npm run example:fees:docx      # editable Word (.docx) fee proposal
+npm run example:fees:docx      # editable Word (.docx) fee proposal (light)
 npm run template               # both types, both themes (PDF)
-npm run template:docx          # editable Word (.docx) fees template
+npm run template:docx          # editable Word (.docx) fees template (light)
+npm run template:docx-dark     # editable Word (.docx) fees template (dark)
 ```
 
 (There are `:light` and `:dark` variants of both example scripts.) Outputs land
@@ -116,18 +117,28 @@ the surfaces flip (defined in [`src/brand.ts`](src/brand.ts)).
 ### Editable Word (.docx)
 
 **Fee proposals only** can be exported as a native, editable Word document —
-real Word headings, tables and lists you can edit, not an HTML import:
+real Word headings, tables and lists you can edit, not an HTML import. It clones
+the fee-proposal PDF (header/footer bands, stage containers, totals, rate table)
+and comes in **light and dark**:
 
 ```bash
-npm run fees -- examples/my-job.json --docx   # → designs/my-job-fees-<timestamp>.docx
-npm run example:fees:docx                      # the worked example, as .docx
-npm run template:docx                          # the blank fees template, as .docx
+npm run template:docx                          # blank fees template, light
+npm run template:docx-dark                     # blank fees template, dark
+npm run example:fees:docx                      # worked example, light
+npm run example:fees:docx-dark                 # worked example, dark
+npm run fees -- examples/my-job.json --docx          # a real job, light
+npm run fees -- examples/my-job.json --docx --dark   # a real job, dark
 ```
 
-The flag is `--docx` (alias `--word`). It's fee-proposals only — `--docx` on a
-drawing sheet is rejected. Word docs are light/brand-styled (theme flags don't
-apply). Built with the [`docx`](https://www.npmjs.com/package/docx) library in
+The flag is `--docx` (alias `--word`), combinable with `--light`/`--dark`
+(default light). It's fee-proposals only — `--docx` on a drawing sheet is
+rejected. Built with the [`docx`](https://www.npmjs.com/package/docx) library in
 [`src/word/fees-docx.ts`](src/word/fees-docx.ts).
+
+> **Dark Word note:** the dark page background shows on screen and prints only
+> when Word's *Print background colors and images* option is on (table shading —
+> the bands, stage bars and boxes — always prints). The light variant has no such
+> caveat, so it's the better one to send for printing/signing.
 
 Every output lands in [`../designs/`](../designs/) (git-ignored — the heavy PDFs
 are never committed).
