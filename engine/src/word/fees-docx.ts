@@ -1,10 +1,13 @@
 /**
  * FeesReport → editable Word document (.docx), built natively with the `docx`
- * library so the output is genuinely editable in Word (real headings, tables and
- * lists — not an HTML-to-Word conversion). Word export is fee-proposals only.
+ * library. It mirrors the **light fee-proposal PDF** (the gold standard) as
+ * closely as Word's layout engine allows: same structure, colours, fonts, sizes,
+ * and styling. Word export is fee-proposals only.
  *
- * Styling is light/brand (Word documents are light by nature) — it mirrors the
- * brand rather than pixel-matching the PDF.
+ * Cross-engine caveat: a Chromium-rendered PDF and a Word doc can't be byte-for-
+ * byte identical. Two known differences are unavoidable in Word: the header/
+ * footer brand strips sit within the page margins (not full-bleed to the paper
+ * edge), and the header's green skew accent is omitted (no skewed shapes).
  */
 
 import {
@@ -18,25 +21,32 @@ import {
   WidthType,
   BorderStyle,
   AlignmentType,
+  TabStopType,
   ImageRun,
   Header,
   Footer,
-  TabStopType,
   convertMillimetersToTwip as mm,
 } from "docx";
+import type { ISectionOptions } from "docx";
 
 import { practice } from "../brand.js";
 import { imageBytes, pngSize } from "../assets.js";
 import type { FeesReport, FeeLineItem, FeeStage } from "../types.js";
 
-// Brand colours (hex without #).
+// Light-theme brand colours (hex without #) — matches getTheme("light").
 const GREEN = "6B9243";
 const INK = "1C2023";
 const MUTED = "5A6166";
 const SURFACE = "F4F6F1";
+const BAND = "F1F3EE";
 const LINE = "E3E5E1";
 const WHITE = "FFFFFF";
 const FONT = "Inter";
+
+// Border weights in eighths of a point.
+const B = { hair: 4, rule: 10, head: 16, left: 24, grand: 12, sign: 6, h2: 12 };
+const NONE = { style: BorderStyle.NONE, size: 0, color: WHITE } as const;
+const HAIR = { style: BorderStyle.SINGLE, size: B.hair, color: LINE } as const;
 
 const aud = (n: number): string =>
   n.toLocaleString("en-AU", { style: "currency", currency: "AUD", maximumFractionDigits: 0 });
@@ -47,117 +57,221 @@ function lineAmount(i: FeeLineItem): string {
   return "—";
 }
 
-// ── Paragraph builders ──────────────────────────────────────────────────────
-function para(text: string, opts: { color?: string; size?: number; bold?: boolean; italics?: boolean; after?: number } = {}): Paragraph {
-  return new Paragraph({
-    spacing: { after: opts.after ?? 120 },
-    children: [new TextRun({ text, font: FONT, color: opts.color ?? INK, size: opts.size ?? 20, bold: opts.bold, italics: opts.italics })],
-  });
+interface RunOpts {
+  color?: string;
+  size?: number;
+  bold?: boolean;
+  italics?: boolean;
+  caps?: boolean;
+  spacing?: number;
 }
+const run = (text: string, o: RunOpts = {}): TextRun =>
+  new TextRun({ text, font: FONT, color: o.color ?? INK, size: o.size ?? 20, bold: o.bold, italics: o.italics, allCaps: o.caps, characterSpacing: o.spacing });
+
+const para = (text: string, o: RunOpts & { after?: number } = {}): Paragraph =>
+  new Paragraph({ spacing: { after: o.after ?? 120 }, children: [run(text, o)] });
 
 function h2(text: string): Paragraph {
   return new Paragraph({
-    spacing: { before: 280, after: 80 },
-    border: { bottom: { style: BorderStyle.SINGLE, size: 10, color: GREEN, space: 2 } },
+    spacing: { before: 300, after: 90 },
+    border: { bottom: { style: BorderStyle.SINGLE, size: B.h2, color: GREEN, space: 3 } },
     keepNext: true,
-    children: [new TextRun({ text, font: FONT, color: GREEN, size: 26, bold: true })],
+    children: [run(text, { color: GREEN, size: 26, bold: true })],
   });
 }
 
-function label(text: string): Paragraph {
-  return new Paragraph({
-    spacing: { before: 160, after: 40 },
-    children: [new TextRun({ text: text.toUpperCase(), font: FONT, color: GREEN, size: 15, bold: true, characterSpacing: 30 })],
-  });
-}
+const leadSm = (text: string): Paragraph => para(text, { color: MUTED, size: 18 });
 
-function bullet(text: string): Paragraph {
-  return new Paragraph({
-    bullet: { level: 0 },
+/** A disc bullet (scope / exclusions / notes). */
+const bullet = (text: string): Paragraph =>
+  new Paragraph({ bullet: { level: 0 }, spacing: { after: 40 }, children: [run(text, { size: 19 })] });
+
+/** A green ▸ tick (deliverables). */
+const tick = (text: string): Paragraph =>
+  new Paragraph({
+    indent: { left: mm(6), hanging: mm(6) },
     spacing: { after: 40 },
-    children: [new TextRun({ text, font: FONT, color: INK, size: 19 })],
+    children: [run("▸  ", { color: GREEN, size: 19, bold: true }), run(text, { size: 19 })],
   });
-}
 
 // ── Table helpers ───────────────────────────────────────────────────────────
-const NO_BORDER = { style: BorderStyle.NONE, size: 0, color: WHITE } as const;
-const HAIR = { style: BorderStyle.SINGLE, size: 2, color: LINE } as const;
-
-function cell(children: Paragraph[], opts: { fill?: string; width?: number; borders?: object } = {}): TableCell {
+function cell(children: Paragraph[], o: { fill?: string; width?: number; widthDxa?: number; borders?: object } = {}): TableCell {
   return new TableCell({
     children,
-    shading: opts.fill ? { fill: opts.fill } : undefined,
-    width: opts.width ? { size: opts.width, type: WidthType.PERCENTAGE } : undefined,
-    margins: { top: 60, bottom: 60, left: 80, right: 80 },
-    borders: opts.borders as never,
+    shading: o.fill ? { fill: o.fill } : undefined,
+    width: o.widthDxa ? { size: o.widthDxa, type: WidthType.DXA } : o.width ? { size: o.width, type: WidthType.PERCENTAGE } : undefined,
+    margins: { top: 50, bottom: 50, left: 90, right: 90 },
+    borders: o.borders as never,
   });
 }
 
-function textCell(text: string, opts: { color?: string; size?: number; bold?: boolean; align?: (typeof AlignmentType)[keyof typeof AlignmentType]; fill?: string; width?: number } = {}): TableCell {
-  return cell(
-    [new Paragraph({ alignment: opts.align, children: [new TextRun({ text, font: FONT, color: opts.color ?? INK, size: opts.size ?? 19, bold: opts.bold })] })],
-    { fill: opts.fill, width: opts.width },
-  );
-}
-
-/** Fee line items as a 2-column table (description | amount). */
+/** Fee line items table (description + basis | amount), hairline between rows. */
 function feeTable(items: FeeLineItem[]): Table {
   return new Table({
     width: { size: 100, type: WidthType.PERCENTAGE },
-    borders: { top: HAIR, bottom: HAIR, left: NO_BORDER, right: NO_BORDER, insideHorizontal: HAIR, insideVertical: NO_BORDER },
+    borders: { top: HAIR, bottom: NONE, left: NONE, right: NONE, insideHorizontal: HAIR, insideVertical: NONE },
     rows: items.map(
       (i) =>
         new TableRow({
           children: [
             cell(
               [
-                new Paragraph({ children: [new TextRun({ text: i.description, font: FONT, color: INK, size: 19 })] }),
-                ...(i.basis ? [new Paragraph({ children: [new TextRun({ text: i.basis, font: FONT, color: MUTED, size: 15 })] })] : []),
+                new Paragraph({ children: [run(i.description, { size: 19 })] }),
+                ...(i.basis ? [new Paragraph({ children: [run(i.basis, { color: MUTED, size: 16 })] })] : []),
               ],
               { width: 75 },
             ),
-            textCell(lineAmount(i), { align: AlignmentType.RIGHT, width: 25 }),
+            cell([new Paragraph({ alignment: AlignmentType.RIGHT, children: [run(lineAmount(i), { size: 19 })] })], { width: 25 }),
           ],
         }),
     ),
   });
 }
 
-/** Generic 2-column key/value table (account details). */
+/** Right-aligned totals table (~70mm), Total row bold with ink top border. */
+function totalsTable(subtotal: number, gst: number, gstRate: number, total: number): Table {
+  const row = (k: string, v: string, grand = false): TableRow =>
+    new TableRow({
+      children: [
+        cell([new Paragraph({ children: [run(k, { size: grand ? 22 : 19, bold: grand })] })], {
+          widthDxa: mm(45),
+          borders: grand ? { top: { style: BorderStyle.SINGLE, size: B.grand, color: INK }, bottom: NONE, left: NONE, right: NONE } : { top: NONE, bottom: NONE, left: NONE, right: NONE },
+        }),
+        cell([new Paragraph({ alignment: AlignmentType.RIGHT, children: [run(v, { size: grand ? 22 : 19, bold: grand })] })], {
+          widthDxa: mm(25),
+          borders: grand ? { top: { style: BorderStyle.SINGLE, size: B.grand, color: INK }, bottom: NONE, left: NONE, right: NONE } : { top: NONE, bottom: NONE, left: NONE, right: NONE },
+        }),
+      ],
+    });
+  return new Table({
+    alignment: AlignmentType.RIGHT,
+    width: { size: mm(70), type: WidthType.DXA },
+    columnWidths: [mm(45), mm(25)],
+    borders: { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE },
+    rows: [row("Subtotal (ex GST)", aud(subtotal)), row(`GST (${(gstRate * 100).toFixed(0)}%)`, aud(gst)), row("Total (inc GST)", aud(total), true)],
+  });
+}
+
+/** Hourly-rate table: dark header row + zebra body, amount right-aligned. */
+function ratesTable(rows: [string, string][]): Table {
+  const header = new TableRow({
+    tableHeader: true,
+    children: [
+      cell([new Paragraph({ children: [run("Role", { color: WHITE, size: 16, bold: true, caps: true, spacing: 16 })] })], { fill: INK, width: 70, borders: { top: NONE, bottom: NONE, left: NONE, right: NONE } }),
+      cell([new Paragraph({ alignment: AlignmentType.RIGHT, children: [run("Rate (ex GST)", { color: WHITE, size: 16, bold: true, caps: true, spacing: 16 })] })], { fill: INK, width: 30, borders: { top: NONE, bottom: NONE, left: NONE, right: NONE } }),
+    ],
+  });
+  const body = rows.map(
+    ([role, rate], idx) =>
+      new TableRow({
+        children: [
+          cell([new Paragraph({ children: [run(role, { size: 19 })] })], { width: 70, fill: idx % 2 ? SURFACE : undefined, borders: { top: HAIR, bottom: NONE, left: NONE, right: NONE } }),
+          cell([new Paragraph({ alignment: AlignmentType.RIGHT, children: [run(rate, { size: 19 })] })], { width: 30, fill: idx % 2 ? SURFACE : undefined, borders: { top: HAIR, bottom: NONE, left: NONE, right: NONE } }),
+        ],
+      }),
+  );
+  return new Table({ width: { size: 100, type: WidthType.PERCENTAGE }, borders: { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE }, rows: [header, ...body] });
+}
+
+/** Account / key-value table, muted first column, zebra. */
 function kvTable(rows: [string, string][]): Table {
   return new Table({
     width: { size: 100, type: WidthType.PERCENTAGE },
-    borders: { top: HAIR, bottom: HAIR, left: NO_BORDER, right: NO_BORDER, insideHorizontal: HAIR, insideVertical: NO_BORDER },
+    borders: { top: HAIR, bottom: HAIR, left: NONE, right: NONE, insideHorizontal: HAIR, insideVertical: NONE },
     rows: rows.map(
       ([k, v], idx) =>
         new TableRow({
           children: [
-            textCell(k, { color: MUTED, width: 35, fill: idx % 2 ? SURFACE : undefined }),
-            textCell(v, { width: 65, fill: idx % 2 ? SURFACE : undefined }),
+            cell([new Paragraph({ children: [run(k, { color: MUTED, size: 19 })] })], { width: 35, fill: idx % 2 ? SURFACE : undefined }),
+            cell([new Paragraph({ children: [run(v, { size: 19 })] })], { width: 65, fill: idx % 2 ? SURFACE : undefined }),
           ],
         }),
     ),
   });
 }
 
-// ── Section builders ────────────────────────────────────────────────────────
+// ── Stage card ──────────────────────────────────────────────────────────────
 function stageBlocks(s: FeeStage): (Paragraph | Table)[] {
   const out: (Paragraph | Table)[] = [];
   out.push(
     new Paragraph({
-      spacing: { before: 200, after: 80 },
+      spacing: { before: 200, after: 100 },
       shading: { fill: INK },
+      border: { bottom: { style: BorderStyle.SINGLE, size: B.head, color: GREEN, space: 1 } },
       keepNext: true,
-      children: [new TextRun({ text: s.name, font: FONT, color: WHITE, size: 20, bold: true })],
+      children: [run(s.name, { color: WHITE, size: 20, bold: true })],
     }),
   );
   for (const d of s.description ?? []) out.push(para(d));
   if (s.deliverables?.length) {
-    out.push(new Paragraph({ spacing: { before: 60, after: 40 }, children: [new TextRun({ text: "Deliverables", font: FONT, color: INK, size: 19, bold: true })] }));
-    for (const d of s.deliverables) out.push(bullet(d));
+    out.push(new Paragraph({ spacing: { before: 60, after: 40 }, children: [run("Deliverables", { size: 19, bold: true })] }));
+    for (const d of s.deliverables) out.push(tick(d));
   }
   if (s.items?.length) out.push(feeTable(s.items));
   return out;
+}
+
+// ── Header / footer (shaded brand strip) ────────────────────────────────────
+function brandHeader(r: FeesReport): Header {
+  const logo = imageBytes("logo-light.png");
+  const { width: lw, height: lh } = pngSize(logo);
+  const h = 30;
+  const w = Math.round((h * lw) / lh);
+  return new Header({
+    children: [
+      new Table({
+        width: { size: 100, type: WidthType.PERCENTAGE },
+        borders: { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE },
+        rows: [
+          new TableRow({
+            children: [
+              cell(
+                [
+                  new Paragraph({
+                    tabStops: [{ type: TabStopType.RIGHT, position: mm(174) }],
+                    children: [
+                      new ImageRun({ type: "png", data: logo, transformation: { width: w, height: h } }),
+                      new TextRun({ text: `\t${r.project.name} · ${r.reference}`, font: FONT, color: MUTED, size: 14 }),
+                    ],
+                  }),
+                ],
+                { fill: BAND, borders: { top: NONE, left: NONE, right: NONE, bottom: { style: BorderStyle.SINGLE, size: B.rule, color: GREEN } } },
+              ),
+            ],
+          }),
+        ],
+      }),
+    ],
+  });
+}
+
+function brandFooter(): Footer {
+  return new Footer({
+    children: [
+      new Table({
+        width: { size: 100, type: WidthType.PERCENTAGE },
+        borders: { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE },
+        rows: [
+          new TableRow({
+            children: [
+              cell(
+                [
+                  new Paragraph({
+                    alignment: AlignmentType.CENTER,
+                    children: [
+                      run(practice.name, { color: GREEN, size: 14, bold: true }),
+                      run(`   ·   ${practice.email}   ·   ${practice.phone}   ·   ${practice.region}`, { color: MUTED, size: 14 }),
+                    ],
+                  }),
+                ],
+                { fill: BAND, borders: { bottom: NONE, left: NONE, right: NONE, top: { style: BorderStyle.SINGLE, size: B.rule, color: GREEN } } },
+              ),
+            ],
+          }),
+        ],
+      }),
+    ],
+  });
 }
 
 /** Build the .docx and return it as a Buffer. */
@@ -170,49 +284,51 @@ export async function feesReportToDocx(r: FeesReport): Promise<Buffer> {
 
   const body: (Paragraph | Table)[] = [];
 
-  // Title
-  body.push(
-    new Paragraph({
-      spacing: { after: 80 },
-      children: [new TextRun({ text: r.title ?? "Fee Proposal", font: FONT, color: INK, size: 40, bold: true })],
-    }),
-  );
+  // Title — "Fee Proposal" green, remainder ink (matches the PDF accent).
+  const title = r.title ?? "Fee Proposal";
+  const m = title.match(/fee proposal/i);
+  const titleRuns = m
+    ? [run(m[0], { color: GREEN, size: 44, bold: true }), run(title.slice(m.index! + m[0].length), { size: 44, bold: true })]
+    : [run(title, { size: 44, bold: true })];
+  body.push(new Paragraph({ spacing: { after: 120 }, children: titleRuns }));
 
-  // Meta
+  // Meta — 3 columns, green label over value.
+  const metaCol = (label: string, value: string): TableCell =>
+    cell([new Paragraph({ children: [run(label, { color: GREEN, size: 14, bold: true, caps: true, spacing: 30 })] }), new Paragraph({ children: [run(value, { size: 18 })] })], {
+      width: 33,
+      borders: { top: NONE, bottom: NONE, left: NONE, right: NONE },
+    });
+  const metaCells = [metaCol("Date", r.date), metaCol("Reference", r.reference)];
+  if (r.preparedBy) metaCells.push(metaCol("Prepared by", r.preparedBy));
   body.push(
-    new Paragraph({
-      spacing: { after: 160 },
-      children: [
-        new TextRun({ text: "Date ", font: FONT, color: GREEN, size: 15, bold: true }),
-        new TextRun({ text: `${r.date}     `, font: FONT, color: MUTED, size: 18 }),
-        new TextRun({ text: "Reference ", font: FONT, color: GREEN, size: 15, bold: true }),
-        new TextRun({ text: `${r.reference}     `, font: FONT, color: MUTED, size: 18 }),
-        ...(r.preparedBy ? [new TextRun({ text: "Prepared by ", font: FONT, color: GREEN, size: 15, bold: true }), new TextRun({ text: r.preparedBy, font: FONT, color: MUTED, size: 18 })] : []),
-      ],
-    }),
+    new Table({ width: { size: 100, type: WidthType.PERCENTAGE }, borders: { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE }, rows: [new TableRow({ children: metaCells })] }),
   );
+  body.push(para("", { after: 120 }));
 
-  // Addressee
+  // Addressee — aligned key column.
   const addr = r.addressee;
-  body.push(para(`To: ${addr.client}`, { after: 20 }));
-  if (addr.careOf) body.push(para(`C/o: ${addr.careOf}`, { after: 20 }));
-  for (const l of addr.address ?? []) body.push(para(l, { color: MUTED, after: 20 }));
-  if (addr.attention) body.push(para(`Attention: ${addr.attention}`, { after: 160 }));
+  const addrLine = (k: string, v: string): Paragraph =>
+    new Paragraph({ tabStops: [{ type: TabStopType.LEFT, position: mm(18) }], spacing: { after: 20 }, children: [run(k, { color: MUTED, size: 19 }), run(`\t${v}`, { size: 19 })] });
+  body.push(addrLine("To", addr.client));
+  if (addr.careOf) body.push(addrLine("C/o", addr.careOf));
+  for (const l of addr.address ?? []) body.push(new Paragraph({ indent: { left: mm(18) }, spacing: { after: 20 }, children: [run(l, { size: 19 })] }));
+  if (addr.attention) body.push(addrLine("Attention", addr.attention));
+  body.push(para("", { after: 120 }));
 
-  // Project highlight (1-cell shaded table with green left border)
+  // Project highlight — surface box, green left border.
   body.push(
     new Table({
       width: { size: 100, type: WidthType.PERCENTAGE },
-      borders: { top: NO_BORDER, bottom: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER, left: { style: BorderStyle.SINGLE, size: 18, color: GREEN } },
+      borders: { top: NONE, bottom: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE, left: { style: BorderStyle.SINGLE, size: B.left, color: GREEN } },
       rows: [
         new TableRow({
           children: [
             cell(
               [
-                new Paragraph({ children: [new TextRun({ text: r.project.name, font: FONT, color: INK, size: 22, bold: true })] }),
-                new Paragraph({ children: [new TextRun({ text: r.project.siteAddress, font: FONT, color: INK, size: 19 })] }),
-                ...(r.project.planNo ? [new Paragraph({ children: [new TextRun({ text: r.project.planNo, font: FONT, color: INK, size: 19 })] })] : []),
-                new Paragraph({ children: [new TextRun({ text: `Job No. ${r.project.jobNo}`, font: FONT, color: INK, size: 19 })] }),
+                new Paragraph({ children: [run(r.project.name, { size: 22, bold: true })] }),
+                new Paragraph({ children: [run(r.project.siteAddress, { size: 19 })] }),
+                ...(r.project.planNo ? [new Paragraph({ children: [run(r.project.planNo, { size: 19 })] })] : []),
+                new Paragraph({ children: [run(`Job No. ${r.project.jobNo}`, { size: 19 })] }),
               ],
               { fill: SURFACE },
             ),
@@ -221,13 +337,13 @@ export async function feesReportToDocx(r: FeesReport): Promise<Buffer> {
       ],
     }),
   );
-  body.push(para("", { after: 80 }));
+  body.push(para("", { after: 120 }));
 
   for (const p of r.intro ?? []) body.push(para(p));
 
   if (r.scopeSummary?.length) {
     body.push(h2("Scope of Works"));
-    body.push(para("We understand that the scope of our work is as follows:", { color: MUTED, size: 18 }));
+    body.push(leadSm("We understand that the scope of our work is as follows:"));
     for (const s of r.scopeSummary) body.push(bullet(s));
   }
 
@@ -235,26 +351,27 @@ export async function feesReportToDocx(r: FeesReport): Promise<Buffer> {
     body.push(h2("Scope & Fees"));
     for (const s of r.stages) body.push(...stageBlocks(s));
     if (subtotal > 0) {
-      body.push(para("", { after: 40 }));
-      body.push(kvTable([["Subtotal (ex GST)", aud(subtotal)], [`GST (${(gstRate * 100).toFixed(0)}%)`, aud(gst)], ["Total (inc GST)", aud(total)]]));
+      body.push(para("", { after: 60 }));
+      body.push(totalsTable(subtotal, gst, gstRate, total));
     } else {
       body.push(para("Fees are quoted exclusive of GST. GST will be added.", { italics: true, color: MUTED }));
     }
-    if (r.validityDays) body.push(para(`This proposal is valid for ${r.validityDays} days.`, { color: MUTED, size: 18 }));
+    if (r.validityDays) body.push(leadSm(`This proposal is valid for ${r.validityDays} days.`));
   } else if (r.items?.length) {
     body.push(h2("Fees"));
     body.push(feeTable(r.items));
+    if (subtotal > 0) body.push(totalsTable(subtotal, gst, gstRate, total));
   }
 
   if (r.hourlyRates?.length) {
     body.push(h2("Hourly Rates"));
-    body.push(para("Our current hourly rates (excluding GST):", { color: MUTED, size: 18 }));
-    body.push(kvTable(r.hourlyRates.map((rr) => [rr.role, typeof rr.rate === "number" ? aud(rr.rate) : rr.rate])));
+    body.push(leadSm("Our current hourly rates (excluding GST):"));
+    body.push(ratesTable(r.hourlyRates.map((rr) => [rr.role, typeof rr.rate === "number" ? aud(rr.rate) : rr.rate])));
   }
 
   if (r.exclusions?.length) {
     body.push(h2("Exclusions"));
-    body.push(para("The following items are not included in this fee proposal:", { color: MUTED, size: 18 }));
+    body.push(leadSm("The following items are not included in this fee proposal:"));
     for (const e of r.exclusions) body.push(bullet(e));
   }
 
@@ -267,19 +384,25 @@ export async function feesReportToDocx(r: FeesReport): Promise<Buffer> {
   body.push(h2("Acceptance of Proposal"));
   body.push(para(`Please sign and return this page so that we can commence work for you.${r.validityDays ? ` This fee proposal is valid for acceptance within ${r.validityDays} days.` : ""} By signing below you authorise ${practice.name} to proceed with the work as detailed, for the fee outlined above.`));
   if (r.signatory) {
-    body.push(para("Yours faithfully,", { after: 240 }));
+    body.push(para("Yours faithfully,", { after: 280 }));
     body.push(para(r.signatory.name, { bold: true, size: 22, after: 20 }));
     if (r.signatory.qualifications) body.push(para(r.signatory.qualifications, { color: MUTED, size: 17, after: 20 }));
     if (r.signatory.title) body.push(para(r.signatory.title, { color: MUTED, size: 17, after: 20 }));
     if (r.signatory.registrationNo) body.push(para(`DBP / PE No.: ${r.signatory.registrationNo}`, { color: MUTED, size: 17, after: 20 }));
     body.push(para(`For and on behalf of ${practice.name}`, { color: MUTED, size: 17 }));
   }
-  body.push(para("Received and accepted, for the Client", { bold: true, after: 360 }));
+  body.push(para("Received and accepted, for the Client", { bold: true, after: 400 }));
+  const signCell = (label: string): TableCell =>
+    cell([new Paragraph({ border: { top: { style: BorderStyle.SINGLE, size: B.sign, color: INK, space: 2 } }, children: [run(label, { color: MUTED, size: 17 })] })], {
+      width: 45,
+      borders: { top: NONE, bottom: NONE, left: NONE, right: NONE },
+    });
   body.push(
-    new Paragraph({
-      tabStops: [{ type: TabStopType.LEFT, position: mm(95) }],
-      border: { top: { style: BorderStyle.SINGLE, size: 6, color: INK, space: 2 } },
-      children: [new TextRun({ text: "Signed\tDate", font: FONT, color: MUTED, size: 17 })],
+    new Table({
+      width: { size: 100, type: WidthType.PERCENTAGE },
+      columnWidths: [mm(80), mm(18), mm(80)],
+      borders: { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE },
+      rows: [new TableRow({ children: [signCell("Signed"), cell([new Paragraph({})], { borders: { top: NONE, bottom: NONE, left: NONE, right: NONE } }), signCell("Date")] })],
     }),
   );
 
@@ -295,69 +418,39 @@ export async function feesReportToDocx(r: FeesReport): Promise<Buffer> {
     if (acct.length) body.push(kvTable(acct));
   }
 
-  // Terms (numbered manually, on a fresh page)
+  // ── Terms — own section, two columns, fresh page (matches the PDF) ─────────
+  const termsChildren: Paragraph[] = [];
   if (r.terms?.length) {
-    body.push(new Paragraph({ pageBreakBefore: true, children: [] }));
-    body.push(h2("Standard Terms & Conditions"));
-    r.terms.forEach((t, i) =>
-      body.push(
-        new Paragraph({
-          spacing: { after: 80 },
-          children: [new TextRun({ text: `${i + 1}.  ${t}`, font: FONT, color: MUTED, size: 16 })],
-        }),
-      ),
-    );
+    termsChildren.push(h2("Standard Terms & Conditions"));
+    r.terms.forEach((t, i) => termsChildren.push(new Paragraph({ spacing: { after: 80 }, children: [run(`${i + 1}.  ${t}`, { color: MUTED, size: 15 })] })));
   }
 
-  // ── Header / footer ─────────────────────────────────────────────────────
-  const logo = imageBytes("logo-light.png");
-  const { width: lw, height: lh } = pngSize(logo);
-  const logoH = 30;
-  const logoW = Math.round((logoH * lw) / lh);
+  const header = brandHeader(r);
+  const footer = brandFooter();
+  const pageProps = {
+    page: {
+      size: { width: mm(210), height: mm(297) },
+      margin: { top: mm(22), bottom: mm(16), left: mm(16), right: mm(16), header: mm(8), footer: mm(6) },
+    },
+  };
 
-  const header = new Header({
-    children: [
-      new Paragraph({
-        border: { bottom: { style: BorderStyle.SINGLE, size: 8, color: GREEN, space: 4 } },
-        tabStops: [{ type: TabStopType.RIGHT, position: mm(174) }],
-        children: [
-          new ImageRun({ type: "png", data: logo, transformation: { width: logoW, height: logoH } }),
-          new TextRun({ text: `\t${r.project.name} · ${r.reference}`, font: FONT, color: MUTED, size: 14 }),
-        ],
-      }),
-    ],
-  });
-
-  const footer = new Footer({
-    children: [
-      new Paragraph({
-        alignment: AlignmentType.CENTER,
-        border: { top: { style: BorderStyle.SINGLE, size: 6, color: GREEN, space: 4 } },
-        children: [
-          new TextRun({ text: practice.name, font: FONT, color: GREEN, size: 14, bold: true }),
-          new TextRun({ text: `   ·   ${practice.email}   ·   ${practice.phone}   ·   ${practice.region}`, font: FONT, color: MUTED, size: 14 }),
-        ],
-      }),
-    ],
-  });
+  const sections: ISectionOptions[] = [
+    { properties: pageProps, headers: { default: header }, footers: { default: footer }, children: body },
+  ];
+  if (termsChildren.length) {
+    sections.push({
+      properties: { ...pageProps, column: { count: 2, space: mm(8) } },
+      headers: { default: header },
+      footers: { default: footer },
+      children: termsChildren,
+    });
+  }
 
   const doc = new Document({
     creator: practice.name,
     title: r.title ?? "Fee Proposal",
     styles: { default: { document: { run: { font: FONT, color: INK } } } },
-    sections: [
-      {
-        properties: {
-          page: {
-            size: { width: mm(210), height: mm(297) },
-            margin: { top: mm(24), bottom: mm(20), left: mm(18), right: mm(18), header: mm(10), footer: mm(8) },
-          },
-        },
-        headers: { default: header },
-        footers: { default: footer },
-        children: body,
-      },
-    ],
+    sections,
   });
 
   return Packer.toBuffer(doc);
