@@ -70,3 +70,6 @@ the branded title-block frame. See [`docs/design-engine/PLAN.md`](docs/design-en
 for the roadmap and the two `ENHANCE-*.md` docs for where each side goes next.
 The longer-term idea (converting the engine into a SAAS product) is noted in
 those plans.
+
+## Todo
+- [ ] Standalone pages for capability

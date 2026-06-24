@@ -63,7 +63,7 @@ pages.push(`
   <img class="cover-logo" src="${logoLight}" alt="XNDR">
   <div class="cover-band">
     <div class="cover-kicker">Capability Statement</div>
-    <h1 class="cover-title">Remedial</h1>
+    <h1 class="cover-title">Remedial<br>Engineering</h1>
     <div class="cover-sub">Structural · Remedial · Project Management · New South Wales</div>
   </div>
 </section>`);
@@ -74,8 +74,8 @@ const toc: [string, string, string][] = [
   ["02", "How We Work With You", "04"],
   ["03", "One Team, Every Discipline", "05"],
   ["04", "What We Do", "06"],
-  ["", "Putting Buildings Right", "07"],
-  ["", "From Design to Done", "08"],
+  ["", "Restoring Buildings for Tomorrow", "07"],
+  ["", "From Concept to Completion", "08"],
   ["", "Built for Strata", "09"],
   ["05", "Where Buildings Fail", "10"],
   ["", "Water Finds a Way", "11"],
@@ -131,8 +131,9 @@ pages.push(`
 // 4 — How We Work With You
 const commitments: [string, string][] = [
   ["We listen first", "We get to know your building and the real problem before we recommend anything."],
+  ["We design for value", "We listen to what owners are dealing with and design the most cost-effective, compliant fix for it, not the most expensive one."],
   ["We keep it plain", "No jargon for its own sake. You get clear options and a straight recommendation."],
-  ["We check our own work", "Every report is reviewed by a second engineer before it reaches you."],
+  ["We check our own work", "Nothing leaves us until a second engineer has been over it."],
   ["We stay in reach", "You deal with the same people the whole way through, and we keep you in the loop."],
   ["We back what we say", "From the first inspection to the final sign-off, our advice is ours to stand behind."],
 ];
@@ -178,62 +179,62 @@ pages.push(`
   ${footer(6)}
 </section>`);
 
-// 7 — Putting Buildings Right (Remedial)
+// 7 — Restoring the Buildings of Today, for Tomorrow (Remedial)
 pages.push(`
 <section class="page content">
   <div class="imghead" style="${photo("photo-1581092160562-40aa08e78837", C.ink)}">
     <img class="head-logo" src="${logoLight}" alt="XNDR">
-    <div class="imghead-title"><span class="bar"></span><h2>Putting Buildings Right</h2></div>
+    <div class="imghead-title"><span class="bar"></span><h2>Restoring the Buildings<br>of Today, for Tomorrow</h2></div>
   </div>
   <div class="cols-3">
     <div class="col">
-      <p class="lead green">Remedial engineering is the work of finding out what has gone wrong in a building and putting it right.</p>
+      <p class="lead green">Most of our work is on buildings that already exist and are not behaving. Remedial engineering is how we find out why, and put it right.</p>
     </div>
     <div class="col">
-      <p>Existing buildings are our specialty. We chase the cause, not the symptom, because a patch over a hidden problem just means paying for the same repair twice.</p>
-      <p>We inspect, test where it is justified, and write a scope of works a builder can actually price and build to. Then we stay on through construction so what gets built matches what we designed.</p>
+      <p>Chasing the real cause is the whole point. A repair aimed at a symptom buys you a year or two. A repair aimed at the cause is the one that holds.</p>
+      <p>We inspect, investigate where it earns its keep, and write a scope a builder can price and build to. Then we stay on through construction, because a sound design still has to be built the way it was drawn.</p>
     </div>
     <div class="col">
       ${expertise("What this involves", [
-        "Condition assessments of buildings and structures",
-        "Site investigations and invasive testing",
-        "Concept and detailed remedial design",
-        "Specifications and scopes of work for tender",
-        "Running the tender and reviewing the bids",
-        "Inspections and quality checks on site",
-        "Due diligence and gap analysis reports",
+        "Inspecting and grading the condition of a building",
+        "Opening up the structure to find a hidden cause",
+        "Designing the repair, from first sketch to full detail",
+        "Writing a scope a builder can actually price",
+        "Sitting in on the tender and reading the bids with you",
+        "On-site checks while the work is built",
+        "Condition and pre-purchase reviews",
       ])}
     </div>
   </div>
   ${footer(7)}
 </section>`);
 
-// 8 — From Design to Done (Structural & PM)
+// 8 — From Concept to Completion (Structural & PM)
 pages.push(`
 <section class="page content plain">
-  <div class="sec-title"><span class="bar"></span><h2>From Design to Done</h2></div>
+  <div class="sec-title"><span class="bar"></span><h2>From Concept to Completion</h2></div>
   <div class="cols">
     <div class="col">
-      <p class="lead green">Structural advice you can build on, for new work and old.</p>
-      <p>From a single footing to a full assessment of an ageing structure, we design, certify, and investigate why something is not holding up the way it should.</p>
+      <p class="lead green">Good structural engineering is mostly invisible. You tend to notice it only when it is missing.</p>
+      <p>We design the structure for new builds and alterations, and we work out what is going on when an existing one starts to misbehave. Whether it is a single footing or a whole building, the job is the same: make sure every load has a sensible path to the ground, and prove it.</p>
       ${expertise("Structural work", [
-        "Assessment of existing structures",
-        "Design for new work and alterations",
+        "Checking whether an existing structure is up to the job",
+        "Design for new builds, alterations and additions",
         "Footings, slabs, steel and concrete",
         "Structural certification",
-        "Failure and defect investigation",
+        "Working out why something has failed",
       ])}
     </div>
     <div class="col">
-      <p class="lead green">We run remedial and construction projects from the first idea to the final handover.</p>
-      <p>Our project work keeps the program moving and the scope honest, so owners always know what they are paying for and why.</p>
+      <p class="lead green">Someone has to hold the whole job together. More often than not, that is us.</p>
+      <p>We take remedial and construction projects from the first site walk through to the final handover, keeping the program moving and the scope honest. Owners stay in the loop and always know what they are paying for and why.</p>
       ${expertise("Project work", [
-        "Planning and feasibility",
-        "Scope development and documentation",
-        "Tender management and assessment",
+        "Early planning and feasibility",
+        "Pulling the scope together and documenting it",
+        "Running the tender and comparing bids",
         "Contract administration and superintendent duties",
-        "Council and approval pathways",
-        "Commissioning and the defects period",
+        "Council and approvals",
+        "Handover, commissioning and the defects period",
       ])}
     </div>
   </div>
@@ -295,19 +296,19 @@ pages.push(
   defectPage({
     title: "Water Finds a Way",
     n: 11,
-    intro: "Waterproofing is the barrier that keeps water out of the structure. When it gives way, water gets in quietly and the damage builds before anyone notices.",
+    intro: "Almost every wet area and outdoor surface in a building leans on a membrane you never see. While it holds, nobody thinks about it. When it goes, the trouble usually surfaces a long way from where it started.",
     body: [
-      "Membranes protect wet areas, balconies, planter boxes, retaining walls, podium slabs, lift pits and roofs. A good system also drains water away instead of letting it sit.",
-      "By the time a stain shows up on a ceiling, water has usually been getting in for a while.",
+      "We see it on balconies, in bathrooms and laundries, under planter boxes, across podium decks and flat roofs, and down in lift pits. A membrane has two jobs, hold water out and move it somewhere safe, and both have to be working.",
+      "A stain on a ceiling is usually the last sign, not the first. By the time it appears, water has often been tracking through the slab for months.",
     ],
-    listTitle: "Signs it has failed",
-    list: ["Water staining or pooling", "Efflorescence, the white salt residue", "Damp that will not dry out", "Mould and a musty smell"],
+    listTitle: "What gives it away",
+    list: ["Blistered or drummy tiles on a balcony", "A fresh stain on the ceiling below", "A chalky white bloom on concrete or render", "Render or paint lifting and flaking off", "A deck that holds water after rain"],
     helpTitle: "How we sort it",
     help: [
-      "We inspect the affected areas, read any old drawings and past repairs, and where the source is not obvious we run targeted water testing to track it down.",
-      "Then we write a scope that fixes the cause, not just the mark it left behind.",
+      "We start with the affected areas and whatever history exists, old drawings, past repairs, earlier reports. When the entry point is not obvious, we flood-test and trace the water back to its source.",
+      "Only then do we write the scope. Fixing a membrane without finding the leak is exactly how a building ends up paying twice.",
     ],
-    did: "Water getting in is one of the most common and most costly defects reported across NSW strata buildings.",
+    did: "Water getting in is the defect we are called to most often in NSW strata, and the one most likely to be doing quiet damage long before it is reported.",
   }),
 );
 
@@ -316,17 +317,17 @@ pages.push(
   defectPage({
     title: "When Concrete Lets Go",
     n: 12,
-    intro: "Spalling is what happens when the face of the concrete breaks away and exposes the steel reinforcement inside.",
+    intro: "Reinforced concrete works because the concrete shields the steel inside it. Spalling is what you see once that protection breaks down.",
     body: [
-      "Once that steel starts to rust it swells, sometimes to several times its original size. The pressure cracks and pushes off the surrounding concrete, which lets in more water and makes the whole thing accelerate.",
-      "Ignored long enough, a rust stain turns into a structural repair.",
+      "When moisture reaches the reinforcement it corrodes and swells. The expanding steel pushes on the concrete around it until the surface cracks, lifts and breaks off, which exposes more steel and lets the whole thing feed itself.",
+      "It usually begins as a rust stain or a hairline crack. Left to run, it ends as a structural repair.",
     ],
-    listTitle: "What to watch for",
-    list: ["Concrete flaking or cracking", "Rust stains bleeding through", "Pieces that have come away", "Leaks showing up in roofs or walls"],
+    listTitle: "What gives it away",
+    list: ["Rust-coloured staining weeping from the concrete", "Cracks running in line with the bars beneath", "Hollow, drummy patches when tapped", "Lumps of cover concrete on the ground", "Reinforcement showing through and rusting"],
     helpTitle: "How we sort it",
     help: [
-      "We assess the affected areas, decide whether deeper investigation is needed, and work out how far the repair really goes.",
-      "From there we set a repair method, take the scope to tender and manage the works to the end.",
+      "We map the affected areas, decide whether we need to open things up to see the full extent, and confirm how deep the corrosion has gone.",
+      "From there we set the repair method, document the scope for pricing, and oversee the work so the fix actually lasts.",
     ],
   }),
 );
@@ -336,17 +337,17 @@ pages.push(
   defectPage({
     title: "Reading the Cracks",
     n: 13,
-    intro: "Every building moves. A crack appears when something cannot move with it.",
+    intro: "Cracks worry owners more than almost anything else. Most of the time the first job is simply working out whether a crack actually matters.",
     body: [
-      "A bit of cracking is normal, and we actually design concrete to crack within limits. The real question is always the same: is this crack structural or not.",
-      "Structural cracks can affect safety and durability and need to be dealt with. Non-structural cracks are usually cosmetic, but leave them open and they let in the water that corrodes the steel over time.",
+      "Buildings expand, shrink and settle, and concrete is expected to craze a little while it does. What we look for is the crack that means something more, a sign the structure is being asked to do something it was not built for.",
+      "Structural cracks can affect strength and durability and need attention. Cosmetic ones usually do not, but an open crack still lets water in, and water is what turns a cosmetic problem into a corrosion one.",
     ],
-    listTitle: "Types we see",
-    list: ["Drying shrinkage and crazing", "Restraint and thermal cracking", "Plastic shrinkage and settlement", "Movement and overload cracking", "Settlement cracking"],
+    listTitle: "What we work out",
+    list: ["Whether it is structural or only skin deep", "If it is stable or still opening up", "What the pattern says about the cause", "Whether water is already getting in through it", "What it will take to put right"],
     helpTitle: "How we sort it",
     help: [
-      "Only a site inspection by a qualified engineer can tell you which kind of crack you have. We record where it is, how wide and long, which way it runs and what it passes through.",
-      "Then we work out what it means for the structure and recommend the fix. The earlier a crack is dealt with, the cheaper it stays.",
+      "A crack can only really be judged in person, by an engineer who can see the whole picture. We record the detail, work out the cause, and tell you plainly whether it needs action now or watching over time.",
+      "Caught early, most cracks are cheap to deal with. Left open, they rarely stay that way.",
     ],
   }),
 );
@@ -357,20 +358,20 @@ pages.push(`
   <div class="sec-title"><span class="bar"></span><h2>Trouble Beneath the Surface</h2></div>
   <div class="cols">
     <div class="col">
-      <p class="lead green">A cladding job is almost never just about the cladding.</p>
-      <p>In our experience the real trouble sits behind it, in how the wall was put together. Cladding does a structural job and a weatherproofing job, and when we open up a failure we nearly always find problems in the substrate and the detailing too.</p>
-      ${expertise("What we find behind cladding", [
-        "Not enough structural capacity",
-        "Weatherproofing and flashing failures",
-        "Combustible materials",
-        "Concrete spalling and substrate damage",
-        "Failures where cladding meets the facade",
+      <p class="lead green">When someone calls about cladding, the conversation is rarely just about the panels.</p>
+      <p>The panels are the part you can see. In our experience the real issues sit in the wall behind them, in how it was framed, flashed and sealed. Cladding carries load and keeps weather out, so when we open up a failure we expect to find more than one thing wrong.</p>
+      ${expertise("What we usually uncover", [
+        "Framing or fixings never sized for the load",
+        "Flashings and seals that let the weather in",
+        "Combustible material that has to be removed",
+        "Corroded or spalling substrate behind the sheeting",
+        "Open junctions at windows, balconies and parapets",
       ])}
     </div>
     <div class="col">
-      <p class="lead green">Magnesite is the problem hiding under older floors.</p>
-      <p>It was laid through the 1960s and 1970s to level slabs and quieten the floors between units. Magnesite carries a lot of chloride, and the moment it gets wet that chloride soaks into the slab and goes straight for the steel.</p>
-      <p>The corrosion is slow and out of sight, so by the time the tiles sound hollow or the floor feels uneven, the damage is usually well along. It tends to turn up near balcony doors and wet areas where the waterproofing has already failed. It is not something to leave alone.</p>
+      <p class="lead green">Magnesite is one we go looking for in older walk-ups, because owners almost never know it is there.</p>
+      <p>If the block went up in the 1960s or 1970s, the odds are good the floors were topped with it. It did its job on the day, but it is loaded with chloride, and chloride is the one thing reinforced concrete cannot live with. Once water reaches it, and in strata it always does eventually, the chloride is carried down to the steel and the slab corrodes from the inside.</p>
+      <p>We tend to catch it at balcony thresholds and the edges of wet areas, right where the waterproofing failed first. By the time the tiles sound hollow or the floor stops sitting flat, the repair is a real one, so it pays to know early.</p>
     </div>
   </div>
   ${footer(14)}
@@ -382,16 +383,16 @@ pages.push(`
   <div class="sec-title"><span class="bar"></span><h2>Walls Under Pressure</h2></div>
   <div class="cols">
     <div class="col">
-      <p class="lead green">Brickwork is strong when it is squeezed and weak when it is pulled, so over time it cracks and wears.</p>
-      <p>Brick and block show up in loadbearing walls, facades, retaining walls and outbuildings. They are tough and fire resistant, but they do not like movement, and they do not like the salts that travel in air and groundwater.</p>
-      ${expertise("Common masonry faults", ["Settlement, restraint and thermal cracking", "Water getting in", "Fretting and delamination", "Efflorescence"])}
-      <p class="note">We fix these with repointing, crack stitching, and pinning or rebuilding.</p>
+      <p class="lead green">Most of the brickwork we are called to has simply been left to weather for too long.</p>
+      <p>Brick and block carry weight well but pull apart under tension, so given enough time and movement the mortar gives up and the face starts to break down. Salt does the slow damage, drawn out of the ground and the air, and it is worst on the older walls nobody has touched in years.</p>
+      ${expertise("What we usually find", ["Stepped cracking through the mortar joints", "Mortar gone soft or washed out", "Bricks fretting and crumbling at the face", "Bowing or bulging in an older wall", "A white salt bloom across the brickwork"])}
+      <p class="note">Depending on what we find, that means raking out and repointing, stitching the cracks, or taking a section down and rebuilding it.</p>
     </div>
     <div class="col">
-      <p class="lead green">A retaining wall holds back soil between two levels, and that is real load.</p>
-      <p>When the drainage stops working, or the wall was never built for the job it is doing, you get movement, leaning and sometimes collapse. Boundary walls are often a shared responsibility, which is exactly why early advice pays off.</p>
-      ${expertise("Where they go wrong", ["Built without adequate design", "Water pressure from blocked drainage", "Tree roots and growth"])}
-      <p class="note">We fix these with back-of-wall drainage, strengthening, deloading, or rebuilding to a wall that complies.</p>
+      <p class="lead green">A retaining wall usually gets attention only once it has started to move, and by then the signs have been there a while.</p>
+      <p>It is holding back a bank of soil and the water sitting in it, which is a genuine structural load. Two things undo them: drainage that has silted up so water builds behind the wall, and a wall that was put in by eye rather than designed. A shared boundary wall brings a split bill on top, which makes putting it off even less appealing.</p>
+      ${expertise("Signs it is failing", ["Leaning, bulging or going out of plumb", "Cracking stepping through the blocks or stem", "Damp ground or water seeping at the base", "Soil or paving dropping away behind it"])}
+      <p class="note">The fix usually comes down to restoring drainage behind the wall, easing the load off it, or rebuilding to a design that stacks up.</p>
     </div>
   </div>
   ${footer(15)}
@@ -399,11 +400,11 @@ pages.push(`
 
 // 16 — Why Bring Us in Early (Benefits)
 const benefits: [string, string][] = [
-  ["Advice that is actually independent", "We work for the building and its owners, never the contractor, so the advice you get is honest."],
-  ["We fix the cause", "Treating the root of a defect means a repair that lasts, not one you pay for again next year."],
-  ["Clear priorities", "We tell you what has to happen now and what can wait, and we say why."],
-  ["Records you can rely on", "Clear, honest documentation that keeps its value if a question or dispute comes up later."],
-  ["Value over the long run", "Maintenance planning, inspections and repair advice that protect the building for years, not months."],
+  ["You hear it straight", "We work for the building, not the builder, so the advice is not bent to suit whoever ends up doing the job."],
+  ["The repair is sized to the real cause", "We spend the time up front to find what is actually driving the defect, so the scope fixes it instead of chasing it."],
+  ["You know what to spend, and when", "We rank the work so the committee can fund what is urgent now and plan the rest, rather than reacting to the next failure."],
+  ["It is all on the record", "If the building is later sold, insured or argued over, you have clear documentation of what was wrong and what was done."],
+  ["We are still here afterwards", "We can set up the inspections and maintenance that keep the small things small."],
 ];
 pages.push(`
 <section class="page content">
@@ -411,7 +412,7 @@ pages.push(`
     <img class="head-logo" src="${logoLight}" alt="XNDR">
     <div class="imghead-title"><span class="bar"></span><h2>Why Bring Us<br>in Early</h2></div>
   </div>
-  <p class="lead green tight">The earlier you bring an engineer in, the more time, money and stress you save. That holds for owners, committees and strata managers alike.</p>
+  <p class="lead green tight">Calling an engineer in early is almost always the cheaper road. It is also the difference between fixing a problem once and managing it for years.</p>
   <div class="benefits">
     ${benefits.map(([h, t]) => `<div class="ben"><div class="ben-h">${esc(h)}</div><div class="ben-t">${esc(t)}</div></div>`).join("")}
   </div>
@@ -562,6 +563,6 @@ const html = `<!doctype html>
 ${pages.join("\n")}
 </body></html>`;
 
-const out = resolve(DESIGNS_DIR, "capability-statement-remedial.pdf");
+const out = resolve(DESIGNS_DIR, "capability-statement-remedial-v4.pdf");
 await renderHtmlToPdf(html, out);
 console.log(`✓ Capability Statement (Remedial) → ${out}`);

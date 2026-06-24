@@ -63,14 +63,18 @@ commit/push to `design-engine`. Site work → `master`. No merging between them.
 - **Drawing sheet** (branded A3 frame, light/dark): `templates/drawing-sheet.ts`.
 - **`npm run template`** renders blank `[ … ]` templates (both types, both themes).
 - Brand single-source: `engine/src/brand.ts` (palette + `getTheme()` light/dark).
-- **Capability Statement, Remedial (ad hoc one-off).**
+- **Capability Statement, Remedial (ad hoc one-off) — done, at v4.**
   `engine/src/oneoff/capability-remedial.ts` → run `npx tsx src/oneoff/capability-remedial.ts`,
-  output `designs/capability-statement-remedial.pdf` (17pp A4, XNDR-branded,
-  original copy + XNDR's own section headings, Unsplash photos with brand
-  fallbacks). The user may want more refinements (e.g. swap the "Putting
-  Buildings Right" header photo; add real defect photos). Reference example that
-  inspired the structure: `designs/reference/Capability Statement_Remedial_2025_QLD.pdf`
-  (git-ignored). Keep it XNDR's own — no mention of any other firm.
+  output `designs/capability-statement-remedial-v4.pdf` (17pp A4, XNDR-branded,
+  fully original copy + XNDR's own section headings, Unsplash photos with brand
+  fallbacks). Several refinement rounds done (deep reword so it does not track the
+  reference; cover "Remedial Engineering"; a "We design for value" commitment;
+  page-7 heading "Restoring the Buildings of Today, for Tomorrow"; page-8 "From
+  Concept to Completion" humanised). Reference that inspired the structure:
+  `designs/reference/Capability Statement_Remedial_2025_QLD.pdf` (git-ignored).
+  **Rule: keep it XNDR's own — no mention of any other firm, original wording.**
+  Still-open polish: the page-7 photo is a product-design desk shot (swap for a
+  building-inspection / concrete-repair image).
 - **On `master` (site):** the Testimonials section is hidden (`app/page.tsx`) and
   its nav link removed (`lib/content.ts`). Done + pushed.
 
@@ -81,9 +85,21 @@ commit/push to `design-engine`. Site work → `master`. No merging between them.
 - Word layout-table borders use `BorderStyle.NIL` (not NONE) so they don't paint
   stray boxes. Word docs keep a white page; only the bands go dark in dark mode.
 
-**Possible next work** (pick with the user): refine the capability statement;
-build a capability statement for other disciplines (structural / PM); or start the
-deeper engine phases in the roadmaps:
+**NEXT TASK — Waterproofing capability statement.** Build a new XNDR capability
+document for **Waterproofing**, the same kind of work as the Remedial one. The
+user will drop sample(s) in the **repo root** (like the remedial reference was
+`Capability Statement_Remedial_2025_QLD.pdf`); read them first for structure and
+the topics to cover, then move them into `designs/reference/` (git-ignored) so
+they don't get committed. Reuse `capability-remedial.ts` as the template/starting
+point — copy it to `engine/src/oneoff/capability-waterproofing.ts`, keep the same
+XNDR design system and helpers, and write fresh waterproofing-specific copy.
+**Same rules as remedial:** fully original wording in XNDR's plain voice (no em
+dashes, no AI filler), XNDR's own section headings, no mention of any other firm,
+Unsplash photos with brand fallbacks, output to git-ignored `designs/` (version
+the filename, e.g. `capability-statement-waterproofing-v1.pdf`). Confirm scope
+with the user once the samples are in.
+
+Later / lower priority — deeper engine phases in the roadmaps:
 - [`docs/design-engine/ENHANCE-fee-docs.md`](design-engine/ENHANCE-fee-docs.md) —
   e.g. extract `computeTotals()`, then a content/boilerplate library.
 - [`docs/design-engine/ENHANCE-design-docs.md`](design-engine/ENHANCE-design-docs.md) —
