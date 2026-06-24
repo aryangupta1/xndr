@@ -63,18 +63,38 @@ commit/push to `design-engine`. Site work → `master`. No merging between them.
 - **Drawing sheet** (branded A3 frame, light/dark): `templates/drawing-sheet.ts`.
 - **`npm run template`** renders blank `[ … ]` templates (both types, both themes).
 - Brand single-source: `engine/src/brand.ts` (palette + `getTheme()` light/dark).
-- **Capability Statement, Remedial (ad hoc one-off) — done, at v4.**
+- **Capability Statement, Remedial (ad hoc one-off) — done, at v6.**
   `engine/src/oneoff/capability-remedial.ts` → run `npx tsx src/oneoff/capability-remedial.ts`,
-  output `designs/capability-statement-remedial-v4.pdf` (17pp A4, XNDR-branded,
+  output `designs/capability-statement-remedial-v6.pdf` (17pp A4, XNDR-branded,
   fully original copy + XNDR's own section headings, Unsplash photos with brand
   fallbacks). Several refinement rounds done (deep reword so it does not track the
-  reference; cover "Remedial Engineering"; a "We design for value" commitment;
-  page-7 heading "Restoring the Buildings of Today, for Tomorrow"; page-8 "From
-  Concept to Completion" humanised). Reference that inspired the structure:
+  reference; a "We design for value" commitment; page-7 heading "Restoring the
+  Buildings of Today, for Tomorrow"; page-8 "From Concept to Completion"). v5 set
+  the cover title to "Structural · Remedial · Project Management" (middle dots,
+  fitted 34pt) with subtitle "New South Wales, Australia". v6 reworked the contact
+  card: personal name removed, left card now "Director" with E/M, and a full-width
+  one-line credentials strip under both cards (BEng/MEng/DBPA reg numbers).
+  Reference that inspired the structure:
   `designs/reference/Capability Statement_Remedial_2025_QLD.pdf` (git-ignored).
   **Rule: keep it XNDR's own — no mention of any other firm, original wording.**
   Still-open polish: the page-7 photo is a product-design desk shot (swap for a
   building-inspection / concrete-repair image).
+- **Capability Statement, Waterproofing (ad hoc one-off) — done, at v3.**
+  `engine/src/oneoff/capability-waterproofing.ts` → run
+  `npx tsx src/oneoff/capability-waterproofing.ts`, output
+  `designs/capability-statement-waterproofing-v3.pdf` (16pp A4). Same XNDR design
+  system/helpers as the remedial one, fully original waterproofing copy and its own
+  section headings (no em dashes, no other firm named). Sections: who we are / how
+  we go about it / systems we specify / a custom building-section SVG "Where Water
+  Has to Stay Out" (8 numbered zones + legend) / roofs / balconies-podiums-wet
+  areas / below ground / three failure pages / why do it properly / contact. Same
+  "Director" contact card + credentials strip as remedial v6. Built from three
+  reference sources now in `designs/reference/` (git-ignored):
+  `waterpoofing-resources.txt` (two competitor URLs) and `waterproofing-resource3.png`
+  (a "systems we install" building diagram, redrawn from scratch as the page-7 SVG).
+  Still-open polish: the page-8 (Roofs) photo is a desk/drawings shot, swap for a
+  real rooftop/membrane image; the building diagram is deliberately simple and
+  could be made more detailed if wanted.
 - **On `master` (site):** the Testimonials section is hidden (`app/page.tsx`) and
   its nav link removed (`lib/content.ts`). Done + pushed.
 
@@ -85,19 +105,13 @@ commit/push to `design-engine`. Site work → `master`. No merging between them.
 - Word layout-table borders use `BorderStyle.NIL` (not NONE) so they don't paint
   stray boxes. Word docs keep a white page; only the bands go dark in dark mode.
 
-**NEXT TASK — Waterproofing capability statement.** Build a new XNDR capability
-document for **Waterproofing**, the same kind of work as the Remedial one. The
-user will drop sample(s) in the **repo root** (like the remedial reference was
-`Capability Statement_Remedial_2025_QLD.pdf`); read them first for structure and
-the topics to cover, then move them into `designs/reference/` (git-ignored) so
-they don't get committed. Reuse `capability-remedial.ts` as the template/starting
-point — copy it to `engine/src/oneoff/capability-waterproofing.ts`, keep the same
-XNDR design system and helpers, and write fresh waterproofing-specific copy.
-**Same rules as remedial:** fully original wording in XNDR's plain voice (no em
-dashes, no AI filler), XNDR's own section headings, no mention of any other firm,
-Unsplash photos with brand fallbacks, output to git-ignored `designs/` (version
-the filename, e.g. `capability-statement-waterproofing-v1.pdf`). Confirm scope
-with the user once the samples are in.
+**NEXT TASK — ask the user.** Both capability statements (Remedial v6,
+Waterproofing v3) are done and committed. No specific next task is queued. Likely
+follow-ups if asked: swap the two flagged placeholder photos (remedial p7,
+waterproofing p8) for building/roof imagery; enrich the waterproofing page-7
+building diagram; or fold the real practice details (ABN, DBP/PE numbers,
+insurance) in once provided — note the credentials strip now hardcodes
+PRE0002167 / DEP0003540 on both contact pages.
 
 Later / lower priority — deeper engine phases in the roadmaps:
 - [`docs/design-engine/ENHANCE-fee-docs.md`](design-engine/ENHANCE-fee-docs.md) —

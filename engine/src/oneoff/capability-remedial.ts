@@ -63,8 +63,8 @@ pages.push(`
   <img class="cover-logo" src="${logoLight}" alt="XNDR">
   <div class="cover-band">
     <div class="cover-kicker">Capability Statement</div>
-    <h1 class="cover-title">Remedial<br>Engineering</h1>
-    <div class="cover-sub">Structural · Remedial · Project Management · New South Wales</div>
+    <h1 class="cover-title">Structural · Remedial ·<br>Project Management</h1>
+    <div class="cover-sub">New South Wales, Australia</div>
   </div>
 </section>`);
 
@@ -425,19 +425,21 @@ pages.push(`
   <div class="contact-photo" style="${photo("photo-1431576901776-e539bd916ba2", C.ink)}"></div>
   <img class="contact-logo" src="${logoLight}" alt="XNDR">
   <div class="contact-band"><span class="bar"></span><h1>Start the Conversation</h1></div>
-  <div class="contact-cards">
-    <div class="ccard">
-      <div class="cc-name">Rinay Singh</div>
-      <div class="cc-role">Senior Remedial Engineer</div>
-      <div class="cc-line">E&nbsp;&nbsp;${esc(practice.email)}</div>
-      <div class="cc-line">M&nbsp;&nbsp;${esc(practice.phone)}</div>
+  <div class="contact-info">
+    <div class="contact-cards">
+      <div class="ccard">
+        <div class="cc-name">Director</div>
+        <div class="cc-line">E&nbsp;&nbsp;${esc(practice.email)}</div>
+        <div class="cc-line">M&nbsp;&nbsp;${esc(practice.phone)}</div>
+      </div>
+      <div class="ccard">
+        <div class="cc-name">${esc(practice.name)}</div>
+        <div class="cc-role">${esc(practice.tagline)}</div>
+        <div class="cc-line">${esc(practice.region)}</div>
+        <div class="cc-line">${WEB}</div>
+      </div>
     </div>
-    <div class="ccard">
-      <div class="cc-name">${esc(practice.name)}</div>
-      <div class="cc-role">${esc(practice.tagline)}</div>
-      <div class="cc-line">${esc(practice.region)}</div>
-      <div class="cc-line">${WEB}</div>
-    </div>
+    <div class="cc-creds">BEng (Hons), MEng (Structural), DBPA Professional Engineer (PRE0002167), Design Practitioner (DEP0003540)</div>
   </div>
 </section>`);
 
@@ -471,7 +473,7 @@ const html = `<!doctype html>
   .cover-band { position: absolute; left: 0; top: 92mm; padding: 8mm 16mm; }
   .cover-band::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2mm; background: ${C.green}; }
   .cover-kicker { color: #fff; font-size: 20pt; font-weight: 700; opacity: 0.92; }
-  .cover-title { color: ${C.greenBright}; font-size: 52pt; font-weight: 900; margin: 1mm 0 4mm; }
+  .cover-title { color: ${C.greenBright}; font-size: 34pt; font-weight: 900; line-height: 1.08; margin: 2mm 0 4mm; }
   .cover-sub { color: ${C.text}; font-size: 9.5pt; letter-spacing: 0.06em; opacity: 0.85; }
 
   /* Contents */
@@ -554,8 +556,10 @@ const html = `<!doctype html>
   .contact-band { position: absolute; left: 0; top: 64mm; padding-left: 16mm; }
   .contact-band h1 { display: inline; color: #fff; font-size: 34pt; font-weight: 900; }
   .contact-band .bar { width: 3mm; height: 1.05em; }
-  .contact-cards { position: absolute; top: 92mm; left: 16mm; right: 16mm; display: flex; gap: 14mm; }
-  .cc-name { color: #fff; font-size: 16pt; font-weight: 800; }
+  .contact-info { position: absolute; top: 90mm; left: 16mm; right: 16mm; }
+  .contact-cards { display: flex; gap: 14mm; }
+  .cc-creds { margin-top: 7mm; color: ${C.greenBright}; font-size: 8.5pt; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap; }
+  .cc-name { color: #fff; font-size: 16pt; font-weight: 800; margin-bottom: 2.5mm; }
   .cc-role { color: ${C.greenBright}; font-size: 10pt; margin: 1.5mm 0 4mm; font-weight: 600; }
   .cc-line { color: ${C.text}; font-size: 10.5pt; line-height: 1.7; }
 </style></head>
@@ -563,6 +567,6 @@ const html = `<!doctype html>
 ${pages.join("\n")}
 </body></html>`;
 
-const out = resolve(DESIGNS_DIR, "capability-statement-remedial-v4.pdf");
+const out = resolve(DESIGNS_DIR, "capability-statement-remedial-v6.pdf");
 await renderHtmlToPdf(html, out);
 console.log(`✓ Capability Statement (Remedial) → ${out}`);
