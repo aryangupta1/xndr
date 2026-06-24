@@ -425,21 +425,23 @@ pages.push(`
   <div class="contact-photo" style="${photo("photo-1431576901776-e539bd916ba2", C.ink)}"></div>
   <img class="contact-logo" src="${logoLight}" alt="XNDR">
   <div class="contact-band"><span class="bar"></span><h1>Start the Conversation</h1></div>
-  <div class="contact-info">
-    <div class="contact-cards">
-      <div class="ccard">
-        <div class="cc-name">Director</div>
-        <div class="cc-line">E&nbsp;&nbsp;${esc(practice.email)}</div>
-        <div class="cc-line">M&nbsp;&nbsp;${esc(practice.phone)}</div>
+  <div class="contact-cards">
+    <div class="ccard person">
+      <div class="cc-name">Rinay Singh</div>
+      <div class="cc-role">Director</div>
+      <div class="cc-quals">
+        <div>B.Eng (Hons), M.Eng (Structural), MIEAust</div>
+        <div>DBPA Professional Engineer (PRE0002167), Design Practitioner (DEP0003540)</div>
       </div>
-      <div class="ccard">
-        <div class="cc-name">${esc(practice.name)}</div>
-        <div class="cc-role">${esc(practice.tagline)}</div>
-        <div class="cc-line">${esc(practice.region)}</div>
-        <div class="cc-line">${WEB}</div>
-      </div>
+      <div class="cc-line">E&nbsp;&nbsp;${esc(practice.email)}</div>
+      <div class="cc-line">M&nbsp;&nbsp;${esc(practice.phone)}</div>
     </div>
-    <div class="cc-creds">BEng (Hons), MEng (Structural), DBPA Professional Engineer (PRE0002167), Design Practitioner (DEP0003540)</div>
+    <div class="ccard practice">
+      <div class="cc-name">${esc(practice.name)}</div>
+      <div class="cc-role">${esc(practice.tagline)}</div>
+      <div class="cc-line">${esc(practice.region)}</div>
+      <div class="cc-line">${WEB}</div>
+    </div>
   </div>
 </section>`);
 
@@ -556,17 +558,19 @@ const html = `<!doctype html>
   .contact-band { position: absolute; left: 0; top: 64mm; padding-left: 16mm; }
   .contact-band h1 { display: inline; color: #fff; font-size: 34pt; font-weight: 900; }
   .contact-band .bar { width: 3mm; height: 1.05em; }
-  .contact-info { position: absolute; top: 90mm; left: 16mm; right: 16mm; }
-  .contact-cards { display: flex; gap: 14mm; }
-  .cc-creds { margin-top: 7mm; color: ${C.greenBright}; font-size: 8.5pt; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap; }
-  .cc-name { color: #fff; font-size: 16pt; font-weight: 800; margin-bottom: 2.5mm; }
-  .cc-role { color: ${C.greenBright}; font-size: 10pt; margin: 1.5mm 0 4mm; font-weight: 600; }
+  .contact-cards { position: absolute; top: 90mm; left: 16mm; right: 16mm; display: flex; gap: 12mm; }
+  .person { width: 106mm; flex: none; }
+  .practice { width: 60mm; flex: none; }
+  .cc-name { color: #fff; font-size: 16pt; font-weight: 800; }
+  .cc-role { color: ${C.greenBright}; font-size: 10pt; margin: 1.5mm 0 3mm; font-weight: 600; }
+  .cc-quals { font-size: 7.5pt; color: ${C.text}; opacity: 0.9; line-height: 1.6; margin-bottom: 4mm; letter-spacing: 0.01em; }
+  .cc-quals div { white-space: nowrap; }
   .cc-line { color: ${C.text}; font-size: 10.5pt; line-height: 1.7; }
 </style></head>
 <body>
 ${pages.join("\n")}
 </body></html>`;
 
-const out = resolve(DESIGNS_DIR, "capability-statement-remedial-v6.pdf");
+const out = resolve(DESIGNS_DIR, "capability-statement-remedial-v8.pdf");
 await renderHtmlToPdf(html, out);
 console.log(`✓ Capability Statement (Remedial) → ${out}`);

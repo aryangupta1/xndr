@@ -63,33 +63,36 @@ commit/push to `design-engine`. Site work → `master`. No merging between them.
 - **Drawing sheet** (branded A3 frame, light/dark): `templates/drawing-sheet.ts`.
 - **`npm run template`** renders blank `[ … ]` templates (both types, both themes).
 - Brand single-source: `engine/src/brand.ts` (palette + `getTheme()` light/dark).
-- **Capability Statement, Remedial (ad hoc one-off) — done, at v6.**
+- **Capability Statement, Remedial (ad hoc one-off) — done, at v8.**
   `engine/src/oneoff/capability-remedial.ts` → run `npx tsx src/oneoff/capability-remedial.ts`,
-  output `designs/capability-statement-remedial-v6.pdf` (17pp A4, XNDR-branded,
+  output `designs/capability-statement-remedial-v8.pdf` (17pp A4, XNDR-branded,
   fully original copy + XNDR's own section headings, Unsplash photos with brand
   fallbacks). Several refinement rounds done (deep reword so it does not track the
   reference; a "We design for value" commitment; page-7 heading "Restoring the
   Buildings of Today, for Tomorrow"; page-8 "From Concept to Completion"). v5 set
   the cover title to "Structural · Remedial · Project Management" (middle dots,
-  fitted 34pt) with subtitle "New South Wales, Australia". v6 reworked the contact
-  card: personal name removed, left card now "Director" with E/M, and a full-width
-  one-line credentials strip under both cards (BEng/MEng/DBPA reg numbers).
+  fitted 34pt) with subtitle "New South Wales, Australia". Contact card iterated:
+  v8 is side-by-side two cards — left is the person (Rinay Singh / Director / two
+  quals lines: "B.Eng (Hons), M.Eng (Structural), MIEAust" then "DBPA Professional
+  Engineer (PRE0002167), Design Practitioner (DEP0003540)" / E / M), right is the
+  practice (XNDR Consulting / tagline / region / web). Left card is widened (106mm
+  vs 60mm) so each quals line stays on one line via nowrap.
   Reference that inspired the structure:
   `designs/reference/Capability Statement_Remedial_2025_QLD.pdf` (git-ignored).
   **Rule: keep it XNDR's own — no mention of any other firm, original wording.**
   Still-open polish: the page-7 photo is a product-design desk shot (swap for a
   building-inspection / concrete-repair image).
-- **Capability Statement, Waterproofing (ad hoc one-off) — done, at v3.**
+- **Capability Statement, Waterproofing (ad hoc one-off) — done, at v5.**
   `engine/src/oneoff/capability-waterproofing.ts` → run
   `npx tsx src/oneoff/capability-waterproofing.ts`, output
-  `designs/capability-statement-waterproofing-v3.pdf` (16pp A4). Same XNDR design
+  `designs/capability-statement-waterproofing-v5.pdf` (16pp A4). Same XNDR design
   system/helpers as the remedial one, fully original waterproofing copy and its own
   section headings (no em dashes, no other firm named). Sections: who we are / how
   we go about it / systems we specify / a custom building-section SVG "Where Water
   Has to Stay Out" (8 numbered zones + legend) / roofs / balconies-podiums-wet
   areas / below ground / three failure pages / why do it properly / contact. Same
-  "Director" contact card + credentials strip as remedial v6. Built from three
-  reference sources now in `designs/reference/` (git-ignored):
+  side-by-side contact card as remedial v8 (identical person/quals block). Built
+  from three reference sources now in `designs/reference/` (git-ignored):
   `waterpoofing-resources.txt` (two competitor URLs) and `waterproofing-resource3.png`
   (a "systems we install" building diagram, redrawn from scratch as the page-7 SVG).
   Still-open polish: the page-8 (Roofs) photo is a desk/drawings shot, swap for a
