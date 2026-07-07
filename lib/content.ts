@@ -26,6 +26,11 @@ import woyWoy from "@/public/projects/woy-woy.jpeg";
 import woyWoyPlanGarage from "@/public/projects/woy-woy-plan-garage.png";
 import woyWoyPlanLiving from "@/public/projects/woy-woy-plan-living.png";
 import woyWoyPlanUpper from "@/public/projects/woy-woy-plan-upper.png";
+import grannyFlat from "@/public/projects/granny-flat-guildford.jpeg";
+import retainingWall from "@/public/projects/retaining-wall-box-hill.jpeg";
+import harbourBridge from "@/public/projects/sydney-harbour-bridge.jpeg";
+import m1CrashBarrier from "@/public/projects/m1-crash-barrier.jpeg";
+import tugunTunnel from "@/public/projects/tugun-tunnel.jpeg";
 
 // A project image is either a statically-imported local photo (with known
 // dimensions) or an Unsplash photo id string used as a placeholder.
@@ -106,10 +111,12 @@ export const unsplash = (id: string, w = 1200): string =>
 export const projectImage = (image: ProjectImage, w = 1200): ProjectImage =>
   isPlaceholderImage(image) ? unsplash(image, w) : image;
 
-// Free, hotlinkable hero background video (Pexels — construction crew on site).
-// Source: https://www.pexels.com/video/4271760/
+// Free, hotlinkable hero background video (Pexels — breaking out failed concrete
+// with a demolition hammer; on-theme for the practice's structural and remedial
+// work). Uses the 1080p/60fps rendition to keep the hero light.
+// Source: https://www.pexels.com/download/video/15959642/
 export const HERO_VIDEO =
-  "https://videos.pexels.com/video-files/4271760/4271760-hd_1920_1080_30fps.mp4";
+  "https://videos.pexels.com/video-files/15959642/15959642-hd_1920_1080_60fps.mp4";
 
 // Nav hrefs are root-absolute (`/#about`) so they also work from sub-pages such
 // as the standalone project pages, not just the landing page.
@@ -230,20 +237,158 @@ export const projects: {
   eyebrow: "Selected work",
   heading: "Bringing engineering visions to life with precision",
   subheading:
-    "A selection of recent residential and structural projects delivered across New South Wales.",
-  // Each item links to a standalone page at /projects/<slug>. Images supplied by
-  // Rinay live in `public/projects/…`; the two without photos yet (Guildford,
-  // Box Hill) fall back to a placeholder Unsplash id. The detail fields
-  // (scope/services/details) are still OUTSTANDING — see QUESTIONS.md §5.
-  // summary + location are from Rinay's email (15 Jun 2026).
+    "A selection of recent infrastructure, structural and residential projects — from major transport assets to bespoke homes across New South Wales and Queensland.",
+  // Each item links to a standalone page at /projects/<slug>. Images live in
+  // `public/projects/…` (real photos as static imports) or fall back to a
+  // placeholder Unsplash id where a photo is not available yet. The four
+  // infrastructure projects (Harbour Bridge, both M1 Eastern Distributor jobs and
+  // Tugun) mirror the Infrastructure Remediation capability statement.
   items: [
+    {
+      slug: "sydney-harbour-bridge-condition-assessment",
+      title: "Sydney Harbour Bridge",
+      location: "Sydney, NSW",
+      category: "Infrastructure",
+      year: "2026",
+      image: harbourBridge,
+      summary:
+        "Structural condition assessment of the BridgeClimb access ways on the arch.",
+      services: ["Remedial Engineering", "Structural Engineering"],
+      scope: [
+        "Structural condition assessment of the BridgeClimb access ways on the arch",
+        "Inspection of stairs, ladders, walkways and handrail systems at height",
+        "Grading of steel members, connections and protective-coating condition",
+        "Access over live rail and roadway under strict asset-owner protocols",
+        "Prioritised remedial recommendations to keep the climb in safe service",
+        "Heritage-sensitive work on an iconic listed structure",
+      ],
+      details: [
+        "A structural condition assessment of the climb access ways that run up the arch of the Sydney Harbour Bridge. Working at height over live rail and roadway, our engineers inspected the stairs, ladders, walkways and handrail systems that carry climbers along one of the most recognisable structures in the country.",
+        "Every steel member, connection and protective coating was graded for condition, and the findings were distilled into a prioritised set of remedial recommendations. The work was carried out under the asset owner's strict access protocols and with the care a heritage-listed landmark demands, so the climb stays safely in service.",
+      ],
+    },
+    {
+      slug: "m1-eastern-distributor-pit-grate-kerb",
+      title: "M1 Eastern Distributor — Pit, Grate & Kerb",
+      location: "Sydney, NSW",
+      category: "Infrastructure",
+      year: "2026",
+      image: "photo-1595066988978-c2686505d56f", // on-theme tunnel placeholder
+      summary:
+        "Remedial design for tunnel drainage pits, grates and kerbs in a live motorway tunnel.",
+      services: ["Structural Engineering", "Remedial Engineering"],
+      scope: [
+        "Remedial structural engineering for tunnel drainage pits, grates and kerbs",
+        "Condition assessment of cracked and spalled concrete pit walls and surrounds",
+        "Design of pit reconstruction, grate seating and kerb reinstatement",
+        "Durable detailing for an aggressive, heavily trafficked tunnel environment",
+        "Scope documented for delivery inside short overnight closures",
+        "Coordination with the operator and maintenance contractor",
+      ],
+      details: [
+        "Remedial structural engineering for the drainage pits, grates and kerbs inside the M1 Eastern Distributor tunnel. Years of heavy traffic and an aggressive tunnel environment had left concrete pit walls and surrounds cracked and spalled, and the grate seatings and kerbs needing reinstatement.",
+        "We assessed the condition of each element and designed the pit reconstruction, grate seating and kerb repairs with durable detailing suited to the tunnel. The scope was written so it could be priced and built inside short overnight closures, coordinated closely with the operator and the maintenance contractor to keep disruption to the motorway to a minimum.",
+      ],
+    },
+    {
+      slug: "m1-eastern-distributor-crash-barrier",
+      title: "M1 Eastern Distributor — Crash & Operable Barrier",
+      location: "Sydney, NSW",
+      category: "Infrastructure",
+      year: "2026",
+      image: m1CrashBarrier,
+      summary:
+        "Design and reconstruction of the vehicle crash barrier and an operable barrier at the northbound portal.",
+      services: ["Structural Engineering"],
+      scope: [
+        "Design and reconstruction of the vehicle crash barrier at the northbound portal",
+        "Installation of an operable barrier outside the tunnel, northbound",
+        "Structural design to the relevant road-safety barrier standards",
+        "Foundation and anchorage design for the barrier system",
+        "Buildability review for staged works alongside live traffic",
+        "Documentation to support construction certification",
+      ],
+      details: [
+        "Structural design and reconstruction of the vehicle crash barrier at the northbound portal of the M1 Eastern Distributor, together with a new operable barrier outside the tunnel. Both had to meet the relevant road-safety barrier standards while fitting the constraints of a busy portal.",
+        "We designed the barrier system, its foundations and anchorage, and reviewed buildability for works staged alongside live traffic. The documentation was prepared to support construction certification, so the finished barriers could be built, verified and signed off with confidence.",
+      ],
+    },
+    {
+      slug: "tugun-tunnel-osd-tank",
+      title: "Tugun Tunnel",
+      location: "Tugun, QLD",
+      category: "Infrastructure",
+      year: "2026",
+      image: tugunTunnel,
+      summary:
+        "Structural condition assessment of a confined, below-ground on-site detention tank.",
+      services: ["Remedial Engineering", "Structural Engineering"],
+      scope: [
+        "Structural condition assessment of the underground on-site detention (OSD) tank",
+        "Inspection of a confined, below-ground reinforced-concrete water structure",
+        "Assessment of concrete condition, reinforcement corrosion and water tightness",
+        "Review of structural adequacy and remaining service life",
+        "Confined-space access and inspection planning",
+        "Prioritised remedial recommendations for the asset owner",
+      ],
+      details: [
+        "A structural condition assessment of the underground on-site detention (OSD) tank at the Tugun Bypass tunnel — a confined, below-ground reinforced-concrete water structure that is rarely seen and easily overlooked until it starts to fail.",
+        "Our engineers planned confined-space access, then assessed the concrete condition, reinforcement corrosion and water tightness of the tank, and reviewed its structural adequacy and remaining service life. The result was a prioritised set of remedial recommendations the asset owner could act on to keep the structure performing.",
+      ],
+    },
+    {
+      slug: "ian-thorpe-aquatic-centre-remediation",
+      title: "Ian Thorpe Aquatic Centre",
+      location: "Ultimo, Sydney NSW",
+      category: "Infrastructure",
+      year: "2026",
+      image: "photo-1690615961058-1d695ff218bc", // on-theme aquatic-centre placeholder
+      summary:
+        "Investigation and remediation of spalling concrete in a chlorinated, wet environment.",
+      services: ["Remedial Engineering", "Structural Engineering"],
+      scope: [
+        "Investigation and remediation of spalling concrete at the aquatic centre",
+        "Assessment of reinforcement corrosion in a chlorinated, wet environment",
+        "Concrete-repair methodology and remedial design",
+        "Scope documented for pricing and staged delivery around operations",
+        "Durable repair detailing to extend the structure's service life",
+        "Site inspections through construction",
+      ],
+      details: [
+        "Investigation and remediation of spalling concrete at the Ian Thorpe Aquatic Centre. A chlorinated, constantly wet environment is unforgiving on reinforced concrete, and the corrosion driving the spalling had to be understood before any repair could hold.",
+        "We assessed the reinforcement corrosion, developed a concrete-repair methodology and remedial design, and documented a scope that could be priced and delivered in stages around the centre's operations. Durable repair detailing was specified to extend the structure's service life, and we stayed on for site inspections through construction.",
+      ],
+    },
+    {
+      slug: "raaf-williamtown-fuel-tank-lining",
+      title: "RAAF Base Williamtown — Jet Fuel Tank Lining",
+      location: "Williamtown, NSW",
+      category: "Infrastructure",
+      year: "2026",
+      image: "photo-1780882899461-0b158f457b44", // on-theme storage-tank placeholder
+      summary:
+        "Remedial lining and structural assessment of a jet fuel storage tank on a Defence base.",
+      services: ["Remedial Engineering", "Structural Engineering"],
+      scope: [
+        "Remedial lining and remediation of a jet fuel storage tank",
+        "Structural and durability assessment of the tank",
+        "Repair and re-lining design suited to a fuel-containment environment",
+        "Works planned to Defence site security and safety requirements",
+        "Confined-space and hazardous-environment access planning",
+        "Documentation to support compliant delivery",
+      ],
+      details: [
+        "Remedial lining and remediation of a jet fuel storage tank at RAAF Base Williamtown. A fuel-containment structure on an operating Defence base sets a high bar: the repair has to restore the tank while meeting strict security, safety and environmental requirements.",
+        "We carried out a structural and durability assessment of the tank and designed a repair and re-lining solution suited to a fuel-containment environment. Access was planned for a confined, hazardous space and around the base's security requirements, with documentation prepared to support compliant delivery.",
+      ],
+    },
     {
       slug: "granny-flat-garage-guildford",
       title: "Granny Flat & Garage",
       location: "Guildford, NSW",
       category: "Residential",
       year: "2026",
-      image: "photo-1590725140246-20acdee442be", // TODO: placeholder — awaiting photo
+      image: grannyFlat,
       summary: "Custom design featuring an integrated car hoist system.",
     },
     {
@@ -262,7 +407,7 @@ export const projects: {
       location: "Box Hill, NSW",
       category: "Civil / Structural",
       year: "2026",
-      image: "photo-1504307651254-35680f356dfd", // TODO: placeholder — awaiting photo
+      image: retainingWall,
       summary: "Engineered support systems for residential site works.",
     },
     {
