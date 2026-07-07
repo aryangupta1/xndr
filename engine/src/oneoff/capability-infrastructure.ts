@@ -10,9 +10,10 @@
  * adapted to infrastructure: bridges, tunnels, drainage pits and culverts,
  * kerbs, crash and operable barriers, underground tanks and aquatic structures.
  *
- * Project 1 uses a supplied photo (Sydney Harbour Bridge, git-ignored in
- * designs/reference/). Projects 2–6 use copyright-free Unsplash photos. Output
- * lands in the git-ignored designs/.
+ * Projects 1, 3 and 4 use supplied photos (Sydney Harbour Bridge, M1 crash
+ * barrier, Tugun tunnel — git-ignored in designs/reference/). The remaining
+ * projects use copyright-free Unsplash photos. Output lands in the git-ignored
+ * designs/.
  */
 
 import { readFileSync } from "node:fs";
@@ -48,6 +49,8 @@ const refImage = (file: string, mime = "image/png"): string =>
   `data:${mime};base64,${readFileSync(resolve(REFERENCE_DIR, file)).toString("base64")}`;
 
 const harbourBridge = refImage("harbour-bridge-climb.png");
+const m1CrashBarrier = refImage("m1-crash-barrier.jpg", "image/jpeg");
+const tugunTunnel = refImage("tugun-tunnel.jpg", "image/jpeg");
 
 /** Unsplash image as a background with a brand fallback colour behind it. */
 const photo = (id: string, fallback: string = C.surface, w = 1400): string =>
@@ -75,8 +78,8 @@ interface Project {
   photo: string; // Unsplash id, or the harbour-bridge data URL for project 1
 }
 
-// Unsplash ids for projects 2–6 (verified copyright-free); project 1 uses the
-// supplied Harbour Bridge photo.
+// Projects 1, 3 and 4 use supplied photos (Harbour Bridge, M1 crash barrier,
+// Tugun tunnel); the rest use verified copyright-free Unsplash ids.
 const projects: Project[] = [
   {
     name: "Sydney Harbour Bridge — Structural Condition Assessment",
@@ -110,7 +113,7 @@ const projects: Project[] = [
     name: "M1 Eastern Distributor — Crash & Operable Barrier",
     client: "Ventia",
     location: "Northbound portal, Sydney NSW",
-    photo: "photo-1782000020706-6784c3e00dca",
+    photo: m1CrashBarrier,
     scope: [
       "Design and reconstruction of the vehicle crash barrier at the northbound portal",
       "Installation of an operable barrier outside the tunnel, northbound",
@@ -124,7 +127,7 @@ const projects: Project[] = [
     name: "Tugun Tunnel — Underground OSD Tank Assessment",
     client: "Transport for NSW",
     location: "Tugun Bypass tunnel",
-    photo: "photo-1768152378286-869497e5a287",
+    photo: tugunTunnel,
     scope: [
       "Structural condition assessment of the underground on-site detention (OSD) tank",
       "Inspection of a confined, below-ground reinforced-concrete water structure",
@@ -530,6 +533,6 @@ const html = `<!doctype html>
 ${pages.join("\n")}
 </body></html>`;
 
-const out = resolve(DESIGNS_DIR, "capability-statement-infrastructure-v2.pdf");
+const out = resolve(DESIGNS_DIR, "capability-statement-infrastructure-v3.pdf");
 await renderHtmlToPdf(html, out);
 console.log(`✓ Capability Statement (Infrastructure Remediation) → ${out}`);
