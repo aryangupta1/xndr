@@ -117,7 +117,7 @@ pages.push(`
     </div>
     <div class="col">
       <p>The practice grew out of years spent on site, watching building owners get handed reports they could not read and bills they did not see coming. We started XNDR to do it differently. We cover structural engineering, remedial engineering and project management ourselves, and we keep our advice clear enough that any owner or committee can act on it.</p>
-      <p>We work across the strata and construction sectors throughout NSW, on everything from a single home to a multi-unit residential block. The building changes from job to job. The way we treat you does not.</p>
+      <p>We deliver tailored solutions across NSW's strata and construction sectors, managing projects ranging from standalone residential homes to complex multi-unit blocks. While project specifications and building types evolve, our standard of exceptional client service remains a constant.</p>
     </div>
   </div>
   <div class="stats">
@@ -157,7 +157,7 @@ pages.push(`
     </div>
     <div class="col">
       <p>Most building problems do not fit neatly into one discipline. Because we hold all three in-house, we can investigate a defect, design the repair, and run the works to completion without handing you off or losing the thread along the way.</p>
-      <p>Our engineers are registered under the NSW Design and Building Practitioners Act 2020 as a Design Building Practitioner and a Professional Engineer, so the designs we issue carry the declarations your project needs. We work to the Building Code of Australia and the relevant Australian Standards, and we write everything down so it holds up later.</p>
+      <p>We provide fully compliant engineering solutions backed by formal registration under the NSW Design and Building Practitioners Act 2020. Holding dual credentials as registered Design Building Practitioners and Professional Engineers, our team delivers certified designs complete with all necessary project declarations. We strictly adhere to the Building Code of Australia and applicable Australian Standards, supporting every project with rigorous documentation designed to withstand rigorous legal and structural scrutiny.</p>
     </div>
   </div>
   ${expertise("What we cover", [
@@ -188,7 +188,7 @@ pages.push(`
   </div>
   <div class="cols-3">
     <div class="col">
-      <p class="lead green">Most of our work is on buildings that already exist and are not behaving. Remedial engineering is how we find out why, and put it right.</p>
+      <p class="lead green">Most of our work is on buildings that already exist and have been built and or designed poorly. Remedial engineering is how we find the issues and resolve it.</p>
     </div>
     <div class="col">
       <p>Chasing the real cause is the whole point. A repair aimed at a symptom buys you a year or two. A repair aimed at the cause is the one that holds.</p>
@@ -202,7 +202,6 @@ pages.push(`
         "Writing a scope a builder can actually price",
         "Sitting in on the tender and reading the bids with you",
         "On-site checks while the work is built",
-        "Condition and pre-purchase reviews",
       ])}
     </div>
   </div>
@@ -571,6 +570,6 @@ const html = `<!doctype html>
 ${pages.join("\n")}
 </body></html>`;
 
-const out = resolve(DESIGNS_DIR, "capability-statement-remedial-v8.pdf");
+const out = resolve(DESIGNS_DIR, "capability-statement-remedial-v9.pdf");
 await renderHtmlToPdf(html, out);
 console.log(`✓ Capability Statement (Remedial) → ${out}`);
