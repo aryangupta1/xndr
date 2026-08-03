@@ -1,0 +1,51 @@
+{
+  "title": "Scope of Works",
+  "jobTitle": "[ Job title — e.g. Remedial Building Works ]",
+  "property": { "address": "[ Property address, Suburb STATE 0000 ]" },
+  "reference": "[ Ref. ]",
+  "date": "[ DD Month YYYY ]",
+  "status": "For Tender Purposes Only",
+  "summary": [
+    "[ Cover summary — one or two sentences describing the specification and its intent. ]"
+  ],
+  "figure": { "caption": "[ Figure 1 — Aerial view of the subject property ]" },
+  "items": [
+    {
+      "number": 1,
+      "title": "[ Item title — e.g. Preliminaries ]",
+      "location": "[ Applicable areas / location ]",
+      "scopeIntent": ["[ Scope intent — what this item sets out to achieve. ]"],
+      "extentOfWorks": ["[ Extent of works / pricing basis, e.g. lump sum. ]"],
+      "specification": [
+        {
+          "clauses": [
+            { "text": "[ Clause 1 — a numbered obligation on the Contractor. ]" },
+            {
+              "text": "[ Clause 2 — a clause with lettered sub-points. ]",
+              "sub": ["[ Sub-point a ]", "[ Sub-point b ]"]
+            }
+          ]
+        },
+        {
+          "heading": "[ Sub-heading — e.g. Site Establishment ]",
+          "paras": ["[ Optional note paragraph shown above the clauses. ]"],
+          "clauses": [
+            { "text": "[ Clause under this sub-heading. ]" }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "[ Second item title ]",
+      "location": "[ Location ]",
+      "scopeIntent": ["[ Scope intent. ]"],
+      "specification": [
+        { "clauses": [{ "text": "[ Clause. ]" }] }
+      ]
+    }
+  ],
+  "notice": "The Contractor shall notify the Superintendent of any conflict, error or omission regarding the 'Scope Intent' and 'Scope of Works' prior to tender submission. Failing to notify the Superintendent is deemed as accepting the 'Scope Intent' and 'Scope of Works'.",
+  "copyright": "Copyright: The design and details shown in this document are specific to this project only and may not be reproduced in whole or in part, or used for any other project, without the written consent of XNDR Consulting.",
+  "appendices": ["[ Appendix A — Drawings ]"]
+}

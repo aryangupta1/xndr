@@ -4,15 +4,17 @@ The design engine turns **structured data (a JSON file)** into **branded,
 print-ready PDFs** for XNDR Consulting. No AI required — you edit a file, run one
 command, and get a PDF.
 
-It produces two document types:
+It produces these document types:
 
 | Type | Command | Page | Output |
 |------|---------|------|--------|
 | **Fee proposal** | `npm run fees` | A4 portrait | a full branded fee proposal |
 | **Drawing sheet** | `npm run sheet` | A3 landscape | an engineering title-block sheet |
-| **Blank templates** | `npm run template` | both | empty `[ … ]` templates for both types, in **both themes** |
+| **Scope of Works** | `npm run scope` | A4 portrait | a tender specification (cover + numbered work items) |
+| **Engineering report** | `npm run report` | A4 portrait | a remedial inspection report (observations + recommendations) |
+| **Blank templates** | `npm run template` | all | empty `[ … ]` templates for every type, in **both themes** |
 
-Both document types come in a **light** and a **dark** theme — see
+Every document type comes in a **light** and a **dark** theme — see
 [Light or dark](#light-or-dark) below. The **fee proposal** can also be exported
 as an **editable Word (.docx)** — see [Editable Word](#editable-word-docx).
 
@@ -44,8 +46,14 @@ npm run example:fees           # default theme (light) fee proposal
 npm run example:fees:dark      # dark fee proposal
 npm run example:sheet          # default theme (dark) drawing sheet
 npm run example:sheet:light    # light drawing sheet
+npm run example:scope          # scope of works (light)
+npm run example:scope:dark     # scope of works (dark)
+npm run example:report         # engineering report (light)
+npm run example:report:dark    # engineering report (dark)
 npm run example:fees:docx      # editable Word (.docx) fee proposal (light)
-npm run template               # both types, both themes (PDF)
+npm run template               # every type, both themes (PDF)
+npm run template:scope         # blank scope of works, both themes
+npm run template:report        # blank engineering report, both themes
 npm run template:docx          # editable Word (.docx) fees template (light)
 npm run template:docx-dark     # editable Word (.docx) fees template (dark)
 ```
@@ -60,9 +68,12 @@ overwritten).
 
 `npm run template` renders the **blank templates** — every field shown as a
 `[ … ]` placeholder — straight from
-[`examples/template-fees.json`](examples/template-fees.json) and
-[`examples/template-sheet.json`](examples/template-sheet.json). Those two files
-are the canonical "fill-me-in" starting points (see the workflow below).
+[`examples/template-fees.json`](examples/template-fees.json),
+[`examples/template-sheet.json`](examples/template-sheet.json),
+[`examples/template-scope.json`](examples/template-scope.json) and
+[`examples/template-report.json`](examples/template-report.json). Those files are
+the canonical "fill-me-in" starting points (see the workflow below).
+`template:scope` / `template:report` render just that one type in both themes.
 
 ---
 
@@ -92,6 +103,20 @@ cp examples/template-sheet.json examples/my-sheet.json   # or sample-project.jso
 # edit examples/my-sheet.json
 npm run sheet -- examples/my-sheet.json
 #    → ../designs/my-sheet-<timestamp>.pdf
+```
+
+### Scope of Works / Engineering report
+
+```bash
+cp examples/template-scope.json examples/my-scope.json    # or sample-scope.json
+# edit examples/my-scope.json
+npm run scope -- examples/my-scope.json
+#    → ../designs/my-scope-scope-<timestamp>.pdf
+
+cp examples/template-report.json examples/my-report.json  # or sample-report.json
+# edit examples/my-report.json
+npm run report -- examples/my-report.json
+#    → ../designs/my-report-report-<timestamp>.pdf
 ```
 
 > **Tip:** add a second argument to choose an exact output path (no timestamp is
@@ -172,8 +197,21 @@ way to learn it is to read the worked examples alongside it:
     optional; any section you omit simply doesn't render.
 - **Drawing sheet** → [`examples/sample-project.json`](examples/sample-project.json)
   (`DrawingSet` type): `project`, `certification`, and `sheets[]`.
+- **Scope of Works** → [`examples/sample-scope.json`](examples/sample-scope.json)
+  (`ScopeOfWorks` type): `jobTitle`, `property`, `reference`/`date`, and
+  `items[]`. Each item has a `location`, `scopeIntent`, `extentOfWorks` and a
+  `specification[]` — a list of blocks, each an optional `heading` plus
+  `clauses[]` (auto-numbered, with lettered `sub[]` points). Set a block's
+  `continueNumbering: true` to keep the running number across a sub-heading.
+- **Engineering report** → [`examples/sample-report.json`](examples/sample-report.json)
+  (`EngineeringReport` type): letter `addressee`, `introduction` (with a nested
+  `scope[]` inspection list), `description`, `observations[]` (each a `3.x`
+  sub-section of bullet `points[]` + a two-up `photos[]` grid), `discussion[]`
+  (each a `4.x` `body` + `recommendation`), `conclusion`, and `signatories[]`.
 
-Totals are calculated for you — never hand-add Subtotal/GST/Total.
+Photos and figures render as branded placeholder tiles until you add an
+`imagePath` (a file path or data URL). Totals are calculated for you — never
+hand-add Subtotal/GST/Total.
 
 ---
 
@@ -199,8 +237,10 @@ documents — just the data.
 
 ## 7. Status & roadmap
 
-The **fee proposal** is complete and matches XNDR brand. The **drawing sheet**
-renders the branded title-block frame; placing real drawing artwork and
-multi-sheet sets are upcoming phases. See the
+The **fee proposal**, **Scope of Works** and **engineering report** are complete
+and match XNDR brand (light + dark). The **drawing sheet** renders the branded
+title-block frame; placing real drawing artwork and multi-sheet sets are upcoming
+phases. Scope/report photos and figures render as placeholder tiles until an
+`imagePath` is supplied. See the
 [roadmap](../docs/design-engine/PLAN.md#8-roadmap) and
 [open questions](../docs/design-engine/PLAN.md#9-open-questions).

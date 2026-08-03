@@ -192,5 +192,188 @@ export interface FeesReport {
   terms?: string[];
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Scope of Works (tender specification). Structure derived from a real sample:
+// Partridge `2025R0318` — "Scope of Works, 22 Battery Street, Coogee". A cover
+// with an item contents list, then one section per work Item, each with a
+// LOCATION / SCOPE INTENT / EXTENT OF WORKS header and a numbered specification
+// body (clauses + lettered sub-clauses + interleaved sub-headings).
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** One numbered clause in a specification body, with optional lettered sub-points. */
+export interface ScopeClause {
+  /** Clause text (auto-numbered 1, 2, 3…). */
+  text: string;
+  /** Lettered sub-points a) b) c)… under the clause. */
+  sub?: string[];
+}
+
+/**
+ * A run of the specification body: an optional bold sub-heading (e.g.
+ * "Demolition", "WARRANTIES"), then either free paragraphs (notes) and/or a
+ * numbered clause list. Clause numbering restarts at each block by default.
+ */
+export interface ScopeBlock {
+  /** Bold sub-heading introducing the block. */
+  heading?: string;
+  /** Free note paragraph(s) above the clauses. */
+  paras?: string[];
+  /** Numbered clauses. */
+  clauses?: ScopeClause[];
+  /**
+   * Continue clause numbering from the previous block instead of restarting at
+   * 1 — for a heading that interrupts a single running list.
+   */
+  continueNumbering?: boolean;
+}
+
+/** A captioned figure (cover aerial, detail). Image optional — caption always shows. */
+export interface ScopeFigure {
+  caption: string;
+  /** Path/data-URL of the image; a branded placeholder is drawn if absent. */
+  imagePath?: string;
+}
+
+/** One work Item — a section of the specification. */
+export interface ScopeItem {
+  /** Item number (auto-prefixed "ITEM n."). */
+  number: number;
+  /** Item title, e.g. "Balcony, Courtyard and Walkway Waterproofing". */
+  title: string;
+  /** "LOCATION" row. */
+  location?: string;
+  /** "SCOPE INTENT" row — paragraph(s). */
+  scopeIntent?: string[];
+  /** "EXTENT OF WORKS" row — paragraph(s). */
+  extentOfWorks?: string[];
+  /** "SCOPE OF WORKS & SPECIFICATION" — the numbered body. */
+  specification?: ScopeBlock[];
+}
+
+/** A tender Scope of Works / Specification document. */
+export interface ScopeOfWorks {
+  /** Document title. Default "Scope of Works". */
+  title?: string;
+  /** Job title, e.g. "Remedial Building Works — Waterproofing & Other Works". */
+  jobTitle: string;
+  /** Subject property address. */
+  property: { address: string };
+  /** Document reference, e.g. "2025R0318". */
+  reference: string;
+  /** Issue date, e.g. "11 June 2026". */
+  date: string;
+  /** Issue purpose, e.g. "For Tender Purposes Only". */
+  status?: string;
+  /** Cover intro line(s) summarising the specification. */
+  summary?: string[];
+  /** Cover figure (aerial view). */
+  figure?: ScopeFigure;
+  /** The work items. */
+  items: ScopeItem[];
+  /** Repeating-footer notice to the Contractor. */
+  notice?: string;
+  /** Copyright line for the footer. */
+  copyright?: string;
+  /** Appendix titles listed after the contents. */
+  appendices?: string[];
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Remedial Engineering Report. Structure derived from a real sample: Partridge
+// `2026R0204.1` — "Remedial Engineering Report, 17a Fort Street, Petersham".
+// A letter-style header, then numbered sections: Introduction, Description,
+// Observations (photo sub-sections), Discussion & Recommendations, Conclusion,
+// and a prepared-by / reviewed-by signature block.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** A point in a nested inspection/scope list — text with optional sub-points. */
+export interface NestedPoint {
+  text: string;
+  sub?: string[];
+}
+
+/** A captioned photo placeholder in an observations grid. */
+export interface ReportPhoto {
+  /** Caption, e.g. "General view of common entry stairs". */
+  caption: string;
+  /** Path/data-URL; a branded placeholder tile is drawn if absent. */
+  imagePath?: string;
+}
+
+/** An observation sub-section (3.1, 3.2…): bullet findings + a photo grid. */
+export interface ReportObservation {
+  /** Sub-section ref, e.g. "3.1". */
+  ref: string;
+  /** Sub-section title, e.g. "Common Entry Stairs". */
+  title: string;
+  /** Bullet observations. */
+  points: string[];
+  /** Photos, laid out two-up. */
+  photos?: ReportPhoto[];
+}
+
+/** A discussion & recommendation sub-section (4.1, 4.2…). */
+export interface ReportDiscussion {
+  /** Sub-section ref, e.g. "4.1". */
+  ref: string;
+  /** Sub-section title, e.g. "Fire Stair Condition". */
+  title: string;
+  /** Discussion paragraph(s). */
+  body: string[];
+  /** "Recommendation:" paragraph(s). */
+  recommendation?: string[];
+  /** Optional inline figure. */
+  figure?: { caption: string; imagePath?: string };
+}
+
+/** A signatory in the sign-off block (prepared by / reviewed by). */
+export interface ReportSignatory {
+  /** Column role, e.g. "Prepared by" / "Reviewed by". */
+  role: string;
+  name: string;
+  /** e.g. "BEng (Hons) GradIEAust". */
+  qualifications?: string;
+  /** e.g. "Engineer, XNDR Consulting". */
+  title?: string;
+}
+
+/** A remedial engineering inspection report. */
+export interface EngineeringReport {
+  /** Document title. Default "Remedial Engineering Report". */
+  title?: string;
+  /** Report number/suffix, e.g. "#1". */
+  reportNo?: string;
+  /** Issue date, e.g. "15.07.2026". */
+  date: string;
+  /** Letter addressee. */
+  addressee: { to: string; attention?: string };
+  /** Subject property (address lines + plan number). */
+  property: { address: string[]; planNo?: string };
+  /** Document reference, e.g. "2026R0204.1". */
+  reference: string;
+  /** Footer reference line, e.g. "2026R0204.1 — ENGINEERING REPORT". */
+  footerRef?: string;
+  /** Salutation, e.g. "Dear Owners,". */
+  salutation?: string;
+  /** 1.0 Introduction. */
+  introduction: {
+    body: string[];
+    /** The inspection scope list (i, ii… with lettered sub-points). */
+    scope?: NestedPoint[];
+    /** Closing note(s), e.g. access limitations. */
+    closing?: string[];
+  };
+  /** 2.0 Description. */
+  description: { body: string[]; figure?: { caption: string; imagePath?: string } };
+  /** 3.x Observations. */
+  observations: ReportObservation[];
+  /** 4.x Discussion & Recommendations. */
+  discussion: ReportDiscussion[];
+  /** 5.0 Conclusion. */
+  conclusion: { body: string[]; items?: string[]; closing?: string[] };
+  /** Sign-off block. */
+  signatories: ReportSignatory[];
+}
+
 /** Anything the engine can render to a PDF. */
-export type Document = DrawingSet | FeesReport;
+export type Document = DrawingSet | FeesReport | ScopeOfWorks | EngineeringReport;

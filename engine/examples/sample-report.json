@@ -1,0 +1,330 @@
+{
+  "title": "Remedial Engineering Report",
+  "reportNo": "#1",
+  "date": "15.07.2026",
+  "addressee": {
+    "to": "The Owners of Strata Plan Number 17078",
+    "attention": "Mr Thomas Louw"
+  },
+  "property": {
+    "address": [
+      "17a Fort Street",
+      "Petersham NSW 2049"
+    ],
+    "planNo": "Strata Plan Number 17078"
+  },
+  "reference": "2026R0204.1",
+  "footerRef": "2026R0204.1 — ENGINEERING REPORT",
+  "salutation": "Dear Owners,",
+  "introduction": {
+    "body": [
+      "At the request of Thomas Louw, acting for the Owners' Corporation of Strata Plan 17078, engineers from XNDR Consulting — consulting structural and forensic engineers — attended the property and undertook an inspection on 12 June 2026. The weather was fine throughout the inspection.",
+      "The scope of the inspection, and of this report, was confined to a visual assessment of the façade, the rooftop waterproofing, the staircases and the water ingress affecting two of the units at the above address. The specific matters examined were as follows:"
+    ],
+    "scope": [
+      {
+        "text": "Water ingress into two units, arising from:",
+        "sub": [
+          "waterproofing;",
+          "roof detailing;",
+          "windows;",
+          "cavity flashing."
+        ]
+      },
+      {
+        "text": "Roof waterproofing (including drainage)."
+      },
+      {
+        "text": "Façade elements:",
+        "sub": [
+          "windows;",
+          "façade painting;",
+          "removal of redundant services."
+        ]
+      },
+      {
+        "text": "Fire stairs."
+      }
+    ],
+    "closing": [
+      "This report sets out the observations recorded during our inspection, followed by our recommendations for the remedial works we consider necessary.",
+      "Please note that access to Unit 4 was not made available at the time of our inspection."
+    ]
+  },
+  "description": {
+    "body": [
+      "The property occupies the western and northern sides of Fort Street. For the purposes of this report, the elevation fronting Fort Street is treated as facing north.",
+      "The building contains four (4) lots in total and rises two (2) storeys. It is built of load-bearing masonry walls that appear to carry a timber-framed flat roof. The roof is bounded by rendered brick masonry balustrades incorporating a twisted steel spindle section. A number of tile-clad pent roofs are also arranged around the perimeter of the main flat roof. The façade is rendered and painted, with timber-framed windows throughout.",
+      "Figure 1 below provides an aerial view of the property, showing the surrounding area and the approximate property boundaries marked in red."
+    ],
+    "figure": {
+      "caption": "Figure 1 — Aerial overview of the property (image courtesy of 'NearMaps')"
+    }
+  },
+  "observations": [
+    {
+      "ref": "3.1",
+      "title": "Common Entry Stairs",
+      "points": [
+        "Access to the units is gained via a shared entry staircase finished with terrazzo treads and a steel balustrade (refer to photo 1).",
+        "Signs of internal water penetration were evident, presenting as localised water staining and flaking paint across the ceiling, walls and cornice of the common stair area (refer to photos 2, 3 and 4)."
+      ],
+      "photos": [
+        {
+          "caption": "General view of common entry stairs"
+        },
+        {
+          "caption": "Water staining to the ceiling"
+        },
+        {
+          "caption": "Water staining to the cornice"
+        },
+        {
+          "caption": "Flaking paint and water staining to upper common stair walls"
+        }
+      ]
+    },
+    {
+      "ref": "3.2",
+      "title": "Unit 3",
+      "points": [
+        "Unit 3 was generally found to be in good order, with the internal finishes having been repainted recently.",
+        "A crack was noted in the glazing of the kitchen window (refer to photo 5).",
+        "Externally, the windows showed signs of deterioration, including flaking or missing paint, corroded fixings and separation between timber frame members (refer to photos 6, 7 and 8)."
+      ],
+      "photos": [
+        {
+          "caption": "Crack to kitchen window glazing"
+        },
+        {
+          "caption": "Deterioration to sunroom windows"
+        },
+        {
+          "caption": "Deterioration to sunroom windows"
+        },
+        {
+          "caption": "Deterioration to sunroom windows"
+        }
+      ]
+    },
+    {
+      "ref": "3.3",
+      "title": "Fire Stairs",
+      "points": [
+        "The fire stairs at the rear of the property are of concrete construction and carry two types of balustrade: what appears to be original steel balustrading formed from steel pipe infilled with woven steel wire, together with more recent powder-coated balustrading.",
+        "Concrete spalling was observed at several locations along the underside (soffit) of the staircase.",
+        "Additional concrete spalling was evident at the level 1 common door, presenting as cracking to the concrete lintel.",
+        "The steel pipe balustrading is heavily corroded across all of its components, including the steel wire, the steel piping and the fixings.",
+        "Corrosion pitting was noted at several points on the steel pipe adjacent to the façade. This is likely to be the result of incompatible original fixings that have accelerated corrosion, as the pitting occurs next to what appear to be newer fixings."
+      ],
+      "photos": [
+        {
+          "caption": "General view of the fire stair"
+        },
+        {
+          "caption": "General view of the fire stair"
+        },
+        {
+          "caption": "Concrete spalling to staircase soffit"
+        },
+        {
+          "caption": "Concrete spalling to staircase soffit"
+        },
+        {
+          "caption": "Cracking to level 1 concrete lintel"
+        },
+        {
+          "caption": "Corrosion to steel pipe balustrade top rail"
+        },
+        {
+          "caption": "Corrosion to multiple steel balustrade elements"
+        },
+        {
+          "caption": "Corrosion pitting to the end of the steel balustrade bottom rail"
+        }
+      ]
+    },
+    {
+      "ref": "3.4",
+      "title": "Roof",
+      "points": [
+        "The roof is predominantly a flat roof, with a timber pitched pergola to the north-eastern side and several timber-framed, tile-clad pent roofs.",
+        "The existing roof membrane appears to have been overcoated with a liquid membrane laid over a timber-framed substrate. Seams run the full length and width of the roof, which may indicate an underlying layer of fibre-cement (FC) sheeting or similar, or that a liquid coating has been applied over an existing sheet membrane.",
+        "The roof is edged with brick masonry balustrades incorporating a twisted steel spindle section (refer to photo 17).",
+        "The existing drainage is not performing as intended, with water ponding at several locations and evidence of prior ponding elsewhere (refer to photos 18, 19 and 20).",
+        "Cracking was noted along one edge of the membrane (refer to photo 21).",
+        "Corroded fixings were observed at the brick parapet (refer to photo 22).",
+        "Leaf litter had accumulated within the drainage outlet (refer to photo 23).",
+        "A patch repair was noted to the pent roof over the Unit 3 sunroom (refer to photo 24)."
+      ],
+      "photos": [
+        {
+          "caption": "General view of roof with twisted steel spindle section"
+        },
+        {
+          "caption": "Ponding water above common staircase"
+        },
+        {
+          "caption": "Ponding water above common staircase"
+        },
+        {
+          "caption": "Evidence of water ponding"
+        },
+        {
+          "caption": "Deteriorated waterproof membrane with cracking"
+        },
+        {
+          "caption": "Brick parapet with corroded fixings"
+        },
+        {
+          "caption": "Leaf litter filling outlet"
+        },
+        {
+          "caption": "Patch repairs to the pent roof above Unit 3 sunroom"
+        }
+      ]
+    },
+    {
+      "ref": "3.5",
+      "title": "Façade",
+      "points": [
+        "The building façade is largely rendered and painted, with timber-framed windows and a number of small ledges and planter boxes.",
+        "A section of render is missing behind the northern-most downpipe on the western façade (refer to photo 26).",
+        "Several services on the façade — most notably on the eastern elevation — appear to be redundant; they are pitted and do not visibly connect to anything (refer to photo 27).",
+        "The façade windows are generally deteriorated, exhibiting flaking paint, rot and corrosion at various points (refer to photos 28, 29, 30 and 31).",
+        "Step cracking is present at the head of the common laundry door (refer to photo 32)."
+      ],
+      "photos": [
+        {
+          "caption": "General view of rendered and painted façade"
+        },
+        {
+          "caption": "Missing render to western façade"
+        },
+        {
+          "caption": "Redundant services to the eastern façade"
+        },
+        {
+          "caption": "Flaking paint and corrosion staining to southern window"
+        },
+        {
+          "caption": "Rot and flaking paint to southern window"
+        },
+        {
+          "caption": "Rot to southern window"
+        },
+        {
+          "caption": "Flaking paint to Unit 4 sunroom window"
+        },
+        {
+          "caption": "Step cracking to common laundry lintel"
+        }
+      ]
+    }
+  ],
+  "discussion": [
+    {
+      "ref": "4.1",
+      "title": "Fire Stair Condition",
+      "body": [
+        "The fire stairs at the rear of the property are of concrete construction and feature two balustrade types: what appears to be original steel balustrading, formed from steel pipe infilled with woven steel wire, together with newer powder-coated balustrading.",
+        "Concrete spalling was observed to the soffit of the staircase, and further spalling was evident at the concrete door lintel, presenting as cracking.",
+        "Concrete spalling refers to the breakdown of reinforced concrete, in which portions of the surface crack, delaminate and eventually break away from the structure. It is most commonly driven by corrosion of the embedded steel reinforcement, which itself is usually caused by prolonged exposure to moisture and oxygen penetrating the concrete cover. As the reinforcement corrodes it increases in volume, and this expansion causes the surrounding concrete to crack, delaminate and spall. The diagram below, extracted from HB84:2018 Guide to Concrete Repair and Protection (HB84), illustrates this mechanism.",
+        "Corrosion was also observed to the steel pipe balustrade, having pitted the pipe completely through in places. It appears that repairs have been attempted through the addition of extra fixings in an effort to preserve the integrity of the balustrade.",
+        "With ongoing exposure to moisture and the environment, the steel balustrade, its fixings, the steel reinforcement and the concrete will continue to deteriorate, progressively reducing the structural capacity of these elements. In the longer term, this presents a material risk to the stability of the building and the safety of its occupants if it is not addressed promptly, and the cost of remediation will only increase over time."
+      ],
+      "recommendation": [
+        "Ordinarily, we would recommend concrete spalling repairs together with replacement of the balustrade, and the application of a suitable waterproof membrane to protect the concrete.",
+        "We understand the owners have been considering replacing the staircase with either a new concrete stair or a prefabricated steel stair. In our view, constructing a new staircase is likely to offer better value over the long term.",
+        "We would stress that the National Construction Code (NCC) sets limits on how the risers and goings of a stair may be configured. On a preliminary review of the existing arrangement, a redesign would probably alter the layout of the steps, as the current goings and slope relationship fall below the minimum requirements. While retrospectively bringing the existing stair into compliance is not required, compliance will be mandatory once a new stair is built. Given that the existing staircase is tightly constrained by the surrounding stairwell and doors, this may create a spatial difficulty.",
+        "On this basis, we also recommend the owners engage a BCA consultant to advise on the fire compliance of the staircase and on the dimensions of the goings and risers for any proposed new stair."
+      ],
+      "figure": {
+        "caption": "Figure 4.1 — Extract from HB84 illustrating the external indicators of concrete spalling"
+      }
+    },
+    {
+      "ref": "4.2",
+      "title": "Roof Waterproofing",
+      "body": [
+        "The existing roof combines a timber-framed flat roof with several timber-framed, tiled pent roofs. The flat roof makes up the majority of the rooftop and drains via a channel drain along its western side, which in turn discharges to rainheads on the western façade.",
+        "All roofs must be laid to falls that drain water adequately. The multiple instances of ponding water indicate that the drainage to the flat roof is not performing as intended. This ponding creates a slip hazard across the common roof area and, further, waterproof membranes are generally not designed to remain permanently submerged. The water ingress observed in the common stairwell is most likely caused by ponded water finding a path through a failure in the rooftop membrane or the façade coating.",
+        "While no water ingress was observed in Unit 3, and access to Unit 4 was not granted, the absence of adequate falls means that significant water ingress into the units below would be likely should the membrane fail.",
+        "During our inspection we also observed cracking to the nosing of the rooftop membrane at the rooftop entrance, which would allow water to track through the substrate and into the building.",
+        "We further note that unreinforced masonry balustrades do not satisfy the current lateral loading requirements of AS1170.1:2002 'Structural Design Actions Part 1: Permanent, imposed and other actions'. In addition, the twisted steel spindles of the northern parapet balustrade do not meet the minimum NCC requirements, which provide that, for a floor more than 4000 mm above the surface beneath, no horizontal element of a barrier between 150 mm and 760 mm above the finished floor level may facilitate climbing."
+      ],
+      "recommendation": [
+        "We recommend the owners consider replacing the roof waterproof membrane. Although no water ingress was observed within habitable areas, the membrane is clearly approaching the end of its service life, with failing details and inadequate falls. As part of these works, we recommend removing redundant services, replacing corroded fixings and correcting the falls.",
+        "We note that changes to the building legislation under the Design and Building Practitioners (DBP) Act preclude localised repairs from being an option. Accordingly, where correction of falls and repair of the waterproof membrane are required, the full system must be remediated. The new waterproofing system will also need to be designed by a registered design engineer, supported by a comprehensive scope of works and DBP Act designs, to ensure compliance with the current codes and standards.",
+        "This comprehensive approach will allow the underlying problems with the existing membrane and drainage to be resolved, securing long-term durability and compliance with current standards. We recommend that any consequential damage arising from water ingress be made good once the waterproofing works are complete.",
+        "In addition, while retrospective replacement of the balustrade is not required, if any of the remedial works affect the integrity of the masonry balustrade, provision will need to be made to ensure the balustrades comply with AS1170.1 and the NCC."
+      ],
+      "figure": {
+        "caption": "Left: cracking to the roof waterproof membrane. Right: water ponding to the roof."
+      }
+    },
+    {
+      "ref": "4.3",
+      "title": "Window Condition",
+      "body": [
+        "The windows throughout the property are timber-framed. Timber-framed windows are unlikely to meet modern standards, given that the requirements for wind and water resistance have become more demanding over time.",
+        "Timber windows also depend on their paint coatings to resist degradation. Where those coatings have not been maintained, deterioration such as the flaking paint, rot and fixing corrosion observed here is accelerated. Regular window maintenance should be built into the building's Capital Works Plan, as it helps avoid the far greater cost of replacement.",
+        "Furthermore, given the cracking observed in the Unit 3 kitchen window and the age of the windows generally, the glazing is unlikely to be tempered and therefore does not meet current safety requirements. While retrospective replacement is not required, where glazing has cracked the owners should consider replacing it with a modern system incorporating safety glass."
+      ],
+      "recommendation": [
+        "We recommend replacing any existing timber-framed windows that have cracked glazing or rotted timber components. In our view these should be replaced with modern powder-coated aluminium windows that comply with the current NCC and Australian Standards, glazed to modern standards to deliver superior safety, thermal and acoustic performance.",
+        "The owners may also wish to consider replacing all of the windows with modern powder-coated aluminium units. Given the condition of the paint coatings, the timber construction and the glazing, doing so would make the building safer, easier to maintain and better performing both thermally and acoustically."
+      ]
+    },
+    {
+      "ref": "4.4",
+      "title": "Façade Condition",
+      "body": [
+        "The façade was generally found to be in sound condition, with the exception of the following:",
+        "— Missing render to the western façade (refer to photo 26).",
+        "— Step cracking to the head of the common laundry door. Given its location, we consider this is likely to be the result of subsidence, and we recommend it be monitored for any further progression (refer to photo 32).",
+        "— Rusted fixings to services (refer to photo 22).",
+        "— A hole in the southern façade (refer to photo 16).",
+        "Water ingress was observed in the common staircase in the form of water staining and flaking paint. This may result from water tracking through corroded fixings or cracks in the façade. Given its position, the source could be either the façade or the roof above; we comment further on this in Section 4.2 above.",
+        "In addition, given its position, the missing render on the western façade is likely to be contributing to water ingress into Unit 4. We note that access to Unit 4 was not granted at the time of our inspection."
+      ],
+      "recommendation": [
+        "We recommend the following repairs be undertaken:",
+        "— Miscellaneous render repairs, including to the western façade and to areas where fixings have deteriorated.",
+        "— Replacement of all corroded fixings (noting that some may be attached to redundant services).",
+        "We also recommend water testing of both the roof and the façade to confirm the source of the water ingress into the common internal stairwell.",
+        "We note that, while on site, we observed several façade services that appear to be redundant, with various pipes either rusted through or not routed into the building. Should the owners wish to remove any redundant pipework, a plumber can test and confirm the serviceability of all plumbing before removing any redundant pipes."
+      ]
+    }
+  ],
+  "conclusion": {
+    "body": [
+      "At the request of Thomas Louw, acting for the Owners' Corporation of Strata Plan 17078, we inspected the following areas of concern:"
+    ],
+    "items": [
+      "Water ingress;",
+      "Roof waterproofing (including drainage);",
+      "Façade elements;",
+      "Fire stairs."
+    ],
+    "closing": [
+      "Our report is limited to these matters. It is not intended to serve as a Specification and cannot therefore be used to tender the works to a building contractor. XNDR can prepare a Scope of Works or Specification for the recommended remedial works.",
+      "In summary, we recommend that the items set out in Section 4 be considered for rectification.",
+      "Should you or the Owners' Corporation have any further questions, please do not hesitate to contact the undersigned."
+    ]
+  },
+  "signatories": [
+    {
+      "role": "Prepared by",
+      "name": "Daniel Osei",
+      "qualifications": "BEng (Hons) GradIEAust",
+      "title": "Engineer, XNDR Consulting"
+    },
+    {
+      "role": "Reviewed by",
+      "name": "Priya Nair",
+      "qualifications": "BEng (Hons) MEng (Structural)",
+      "title": "Remedial Team Leader, XNDR Consulting"
+    }
+  ]
+}

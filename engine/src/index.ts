@@ -19,9 +19,11 @@ import { loadLogoOnDark, loadLogoOnLight } from "./assets.js";
 import { renderHtmlToPdf } from "./render/pdf.js";
 import { renderDrawingSheet } from "./templates/drawing-sheet.js";
 import { renderFeesReport } from "./templates/fees-report.js";
+import { renderScopeOfWorks } from "./templates/scope-of-works.js";
+import { renderEngineeringReport } from "./templates/engineering-report.js";
 import { feesReportToDocx } from "./word/fees-docx.js";
 import type { ThemeName } from "./brand.js";
-import type { DrawingSet, FeesReport } from "./types.js";
+import type { DrawingSet, FeesReport, ScopeOfWorks, EngineeringReport } from "./types.js";
 
 const here = fileURLToPath(new URL(".", import.meta.url));
 const DESIGNS_DIR = resolve(here, "../../designs");
@@ -99,6 +101,26 @@ async function renderFees(input: string, outPath: string, theme: ThemeName): Pro
   await renderHtmlToPdf(html, outPath);
 }
 
+/** Render a Scope of Works (tender specification) from a JSON file to a PDF. */
+async function renderScope(input: string, outPath: string, theme: ThemeName): Promise<void> {
+  const doc = loadJson<ScopeOfWorks>(input);
+  const html = renderScopeOfWorks(doc, {
+    logoDataUrl: theme === "dark" ? loadLogoOnDark() : loadLogoOnLight(),
+    theme,
+  });
+  await renderHtmlToPdf(html, outPath);
+}
+
+/** Render a Remedial Engineering Report from a JSON file to a PDF. */
+async function renderReport(input: string, outPath: string, theme: ThemeName): Promise<void> {
+  const doc = loadJson<EngineeringReport>(input);
+  const html = renderEngineeringReport(doc, {
+    logoDataUrl: theme === "dark" ? loadLogoOnDark() : loadLogoOnLight(),
+    theme,
+  });
+  await renderHtmlToPdf(html, outPath);
+}
+
 /** Render a fee proposal from a JSON file to an editable .docx (fees only). */
 async function renderFeesDocx(input: string, outPath: string, theme: ThemeName, bodyBands: boolean): Promise<void> {
   const report = loadJson<FeesReport>(input);
@@ -129,11 +151,25 @@ async function cmdFees(input: string, out: string | undefined, theme: ThemeName,
   console.log(`✓ Fees report (${theme}) → ${outPath}`);
 }
 
+async function cmdScope(input: string, out: string | undefined, theme: ThemeName): Promise<void> {
+  const outPath = out ?? defaultOut(input, "-scope", theme);
+  await renderScope(input, outPath, theme);
+  console.log(`✓ Scope of Works (${theme}) → ${outPath}`);
+}
+
+async function cmdReport(input: string, out: string | undefined, theme: ThemeName): Promise<void> {
+  const outPath = out ?? defaultOut(input, "-report", theme);
+  await renderReport(input, outPath, theme);
+  console.log(`✓ Engineering Report (${theme}) → ${outPath}`);
+}
+
 /** Render the blank, fill-in templates. PDFs for both types/themes; with
  *  --docx, an editable Word fees template instead (fees only). */
 async function cmdTemplate(docx: boolean, theme: ThemeName, body: boolean): Promise<void> {
   const sheetTemplate = resolve(EXAMPLES_DIR, "template-sheet.json");
   const feesTemplate = resolve(EXAMPLES_DIR, "template-fees.json");
+  const scopeTemplate = resolve(EXAMPLES_DIR, "template-scope.json");
+  const reportTemplate = resolve(EXAMPLES_DIR, "template-report.json");
   if (docx) {
     const out = join(DESIGNS_DIR, `fees-template-${theme}${body ? "-body" : ""}-${timestamp()}.docx`);
     await renderFeesDocx(feesTemplate, out, theme, body);
@@ -143,10 +179,18 @@ async function cmdTemplate(docx: boolean, theme: ThemeName, body: boolean): Prom
   for (const theme of ["light", "dark"] as ThemeName[]) {
     const sheetOut = join(DESIGNS_DIR, `drawing-sheet-template-${theme}-${timestamp()}.pdf`);
     const feesOut = join(DESIGNS_DIR, `fees-template-${theme}-${timestamp()}.pdf`);
+    // Stable names (no timestamp) so the blank templates stay browsable in
+    // designs/ and each regen overwrites in place — see template:scope/report.
+    const scopeOut = join(DESIGNS_DIR, `template-scope-${theme}.pdf`);
+    const reportOut = join(DESIGNS_DIR, `template-report-${theme}.pdf`);
     await renderSheet(sheetTemplate, sheetOut, theme);
     console.log(`✓ Drawing sheet template (${theme}) → ${sheetOut}`);
     await renderFees(feesTemplate, feesOut, theme);
     console.log(`✓ Fees template (${theme}) → ${feesOut}`);
+    await renderScope(scopeTemplate, scopeOut, theme);
+    console.log(`✓ Scope of Works template (${theme}) → ${scopeOut}`);
+    await renderReport(reportTemplate, reportOut, theme);
+    console.log(`✓ Engineering Report template (${theme}) → ${reportOut}`);
   }
 }
 
@@ -156,7 +200,7 @@ async function main(): Promise<void> {
   if (cmd === "template") return cmdTemplate(docx, theme ?? "light", body);
   const [input, out] = rest;
   if (!cmd || !input) {
-    console.error("Usage: <sheet|fees> <input.json> [out] [--light|--dark] [--docx] [--body]  |  template [--docx] [--body]");
+    console.error("Usage: <sheet|fees|scope|report> <input.json> [out] [--light|--dark] [--docx] [--body]  |  template [--docx] [--body]");
     process.exit(1);
   }
   switch (cmd) {
@@ -164,8 +208,12 @@ async function main(): Promise<void> {
       return cmdSheet(input, out, theme ?? "dark", docx);
     case "fees":
       return cmdFees(input, out, theme ?? "light", docx, body);
+    case "scope":
+      return cmdScope(input, out, theme ?? "light");
+    case "report":
+      return cmdReport(input, out, theme ?? "light");
     default:
-      console.error(`Unknown command: ${cmd}. Use "sheet", "fees" or "template".`);
+      console.error(`Unknown command: ${cmd}. Use "sheet", "fees", "scope", "report" or "template".`);
       process.exit(1);
   }
 }

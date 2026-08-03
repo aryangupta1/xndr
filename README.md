@@ -14,8 +14,12 @@ The design engine turns **structured JSON** into **branded, print-ready PDFs**:
   auto totals, hourly rates, exclusions, acceptance/signature, payment, T&Cs.
 - **Drawing sheets** (A3) — engineering title-block sheets matching the XNDR
   drawing-sheet template.
+- **Scope of Works** (A4) — tender specification: cover + contents, then numbered
+  work items with location / scope intent / extent and a clause-by-clause spec.
+- **Engineering reports** (A4) — remedial inspection report: letter header,
+  observations with a photo grid, discussion + recommendations, sign-off.
 
-Both come in **light and dark** themes. Output is HTML/CSS → PDF via Playwright.
+All come in **light and dark** themes. Output is HTML/CSS → PDF via Playwright.
 
 ## Quick start
 
@@ -24,7 +28,9 @@ cd engine
 npm install                 # installs deps + downloads Chromium
 npm run example:fees        # → designs/sample-fees-fees-light-<timestamp>.pdf
 npm run example:sheet       # → designs/sample-project-dark-<timestamp>.pdf
-npm run template            # blank templates, both types, both themes
+npm run example:scope       # → designs/sample-scope-scope-light-<timestamp>.pdf
+npm run example:report      # → designs/sample-report-report-light-<timestamp>.pdf
+npm run template            # blank templates, every type, both themes
 ```
 
 Full how-to (the JSON workflow, theme flags, troubleshooting):

@@ -1,0 +1,1022 @@
+{
+  "title": "Scope of Works",
+  "jobTitle": "Remedial Building Works — Waterproofing and Other Works",
+  "property": { "address": "22 Battery Street, Coogee NSW 2034" },
+  "reference": "2025R0318",
+  "date": "11 June 2026",
+  "status": "For Tender Purposes Only",
+  "summary": [
+    "This specification sets out the remedial building works required at 22 Battery Street, Coogee, comprising the renewal of waterproofing and tiling to the balconies, courtyards and walkways together with associated door, window, balustrade, wall, concrete and masonry works.",
+    "It is to be read together with the Waterproofing Works Drawing Set and priced by the Contractor as described in each Item below."
+  ],
+  "figure": { "caption": "Figure 1 — Aerial view of 22 Battery Street, Coogee (courtesy of Nearmap)" },
+  "items": [
+    {
+      "number": 1,
+      "title": "Preliminaries",
+      "location": "All areas relevant to the works under contract (WUC) at 22 Battery Street, Coogee NSW 2034.",
+      "scopeIntent": [
+        "The Contractor is to allow for and provide all of the preliminary items necessary to carry out the works, as set out below."
+      ],
+      "specification": [
+        {
+          "clauses": [
+            { "text": "In addition to the preliminaries required under AS4000 — General Conditions of Contract, install suitable temporary protection to the common areas and to all affected internal areas for the full duration of the works, so that existing property is not damaged." },
+            { "text": "Carry out and provide a dilapidation survey and report covering all relevant lots, all common areas and the surrounding external walls near the work zones before commencing. Issue the dilapidation report to the Superintendent and the Owners for their records." },
+            { "text": "Erect site fencing and site signage to keep both site personnel and residents safe throughout the project, in accordance with the Workplace Health and Safety Regulations." },
+            { "text": "Provide traffic control during site deliveries and while plant is operating on site, as required." },
+            { "text": "Keep the site clean and orderly, with all waste contained in a designated storage area. Remove and lawfully dispose of all waste and debris before leaving the site at the end of each day." },
+            { "text": "Protect any nearby electrical wires using \"Tiger Tails\" where needed. The Contractor is responsible for identifying where such protection is required and for allowing the costs of installing and later removing it within this Item." },
+            { "text": "Provide the necessary protection to adjacent surfaces and to common property." },
+            { "text": "Ensure that the site set-up does not interfere with the residents' access to and egress from the property for the duration of the contracted works." },
+            { "text": "Reinstate and reconnect any services, equipment, surfaces or other items that are removed, altered or damaged by the access works. Allow to engage licensed electricians, plumbers and other specialists to reinstate any services affected by the remedial works in this specification." }
+          ]
+        },
+        {
+          "heading": "Site Establishment / Disestablishment Provisions",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Provide the Owners with a detailed statement of the site establishment requirements needed to carry out the specified works." },
+            { "text": "Where access to any lot owner's car space or garage is needed to complete the works, give the Owners Corporation sufficient notice of the required access and advise how long the car space will be unavailable." },
+            { "text": "Price the on-site works to comply with Local Council requirements. The Contractor is responsible for confirming permitted working hours with Council where necessary." },
+            { "text": "Allow for all disestablishment works needed to safely remove all equipment from the site." },
+            { "text": "Provide a general builder's clean to all work areas as part of the disestablishment works." }
+          ]
+        },
+        {
+          "heading": "Warranties",
+          "continueNumbering": true,
+          "clauses": [
+            {
+              "text": "Provide and document the following NSW Government statutory warranties and associated product warranties for the works carried out under the contract, naming the Principal as the beneficiary:",
+              "sub": [
+                "Building works, materials and labour — 2 years (minor defects)",
+                "Building works, materials and labour — 6 years (major defects)",
+                "Waterproofing membrane — 20 years (product warranty from the supplier)"
+              ]
+            }
+          ],
+          "paras": [
+            "Note: Any repairs required during the warranty period are to be carried out at no cost to the Principal."
+          ]
+        },
+        {
+          "heading": "Design and Building Practitioners Act 2020 (DBP Act) Requirements",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Given the nature of the building works in this specification, the Contractor is to be a Registered Building Practitioner and is to ensure that the documents, records and building works are produced and kept in accordance with the DBP Act." }
+          ]
+        },
+        {
+          "heading": "DBP Act 2020 — Declared Design",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Allow to lodge the XNDR declared design compliance statement and drawings as required under the Design and Building Practitioners Act (NSW)." }
+          ]
+        },
+        {
+          "heading": "NCC 2022 — Deemed-to-Satisfy and Performance Solution Requirements",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Carry out the works using NCC 2022 Deemed-to-Satisfy provisions wherever practicable. Where a Performance Solution is unavoidable, the Contractor and their Designer are to prepare and allow for an NCC compliance Performance Solution brief and report." }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Home Building Compensation Fund Insurance (HBCF)",
+      "location": "The property at 22 Battery Street, Coogee NSW 2034.",
+      "scopeIntent": [
+        "This Item covers the Contractor obtaining the HBCF Insurance documents required for the remedial building works."
+      ],
+      "extentOfWorks": [
+        "All work areas needed to complete the works within this specification."
+      ],
+      "specification": [
+        {
+          "paras": [
+            "For tendering purposes, a Provisional Sum for this Item is to be carried in the Tender Schedule.",
+            "The HBCF Insurance policy premium is a direct cost that is passed through to the Principal. The Contractor is not to apply any builder's margin, overhead, profit or administration cost to obtaining these insurance documents in the first instance.",
+            "The following applies only once the Principal (Client) has selected the successful tenderer and approved proceeding to Contract documents:"
+          ],
+          "clauses": [
+            {
+              "text": "Obtain the necessary HBCF Insurance documents for all building works. The certificate of insurance is to nominate the site address and name the Principal as the beneficiary.",
+              "sub": [
+                "Note: Under the Home Building Act 1989, an HBCF Insurance policy must be obtained for building works where the total cost of the works exceeds $20,000 (GST inclusive)."
+              ]
+            },
+            {
+              "text": "Provide the Principal and the Superintendent with a copy of the issued HBCF Insurance policy once it is received.",
+              "sub": [
+                "Electronic copies (by email) or hard copies are both acceptable ways of providing the policy to the parties above."
+              ]
+            },
+            {
+              "text": "Where the contract value changes (through single or cumulative variations) by more than 20% of the original contract price, the HBCF policy is to be amended to match the final contract value.",
+              "sub": [
+                "In that event the Contractor is to submit a Variation Request to the Client for the additional HBCF premium and any additional broker costs needed to close out the HBCF documents with the provider, together with all supporting documentation and receipts for the Client's review and records."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Access",
+      "location": "Walkway and ground-floor courtyards at 22 Battery Street, Coogee.",
+      "scopeIntent": [
+        "The intent of this Item is to ensure safe access is provided for all of the works."
+      ],
+      "extentOfWorks": [
+        "For tendering purposes, the Contractor is to allow a lump sum price for the scoped waterproofing and associated remedial works access."
+      ],
+      "specification": [
+        {
+          "heading": "Establishment, Disestablishment and General Access",
+          "clauses": [
+            { "text": "The Contractor is solely responsible for providing safe access for all of the works." },
+            { "text": "Allow for all scaffolding and access-system equipment, including its installation, certification and attendance." },
+            { "text": "Provide any additional access-system provisions required to carry out the works." },
+            { "text": "Arrange access so that disturbance to Users is kept to a minimum." },
+            { "text": "Protect all areas that could be damaged during the remedial works." },
+            { "text": "Provide access in accordance with all relevant standards and codes." },
+            { "text": "Ensure the access provided does not unduly compromise the security of the building or any lot." },
+            { "text": "Take reasonable measures to prevent unauthorised access." },
+            { "text": "Maintain access for all Users during the works unless otherwise directed." },
+            { "text": "Maintain amenity for Users and keep inconvenience to a minimum." },
+            { "text": "Organise and coordinate access with sufficient and reasonable notice." },
+            { "text": "No access is available through the units or common hallways at any time; all arrangements for the works are to be made externally via scaffold." }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Balcony, Courtyard and Walkway Waterproofing",
+      "location": "Balcony, courtyard and walkway at the subject property.",
+      "scopeIntent": [
+        "The intent of this Item is to install a new compliant waterproofing membrane and tiling to the nominated external balcony, courtyard and walkway in accordance with AS 4654.2:2012 — Waterproofing membranes for above-ground use."
+      ],
+      "extentOfWorks": [
+        "For tendering purposes, the Contractor is to allow a lump sum price for the scoped external balcony waterproofing and associated works to the extent specified."
+      ],
+      "specification": [
+        {
+          "paras": [
+            "Note: Stage the works so that any openings in the building are left unprotected for the shortest possible time, and keep occupant disruption to a minimum.",
+            "The Contractor is to liaise with material suppliers to confirm compliant installation of their products and the warranties provided. This specification is to be read together with the Waterproofing Works Drawing Set."
+          ],
+          "clauses": [
+            { "text": "Coordinate safe access to the work areas with the Strata Manager and Owners in accordance with Item 1 (Preliminaries) and Item 3 (Access) of this specification." },
+            { "text": "Coordinate the works with the other Items of this specification as required." }
+          ]
+        },
+        {
+          "heading": "Demolition",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Owners are to temporarily remove and safely store existing external and internal blinds, curtains or fixtures affecting the doors, and to reinstate them on completion. Where Owners have not removed these items, the Contractor may remove them at hourly rates and is not liable for damage to items removed on the Owners' behalf." },
+            { "text": "Owners are to temporarily remove planter boxes and any soil/plants from the balconies and private courtyards, and to reinstate them on completion. Where Owners have not done so, the Contractor may remove them at hourly rates and is not liable for damage to items removed on the Owners' behalf." },
+            {
+              "text": "Allow to demolish the following:",
+              "sub": [
+                "existing planter-box walls along the walkway, and removal of plants and soil;",
+                "rear boundary wall (to be reinstated);",
+                "eastern boundary wall (to be reinstated);",
+                "existing walkway concrete slab and associated tiling, from the street to the gate only (to be reinstated);",
+                "existing brick wall between the Unit 1 courtyard and the walkway (to be reinstated);",
+                "Unit 2 Colorbond pergola."
+              ]
+            },
+            {
+              "text": "Allow to decommission and temporarily relocate any existing services (for example conduits, air-conditioning units, taps, gas outlets and light fixtures) as required, and to recommission them on completion. Check operation before disconnecting.",
+              "sub": [
+                "Air-conditioning units are to remain in service throughout the works."
+              ]
+            },
+            {
+              "text": "Remove and dispose of all tiles, screed layers and the existing waterproofing membrane to expose the bare concrete substrate.",
+              "sub": [
+                "For tender purposes, allow to remove an average screed thickness of 75mm."
+              ]
+            },
+            {
+              "text": "Remove and dispose of all existing door suite assemblies.",
+              "sub": [
+                "Allow to install safety protection to the affected balconies and door openings during the works."
+              ]
+            },
+            { "text": "Prepare balcony substrates so they are free of loose mortar, grease, oil and any other contaminants." },
+            {
+              "text": "ENGINEERING HOLD POINT — Inspection of substrate and termination details.",
+              "sub": [
+                "Provide the engineer with surveys of the substrates.",
+                "Give the Superintendent at least 48 hours' notice to inspect all exposed substrates before any membrane is applied; the Superintendent will confirm the quantity of any substrate repairs required.",
+                "The Superintendent will investigate all external balcony walls, building-opening thresholds and service penetrations to confirm the final extent of waterproofing terminations.",
+                "The Superintendent will review the proposed membrane termination heights at all external walls and building openings, including door and flashing requirements, to confirm the specified details are compliant and suitable.",
+                "Allow for CCTV investigation of the existing balcony drains."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Construction of Concrete Walls, Plinths and Hobs",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Construct a new continuous concrete threshold hob at the balcony/courtyard/walkway door openings." },
+            { "text": "Construct a new continuous concrete perimeter hob to the balcony." },
+            {
+              "text": "Construct a new concrete plinth around the balcony service penetrations.",
+              "sub": [
+                "Threshold hobs — dimensions per the drawings and/or as confirmed by the Superintendent.",
+                "Threshold hobs — reinforced with galvanised N12 bars drilled and epoxied 120mm into the slab at 200mm centres, plus galvanised N12 tie bars.",
+                "Threshold hobs — minimum concrete strength 40 MPa, with reinforcement placed centrally.",
+                "Hobs under balustrades — dimensions per the drawings and/or as confirmed by the Superintendent.",
+                "Hobs under balustrades — reinforced with galvanised 2-N12 U-bars drilled and epoxied 120mm into the slab at 200mm centres, plus galvanised 2-N12 horizontal tie bars.",
+                "Hobs under balustrades — minimum concrete strength 40 MPa with minimum 40mm cover.",
+                "Concrete walls — dimensions per the drawings and/or as confirmed by the Superintendent.",
+                "Concrete walls — reinforced with galvanised N12/N16 bars drilled and epoxied 120mm into the slab at 200mm centres, plus galvanised N12 tie bars.",
+                "Concrete walls — minimum concrete strength 40 MPa, with reinforcement placed centrally."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Preparation",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Carry out the Concrete Spalling Repairs of this specification if required. The concrete substrate is to be made seamless to ensure adhesion of the new external waterproofing membrane and/or external paint coating." },
+            { "text": "Allow to patch-repair any minor surface irregularities with ARDEX BR 345 concrete repair mortar." },
+            { "text": "Supply and apply two coats of ARDEX WPM 405 protective slurry coating to all exposed concrete substrate in accordance with the manufacturer's instructions." },
+            { "text": "Install two new overflow outlets to the concrete perimeter hob as shown on the drawings." },
+            { "text": "Allow for overflows to be 65mm diameter pipes or 100 x 75 Rectangular Hollow Section." },
+            {
+              "text": "Mechanically fix a new continuous aluminium angle to the new concrete door-threshold hob in accordance with AS 4654.1, ensuring a minimum 100mm vertical membrane termination. Penetrations are to be certified by the Contractor.",
+              "sub": [
+                "Angles are to be colour-matched to the new door frame colour."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bonded Screed",
+          "continueNumbering": true,
+          "clauses": [
+            {
+              "text": "Supply and install a bonded screed to the entire external balcony with a minimum fall of 1:80 to the drainage outlets in accordance with AS 4654.2.",
+              "sub": [
+                "Add ARDEX WPM 405 polymer additive to the sand-cement screed mix.",
+                "For tender purposes, allow for an average screed thickness of 75mm.",
+                "Install galvanised reinforcing mesh SL41 wherever the thickness exceeds 40mm.",
+                "Allow a minimum of 7 days curing; protect the screed from inclement weather and UV as required."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Waterproofing Membrane Works",
+          "continueNumbering": true,
+          "clauses": [
+            {
+              "text": "Supply and install a new fully bonded ARDEX WPM 1000 membrane, or approved equivalent, in accordance with the manufacturer's specification and guidelines, the NCC and AS 4654.2.",
+              "sub": [
+                "Adhere the membrane to the substrate using ARDEX WA 98 adhesive.",
+                "Install neutral-cure ARDEX RA 040 sealant fillet joints at all changes of direction, including the edge of puddle flanges and angles, and allow to cure.",
+                "Terminate the membrane to the top of the aluminium water-stop angle at the door threshold, sealed with ARDEX ST.",
+                "Note: All membranes are to be detailed and terminated in accordance with the drawings."
+              ]
+            },
+            { "text": "Remove the existing Unit 2 pergola and replace it with a new like-for-like pergola." },
+            {
+              "text": "On completion of the membrane installation, the Contractor is to:",
+              "sub": [
+                "Allow for electronic leak-detection testing and certification; any leaks identified are to be made good by the Contractor at their cost.",
+                "Engage Ardex Australia to inspect and certify the waterproofing membrane works."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Cavity Flashing Works",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Remove a minimum of 2–3 rows of external brickwork as required to install the new cavity flashings, working in alternate 1,200mm sections." },
+            { "text": "Install propping to support the brickwork wall for the duration of the cavity flashing works." },
+            {
+              "text": "Remove and dispose of all existing flashing material and debris (if any) from the cavity wall.",
+              "sub": [
+                "Give the Superintendent at least 48 hours' notice so the exposed cavity can be inspected before the new cavity flashing is installed.",
+                "Note: Take photographic records of any debris in the cavity before it is removed."
+              ]
+            },
+            { "text": "Fill the cavity with a 3:1 sand-cement mix incorporating an ARDEX WPM 405 additive." },
+            { "text": "Cut in and seal a new fully bonded ARDEX WPM 1000 flashing extending across the cavity wall and turning down onto the outer skin of brickwork in accordance with AS 3700." },
+            {
+              "text": "Ensure all new cavity flashing works comply with AS 2904:1995 — Damp-proof courses and flashings.",
+              "sub": [
+                "Cavity flashing is to be embedded into and sealed to the internal masonry skin in accordance with the drawings.",
+                "Cavity flashing is to extend through to the external masonry skin and downturn to the waterproofing membrane in accordance with the drawings.",
+                "Cavity flashing is to extend a minimum of 150mm to each side past the opening.",
+                "Cavity flashing is to turn up a minimum of one course of brick, boxed and terminated at each end.",
+                "Note: Take photographic records of all completed cavity flashings."
+              ]
+            },
+            { "text": "Supply and install new PVC weep holes to the flashing repair areas at a maximum of 1,200mm centres in accordance with the manufacturer's instructions and AS 3700." },
+            {
+              "text": "The Contractor may re-use bricks where salvageable; where not, the supply cost of any new bricks required is to be included in the lump sum.",
+              "sub": [
+                "Install new mortar of exposure class M4, colour-matched to the existing mortar.",
+                "Ensure the cavity flashing is protected from mortar and debris."
+              ]
+            },
+            {
+              "text": "Clean the affected areas with a diluted hydrochloric acid wash (1 part acid to 10 parts water) to remove excess mortar residue for a suitable, indistinguishable finish; refer to the landscape architectural drawings for the finish.",
+              "sub": [
+                "New weep holes are to be clear of all debris and mortar on completion."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "New Tiling",
+          "continueNumbering": true,
+          "clauses": [
+            {
+              "text": "Supply and install new tiles directly adhered to the membrane using ARDEX X18 with ARDEX E90 additive.",
+              "sub": [
+                "Supply the Owners Corporation with three tile samples matching the existing colour; tiles to be selected by the Owners Corporation before, or after, signing the Contract documents.",
+                "Supply the Owners Corporation with grout colour samples for approval.",
+                "Supplied tiles are to have a minimum R11 slip rating.",
+                "For tender purposes, allow $100/m² + GST for the procurement of tiles."
+              ]
+            },
+            { "text": "Install skirting tiles to all floor-to-wall upturns where required." },
+            {
+              "text": "Install control joints in the tiled surface where required, at a maximum of 4.5m centres and at logical intersections; reflect any structural screed control joints in the tile surface directly above.",
+              "sub": [
+                "Preformed tile-joint systems are recommended and are to be stainless steel."
+              ]
+            },
+            {
+              "text": "Use ARDEX EG-15 epoxy grout, or approved equivalent, installed in accordance with the technical data sheets.",
+              "sub": [
+                "Tile grout colour to be confirmed by the Owners Corporation."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Unit 2 Pergola",
+          "continueNumbering": true,
+          "clauses": [
+            {
+              "text": "Supply and install a new Colorbond pergola with a like-for-like appearance and design.",
+              "sub": [
+                "Post fixings are to be side-mounted on the concrete wall, with waterproofing detailed around the fixings.",
+                "Provide design and shop drawings for approval before placing the order.",
+                "Obtain structural certification from the manufacturer."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Painting Works",
+          "continueNumbering": true,
+          "paras": [
+            "Note: The Executive Committee is responsible for confirming the façade colour selections provided by the Contractor before the works commence — approximately 4 weeks before the coating is applied."
+          ],
+          "clauses": [
+            { "text": "Protect all pre-finished areas with drop sheets and masking tape as required." },
+            { "text": "Allow for the temporary removal and reinstatement of existing wall fixings, fittings, fixtures and downpipes to the balcony façades, including the balcony slab edges, as required." },
+            {
+              "text": "Where applicable, install skim render as per the Landscape Architect's documents.",
+              "sub": [
+                "Where the render replacement thickness exceeds 10mm, advise the Superintendent for further instruction on product selection."
+              ]
+            },
+            { "text": "Apply an external-grade acrylic paint coating as per the Landscape Architect's documents, or approved equivalent, to the balcony façades and soffits, prepared and primed as required, in accordance with the manufacturer's instructions, AS 2311:2009 — Guide to the painting of buildings, and the drawings." },
+            { "text": "Reinstate and reconnect any affected services, façade fixings, fittings, fixtures, blinds and fly screens, and make good any affected items." },
+            { "text": "Provide a general builder's clean to leave the area clean and tidy." }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Door Replacement",
+      "location": "Unit entrances and Unit 2 balcony door at the subject property.",
+      "scopeIntent": [
+        "The intent of this Item is to install new compliant sliding-door suites to the re-sized door openings once the waterproofing works are complete."
+      ],
+      "extentOfWorks": [
+        "For tendering purposes, the Contractor is to allow a lump sum price for the scoped door replacement works."
+      ],
+      "specification": [
+        {
+          "paras": [
+            "Note: Stage the works so that any openings in the building are left unprotected for the shortest possible time, and keep occupant disruption to a minimum.",
+            "All materials and products are to be installed strictly in accordance with their technical data sheets and the manufacturer's requirements. The Contractor is to liaise with material suppliers to confirm compliant installation and the warranties provided. This specification is to be read together with the Waterproofing Works Drawing Set."
+          ],
+          "clauses": [
+            { "text": "Coordinate safe access to the work areas in accordance with Item 1 (Preliminaries) of this specification." },
+            { "text": "Coordinate the works with the other Items of this specification as required." },
+            { "text": "Confirm that the head and sill flashings have been correctly installed before the doors are fitted." },
+            {
+              "text": "Supply and install new fabricated \"AWS\" Architectural Series commercial-grade aluminium sliding-door suites, or approved equivalent, sized to fit the existing terrace openings and matching the existing building appearance.",
+              "sub": [
+                "Submit the new door and window framing type and design to the Owners for approval before commencing.",
+                "New sliding-door suites are to meet the current Australian Standards, the NCC and strata building requirements — specifically an ultimate pressure of 1,800 Pa, a serviceability pressure of 1,400 Pa and a water pressure of 450 Pa.",
+                "For tendering purposes, allow for clear 6.38mm laminated glazing.",
+                "Door hardware and fixings are to be stainless steel unless noted otherwise.",
+                "New door and window suites are to include appropriate sill flashings, or approved equivalent.",
+                "Install backing rod and 3M flashing tape to both sides and the head of the glazing suite.",
+                "Install all products in accordance with the manufacturer's instructions.",
+                "Note: It is the Contractor's responsibility to ensure the new door suites are fabricated to correctly fit the openings."
+              ]
+            },
+            { "text": "Install new aluminium storm mouldings of matching appearance, fixed and sealed on both rear faces to the frame and wall using a UV-resistant sealant such as ARDEX RA 040, or approved equivalent." },
+            {
+              "text": "Make good the building internals if they are damaged during removal or reinstatement of the balcony/terrace door suites, including patch painting where required.",
+              "sub": [
+                "Allow a provisional sum of $1,800 + GST."
+              ]
+            },
+            { "text": "Replace the existing gates with new like-for-like timber doors." },
+            { "text": "Provide a general builder's clean to leave the area clean and tidy." }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Replacement of Balustrade",
+      "location": "Unit 2 balcony and common stairs at the subject property.",
+      "scopeIntent": [
+        "The intent of this Item is to remove the existing balustrading to the external balconies and install a new compliant balustrade system in its place."
+      ],
+      "extentOfWorks": [
+        "For tendering purposes, the Contractor is to allow a lump sum price for the scoped balustrade installation works."
+      ],
+      "specification": [
+        {
+          "paras": [
+            "Note: Provide safety exclusion zones and keep occupant disruption to a minimum.",
+            "All materials and products are to be installed strictly in accordance with their technical data sheets and the manufacturer's requirements. The Contractor is to liaise with material suppliers to confirm compliant installation and the warranties provided. This specification is to be read together with the Waterproofing Works Drawing Set."
+          ],
+          "clauses": [
+            { "text": "Coordinate safe access to the work areas in accordance with Item 1 (Preliminaries) of this specification." },
+            { "text": "Coordinate the works with the other Items of this specification as required." },
+            { "text": "Protect all areas adjacent to the work zones." },
+            { "text": "Carry out a detailed site measure of the balcony and provide the measurements to the Superintendent for the supply and installation of the new balustrade." },
+            { "text": "Remove and safely dispose of all existing balcony balustrades, including any fixings into the concrete balcony slabs." },
+            { "text": "Core out any existing steel bars, dowels or threads of the old balustrade left in the concrete slab and fill all core holes flush with the surrounding surface in accordance with the Concrete Spalling Repairs of this specification." },
+            { "text": "Engage a concrete-scanning contractor to locate any existing edge reinforcement to each balcony slab, and provide the scanning report to the Superintendent for review to avoid damaging the edge reinforcement." },
+            { "text": "Ensure the balustrades are designed for the wind rating applicable to the site conditions." }
+          ]
+        },
+        {
+          "heading": "Installation of New Balustrade",
+          "continueNumbering": true,
+          "clauses": [
+            {
+              "text": "Following receipt of the concrete-scanning report, set out the new balustrade fixing locations.",
+              "sub": [
+                "Edge distances are to comply with the manufacturer's technical data sheets and installation guidelines.",
+                "Post spacings are to comply with the manufacturer's recommendations for certification. Note: Maximum post spacings depend on conditions such as wind region, final balustrade height and building height."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Concrete Hob Installation at Balcony Perimeter",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Construct a new hob — refer to the Waterproofing Works Drawing Set." },
+            {
+              "text": "Supply and install a new compliant aluminium-framed balustrade (Railsafe R-D12 clear-glass balustrading) in accordance with the structural loading requirements of AS 1170.2:2021 — Structural design actions, Part 2, and the manufacturer's instructions.",
+              "sub": [
+                "Submit the balustrade style and colour to the Owners Corporation for approval before work commences.",
+                "Detail around the balustrade post threaded rods in accordance with the ARDEX manufacturer's details and installation guidelines.",
+                "The new balustrade is to be nominally 1,050mm high, measured from the finished floor level (FFL) of each balcony."
+              ]
+            },
+            {
+              "text": "The Contractor is to take full responsibility for the assembly of the nominated balustrade.",
+              "sub": [
+                "Provide the manufacturer's structural design certification, installation certification and warranty documents."
+              ]
+            },
+            { "text": "Provide a general builder's clean and leave the site clean and tidy." }
+          ]
+        },
+        {
+          "heading": "Stairs",
+          "continueNumbering": true,
+          "clauses": [
+            {
+              "text": "Supply and install a new compliant aluminium-framed balustrade (Railsafe R-D12 clear-glass balustrading) in accordance with the structural loading requirements of AS 1170.2:2021 — Structural design actions, Part 2, and the manufacturer's instructions.",
+              "sub": [
+                "Submit the balustrade style and colour to the Owners Corporation for approval before work commences.",
+                "Detail around the balustrade post threaded rods in accordance with the ARDEX manufacturer's details and installation guidelines.",
+                "The new balustrade is to be nominally 1,050mm high, measured from the finished floor level (FFL)."
+              ]
+            },
+            {
+              "text": "The Contractor is to take full responsibility for the assembly of the nominated balustrade.",
+              "sub": [
+                "Provide the manufacturer's structural design certification, installation certification and warranty documents."
+              ]
+            },
+            { "text": "Provide a general builder's clean and leave the site clean and tidy." }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Balustrade Wall Replacement",
+      "location": "Unit 2 and Unit 3 at the subject property.",
+      "scopeIntent": [
+        "The intent of this Item is to install a structurally compliant concrete wall to replace the existing non-compliant balustrade wall system."
+      ],
+      "extentOfWorks": [
+        "For tendering purposes, the Contractor is to allow a lump sum price for the scoped balustrade wall works."
+      ],
+      "specification": [
+        {
+          "paras": [
+            "Note: Stage the works so that any openings in the building are left unprotected for the shortest possible time, and keep occupant disruption to a minimum.",
+            "All materials and products are to be installed strictly in accordance with their technical data sheets and the manufacturer's requirements. The Contractor is to liaise with material suppliers to confirm compliant installation and the warranties provided. This specification is to be read together with the Remedial Works Drawing Set."
+          ],
+          "clauses": [
+            { "text": "Coordinate safe access to the work areas in accordance with Item 1 (Preliminaries) of this specification." },
+            { "text": "Coordinate the works with the other Items of this specification as required." },
+            {
+              "text": "Remove and dispose of the internal and external parapet brickwork skins.",
+              "sub": [
+                "Install protection to the affected and surrounding external areas."
+              ]
+            },
+            { "text": "Install Abelflex at any existing vertical surfaces." },
+            {
+              "text": "Supply and install a new 120mm-thick wall to Unit 3 and a 150mm-thick wall to the Unit 2 balcony.",
+              "sub": [
+                "Install galvanised N16 vertical starter bars at 200mm centres, Chemset into the concrete substrate with a minimum 120mm embedment.",
+                "Install galvanised N16 horizontal reinforcement at 200mm vertical spacing.",
+                "Supply and install Ancon cavity frame ties at 400mm centres, fixed into the external brick skin and built into the block joints where required."
+              ]
+            },
+            { "text": "Supply and install a soldier course of brickwork to achieve a minimum height of 1,000mm from finished floor level." },
+            { "text": "Coat the wall with two coats of ARDEX 310 and 300." },
+            { "text": "Provide a general builder's clean to leave the area clean and tidy." }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Boundary Wall Replacement",
+      "location": "Eastern boundary wall at the subject property.",
+      "scopeIntent": [
+        "The intent of this Item is to install a structurally compliant blockwork wall to replace the existing boundary wall."
+      ],
+      "extentOfWorks": [
+        "For tendering purposes, the Contractor is to allow a lump sum price for the scoped boundary wall works."
+      ],
+      "specification": [
+        {
+          "paras": [
+            "Note: Stage the works so that any openings in the building are left unprotected for the shortest possible time, and keep occupant disruption to a minimum.",
+            "All materials and products are to be installed strictly in accordance with their technical data sheets and the manufacturer's requirements. The Contractor is to liaise with material suppliers to confirm compliant installation and the warranties provided. This specification is to be read together with the Remedial Works Drawing Set."
+          ],
+          "clauses": [
+            { "text": "Coordinate safe access to the work areas in accordance with Item 1 (Preliminaries) of this specification." },
+            { "text": "Coordinate the works with the other Items of this specification as required." },
+            { "text": "Provide a survey to confirm the boundary line and ensure the new works do not encroach onto the neighbouring boundary." },
+            {
+              "text": "Remove and dispose of the internal and external parapet brickwork skins.",
+              "sub": [
+                "Install protection to the affected and surrounding external areas."
+              ]
+            },
+            { "text": "Install Abelflex at any existing vertical surfaces." },
+            {
+              "text": "Supply and install a new 190mm-wide core-filled (f'c 25 MPa) block wall.",
+              "sub": [
+                "Install galvanised N16 vertical starter bars at 200mm centres, Chemset into the concrete substrate with a minimum 120mm embedment.",
+                "Install galvanised N12 horizontal reinforcement at 400mm vertical spacing."
+              ]
+            },
+            { "text": "Coat the wall with two coats of ARDEX 310 and 300." },
+            { "text": "Install a Colorbond privacy lattice structure along the eastern boundary, with the colour confirmed by the Owners and the screen designed to the Landscape Architect's documents. Allow a provisional sum of $10,000 + GST." },
+            { "text": "Provide a general builder's clean to leave the area clean and tidy." }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Concrete Spalling Repairs",
+      "location": "Any external concrete surfaces on the balconies, slab edges, common-area stairs and common-area walkway where concrete spalling is identified.",
+      "scopeIntent": [
+        "The Contractor is to identify all locations on the façades, walls and slabs where concrete spalling is occurring and carry out the concrete repair, reinforcement replacement and concrete protection works set out below."
+      ],
+      "specification": [
+        {
+          "paras": [
+            "The Contractor is to liaise with material suppliers to confirm compliant installation of their products and the warranties provided."
+          ],
+          "clauses": [
+            { "text": "Coordinate safe access to the property in accordance with Item 1 (Preliminaries) of this specification." },
+            { "text": "Coordinate the works with the other Items of this specification as required." },
+            {
+              "text": "Install temporary propping beneath the affected areas for the duration of the project, if required.",
+              "sub": [
+                "The location, type and number of props are to be confirmed on site by the Superintendent.",
+                "For tender purposes, a provisional sum of $3,000 + GST has been allocated for the supply and installation of propping."
+              ]
+            },
+            { "text": "Carry out a hammer or tap test on the exposed concrete substrates in accordance with the Superintendent's instructions, marking the results on site for the Superintendent's review." },
+            { "text": "ENGINEERING HOLD POINT — Give the Superintendent at least 48 hours' notice to inspect all exposed substrates. The Superintendent will confirm the quantity of any substrate repairs required." },
+            {
+              "text": "Carry out concrete spalling repairs to the exposed substrates as directed and marked by the Superintendent, in accordance with the Spalling Concrete Remedial Works Method Statement included in this Item.",
+              "sub": [
+                "The Contractor may propose similar concrete repair products for use, subject to the Superintendent's formal approval."
+              ]
+            },
+            { "text": "ENGINEERING HOLD POINT — Photograph and log all prepared repair areas before they are repaired with the repair mortar. The Contractor is responsible for numbering and recording the size of each patch repair in an approved quality-assurance system prior to the pre-backfill inspection." },
+            { "text": "Patch-repair any minor surface irregularities, such as holes and voids, with the specified concrete repair mortar or approved equivalent, matching the adjacent surface finish as closely as practical." },
+            { "text": "Provide a general builder's clean and leave the area clean and tidy." }
+          ]
+        },
+        {
+          "heading": "Steel Reinforcement Replacement",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Make a provisional allowance to replace steel reinforcement, where the section loss exceeds 20%, with galvanised grade-500 MPa reinforcement." },
+            { "text": "Where reinforcement is to be replaced, any welding instructed by the Superintendent is to use pre-heat, low-hydrogen electrodes and welding methods suitable for cold-worked deformed reinforcing bars. Replacement is to be carried out in accordance with the instructions of the Superintendent or their appointed structural engineer. Make a provisional allowance to establish a suitably qualified specialist welding tradesperson and associated equipment on site." },
+            { "text": "Where a replacement reinforcing bar must be terminated by drilling and bonding into a drilled hole, seek instructions from the Superintendent or structural engineer." }
+          ]
+        },
+        {
+          "heading": "Spalling Concrete Remedial Works Method Statement",
+          "clauses": [
+            { "text": "Install temporary props if considered necessary by the Superintendent." },
+            { "text": "Remove all cracked and loose concrete until sound, alkaline concrete is reached — at least 50mm beyond the end of any corroded reinforcing bar." },
+            { "text": "Scabble the concrete behind and beneath all bars requiring treatment so the bar is fully exposed." },
+            { "text": "Where the cover to the reinforcement at the exposed area is less than 30mm, break out the concrete to expose the reinforcement further until approximately 30mm cover is reached. Do NOT break out more than 1,000mm from the original exposed area — seek the Superintendent's instructions before proceeding further (SI). Carefully break out and/or mechanically scabble beneath and behind the bars so the reinforcement can either be bent down to achieve a minimum 30mm cover, or cut out and replaced with galvanised N12 bars at 100mm centres (to be confirmed on exposure by the Superintendent). New bars are to lap the existing by 300mm." },
+            { "text": "Cut the edge of the repair area to a straight depth of 10mm to avoid feathering, and 20mm behind any exposed reinforcement so the repair mortar can bind to the reinforcement." },
+            { "text": "Remove all rust from the reinforcing bars with an electric grinder until bare, clean metal is exposed and free of grease, oil, rust and mill scale, then apply a coat approximately 0.5–1.0mm thick of ARDEX BR 10 ZP by stiff brush, roller or spray." },
+            { "text": "Leave to dry for 2–3 hours (at an ambient temperature of 20°C), then apply a second coat of similar thickness." },
+            { "text": "If, on exposure, more than 20% of the steel cross-sectional area has been lost, or as directed by the Superintendent (SI), fix an additional galvanised N12 bar lapped 300mm onto sound reinforcement and prime as above." },
+            { "text": "If the substrate is wet or damp, apply a bonding coat at least 0.5mm thick of ARDEX BRP 30 EP, working the slurry well into the substrate to cover all surface irregularities." },
+            { "text": "Apply freshly mixed ARDEX BR 345 while the primer/bonding coat is still tacky (wet-on-wet) to the patch-repair areas, achieving a minimum 30mm cover over the reinforcement (SI). Finish to match the texture and finish of the surrounding concrete." },
+            { "text": "Cure the repair mortar using an approved proprietary curing compound." }
+          ],
+          "paras": [
+            "Note: \"SI\" indicates points at which the Superintendent is to be notified for inspection. ARDEX BR 10 ZP, ARDEX WR Prime and ARDEX BR 345 are manufactured by Ardex Australia Pty Ltd and are to be prepared and installed in accordance with the manufacturer's instructions and recommendations."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "External Masonry Crack Repairs",
+      "location": "External brick walls wherever cracks are identified.",
+      "scopeIntent": [
+        "The intent of this Item is to carry out crack-stitching repairs to the brick walls wherever cracks are evident."
+      ],
+      "extentOfWorks": [
+        "The Contractor is to allow a lump sum price for a provisional quantity of 50 lineal metres of external crack-stitching repairs, using the method below."
+      ],
+      "specification": [
+        {
+          "paras": [
+            "All materials and products are to be installed strictly in accordance with their technical data sheets and the manufacturer's requirements. The Contractor is to liaise with material suppliers to confirm compliant installation and the warranties provided.",
+            "The Contractor is to ensure the mortar colour, bricks and finish match the existing, and to provide the Owners Corporation with samples for approval before starting."
+          ],
+          "clauses": [
+            { "text": "Coordinate safe access to the work areas in accordance with Item 1 (Preliminaries) of this specification." },
+            { "text": "Coordinate the works with the other Items of this specification as required." },
+            { "text": "Allow for the temporary removal and reinstatement of any existing external downpipes or façade fittings required to carry out the works." }
+          ]
+        },
+        {
+          "heading": "Crack Stitching Repair",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Seal the full height of each vertical crack with a proprietary UV-stable flexible sealant colour-matched to the brickwork." },
+            {
+              "text": "Carry out crack-stitching repairs to the damaged vertical cracking sections of external brickwork, as directed by the Superintendent, using stainless-steel HeliFix HeliBars, or approved equivalent, in accordance with the manufacturer's instructions and technical data sheets/installation guides.",
+              "sub": [
+                "Option 1: Seal along the vertical cracks with a proprietary UV-stable flexible sealant colour-matched to the brickwork.",
+                "Option 2: Dispose of the cracked bricks and supply and install new matching bricks."
+              ]
+            },
+            { "text": "Reinstate and/or replace any damaged, loose or missing bricks with matching bricks as closely as practical, colour-matching the mortar as best possible where required." },
+            { "text": "Provide a general builder's clean and leave the site clean and tidy." }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Replacement of Northern Walkway Slab",
+      "location": "Walkway connecting the main northern walkway to the common area on the lower ground floor.",
+      "scopeIntent": [
+        "The intent of this Item is to demolish the existing walkway slab and construct a new walkway slab."
+      ],
+      "extentOfWorks": [
+        "For tendering purposes, the Contractor is to allow a lump sum price for the demolition of the existing walkway slab and the installation of the new walkway slab."
+      ],
+      "specification": [
+        {
+          "paras": [
+            "Note: Stage the works so that any openings in the building are left unprotected for the shortest possible time, and keep occupant disruption to a minimum.",
+            "The Contractor is to liaise with material suppliers to confirm compliant installation of their products and the warranties provided, obtain any permits required to undertake the works, and engage a geotechnical engineer to advise on the safe working batter and confirm the soil compaction level."
+          ],
+          "clauses": [
+            { "text": "Coordinate safe access to the work areas in accordance with Item 1 (Preliminaries) of this specification." },
+            { "text": "Coordinate the works with the other Items of this specification as required." },
+            { "text": "Protect all surfaces in the work zone and provide appropriate measures to control excessive dust." },
+            {
+              "text": "Make a clean cut at the existing concrete slab and jackhammer any remaining concrete.",
+              "sub": [
+                "Remove and dispose of the concrete walkway slab."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Preparation",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Coordinate safe access to the work areas in accordance with Item 1 (Preliminaries) of this specification." },
+            { "text": "Coordinate the works with the other Items of this specification as required." },
+            { "text": "Protect all surfaces in the work zone and provide appropriate measures to control excessive dust." },
+            {
+              "text": "Remove and dispose of the concrete slab at the areas indicated in Detail 2.1.",
+              "sub": [
+                "Make a clean cut at the existing concrete slab and jackhammer any remaining concrete."
+              ]
+            },
+            { "text": "Level the exposed soil and remove any clean fill to reach the level required for the new concrete works." }
+          ]
+        },
+        {
+          "heading": "Soil Compaction",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Level the exposed soil and remove any clean fill to reach the level required for the new concrete works." },
+            { "text": "Supply and install a minimum 100mm-thick DGB 20 sub-base topping over the existing soil." },
+            {
+              "text": "Compact the ground so the subgrade achieves 95% Standard compaction and the base course 98% Modified compaction, at the required level.",
+              "sub": [
+                "Compaction is to be carried out using hand-compaction equipment only."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Installation of New Walkway Slab",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Around the entire perimeter of the new 200mm concrete slab, set out the finished concrete level and install Abelflex expansion joint flush with the top finished surface of the new slab." },
+            {
+              "text": "Where the new concrete abuts the existing walkway, install 600mm-long N12 galvanised dowels at 400mm centres, drilled horizontally at slab mid-depth and epoxy-fixed 200mm into the existing concrete.",
+              "sub": [
+                "Slab-scan the existing concrete to ensure the new dowels do not interfere with the existing reinforcement."
+              ]
+            },
+            { "text": "Supply and install N16-200 top and bottom, each way, with 40mm cover over a 0.2mm polythene vapour barrier and a 50mm-deep road-base layer." },
+            { "text": "ENGINEERING HOLD POINT — the Superintendent is to inspect the reinforcement." },
+            { "text": "Supply and lay 32 MPa concrete with a wood-float finish to match the existing, ensuring a minimum 1:100 fall to the stormwater pits and downward slope to the existing slab." },
+            { "text": "Install expansion joints every 4m." },
+            { "text": "Neatly cut control joints every 4m in the new concrete slab." },
+            { "text": "Apply new tiles and screed over the concrete, with tiles matching the waterproofed walkway tiles." },
+            {
+              "text": "Make good and repaint any damaged areas.",
+              "sub": [
+                "Any gaps in the façade are to be repaired and repainted."
+              ]
+            },
+            { "text": "Reinstate all services." },
+            { "text": "Provide a general builder's clean and leave the area clean and tidy." }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Other Works",
+      "location": "Areas where landscaping works are required.",
+      "scopeIntent": [
+        "The intent of this Item is to carry out landscaping works in accordance with the Landscape Architect's documents."
+      ],
+      "specification": [
+        {
+          "paras": [
+            "Note: Stage the works so that any openings in the building are left unprotected for the shortest possible time, and keep occupant disruption to a minimum.",
+            "The Contractor is to liaise with material suppliers to confirm compliant installation of their products and the warranties provided, obtain any permits required to undertake the works, and engage a geotechnical engineer to advise on the safe working batter and confirm the soil compaction level."
+          ],
+          "clauses": [
+            { "text": "Coordinate safe access to the work areas in accordance with Item 1 (Preliminaries) of this specification." },
+            { "text": "Coordinate the works with the other Items of this specification as required." },
+            { "text": "Protect all surfaces in the work zone and provide appropriate measures to control excessive dust." }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Window Replacement",
+      "location": "All windows at the subject property.",
+      "scopeIntent": [
+        "The intent of this Item is to replace all existing window suites with new suites compliant with the required wind and water pressure ratings."
+      ],
+      "extentOfWorks": [
+        "For tendering purposes, the Contractor is to allow a lump sum price for the scoped window replacement works."
+      ],
+      "specification": [
+        {
+          "paras": [
+            "Note: Stage the works so that any openings in the building are left unprotected for the shortest possible time, and keep occupant disruption to a minimum.",
+            "All materials and products are to be installed strictly in accordance with their technical data sheets and the manufacturer's requirements. The Contractor is to liaise with material suppliers to confirm compliant installation and the warranties provided.",
+            "Individual lot owners may elect to upgrade installed components (for example double glazing or acoustic glass); any such upgrade costs are to be settled directly between the Owners and the Contractor."
+          ],
+          "clauses": [
+            { "text": "Coordinate safe access to the work areas in accordance with Item 1 (Preliminaries) and Item 3 (Access) of this specification." },
+            { "text": "Coordinate the works with the other Items of this specification as required." },
+            {
+              "text": "Remove and dispose of the existing aluminium window suites.",
+              "sub": [
+                "HOLD POINT — the Superintendent is to inspect the existing window lintel."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Head and Sill Flashings",
+          "continueNumbering": true,
+          "clauses": [
+            {
+              "text": "Remove three courses of brick above the external windows to allow the new head flashings and window lintels to be installed.",
+              "sub": [
+                "Install brickwork props as required.",
+                "Clean any debris from the cavity and remove any existing flashing material."
+              ]
+            },
+            {
+              "text": "Supply and install new Alcor head flashings above the window openings in accordance with the current NCC, AS 3700 and AS 2904.",
+              "sub": [
+                "Note: Head flashings are only to be installed where the two-course brick upturn can be achieved."
+              ]
+            },
+            {
+              "text": "Remove one course of existing sill bricks to allow the sill flashings to be installed.",
+              "sub": [
+                "Install brickwork props as required.",
+                "Clean any debris from the cavity and remove any existing flashing material."
+              ]
+            },
+            {
+              "text": "Supply and install new Alcor sill flashings below the window openings in accordance with the current NCC, AS 3700 and AS 2904.",
+              "sub": [
+                "Head and sill flashings are to extend a minimum of 150mm each side of the opening.",
+                "Head and sill flashings are to be embedded into the internal masonry skin.",
+                "Head flashings are to turn up a minimum of two courses of brick in the cavity and be terminated at each end.",
+                "Sill flashings are to turn up a minimum of one course of brick in the cavity and be terminated at each end.",
+                "Head and sill flashings are to extend through to the external masonry skin so they are visible externally by a nominal 20mm and cut flush on completion; the flashing must remain visible.",
+                "New PVC weep holes are to be installed above the head flashing at a maximum of 1,200mm centres, uniformly spaced above each opening."
+              ]
+            },
+            { "text": "Reinstate salvaged bricks or replace removed bricks with new bricks similar to the existing." },
+            {
+              "text": "Install new mortar of exposure class M4.",
+              "sub": [
+                "Owners to select the mortar colour and a raked or flush finish before installation."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Lintel Installation (only where not adjacent to a concrete slab above)",
+          "continueNumbering": true,
+          "clauses": [
+            {
+              "text": "Remove and dispose of the nominated dilapidated external window lintels.",
+              "sub": [
+                "HOLD POINT — the Superintendent is to inspect the wall cavity and substrate."
+              ]
+            },
+            {
+              "text": "Supply and install new external galvanised steel lintels, suitable for the exposure conditions, to the nominated external windows in accordance with AS 3700 and AS 2699.3.",
+              "sub": [
+                "Greater than 1.5m opening — 100 x 100 x 10 EA angle bearing 150mm at each end.",
+                "1.2m to 1.5m opening — 100 x 100 x 8 EA angle bearing 150mm at each end.",
+                "1.0m to 1.2m opening — 100 x 75 x 8 EA angle bearing 150mm at each end."
+              ]
+            },
+            { "text": "Reinstate salvaged bricks or replace removed bricks with new bricks to match the existing." },
+            { "text": "Install new mortar of exposure class M4, colour-matched to the existing mortar and finish as closely as possible." },
+            { "text": "Remove props as required." }
+          ]
+        },
+        {
+          "heading": "Brickwork Reconstruction Around Windows",
+          "continueNumbering": true,
+          "clauses": [
+            { "text": "Allow a provisional quantity of 100 m² of brickwork repairs." },
+            { "text": "Identify and locate all exfoliating, fretting, dilapidated or damaged bricks on the external façades, and confirm the number of bricks to be removed with the Superintendent for instruction." },
+            { "text": "Remove the damaged bricks nominated by the Superintendent and clean the mortar joints free of dust and debris using compressed air or a brush as required." },
+            {
+              "text": "Install new bricks with new mortar of exposure class M4.",
+              "sub": [
+                "New bricks and mortar are to match the existing colour and finish as closely as possible.",
+                "Procure the correct volume of sand for each façade to maintain consistent colour.",
+                "Build the new mortar up in several passes during reinstatement.",
+                "Allow the new mortar to dry naturally before any other remedial works are carried out in the area that could affect the repaired brickwork."
+              ]
+            },
+            { "text": "Make good any affected brick skins and mortar joints." }
+          ]
+        },
+        {
+          "heading": "Window Installation",
+          "continueNumbering": true,
+          "clauses": [
+            {
+              "text": "Supply and install new fabricated aluminium window suites sized to fit the existing openings and matching the existing building appearance.",
+              "sub": [
+                "Submit the final window schedule to the Owners Corporation for approval before manufacturing.",
+                "Window frames are to include a sub-sill and storm mould and are to comply with a serviceability pressure of 1,150 Pa, an ultimate pressure of 1,600 Pa and a water pressure of 400 Pa.",
+                "Powder-coated finish in the Dulux Duratec powder-coating system, matched to the existing colour and texture.",
+                "Ensure the head, sill and jamb flashings are correctly installed before the window suites are fitted.",
+                "Ensure fixings are not installed through the head or sill of the new window frames.",
+                "Install backing rod and 3M flashing tape around the top and sides of the glazing suites.",
+                "Hardware and related components are to be grade-316 stainless steel unless noted otherwise.",
+                "Note: Windows are to be designed and installed in accordance with AS 1170.2, AS 1288, AS 2047, the NCC and the AWA Installation of Residential Windows guide."
+              ]
+            },
+            { "text": "All new windows are to include restrictors or child-safety locks in accordance with the current NCC and the Strata Schemes Management Act." },
+            {
+              "text": "Seal the window frames and the junctions between the windows and brickwork with a UV-resistant sealant such as ARDEX RA 040, or approved equivalent.",
+              "sub": [
+                "Before sealing, prepare the surface to be free of dust, grease, oil and other contaminants."
+              ]
+            },
+            {
+              "text": "Make good the building internals if they are damaged during removal or reinstatement of the window suites, including patch painting to match the existing where required.",
+              "sub": [
+                "MDF is not to be used for any internal make-good works.",
+                "For tender purposes, allow a provisional sum of $1,200 + GST per window suite for internal repairs."
+              ]
+            },
+            {
+              "text": "Provide the manufacturer's structural design and compliance certification for the new window suites.",
+              "sub": [
+                "Provide supplementary documentation confirming the windows have been designed for the location in which they are installed."
+              ]
+            },
+            { "text": "Provide the manufacturer's warranty documentation and a maintenance plan for the new window suites." },
+            { "text": "Provide a general builder's clean and leave the site clean and tidy." }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Material Technical Data Sheets",
+      "scopeIntent": [
+        "The technical data sheets for the materials specified in these works are appended to this Item for reference."
+      ],
+      "specification": [
+        {
+          "heading": "Materials",
+          "paras": [
+            "ARDEX WPM 300",
+            "ARDEX WPM 1000",
+            "ARDEX WPM 310",
+            "ARDEX WPM 405",
+            "ARDEX RA 040",
+            "ARDEX A46",
+            "ARDEX WA 98",
+            "ARDEX X18",
+            "ARDEX E90",
+            "ARDEX FG-8",
+            "ARDEX CA 20P",
+            "ARDEX BR 10 ZP",
+            "ARDEX BR 345",
+            "ARDEX BRP 30 EP"
+          ]
+        }
+      ]
+    }
+  ],
+  "notice": "The Contractor shall notify the Superintendent of any conflict, error or omission regarding the 'Scope Intent' and 'Scope of Works' prior to tender submission. Failing to notify the Superintendent is deemed as acceptance of the 'Scope Intent' and 'Scope of Works'.",
+  "copyright": "Copyright: The design and details shown in this document are specific to this project only and may not be reproduced in whole or in part, or used for any other project, without the written consent of XNDR Consulting.",
+  "appendices": ["Appendix A — Waterproofing Drawings"]
+}

@@ -1,0 +1,84 @@
+{
+  "title": "Remedial Engineering Report",
+  "reportNo": "#1",
+  "date": "[ DD.MM.YYYY ]",
+  "addressee": {
+    "to": "[ The Owners of Strata Plan Number 00000 ]",
+    "attention": "[ Attention — name ]"
+  },
+  "property": {
+    "address": ["[ Property address ]", "[ Suburb STATE 0000 ]"],
+    "planNo": "[ Strata Plan Number 00000 ]"
+  },
+  "reference": "[ Ref. ]",
+  "footerRef": "[ Ref. — ENGINEERING REPORT ]",
+  "salutation": "Dear Owners,",
+  "introduction": {
+    "body": [
+      "[ Introduction — who requested the inspection, who attended, when it was carried out and the weather conditions. ]",
+      "[ Purpose of the inspection and this report. Items inspected include: ]"
+    ],
+    "scope": [
+      {
+        "text": "[ Inspection item i — e.g. water ingress due to: ]",
+        "sub": ["[ Sub-cause a ]", "[ Sub-cause b ]"]
+      },
+      { "text": "[ Inspection item ii ]" }
+    ],
+    "closing": ["[ Closing note — e.g. access limitations at the time of inspection. ]"]
+  },
+  "description": {
+    "body": [
+      "[ Description of the property — orientation, number of lots, construction, façade and roof. ]"
+    ],
+    "figure": { "caption": "Figure 1 — Aerial overview of the property" }
+  },
+  "observations": [
+    {
+      "ref": "3.1",
+      "title": "[ Observation area — e.g. Common Entry Stairs ]",
+      "points": [
+        "[ Observation bullet 1. ]",
+        "[ Observation bullet 2. ]"
+      ],
+      "photos": [
+        { "caption": "[ Photo caption ]" },
+        { "caption": "[ Photo caption ]" }
+      ]
+    }
+  ],
+  "discussion": [
+    {
+      "ref": "4.1",
+      "title": "[ Discussion topic — e.g. Fire Stair Condition ]",
+      "body": [
+        "[ Discussion paragraph explaining the condition, cause and consequence. ]"
+      ],
+      "recommendation": [
+        "[ Recommendation paragraph. ]"
+      ]
+    }
+  ],
+  "conclusion": {
+    "body": ["[ Conclusion — restate the concerns inspected at the client's request. ]"],
+    "items": ["[ Concern (i) ]", "[ Concern (ii) ]"],
+    "closing": [
+      "Our report is limited to these areas. It is not considered a Specification and cannot be used to tender to a building contractor. XNDR can provide a Scope of Works or Specification for the recommended remedial works.",
+      "Should you or the Owners' Corporation have any further queries, please do not hesitate to contact the undersigned."
+    ]
+  },
+  "signatories": [
+    {
+      "role": "Prepared by",
+      "name": "[ Name ]",
+      "qualifications": "[ Qualifications ]",
+      "title": "Engineer, XNDR Consulting"
+    },
+    {
+      "role": "Reviewed by",
+      "name": "[ Name ]",
+      "qualifications": "[ Qualifications ]",
+      "title": "Team Leader, XNDR Consulting"
+    }
+  ]
+}
