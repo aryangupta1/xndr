@@ -506,6 +506,44 @@ export const projects: {
   ],
 };
 
+// ── Remedial track record ─────────────────────────────────────────────────────
+// A compact showcase of recent remedial / structural-repair jobs across NSW
+// strata. These are a track record, not case studies, so they intentionally do
+// NOT link to detail pages. By request, addresses are road + suburb only (no
+// street number). Images are on-theme Unsplash placeholders (verified 200 OK) —
+// swap the `image` id for a real project photo when available.
+export interface RemedialItem {
+  title: string; // road name only (no street number)
+  location: string; // suburb
+  category: string; // scope of works, shown as the card tag
+  image: ProjectImage; // placeholder Unsplash id (string) for now
+}
+
+export const remedialWork: {
+  eyebrow: string;
+  heading: string;
+  subheading: string;
+  items: RemedialItem[];
+} = {
+  eyebrow: "Remedial track record",
+  heading: "Remediation delivered across NSW strata",
+  subheading:
+    "A selection of recent remedial and structural-repair projects — waterproofing and membrane renewal, concrete and spalling repair, façade and balcony remediation, and structural strengthening across residential and commercial buildings.",
+  items: [
+    { title: "Boronia Street", location: "Kensington, NSW", category: "Roof & Envelope Remediation", image: "photo-1616320999187-3c004dad4f0b" },
+    { title: "Walker Street", location: "Rhodes, NSW", category: "Structural & Podium Waterproofing", image: "photo-1504964670878-71b73cec0ce1" },
+    { title: "Spencer Street", location: "Rose Bay, NSW", category: "Concrete Repair & Façade Protection", image: "photo-1580063708220-c2946a7b19b1" },
+    { title: "Hardy Street", location: "North Bondi, NSW", category: "Courtyard & Envelope Waterproofing", image: "photo-1575971640858-62de904bec5a" },
+    { title: "Bondi Road", location: "Bondi Beach, NSW", category: "Façade Remediation & Structural Repair", image: "photo-1467892748361-67bb7c20d06e" },
+    { title: "Kentwell Road", location: "Allambie Heights, NSW", category: "Waterproofing & Masonry Rectification", image: "photo-1552705906-adcf48ae889a" },
+    { title: "Liverpool Road", location: "Strathfield, NSW", category: "Structural Strengthening & Façade", image: "photo-1583517190311-846a7653d8be" },
+    { title: "Mowbray Road", location: "Lane Cove, NSW", category: "Balcony & Parapet Remediation", image: "photo-1669170930713-f7c778496177" },
+    { title: "Denham Street", location: "Bondi, NSW", category: "Magnesite & Concrete Repair", image: "photo-1717185691293-4ecd7072b847" },
+    { title: "Hunter Street", location: "Hornsby, NSW", category: "Podium & Courtyard Remediation", image: "photo-1621463678038-8fc7b01d13e7" },
+    { title: "Alfred Street", location: "Narraweena, NSW", category: "Balcony & Envelope Remediation", image: "photo-1578907464594-fa58ed85c9b0" },
+  ],
+};
+
 // Single testimonial, as requested.
 export const testimonials: { eyebrow: string; heading: string; items: Testimonial[] } = {
   eyebrow: "Testimonials",
