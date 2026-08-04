@@ -135,7 +135,13 @@ export default function ProjectDetail({ project }: { project: Project }) {
             <span className="eyebrow">{project.category}</span>
             <h1>{project.title}</h1>
             <p className="project-hero-loc">
-              {project.location} <span>·</span> {project.year}
+              {project.location}
+              {project.year ? (
+                <>
+                  {" "}
+                  <span>·</span> {project.year}
+                </>
+              ) : null}
             </p>
             <p className="project-hero-summary">{project.summary}</p>
           </div>
