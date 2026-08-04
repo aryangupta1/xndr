@@ -3,15 +3,18 @@ import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ProjectDetail from "@/components/ProjectDetail";
-import { projects } from "@/lib/content";
+import { projects, remedialWork } from "@/lib/content";
+
+// Featured projects + the remedial track record both resolve through this route.
+const allProjects = [...projects.items, ...remedialWork.items];
 
 // Pre-render one static page per project at build time.
 export function generateStaticParams() {
-  return projects.items.map((p) => ({ slug: p.slug }));
+  return allProjects.map((p) => ({ slug: p.slug }));
 }
 
 function getProject(slug: string) {
-  return projects.items.find((p) => p.slug === slug);
+  return allProjects.find((p) => p.slug === slug);
 }
 
 export function generateMetadata({

@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
+import RemedialWork from "@/components/RemedialWork";
 // import Testimonials from "@/components/Testimonials"; // hidden for now
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -16,6 +17,7 @@ export default function Home() {
         <Services />
         <About />
         <Projects />
+        <RemedialWork />
         {/* <Testimonials /> — hidden for now */}
         <CTA />
       </main>

@@ -234,7 +234,7 @@ export const projects: {
   subheading: string;
   items: Project[];
 } = {
-  eyebrow: "Selected work",
+  eyebrow: "Featured work",
   heading: "Bringing engineering visions to life with precision",
   subheading:
     "A selection of recent infrastructure, structural and residential projects — from major transport assets to bespoke homes across New South Wales and Queensland.",
@@ -503,6 +503,38 @@ export const projects: {
       materialsNote:
         "Polished-concrete render, Monument metal roofing, Textura-black glazing and blackbutt timber screens.",
     },
+  ],
+};
+
+// ── Remedial track record ─────────────────────────────────────────────────────
+// Recent remedial / structural-repair jobs across NSW strata. Each is a full
+// Project so it gets a standalone page at /projects/<slug> (the detail page shows
+// the "case study coming soon" note until scope/details are populated). By
+// request, addresses are road + suburb only (no street number). `year` is left
+// blank for now (the detail hero hides it when empty). Images are on-theme
+// Unsplash placeholders (verified 200 OK) — swap the `image` id for a real photo.
+export const remedialWork: {
+  eyebrow: string;
+  heading: string;
+  subheading: string;
+  items: Project[];
+} = {
+  eyebrow: "Remedial track record",
+  heading: "Remediation delivered across NSW strata",
+  subheading:
+    "A selection of recent remedial and structural-repair projects — waterproofing and membrane renewal, concrete and spalling repair, façade and balcony remediation, and structural strengthening across residential and commercial buildings.",
+  items: [
+    { slug: "boronia-street-kensington", title: "Boronia Street", location: "Kensington, NSW", category: "Roof & Envelope Remediation", year: "", image: "photo-1616320999187-3c004dad4f0b", summary: "Structural roof reconstruction and full building-envelope remediation — new timber and steel roof, membranes, cavity flashings and concrete repair." },
+    { slug: "walker-street-rhodes", title: "Walker Street", location: "Rhodes, NSW", category: "Structural & Podium Waterproofing", year: "", image: "photo-1504964670878-71b73cec0ce1", summary: "Structural remediation and podium waterproofing addressing systemic water ingress across all elevations." },
+    { slug: "spencer-street-rose-bay", title: "Spencer Street", location: "Rose Bay, NSW", category: "Concrete Repair & Façade Protection", year: "", image: "photo-1580063708220-c2946a7b19b1", summary: "Coastal concrete repair and façade protection — spalling repairs, high-durability liquid membranes and new parapet capping." },
+    { slug: "hardy-street-north-bondi", title: "Hardy Street", location: "North Bondi, NSW", category: "Courtyard & Envelope Waterproofing", year: "", image: "photo-1575971640858-62de904bec5a", summary: "Courtyard renewal and building-envelope waterproofing to resolve persistent damp and water penetration." },
+    { slug: "bondi-road-bondi-beach", title: "Bondi Road", location: "Bondi Beach, NSW", category: "Façade Remediation & Structural Repair", year: "", image: "photo-1467892748361-67bb7c20d06e", summary: "Façade remediation and structural repair to cantilevered balconies, courtyards and masonry cavity flashings." },
+    { slug: "kentwell-road-allambie-heights", title: "Kentwell Road", location: "Allambie Heights, NSW", category: "Waterproofing & Masonry Rectification", year: "", image: "photo-1552705906-adcf48ae889a", summary: "Site-wide waterproofing and masonry rectification across multiple residential blocks." },
+    { slug: "liverpool-road-strathfield", title: "Liverpool Road", location: "Strathfield, NSW", category: "Structural Strengthening & Façade", year: "", image: "photo-1583517190311-846a7653d8be", summary: "Structural strengthening and façade waterproofing — spalling treatment, re-waterproofing and new perimeter flashings." },
+    { slug: "mowbray-road-lane-cove", title: "Mowbray Road", location: "Lane Cove, NSW", category: "Balcony & Parapet Remediation", year: "", image: "photo-1669170930713-f7c778496177", summary: "Courtyard, balcony and parapet remediation to stop leakage into lower-level garages and living areas." },
+    { slug: "denham-street-bondi", title: "Denham Street", location: "Bondi, NSW", category: "Magnesite & Concrete Repair", year: "", image: "photo-1717185691293-4ecd7072b847", summary: "Magnesite removal, concrete spalling repair and balcony remediation in an aggressive coastal environment." },
+    { slug: "hunter-street-hornsby", title: "Hunter Street", location: "Hornsby, NSW", category: "Podium & Courtyard Remediation", year: "", image: "photo-1621463678038-8fc7b01d13e7", summary: "Podium and courtyard remediation over basements, with balcony membranes and structural steel protection." },
+    { slug: "alfred-street-narraweena", title: "Alfred Street", location: "Narraweena, NSW", category: "Balcony & Envelope Remediation", year: "", image: "photo-1578907464594-fa58ed85c9b0", summary: "Balcony and building-envelope structural remediation across all elevations." },
   ],
 };
 

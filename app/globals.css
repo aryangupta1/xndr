@@ -72,6 +72,9 @@ ul { list-style: none; }
 }
 
 .section { padding-block: var(--section-y); }
+/* A section that sits directly under a related one (e.g. Remedial under Featured
+   work) — drop its top padding so the pair reads as one block, not two. */
+.section--flush-top { padding-top: 0; }
 
 .eyebrow {
   display: inline-flex;
