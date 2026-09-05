@@ -384,9 +384,11 @@ export const projects: {
       ],
     },
     // ── Structural & infrastructure — earlier career, carried across from the
-    // director's CV (designs/cv-rinay-singh.pdf on `design-engine`). St Elias
-    // Church (Guildford) was struck out by the client in the CV markup and is
-    // deliberately NOT listed. `year` is blank (the CV gives none).
+    // director's CVs (the supplied "Curriculum Vitae of Rinay Singh (2).pdf" and
+    // designs/cv-rinay-singh.pdf on `design-engine`). St Elias Church was struck
+    // out of the DESIGNED CV in the client's markup but is in the original CV and
+    // was added on the client's later instruction to list every CV project — drop
+    // it if they object. `year` is blank (the CVs give none).
     {
       slug: "warrick-lane-precinct-blacktown",
       title: "Warrick Lane Precinct Redevelopment",
@@ -469,6 +471,34 @@ export const projects: {
         { value: "50 m", label: "Swimming pool" },
         { value: "11", label: "New classrooms" },
         { value: "PT", label: "Post-tensioned concrete" },
+      ],
+    },
+    {
+      slug: "st-elias-church-guildford",
+      title: "St Elias Church",
+      location: "Guildford, NSW",
+      category: "Structural",
+      year: "",
+      image: "photo-1473177104440-ffee2f376098", // on-theme church placeholder
+      summary:
+        "Two-level church built over a four-tier underground car park, in conventionally reinforced slab and beam.",
+      services: ["Structural Engineering", "Project Management"],
+      scope: [
+        "Structural design and construction management of a two-level church over a four-tier underground car park",
+        "Conventionally reinforced concrete slabs and beams throughout",
+        "Management of the principal contractor on site",
+        "Workmanship held to a high standard and checked against the specification and standards",
+        "Budget control, variations and extensions of time",
+        "Engineering support and RFI responses through construction",
+      ],
+      details: [
+        "A large two-level Catholic church built over a four-tier underground car park. All slabs and beams were conventionally reinforced, and the church structure above had to be carried down through the car park levels without compromising the parking layout.",
+        "The role covered design and construction management, managing the principal contractor on site, holding the budget and running variations and extensions of time, and making sure the works were built to the specification and the relevant standards.",
+      ],
+      facts: [
+        { value: "2", label: "Church levels" },
+        { value: "4", label: "Car-park tiers below" },
+        { value: "RC", label: "Conventionally reinforced" },
       ],
     },
     {
@@ -631,9 +661,8 @@ export const projects: {
 // number) and the approximate contract values in the CV are deliberately omitted
 // from the public site. `year` is left blank (the detail hero hides it when
 // empty). Images are on-theme Unsplash placeholders (verified 200 OK) — swap the
-// `image` id for a real photo. The last six carry only a one-line summary: the CV
-// lists them by address alone, so their pages show the "coming soon" note until
-// the client supplies the scope.
+// `image` id for a real photo. The last six are listed by address alone in the
+// CVs, so their pages carry portfolio-level copy until the client supplies scope.
 export const remedialWork: {
   eyebrow: string;
   heading: string;
@@ -898,8 +927,10 @@ export const remedialWork: {
         "We managed the design and engineering, produced the waterproofing and flashing details, and acted as site superintendent with regular reporting to the owners.",
       ],
     },
-    // ── Further remedial projects — listed by address only in the CV, so no
-    // scope/details yet (their pages show the "coming soon" note).
+    // ── Further remedial projects — listed by address only in the CVs. Their
+    // services/details are portfolio-level, taken from the original CV's summary
+    // of the work across these buildings; replace with building-specific scope
+    // when the client supplies it.
     {
       slug: "ocean-street-woollahra",
       title: "Ocean Street",
@@ -907,7 +938,16 @@ export const remedialWork: {
       category: "Residential Remediation",
       year: "",
       image: "photo-1460317442991-0ec209397118",
-      summary: "Remedial engineering for a residential strata building.",
+      summary:
+        "Remedial engineering for a residential strata building in Sydney's eastern suburbs.",
+      services: [
+        "Remedial Engineering",
+        "Project Management",
+      ],
+      details: [
+        "One of a portfolio of Sydney residential strata buildings remediated under our director's leadership. The portfolio covered waterproofing, concrete spalling and structural repair, façade works, protective coatings and corrosion protection, and structural re-strengthening, with tenders and the construction phase managed through to completion.",
+        "A detailed case study for this building is being prepared.",
+      ],
     },
     {
       slug: "greenwich-road-greenwich",
@@ -916,7 +956,16 @@ export const remedialWork: {
       category: "Residential Remediation",
       year: "",
       image: "photo-1515263487990-61b07816b324",
-      summary: "Remedial engineering for a residential strata building.",
+      summary:
+        "Remedial engineering for a residential strata building on the lower North Shore.",
+      services: [
+        "Remedial Engineering",
+        "Project Management",
+      ],
+      details: [
+        "One of a portfolio of Sydney residential strata buildings remediated under our director's leadership. The portfolio covered waterproofing, concrete spalling and structural repair, façade works, protective coatings and corrosion protection, and structural re-strengthening, with tenders and the construction phase managed through to completion.",
+        "A detailed case study for this building is being prepared.",
+      ],
     },
     {
       slug: "the-crescent-vaucluse",
@@ -925,7 +974,16 @@ export const remedialWork: {
       category: "Residential Remediation",
       year: "",
       image: "photo-1479839672679-a46483c0e7c8",
-      summary: "Remedial engineering for a residential strata building.",
+      summary:
+        "Remedial engineering for a residential strata building in a harbourside coastal environment.",
+      services: [
+        "Remedial Engineering",
+        "Project Management",
+      ],
+      details: [
+        "One of a portfolio of Sydney residential strata buildings remediated under our director's leadership. The portfolio covered waterproofing, concrete spalling and structural repair, façade works, protective coatings and corrosion protection, and structural re-strengthening, with tenders and the construction phase managed through to completion.",
+        "A detailed case study for this building is being prepared.",
+      ],
     },
     {
       slug: "meridian-place-bella-vista",
@@ -934,7 +992,16 @@ export const remedialWork: {
       category: "Commercial Remediation",
       year: "",
       image: "photo-1554435493-93422e8220c8",
-      summary: "Remedial engineering for a commercial building in the Norwest business precinct.",
+      summary:
+        "Remedial engineering for a commercial building in the Norwest business precinct.",
+      services: [
+        "Remedial Engineering",
+        "Project Management",
+      ],
+      details: [
+        "One of a portfolio of Sydney commercial and industrial buildings remediated under our director's leadership. The portfolio covered waterproofing, concrete spalling and structural repair, façade works, blast and paint, corrosion protection, and structural re-strengthening, with tenders and the construction phase managed through to completion.",
+        "A detailed case study for this building is being prepared.",
+      ],
     },
     {
       slug: "norbrik-avenue-bella-vista",
@@ -943,7 +1010,16 @@ export const remedialWork: {
       category: "Commercial & Industrial Remediation",
       year: "",
       image: "photo-1448630360428-65456885c650",
-      summary: "Remedial engineering for a commercial and industrial property.",
+      summary:
+        "Remedial engineering for a commercial and industrial property in the Norwest business precinct.",
+      services: [
+        "Remedial Engineering",
+        "Project Management",
+      ],
+      details: [
+        "One of a portfolio of Sydney commercial and industrial buildings remediated under our director's leadership. The portfolio covered waterproofing, concrete spalling and structural repair, façade works, blast and paint, corrosion protection, and structural re-strengthening, with tenders and the construction phase managed through to completion.",
+        "A detailed case study for this building is being prepared.",
+      ],
     },
     {
       slug: "heart-of-willoughby",
@@ -954,6 +1030,15 @@ export const remedialWork: {
       image: "photo-1486325212027-8081e485255e",
       summary:
         "Remedial and structural repair works on a prominent commercial building, from investigation through construction.",
+      services: [
+        "Remedial Engineering",
+        "Structural Engineering",
+        "Project Management",
+      ],
+      details: [
+        "Remedial and structural repair works on a prominent commercial building in Willoughby, carried from the initial investigation through design and tender and into construction. The work sat within a wider portfolio of Sydney commercial remediation covering waterproofing, concrete spalling and structural repair, façade works, protective coatings and corrosion protection.",
+        "A detailed case study for this building is being prepared.",
+      ],
     },
   ],
 };
