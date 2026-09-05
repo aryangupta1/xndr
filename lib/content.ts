@@ -240,9 +240,10 @@ export const projects: {
     "A selection of recent infrastructure, structural and residential projects — from major transport assets to bespoke homes across New South Wales and Queensland.",
   // Each item links to a standalone page at /projects/<slug>. Images live in
   // `public/projects/…` (real photos as static imports) or fall back to a
-  // placeholder Unsplash id where a photo is not available yet. The four
-  // infrastructure projects (Harbour Bridge, both M1 Eastern Distributor jobs and
-  // Tugun) mirror the Infrastructure Remediation capability statement.
+  // placeholder Unsplash id where a photo is not available yet. The six
+  // infrastructure projects mirror the Infrastructure Remediation capability
+  // statement; the four structural projects that follow them come from the
+  // director's CV (see the comment above them).
   items: [
     {
       slug: "sydney-harbour-bridge-condition-assessment",
@@ -382,6 +383,122 @@ export const projects: {
         "We carried out a structural and durability assessment of the tank and designed a repair and re-lining solution suited to a fuel-containment environment. Access was planned for a confined, hazardous space and around the base's security requirements, with documentation prepared to support compliant delivery.",
       ],
     },
+    // ── Structural & infrastructure — earlier career, carried across from the
+    // director's CV (designs/cv-rinay-singh.pdf on `design-engine`). St Elias
+    // Church (Guildford) was struck out by the client in the CV markup and is
+    // deliberately NOT listed. `year` is blank (the CV gives none).
+    {
+      slug: "warrick-lane-precinct-blacktown",
+      title: "Warrick Lane Precinct Redevelopment",
+      location: "Blacktown, NSW",
+      category: "Structural",
+      year: "",
+      image: "photo-1506521781263-d8422e82f27a", // on-theme car-park placeholder
+      summary:
+        "Four-level underground car park for around 485 vehicles, with a rooftop park and two flanking buildings.",
+      services: ["Structural Engineering", "Project Management"],
+      scope: [
+        "Structural design of a four-level underground car park for approximately 485 vehicles",
+        "Central public park carried on the car-park roof slab",
+        "Three-storey buildings flanking the car park to the east and west",
+        "Design taken from concept stage through to tender documentation",
+        "Principal structural engineer and peer review for the client during construction",
+        "Variations, extensions of time and billing through the construction phase",
+      ],
+      details: [
+        "A four-level underground car park for around 485 vehicles beneath a new central park, with three-storey buildings flanking the car park on its eastern and western sides. The park sits directly on the car-park roof slab, so the structure had to carry landscaping, public open space and the buildings either side while keeping the levels below clear and efficient.",
+        "The structure was designed from concept stage through to tender, and the role continued through construction as principal structural engineer and peer reviewer for the client. That included checking the works against the specification and standards, resolving engineering issues as they arose on site, and managing variations, extensions of time and billing across the job.",
+      ],
+      facts: [
+        { value: "4", label: "Underground levels" },
+        { value: "~485", label: "Car spaces" },
+        { value: "3", label: "Storeys either side" },
+      ],
+    },
+    {
+      slug: "rooty-hill-car-park-station-upgrade",
+      title: "Rooty Hill Car Park & Station Upgrade",
+      location: "Rooty Hill, NSW",
+      category: "Infrastructure",
+      year: "",
+      image: "photo-1470224114660-3f6686c562eb", // on-theme multi-storey car-park placeholder
+      summary:
+        "Six-storey commuter car park for around 750 vehicles, with upgraded pedestrian links to both sides of the station.",
+      services: ["Structural Engineering", "Project Management"],
+      scope: [
+        "Structural design and construction management of a six-storey car park for approximately 750 vehicles",
+        "Upgraded pedestrian links to both sides of the railway station",
+        "Management of the principal contractor on site",
+        "Budget control, variations and extensions of time",
+        "Engineering support and RFI responses through construction",
+        "Compliance of the finished works with the specification and standards",
+      ],
+      details: [
+        "A six-storey commuter car park for around 750 vehicles at Rooty Hill station, together with upgraded pedestrian links connecting both sides of the station. A car park of this scale next to a live rail corridor has to be staged carefully, and the pedestrian links had to keep commuters moving throughout.",
+        "The role ran across design and construction: managing the principal contractor on site, holding the budget, running variations and RFIs, and making sure the works were built to the specification and the relevant standards.",
+      ],
+      facts: [
+        { value: "6", label: "Storeys" },
+        { value: "~750", label: "Car spaces" },
+        { value: "2", label: "Station-side pedestrian links" },
+      ],
+    },
+    {
+      slug: "cranbrook-school-redevelopment-bellevue-hill",
+      title: "Cranbrook School Redevelopment",
+      location: "Bellevue Hill, NSW",
+      category: "Structural",
+      year: "",
+      image: "photo-1530549387789-4c1017266635", // on-theme aquatic-centre placeholder
+      summary:
+        "Major school redevelopment: a new aquatic and fitness centre with a 50 m pool, theatre, assembly hall, chapel and eleven classrooms.",
+      services: ["Structural Engineering", "Project Management"],
+      scope: [
+        "Structural design and construction management across the redevelopment",
+        "New aquatic and fitness centre with a 50 m swimming pool",
+        "Theatre, performance rooms, assembly hall and dining",
+        "Chapel and eleven new classrooms",
+        "Inspection of conventional reinforcement and post-tensioned (PT) ducts",
+        "On-site engineering support, workmanship checks and RFI responses",
+      ],
+      details: [
+        "A major redevelopment of the Cranbrook School campus: a new aquatic and fitness centre built around a 50 m swimming pool, a theatre and performance rooms, an assembly hall and dining, a chapel and eleven new classrooms. Long-span, post-tensioned concrete carried much of the structure.",
+        "The work covered design and construction management, with the principal contractor managed on site. Conventional reinforcement and post-tensioned ducts were inspected before every pour, workmanship was held to a high standard, and engineering issues and RFIs were resolved as construction progressed.",
+      ],
+      facts: [
+        { value: "50 m", label: "Swimming pool" },
+        { value: "11", label: "New classrooms" },
+        { value: "PT", label: "Post-tensioned concrete" },
+      ],
+    },
+    {
+      slug: "skyline-place-frenchs-forest",
+      title: "5 Skyline Place",
+      location: "Frenchs Forest, NSW",
+      category: "Structural",
+      year: "",
+      image: "photo-1545324418-cc1a3fa10c00", // on-theme apartment placeholder
+      summary:
+        "Five-storey mixed-use apartments over cafés, medical suites and retail, with two levels of basement parking.",
+      services: ["Structural Engineering", "Project Management"],
+      scope: [
+        "Structural design and construction management of a five-storey mixed-use building",
+        "Apartments over ground-floor cafés, medical suites and retail",
+        "Two levels of underground parking",
+        "Inspection of conventional reinforcement and post-tensioned (PT) ducts",
+        "Management of the principal contractor and workmanship checks on site",
+        "Engineering support and RFI responses through construction",
+      ],
+      details: [
+        "Five storeys of apartments over a mixed-use ground floor of cafés, medical suites and retail, with two levels of underground parking beneath. The change in use from level to level, and the transfer of loads down through the basement, drove the structural scheme.",
+        "The role covered design and construction management, managing the principal contractor on site, inspecting conventional and post-tensioned reinforcement, checking workmanship and resolving RFIs so the finished building matched the specification and the standards.",
+      ],
+      facts: [
+        { value: "5", label: "Storeys" },
+        { value: "2", label: "Basement levels" },
+        { value: "Mixed", label: "Residential over retail & medical" },
+      ],
+    },
     {
       slug: "granny-flat-garage-guildford",
       title: "Granny Flat & Garage",
@@ -507,12 +624,16 @@ export const projects: {
 };
 
 // ── Remedial track record ─────────────────────────────────────────────────────
-// Recent remedial / structural-repair jobs across NSW strata. Each is a full
-// Project so it gets a standalone page at /projects/<slug> (the detail page shows
-// the "case study coming soon" note until scope/details are populated). By
-// request, addresses are road + suburb only (no street number). `year` is left
-// blank for now (the detail hero hides it when empty). Images are on-theme
-// Unsplash placeholders (verified 200 OK) — swap the `image` id for a real photo.
+// Remedial / structural-repair jobs across NSW strata and commercial buildings,
+// carried across from the director's CV (designs/cv-rinay-singh.pdf on the
+// `design-engine` branch). Each is a full Project so it gets a standalone page at
+// /projects/<slug>. By request, addresses are road + suburb only (no street
+// number) and the approximate contract values in the CV are deliberately omitted
+// from the public site. `year` is left blank (the detail hero hides it when
+// empty). Images are on-theme Unsplash placeholders (verified 200 OK) — swap the
+// `image` id for a real photo. The last six carry only a one-line summary: the CV
+// lists them by address alone, so their pages show the "coming soon" note until
+// the client supplies the scope.
 export const remedialWork: {
   eyebrow: string;
   heading: string;
@@ -522,19 +643,318 @@ export const remedialWork: {
   eyebrow: "Remedial track record",
   heading: "Remediation delivered across NSW strata",
   subheading:
-    "A selection of recent remedial and structural-repair projects — waterproofing and membrane renewal, concrete and spalling repair, façade and balcony remediation, and structural strengthening across residential and commercial buildings.",
+    "Remedial and structural-repair projects across residential and commercial buildings — waterproofing and membrane renewal, concrete and spalling repair, façade and balcony remediation, and structural strengthening — carried from first inspection through tender and into construction.",
   items: [
-    { slug: "boronia-street-kensington", title: "Boronia Street", location: "Kensington, NSW", category: "Roof & Envelope Remediation", year: "", image: "photo-1616320999187-3c004dad4f0b", summary: "Structural roof reconstruction and full building-envelope remediation — new timber and steel roof, membranes, cavity flashings and concrete repair." },
-    { slug: "walker-street-rhodes", title: "Walker Street", location: "Rhodes, NSW", category: "Structural & Podium Waterproofing", year: "", image: "photo-1504964670878-71b73cec0ce1", summary: "Structural remediation and podium waterproofing addressing systemic water ingress across all elevations." },
-    { slug: "spencer-street-rose-bay", title: "Spencer Street", location: "Rose Bay, NSW", category: "Concrete Repair & Façade Protection", year: "", image: "photo-1580063708220-c2946a7b19b1", summary: "Coastal concrete repair and façade protection — spalling repairs, high-durability liquid membranes and new parapet capping." },
-    { slug: "hardy-street-north-bondi", title: "Hardy Street", location: "North Bondi, NSW", category: "Courtyard & Envelope Waterproofing", year: "", image: "photo-1575971640858-62de904bec5a", summary: "Courtyard renewal and building-envelope waterproofing to resolve persistent damp and water penetration." },
-    { slug: "bondi-road-bondi-beach", title: "Bondi Road", location: "Bondi Beach, NSW", category: "Façade Remediation & Structural Repair", year: "", image: "photo-1467892748361-67bb7c20d06e", summary: "Façade remediation and structural repair to cantilevered balconies, courtyards and masonry cavity flashings." },
-    { slug: "kentwell-road-allambie-heights", title: "Kentwell Road", location: "Allambie Heights, NSW", category: "Waterproofing & Masonry Rectification", year: "", image: "photo-1552705906-adcf48ae889a", summary: "Site-wide waterproofing and masonry rectification across multiple residential blocks." },
-    { slug: "liverpool-road-strathfield", title: "Liverpool Road", location: "Strathfield, NSW", category: "Structural Strengthening & Façade", year: "", image: "photo-1583517190311-846a7653d8be", summary: "Structural strengthening and façade waterproofing — spalling treatment, re-waterproofing and new perimeter flashings." },
-    { slug: "mowbray-road-lane-cove", title: "Mowbray Road", location: "Lane Cove, NSW", category: "Balcony & Parapet Remediation", year: "", image: "photo-1669170930713-f7c778496177", summary: "Courtyard, balcony and parapet remediation to stop leakage into lower-level garages and living areas." },
-    { slug: "denham-street-bondi", title: "Denham Street", location: "Bondi, NSW", category: "Magnesite & Concrete Repair", year: "", image: "photo-1717185691293-4ecd7072b847", summary: "Magnesite removal, concrete spalling repair and balcony remediation in an aggressive coastal environment." },
-    { slug: "hunter-street-hornsby", title: "Hunter Street", location: "Hornsby, NSW", category: "Podium & Courtyard Remediation", year: "", image: "photo-1621463678038-8fc7b01d13e7", summary: "Podium and courtyard remediation over basements, with balcony membranes and structural steel protection." },
-    { slug: "alfred-street-narraweena", title: "Alfred Street", location: "Narraweena, NSW", category: "Balcony & Envelope Remediation", year: "", image: "photo-1578907464594-fa58ed85c9b0", summary: "Balcony and building-envelope structural remediation across all elevations." },
+    {
+      slug: "boronia-street-kensington",
+      title: "Boronia Street",
+      location: "Kensington, NSW",
+      category: "Roof & Envelope Remediation",
+      year: "",
+      image: "photo-1616320999187-3c004dad4f0b",
+      summary:
+        "Structural roof reconstruction and full building-envelope remediation — new timber and steel roof, membranes, cavity flashings and concrete repair.",
+      services: ["Remedial Engineering", "Structural Engineering", "Project Management"],
+      scope: [
+        "Design and construction of new timber and steel roof structures",
+        "Structural timber framing and complete roof replacement",
+        "Balcony and courtyard membrane replacement",
+        "Cavity flashing upgrades and wall capping details",
+        "Concrete spalling repairs across the building envelope",
+        "Waterproofing and cavity flashing specifications",
+      ],
+      details: [
+        "A comprehensive structural and waterproofing overhaul of a multi-storey residential complex. The works centred on the full design and construction of new timber and steel roof structures, structural timber framing and a complete roof replacement.",
+        "Beyond the roof, the scope ran across the whole building envelope: extensive balcony and courtyard membrane replacements, cavity flashing upgrades, wall capping details and concrete spalling repairs. We managed design and construction, specified the waterproofing and flashing details, and acted as superintendent through site inspections and handover.",
+      ],
+    },
+    {
+      slug: "walker-street-rhodes",
+      title: "Walker Street",
+      location: "Rhodes, NSW",
+      category: "Structural & Podium Waterproofing",
+      year: "",
+      image: "photo-1504964670878-71b73cec0ce1",
+      summary:
+        "Structural remediation and podium waterproofing addressing systemic water ingress across all elevations.",
+      services: ["Remedial Engineering", "Structural Engineering", "Project Management"],
+      scope: [
+        "Diagnostic site investigations of water ingress and structural deterioration",
+        "Balcony membrane replacements",
+        "Elevated courtyard slab waterproofing",
+        "Perimeter cavity flashing reinstatement",
+        "Parapet coping and capping upgrades across all elevations",
+        "Remedial design package, scope of works and contractor tender management",
+      ],
+      details: [
+        "A full-scale remedial investigation and rectification of a high-density residential development suffering systemic water ingress and structural deterioration. Diagnostic site investigations traced the leaks to their sources before any repair was specified.",
+        "The major works covered balcony membrane replacements, waterproofing of the elevated courtyard slab, reinstatement of perimeter cavity flashings and parapet coping upgrades across all elevations. We prepared the remedial design package and scope of works, ran the contractor tender, and stayed on for quality assurance through to handover.",
+      ],
+    },
+    {
+      slug: "spencer-street-rose-bay",
+      title: "Spencer Street",
+      location: "Rose Bay, NSW",
+      category: "Concrete Repair & Façade Protection",
+      year: "",
+      image: "photo-1580063708220-c2946a7b19b1",
+      summary:
+        "Coastal concrete repair and façade protection — spalling repairs, high-durability liquid membranes and new parapet capping.",
+      services: ["Remedial Engineering", "Project Management"],
+      scope: [
+        "Concrete spalling repairs to the façade",
+        "High-durability liquid membrane systems to exposed balconies",
+        "Replacement of damaged cavity flashings",
+        "Custom aluminium parapet capping",
+        "Concrete repair methodology and durability design",
+        "Waterproofing inspection and sign-off",
+      ],
+      details: [
+        "A targeted façade and waterproofing renewal of luxury harbourfront apartments in an aggressive coastal environment, where salt-laden air accelerates reinforcement corrosion and shortens the life of exposed finishes.",
+        "The works included concrete spalling repairs, high-durability liquid membrane systems to the exposed balconies, replacement of damaged cavity flashings and custom aluminium parapet capping. We set the concrete repair methodology and durability design, inspected and signed off the waterproofing, liaised with the strata committee and carried out superintendent duties.",
+      ],
+    },
+    {
+      slug: "hardy-street-north-bondi",
+      title: "Hardy Street",
+      location: "North Bondi, NSW",
+      category: "Courtyard & Envelope Waterproofing",
+      year: "",
+      image: "photo-1575971640858-62de904bec5a",
+      summary:
+        "Courtyard renewal and building-envelope waterproofing to resolve persistent damp and water penetration.",
+      services: ["Remedial Engineering", "Project Management"],
+      scope: [
+        "Forensic water ingress assessment",
+        "Deep-slab courtyard waterproofing",
+        "Complete balcony floor re-sheeting and tile re-laying",
+        "Sub-floor drainage installation",
+        "Retrofitting of lost cavity flashings",
+        "Wall capping repairs",
+      ],
+      details: [
+        "Extensive building envelope remediation of a multi-level strata block, focused on resolving persistent damp and water penetration. A forensic water ingress assessment established where the water was getting in before the repairs were designed.",
+        "The scope covered deep-slab courtyard waterproofing, complete balcony floor re-sheeting and tile re-laying, sub-floor drainage, retrofitting of lost cavity flashings and wall capping repairs. We prepared the detailed design and specification, provided site engineering oversight, managed the trades and certified progress claims.",
+      ],
+    },
+    {
+      slug: "bondi-road-bondi-beach",
+      title: "Bondi Road",
+      location: "Bondi Beach, NSW",
+      category: "Façade Remediation & Structural Repair",
+      year: "",
+      image: "photo-1467892748361-67bb7c20d06e",
+      summary:
+        "Façade remediation and structural repair to cantilevered balconies, courtyards and masonry cavity flashings.",
+      services: ["Remedial Engineering", "Structural Engineering", "Project Management"],
+      scope: [
+        "Structural defect diagnostics",
+        "Major concrete patch repairs to exposed cantilevered balconies",
+        "Re-waterproofing of private outdoor courtyards",
+        "Replacement of compromised masonry cavity flashings",
+        "Parapet capping installation",
+        "Full tender documentation and contractor superintendency",
+      ],
+      details: [
+        "A complex urban remedial scheme on a mixed-use commercial and residential block. Structural defect diagnostics identified the extent of deterioration in the exposed cantilevered balconies before the repair scheme was documented.",
+        "The works involved major concrete patch repairs to the cantilevered balconies, re-waterproofing of private outdoor courtyards, replacement of compromised masonry cavity flashings and parapet capping installation. We prepared full tender documentation, superintended the contractor and managed variations, RFIs and final handovers.",
+      ],
+    },
+    {
+      slug: "kentwell-road-allambie-heights",
+      title: "Kentwell Road",
+      location: "Allambie Heights, NSW",
+      category: "Waterproofing & Masonry Rectification",
+      year: "",
+      image: "photo-1552705906-adcf48ae889a",
+      summary:
+        "Site-wide waterproofing and masonry rectification across multiple residential blocks.",
+      services: ["Remedial Engineering", "Project Management"],
+      scope: [
+        "Multi-balcony membrane replacements",
+        "Common-area courtyard waterproofing",
+        "Brickwork cavity flashing integration",
+        "Parapet wall capping works",
+        "Structural steel corrosion treatment",
+        "Quality control inspections and payment milestone sign-offs",
+      ],
+      details: [
+        "A site-wide remedial upgrade across the multiple residential blocks of a strata community. Rectification works included membrane replacements to many balconies, common-area courtyard waterproofing, integration of new brickwork cavity flashings, parapet wall capping and treatment of corroding structural steel.",
+        "We carried out remedial engineering superintendency across the site, ran quality control inspections as each stage was completed, and managed the budget and payment milestone sign-offs.",
+      ],
+    },
+    {
+      slug: "liverpool-road-strathfield",
+      title: "Liverpool Road",
+      location: "Strathfield, NSW",
+      category: "Structural Strengthening & Façade",
+      year: "",
+      image: "photo-1583517190311-846a7653d8be",
+      summary:
+        "Structural strengthening and façade waterproofing — spalling treatment, re-waterproofing and new perimeter flashings.",
+      services: ["Structural Engineering", "Remedial Engineering"],
+      scope: [
+        "Concrete spalling treatment on structural beams and slab edges",
+        "Structural design and strengthening details",
+        "Balcony re-waterproofing",
+        "New perimeter cavity flashings",
+        "Coping capping sheet replacement",
+        "Remedial scope preparation and on-site engineering support",
+      ],
+      details: [
+        "An integrated structural repair and waterproofing campaign on a multi-storey residential development. Concrete spalling on structural beams and slab edges was treated and the members strengthened to our design details.",
+        "Alongside the structural work, the scope included balcony re-waterproofing, new perimeter cavity flashings and coping capping sheet replacement. We prepared the remedial scope, produced the strengthening details and provided on-site engineering support and RFI responses through construction.",
+      ],
+    },
+    {
+      slug: "mowbray-road-lane-cove",
+      title: "Mowbray Road",
+      location: "Lane Cove, NSW",
+      category: "Balcony & Parapet Remediation",
+      year: "",
+      image: "photo-1669170930713-f7c778496177",
+      summary:
+        "Courtyard, balcony and parapet remediation to stop leakage into lower-level garages and living areas.",
+      services: ["Remedial Engineering", "Project Management"],
+      scope: [
+        "Leak investigation and water testing",
+        "Complete removal and re-installation of courtyard waterproofing systems",
+        "Complete removal and re-installation of balcony waterproofing systems",
+        "Replacement of defective cavity flashings",
+        "Custom metal parapet capping installation",
+        "Technical specification and detail drawings",
+      ],
+      details: [
+        "A major remediation of an established residential apartment complex, addressing extensive water leakage into the lower-level garages and living areas. Leak investigation and water testing pinned down the failing elements before the scheme was designed.",
+        "The key works involved complete removal and re-installation of the courtyard and balcony waterproofing systems, replacement of defective cavity flashings and custom metal parapet capping. We produced the technical specification and detail drawings, then superintended the works and managed progress through to completion.",
+      ],
+    },
+    {
+      slug: "denham-street-bondi",
+      title: "Denham Street",
+      location: "Bondi, NSW",
+      category: "Magnesite & Concrete Repair",
+      year: "",
+      image: "photo-1717185691293-4ecd7072b847",
+      summary:
+        "Magnesite removal, concrete spalling repair and balcony remediation in an aggressive coastal environment.",
+      services: ["Remedial Engineering", "Structural Engineering", "Project Management"],
+      scope: [
+        "Full stripping and removal of corrosive magnesite flooring",
+        "Concrete slab repairs and structural spalling treatment",
+        "Complete balcony membrane waterproofing and retiling",
+        "Cavity flashing replacement",
+        "Parapet wall capping works",
+        "Magnesite repair methodology and design",
+      ],
+      details: [
+        "Extensive structural and building envelope remediation of a coastal apartment building suffering severe magnesite attack and coastal concrete deterioration. Magnesite flooring holds moisture against the slab and corrodes the reinforcement beneath it, so the works began with full stripping and removal of the flooring.",
+        "The concrete slabs were then repaired and the structural spalling treated, followed by complete balcony membrane waterproofing and retiling, cavity flashing replacement and parapet wall capping. We diagnosed the structural and spalling defects, set the magnesite repair methodology and design, administered the contract and carried out quality control inspections through to handover sign-off.",
+      ],
+    },
+    {
+      slug: "hunter-street-hornsby",
+      title: "Hunter Street",
+      location: "Hornsby, NSW",
+      category: "Podium & Courtyard Remediation",
+      year: "",
+      image: "photo-1621463678038-8fc7b01d13e7",
+      summary:
+        "Podium and courtyard remediation over basements, with balcony membranes and structural steel protection.",
+      services: ["Remedial Engineering", "Project Management"],
+      scope: [
+        "Elevated podium and courtyard waterproofing over basements",
+        "Balcony membrane re-application",
+        "Masonry cavity flashing upgrades",
+        "Coping capping works",
+        "Protective coating to structural steel",
+        "Construction administration, RFI management and compliance sign-offs",
+      ],
+      details: [
+        "A large-scale remedial project on a commercial and residential multi-unit site, covering waterproofing of the elevated podium and courtyards over the basements, balcony membrane re-application, masonry cavity flashing upgrades, coping capping works and protective coating of the structural steel.",
+        "We acted as lead remedial design engineer, then administered construction as superintendent, managing RFIs and compliance sign-offs through to completion.",
+      ],
+    },
+    {
+      slug: "alfred-street-narraweena",
+      title: "Alfred Street",
+      location: "Narraweena, NSW",
+      category: "Balcony & Envelope Remediation",
+      year: "",
+      image: "photo-1578907464594-fa58ed85c9b0",
+      summary:
+        "Balcony and building-envelope structural remediation across all elevations.",
+      services: ["Remedial Engineering", "Project Management"],
+      scope: [
+        "Balcony waterproofing membrane overhaul",
+        "Installation of new cavity flashings",
+        "Wall capping works",
+        "Concrete spalling repairs across all building elevations",
+        "Waterproofing and flashing details",
+        "Site superintendency and client reporting",
+      ],
+      details: [
+        "A comprehensive waterproofing and structural repair program for a residential apartment block. The works included an overhaul of the balcony waterproofing membranes, new cavity flashings, wall capping works and concrete spalling repairs across all elevations of the building.",
+        "We managed the design and engineering, produced the waterproofing and flashing details, and acted as site superintendent with regular reporting to the owners.",
+      ],
+    },
+    // ── Further remedial projects — listed by address only in the CV, so no
+    // scope/details yet (their pages show the "coming soon" note).
+    {
+      slug: "ocean-street-woollahra",
+      title: "Ocean Street",
+      location: "Woollahra, NSW",
+      category: "Residential Remediation",
+      year: "",
+      image: "photo-1460317442991-0ec209397118",
+      summary: "Remedial engineering for a residential strata building.",
+    },
+    {
+      slug: "greenwich-road-greenwich",
+      title: "Greenwich Road",
+      location: "Greenwich, NSW",
+      category: "Residential Remediation",
+      year: "",
+      image: "photo-1515263487990-61b07816b324",
+      summary: "Remedial engineering for a residential strata building.",
+    },
+    {
+      slug: "the-crescent-vaucluse",
+      title: "The Crescent",
+      location: "Vaucluse, NSW",
+      category: "Residential Remediation",
+      year: "",
+      image: "photo-1479839672679-a46483c0e7c8",
+      summary: "Remedial engineering for a residential strata building.",
+    },
+    {
+      slug: "meridian-place-bella-vista",
+      title: "Meridian Place",
+      location: "Bella Vista, NSW",
+      category: "Commercial Remediation",
+      year: "",
+      image: "photo-1554435493-93422e8220c8",
+      summary: "Remedial engineering for a commercial building in the Norwest business precinct.",
+    },
+    {
+      slug: "norbrik-avenue-bella-vista",
+      title: "Norbrik Avenue",
+      location: "Bella Vista, NSW",
+      category: "Commercial & Industrial Remediation",
+      year: "",
+      image: "photo-1448630360428-65456885c650",
+      summary: "Remedial engineering for a commercial and industrial property.",
+    },
+    {
+      slug: "heart-of-willoughby",
+      title: "Heart of Willoughby",
+      location: "Willoughby, NSW",
+      category: "Commercial Remediation",
+      year: "",
+      image: "photo-1486325212027-8081e485255e",
+      summary:
+        "Remedial and structural repair works on a prominent commercial building, from investigation through construction.",
+    },
   ],
 };
 
