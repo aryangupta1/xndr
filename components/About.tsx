@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { about, unsplash } from "@/lib/content";
+import { about } from "@/lib/content";
 
 export default function About() {
   return (
@@ -7,10 +7,10 @@ export default function About() {
       <div className="container about-grid">
         <div className="about-media">
           <Image
-            src={unsplash(about.image, 900)}
+            src={about.image}
             alt="XNDR engineer reviewing structural drawings"
             width={900}
-            height={1125}
+            height={506}
           />
         </div>
 
