@@ -146,11 +146,11 @@ export const hero: {
   eyebrow: "Structural · Remedial · Project Management",
   heading: "Built on trust, delivered with transparency",
   subheading:
-    "XNDR delivers structural and remedial engineering solutions defined by technical rigor, absolute transparency, and a commitment to resolving complex building challenges for the strata and construction sectors across New South Wales.",
+    "XNDR delivers structural and remedial engineering solutions defined by technical rigor, absolute transparency, and a commitment to resolving complex building challenges for the strata and construction sectors nationwide.",
   primaryCta: { label: "Book a consultation", href: "#contact" },
   secondaryCta: { label: "Our services", href: "#services" },
   stats: [
-    { value: "20+", label: "Projects delivered across NSW" },
+    { value: "20+", label: "Projects delivered nationally" },
     { value: "15+", label: "Years of combined experience" },
     { value: "100%", label: "Compliance focus" },
   ],
@@ -198,7 +198,7 @@ export const services: {
   eyebrow: "What we do",
   heading: "Three disciplines, one accountable team",
   subheading:
-    "Structural, remedial and project management expertise — delivered end to end for the strata and construction sectors across NSW.",
+    "Structural, remedial and project management expertise — delivered end to end for the strata and construction sectors nationwide.",
   items: [
     {
       number: "01",
@@ -242,7 +242,7 @@ export const projects: {
   eyebrow: "Featured work",
   heading: "Bringing engineering visions to life with precision",
   subheading:
-    "A selection of recent infrastructure, structural and residential projects — from major transport assets to bespoke homes across New South Wales and Queensland.",
+    "A selection of recent infrastructure, structural and residential projects — from major transport assets to bespoke homes across Australia.",
   // Each item links to a standalone page at /projects/<slug>. Images live in
   // `public/projects/…` (real photos as static imports) or fall back to a
   // placeholder Unsplash id where a photo is not available yet. The six
@@ -253,7 +253,7 @@ export const projects: {
     {
       slug: "sydney-harbour-bridge-condition-assessment",
       title: "Sydney Harbour Bridge",
-      location: "Sydney, NSW",
+      location: "Sydney",
       category: "Infrastructure",
       year: "2026",
       image: harbourBridge,
@@ -276,7 +276,7 @@ export const projects: {
     {
       slug: "m1-eastern-distributor-pit-grate-kerb",
       title: "M1 Eastern Distributor — Pit, Grate & Kerb",
-      location: "Sydney, NSW",
+      location: "Sydney",
       category: "Infrastructure",
       year: "2026",
       image: "photo-1595066988978-c2686505d56f", // on-theme tunnel placeholder
@@ -299,7 +299,7 @@ export const projects: {
     {
       slug: "m1-eastern-distributor-crash-barrier",
       title: "M1 Eastern Distributor — Crash & Operable Barrier",
-      location: "Sydney, NSW",
+      location: "Sydney",
       category: "Infrastructure",
       year: "2026",
       image: m1CrashBarrier,
@@ -322,7 +322,7 @@ export const projects: {
     {
       slug: "tugun-tunnel-osd-tank",
       title: "Tugun Tunnel",
-      location: "Tugun, QLD",
+      location: "Tugun",
       category: "Infrastructure",
       year: "2026",
       image: tugunTunnel,
@@ -345,7 +345,7 @@ export const projects: {
     {
       slug: "ian-thorpe-aquatic-centre-remediation",
       title: "Ian Thorpe Aquatic Centre",
-      location: "Ultimo, Sydney NSW",
+      location: "Ultimo, Sydney",
       category: "Infrastructure",
       year: "2026",
       image: "photo-1690615961058-1d695ff218bc", // on-theme aquatic-centre placeholder
@@ -368,7 +368,7 @@ export const projects: {
     {
       slug: "raaf-williamtown-fuel-tank-lining",
       title: "RAAF Base Williamtown — Jet Fuel Tank Lining",
-      location: "Williamtown, NSW",
+      location: "Williamtown",
       category: "Infrastructure",
       year: "2026",
       image: "photo-1780882899461-0b158f457b44", // on-theme storage-tank placeholder
@@ -397,7 +397,7 @@ export const projects: {
     {
       slug: "warrick-lane-precinct-blacktown",
       title: "Warrick Lane Precinct Redevelopment",
-      location: "Blacktown, NSW",
+      location: "Blacktown",
       category: "Structural",
       year: "",
       image: "photo-1506521781263-d8422e82f27a", // on-theme car-park placeholder
@@ -425,7 +425,7 @@ export const projects: {
     {
       slug: "rooty-hill-car-park-station-upgrade",
       title: "Rooty Hill Car Park & Station Upgrade",
-      location: "Rooty Hill, NSW",
+      location: "Rooty Hill",
       category: "Infrastructure",
       year: "",
       image: "photo-1470224114660-3f6686c562eb", // on-theme multi-storey car-park placeholder
@@ -453,7 +453,7 @@ export const projects: {
     {
       slug: "cranbrook-school-redevelopment-bellevue-hill",
       title: "Cranbrook School Redevelopment",
-      location: "Bellevue Hill, NSW",
+      location: "Bellevue Hill",
       category: "Structural",
       year: "",
       image: "photo-1530549387789-4c1017266635", // on-theme aquatic-centre placeholder
@@ -481,7 +481,7 @@ export const projects: {
     {
       slug: "st-elias-church-guildford",
       title: "St Elias Church",
-      location: "Guildford, NSW",
+      location: "Guildford",
       category: "Structural",
       year: "",
       image: "photo-1473177104440-ffee2f376098", // on-theme church placeholder
@@ -509,7 +509,7 @@ export const projects: {
     {
       slug: "skyline-place-frenchs-forest",
       title: "Skyline Place",
-      location: "Frenchs Forest, NSW",
+      location: "Frenchs Forest",
       category: "Structural",
       year: "",
       image: "photo-1545324418-cc1a3fa10c00", // on-theme apartment placeholder
@@ -537,7 +537,7 @@ export const projects: {
     {
       slug: "granny-flat-garage-guildford",
       title: "Granny Flat & Garage",
-      location: "Guildford, NSW",
+      location: "Guildford",
       category: "Residential",
       year: "2026",
       image: grannyFlat,
@@ -546,7 +546,7 @@ export const projects: {
     {
       slug: "new-residential-build-kellyville",
       title: "New Residential Build",
-      location: "Kellyville, NSW",
+      location: "Kellyville",
       category: "Residential",
       year: "2026",
       image: kellyville1,
@@ -556,7 +556,7 @@ export const projects: {
     {
       slug: "retaining-wall-box-hill",
       title: "Retaining Wall Project",
-      location: "Box Hill, NSW",
+      location: "Box Hill",
       category: "Civil / Structural",
       year: "2026",
       image: retainingWall,
@@ -565,7 +565,7 @@ export const projects: {
     {
       slug: "high-end-residence-woy-woy",
       title: "High-End Residence",
-      location: "Woy Woy, NSW",
+      location: "Woy Woy",
       category: "Residential",
       year: "2026",
       image: woyWoy,
@@ -609,7 +609,7 @@ export const projects: {
     {
       slug: "high-end-residence-newport",
       title: "High-End Residence",
-      location: "Newport, NSW",
+      location: "Newport",
       category: "Residential",
       year: "2026",
       image: newport,
@@ -659,7 +659,7 @@ export const projects: {
 };
 
 // ── Remedial track record ─────────────────────────────────────────────────────
-// Remedial / structural-repair jobs across NSW strata and commercial buildings,
+// Remedial / structural-repair jobs across strata and commercial buildings nationally,
 // carried across from the director's CV (designs/cv-rinay-singh.pdf on the
 // `design-engine` branch). Each is a full Project so it gets a standalone page at
 // /projects/<slug>. By request, addresses are road + suburb only (no street
@@ -675,14 +675,14 @@ export const remedialWork: {
   items: Project[];
 } = {
   eyebrow: "Remedial track record",
-  heading: "Remediation delivered across NSW strata",
+  heading: "Remediation delivered for strata nationwide",
   subheading:
     "Remedial and structural-repair projects across residential and commercial buildings — waterproofing and membrane renewal, concrete and spalling repair, façade and balcony remediation, and structural strengthening — carried from first inspection through tender and into construction.",
   items: [
     {
       slug: "boronia-street-kensington",
       title: "Boronia Street",
-      location: "Kensington, NSW",
+      location: "Kensington",
       category: "Roof & Envelope Remediation",
       year: "",
       image: "photo-1616320999187-3c004dad4f0b",
@@ -705,7 +705,7 @@ export const remedialWork: {
     {
       slug: "walker-street-rhodes",
       title: "Walker Street",
-      location: "Rhodes, NSW",
+      location: "Rhodes",
       category: "Structural & Podium Waterproofing",
       year: "",
       image: walkerStreet,
@@ -729,7 +729,7 @@ export const remedialWork: {
     {
       slug: "bondi-road-bondi-beach",
       title: "Bondi Road",
-      location: "Bondi Beach, NSW",
+      location: "Bondi Beach",
       category: "Façade Remediation & Structural Repair",
       year: "",
       image: bondiRoad,
@@ -753,7 +753,7 @@ export const remedialWork: {
     {
       slug: "kentwell-road-allambie-heights",
       title: "Kentwell Road",
-      location: "Allambie Heights, NSW",
+      location: "Allambie Heights",
       category: "Waterproofing & Masonry Rectification",
       year: "",
       image: kentwellRoad,
@@ -777,7 +777,7 @@ export const remedialWork: {
     {
       slug: "liverpool-road-strathfield",
       title: "Liverpool Road",
-      location: "Strathfield, NSW",
+      location: "Strathfield",
       category: "Structural Strengthening & Façade",
       year: "",
       image: liverpoolRoad,
@@ -801,7 +801,7 @@ export const remedialWork: {
     {
       slug: "mowbray-road-lane-cove",
       title: "Mowbray Road",
-      location: "Lane Cove, NSW",
+      location: "Lane Cove",
       category: "Courtyard & Balcony Waterproofing",
       year: "",
       image: "photo-1669170930713-f7c778496177",
@@ -823,7 +823,7 @@ export const remedialWork: {
     {
       slug: "denham-street-bondi",
       title: "Denham Street",
-      location: "Bondi, NSW",
+      location: "Bondi",
       category: "Magnesite & Concrete Repair",
       year: "",
       image: denhamStreet,
@@ -847,7 +847,7 @@ export const remedialWork: {
     {
       slug: "alfred-street-narraweena",
       title: "Alfred Street",
-      location: "Narraweena, NSW",
+      location: "Narraweena",
       category: "Balcony & Envelope Remediation",
       year: "",
       image: "photo-1578907464594-fa58ed85c9b0",
@@ -892,7 +892,7 @@ export const footer: {
   social: Link[];
 } = {
   blurb:
-    "Structural and remedial engineering for the strata and construction sectors across New South Wales. Built on trust, delivered with transparency.",
+    "Structural and remedial engineering for the strata and construction sectors nationwide. Built on trust, delivered with transparency.",
   // Still outstanding from Rinay — office address, ABN and social links
   // (QUESTIONS.md §7). Email + phone supplied 15 Jun 2026.
   email: "info@xndr.au",

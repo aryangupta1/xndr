@@ -37,11 +37,11 @@ suburb, never the street address or client name.
 ## 1. Brand & positioning — ✅ Done
 - [x] In one sentence, how would you describe XNDR to a new client? — *elevator pitch received.*
 - [x] What's your tagline / hero headline? — *"Built on trust, delivered with transparency."*
-- [x] Which markets/regions do you serve? — *All of New South Wales.*
+- [x] Which markets/regions do you serve? — *National — Australia-wide.*
 - [x] Who is your ideal client? — *Strata Managers (90%), then Owners Corporations & Builders.*
 
 ## 2. Hero stats (3 numbers shown under the headline) — ✅ Done
-- [x] Number of projects delivered? — *20+ across NSW.*
+- [x] Number of projects delivered? — *20+ nationally.*
 - [x] Years in operation / combined experience? — *15+ years combined.*
 - [x] A third proof point? — *100% compliance focus (Registered Design & Building Practitioner).*
 
